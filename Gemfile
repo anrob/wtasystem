@@ -35,7 +35,7 @@ gem "breadcrumbs_on_rails"
 
 # Use unicorn as the web server
 # gem 'unicorn'
-
+gem 'rack', '1.3.3'
 # Deploy with Capistrano
 # gem 'capistrano'
 
