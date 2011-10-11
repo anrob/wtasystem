@@ -20,6 +20,15 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'devise' 
+gem "cancan"
+gem 'formtastic'
+#gem 'activerecord-import'
+#gem 'prawn'
+gem 'inherited_resources'
+gem 'easy_dates'
+gem "will_paginate"
+gem "breadcrumbs_on_rails"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
