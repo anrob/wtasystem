@@ -1,4 +1,4 @@
-class ManagementsController < InheritedResources::BaseController
+class ManagementsController < InheritedResources::Base
 #inherit_resources
 load_and_authorize_resource #:management, :through => :contract
 
