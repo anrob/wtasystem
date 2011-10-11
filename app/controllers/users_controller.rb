@@ -1,5 +1,5 @@
-class UsersController < InheritedResources::Base
-  #inherit_resources
+class UsersController < BaseController
+inherit_resources
    load_and_authorize_resource #:skip_authorization_check #:user, :through => :contract 
    respond_to :html, :xml, :json
  
