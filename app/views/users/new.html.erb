@@ -1,0 +1,17 @@
+<% if can? :everything, @contract %>
+<div class="loginwrapper top"><h2>Sign up</h2>
+
+<%= semantic_form_for(@user,:html => { :class => "form-stacked"}) do |f| %>
+  <%#= devise_error_messages! %>
+  <%= f.inputs :email, :password, :management, :actcode, :manager %>
+    <%= f.buttons :button_html => { :class => "btn success"} %>
+	<% for role in User::ROLES %>
+	  <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
+	  <%=h role.humanize %><br />
+	<% end %>
+	<%= hidden_field_tag "user[roles][]", "" %>
+<% end %>
+
+<%#= render :partial => "devise/shared/links" %>
+<% end %>
+</div>

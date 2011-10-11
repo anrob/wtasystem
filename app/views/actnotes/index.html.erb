@@ -1,0 +1,27 @@
+<h1>Listing actnotes</h1>
+
+<table>
+  <tr>
+    <th>Uniquekey</th>
+    <th>Contract provisions</th>
+    <th>Act notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @actnotes.each do |actnote| %>
+  <tr>
+    <td><%= actnote.uniquekey %></td>
+    <td><%= actnote.contract_provisions %></td>
+    <td><%= actnote.act_notes %></td>
+    <td><%= link_to 'Show', actnote %></td>
+    <td><%= link_to 'Edit', edit_actnote_path(actnote) %></td>
+    <td><%= link_to 'Destroy', actnote, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Actnote', new_actnote_path %>

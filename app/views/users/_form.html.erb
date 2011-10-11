@@ -1,0 +1,16 @@
+<%= semantic_form_for(@user,:html => { :class => "form-stacked", :method => :put}, :as => @user) do |f| %>
+<%= f.inputs :email %>
+<%= f.inputs :first_name, :last_name, :phone_number, :management, :actcode %>
+
+<% if can? :assign_roles, @user %>
+<% for role in User::ROLES %>
+  <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
+  <%=h role.humanize %><br />
+<% end %>
+<%= hidden_field_tag "user[roles][]", "" %>
+<% end %>
+<br>
+<%#= f.input :current_password, :label => "You Must Enter Your Password To Update", :required => true %><br>
+<%= f.commit_button :button_html => { :class => 'btn success' } %>
+
+<% end %>

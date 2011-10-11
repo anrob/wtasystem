@@ -1,0 +1,9 @@
+<table class="calendar">
+	<% (1..days_in_month(10,31)).to_a.in_groups_of(7) do |group| %>
+	<tr>
+		<% group.each do |day| %>
+		<td><%= day %></td>
+		<% end %>
+	</tr>
+	<% end %>
+	</table>

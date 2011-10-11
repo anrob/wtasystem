@@ -1,0 +1,12 @@
+<%= semantic_form_for(resource,:html => { :class => "large"},:as => resource_name, :url => session_path(resource_name)) do |f| %>
+ <%= devise_error_messages! %>
+	<%= label(:email, "Email Address", :class => 'block') %>
+  <%= f.input :email, :required => false,  :html => { :class => "large"} %>
+	<%= label(:password, "Password", :class => 'block') %>
+  <%= f.input :password, :required => false, %>
+  <%= f.buttons do %>
+<%= f.commit_button :button_html => { :class => "btn right small"},:label => "Login" %>
+	<% end %>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

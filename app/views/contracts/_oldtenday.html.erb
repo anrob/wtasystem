@@ -1,0 +1,41 @@
+<div class ="row alert-message block-message info">
+		<div class="span7 columns"><h3 class="tenday">10 Day Contracts</h3><hr></div>
+	<table class ="span16 columns">
+	<% @contracts.tenday.each do |contract| %>
+		<tr>
+			<td><%= contract.date_of_event %>
+	<td><%= contract.act_booked %></td>
+	<td><%= contract.act_booked %></td><td><%= contract.act_booked %></td>
+	<td><%= contract.act_booked %></td><td><%= contract.act_booked %></td><td><%= contract.act_booked %></td>
+
+
+
+	<td><%= contract.act_booked %></td>
+	<td><%= pluralize(@contracts.tenday.count, "contracts" )%></td>
+</tr>	<% end %>
+	</table>
+
+	<div class="span16 columns"><h3 class="yellow">30 Day Contracts</h3></div>
+
+
+<table class ="span16 columns"><% @contracts.thirtyday.each do |contract| %>
+	<tr>
+		<td><%= contract.date_of_event %>
+<td><%= contract.act_booked %></td>
+<td><%= contract.act_booked %></td>
+<td><%= pluralize(@contracts.tenday.count, "contracts" )%></td>
+</tr>
+<% end %>
+</table>
+	<div class="span16 columns"><h3>60 Day Contracts</h3></div> 
+
+<table class ="span16 columns"><% @contracts.sixtyday.each do |contract| %>
+	<tr>
+<td><%= contract.date_of_event %>
+<td><%= contract.act_booked %></td>
+<td><%= contract.act_booked %></td>
+<td><%= pluralize(@contracts.thirtyday.count, "contracts" )%></td>
+</tr><% end %>
+</table>
+
+</div>

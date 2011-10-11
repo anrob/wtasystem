@@ -1,0 +1,277 @@
+<%= form_for(@contract) do |f| %>
+  <% if @contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% @contract.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :accounting_confirmation_date %><br />
+    <%= f.date_select :accounting_confirmation_date %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_of_coverage %><br />
+    <%= f.text_field :hours_of_coverage %>
+  </div>
+  <div class="field">
+    <%= f.label :act_form %><br />
+    <%= f.text_field :act_form %>
+  </div>
+  <div class="field">
+    <%= f.label :act_net %><br />
+    <%= f.text_field :act_net %>
+  </div>
+  <div class="field">
+    <%= f.label :agent %><br />
+    <%= f.text_field :agent %>
+  </div>
+  <div class="field">
+    <%= f.label :act_booked %><br />
+    <%= f.text_field :act_booked %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_card_fee %><br />
+    <%= f.text_field :credit_card_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremony_address_line_2 %><br />
+    <%= f.text_field :ceremony_address_line_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremony_location_city %><br />
+    <%= f.text_field :ceremony_location_city %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremony_instrumenttation %><br />
+    <%= f.text_field :ceremony_instrumenttation %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremonoy_location_name %><br />
+    <%= f.text_field :ceremonoy_location_name %>
+  </div>
+  <div class="field">
+    <%= f.label :seremonly_location_state %><br />
+    <%= f.text_field :seremonly_location_state %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremony_start_time %><br />
+    <%= f.datetime_select :ceremony_start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremony_location_zip %><br />
+    <%= f.text_field :ceremony_location_zip %>
+  </div>
+  <div class="field">
+    <%= f.label :ceremony_charge %><br />
+    <%= f.text_field :ceremony_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :cocktails_charge %><br />
+    <%= f.text_field :cocktails_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :early_setup_charge %><br />
+    <%= f.text_field :early_setup_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_price %><br />
+    <%= f.text_field :contract_price %>
+  </div>
+  <div class="field">
+    <%= f.label :charge_per_horn %><br />
+    <%= f.text_field :charge_per_horn %>
+  </div>
+  <div class="field">
+    <%= f.label :other_charges %><br />
+    <%= f.text_field :other_charges %>
+  </div>
+  <div class="field">
+    <%= f.label :cocktail_instrumentation %><br />
+    <%= f.text_field :cocktail_instrumentation %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmation_date %><br />
+    <%= f.date_select :confirmation_date %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_sent_date %><br />
+    <%= f.date_select :contract_sent_date %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_number %><br />
+    <%= f.text_field :contract_number %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_revision_number %><br />
+    <%= f.text_field :contract_revision_number %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_cancellation %><br />
+    <%= f.date_select :date_of_cancellation %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_ceremony %><br />
+    <%= f.date_select :date_of_ceremony %>
+  </div>
+  <div class="field">
+    <%= f.label :charge_per_dancer %><br />
+    <%= f.text_field :charge_per_dancer %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_dancers %><br />
+    <%= f.text_field :number_of_dancers %>
+  </div>
+  <div class="field">
+    <%= f.label :giveaways %><br />
+    <%= f.text_field :giveaways %>
+  </div>
+  <div class="field">
+    <%= f.label :giveaways_charge %><br />
+    <%= f.text_field :giveaways_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :dj_tech_charge %><br />
+    <%= f.text_field :dj_tech_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :tech %><br />
+    <%= f.text_field :tech %>
+  </div>
+  <div class="field">
+    <%= f.label :event_end_time %><br />
+    <%= f.datetime_select :event_end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :early_setup_time %><br />
+    <%= f.datetime_select :early_setup_time %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_horns %><br />
+    <%= f.text_field :number_of_horns %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_light_show %><br />
+    <%= f.text_field :type_of_light_show %>
+  </div>
+  <div class="field">
+    <%= f.label :location_address_line_1 %><br />
+    <%= f.text_field :location_address_line_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :location_address_line_2 %><br />
+    <%= f.text_field :location_address_line_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :location_name %><br />
+    <%= f.text_field :location_name %>
+  </div>
+  <div class="field">
+    <%= f.label :location_city %><br />
+    <%= f.text_field :location_city %>
+  </div>
+  <div class="field">
+    <%= f.label :location_state %><br />
+    <%= f.text_field :location_state %>
+  </div>
+  <div class="field">
+    <%= f.label :location_zip %><br />
+    <%= f.text_field :location_zip %>
+  </div>
+  <div class="field">
+    <%= f.label :non_commissionable_charges %><br />
+    <%= f.text_field :non_commissionable_charges %>
+  </div>
+  <div class="field">
+    <%= f.label :location_phone %><br />
+    <%= f.text_field :location_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :pick_up_amount %><br />
+    <%= f.text_field :pick_up_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :explanation_opf_pickup_adjustment %><br />
+    <%= f.text_field :explanation_opf_pickup_adjustment %>
+  </div>
+  <div class="field">
+    <%= f.label :capital_music_player %><br />
+    <%= f.text_field :capital_music_player %>
+  </div>
+  <div class="field">
+    <%= f.label :capital_music_pay %><br />
+    <%= f.text_field :capital_music_pay %>
+  </div>
+  <div class="field">
+    <%= f.label :base_price_of_act %><br />
+    <%= f.text_field :base_price_of_act %>
+  </div>
+  <div class="field">
+    <%= f.label :questionnaire_received_date %><br />
+    <%= f.date_select :questionnaire_received_date %>
+  </div>
+  <div class="field">
+    <%= f.label :questionnaire_sent_date %><br />
+    <%= f.date_select :questionnaire_sent_date %>
+  </div>
+  <div class="field">
+    <%= f.label :referral_fee_amount %><br />
+    <%= f.text_field :referral_fee_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :referral_fee_to %><br />
+    <%= f.text_field :referral_fee_to %>
+  </div>
+  <div class="field">
+    <%= f.label :song_requests %><br />
+    <%= f.text_field :song_requests %>
+  </div>
+  <div class="field">
+    <%= f.label :event_start_time %><br />
+    <%= f.datetime_select :event_start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_status %><br />
+    <%= f.text_field :contract_status %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_amount %><br />
+    <%= f.text_field :tax_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_act %><br />
+    <%= f.text_field :type_of_act %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_event %><br />
+    <%= f.text_field :type_of_event %>
+  </div>
+  <div class="field">
+    <%= f.label :videographer_1 %><br />
+    <%= f.text_field :videographer_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :videographer_2 %><br />
+    <%= f.text_field :videographer_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :videgrapher_3 %><br />
+    <%= f.text_field :videgrapher_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :act_notes %><br />
+    <%= f.text_field :act_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_provisions %><br />
+    <%= f.text_field :contract_provisions %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

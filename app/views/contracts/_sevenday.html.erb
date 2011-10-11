@@ -1,0 +1,58 @@
+<div class="widget">
+    <div class="widget_title clearfix">
+        <h2>Events in the next 7 days</h2>
+    </div> 
+<div class="widget_body">
+        <div class="widget_content">
+            <div>
+               	<% unless @contracts.thisweek.blank? %>
+			
+				<table class="dataTable">
+					<thead>
+				  <tr>
+					<th>Date of Event</th>
+					<th>Contract #</th>
+				    <th>Client Name</th>
+				    <th>Hours of coverage</th>
+
+
+				    <th>Event Type</th>
+				    <th>Location</th>
+
+					<th> </th>
+				  </tr>
+				</thead>
+				<tbody>
+				<% @contracts.thisweek.each do |contract| %>
+				 <tr>
+					<td><%= l contract.date_of_event, :format => :long %></td>
+					<td><%= link_to contract.contract_number, contract %>
+				    <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
+				    <td><%= "#{contract.formatted_event_start_time} - #{contract.formatted_event_end_time}" %></td>
+
+
+				    <td><%= contract.type_of_event %></td>
+				    <td><%= contract.location_name %></td>
+
+				    <td><% if contract.confirmation == 1 %>
+					<%= link_to 'Get Info', contract, :class => 'btn success' %>
+					<% else %> 
+					<%= link_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'btn danger' %> 
+					<% end %>
+					</td>
+
+				  </tr>
+
+				<% end %>
+				  </tbody>
+				</table>
+				<% else %>
+				<div class="nothingpending_ten"> </div>
+				<% end %>
+            </div>
+      
+            <div class="clear"></div>
+        </div>
+    </div>
+  </div>
+

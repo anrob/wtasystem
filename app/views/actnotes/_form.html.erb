@@ -1,0 +1,29 @@
+<%= form_for(@actnote) do |f| %>
+  <% if @actnote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actnote.errors.count, "error") %> prohibited this actnote from being saved:</h2>
+
+      <ul>
+      <% @actnote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uniquekey %><br />
+    <%= f.text_field :uniquekey %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_provisions %><br />
+    <%= f.text_area :contract_provisions %>
+  </div>
+  <div class="field">
+    <%= f.label :act_notes %><br />
+    <%= f.text_area :act_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
