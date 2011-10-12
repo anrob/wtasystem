@@ -33,63 +33,22 @@
                     
                     <ul class="sf-menu">
                         <li class="active">
-                           		<% link_to root_url do %>
-                                <span class="icon"><img src="images/fugue/dashboard.png" /></span>
+                           		<%= link_to root_url do %>
+                                <span class="icon"><%= image_tag "fugue/dashboard.png"%></span>
                                 <span class="title">Dashboard</span>
 								<% end %>
-                         
                         </li>
-                        <!-- <li>
-                            <a href="tables.html">
-                                <span class="icon"><img src="/images/menu/tables.png" /></span>
-                                <span class="title">Tables</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="forms.html">
-                                <span class="icon"><img src="/images/menu/form.png" /></span>
-                                <span class="title">Form Elements</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon"><img src="/images/menu/styles.png" /></span>
-                                <span class="title">Styles</span>
-                            </a>
-                            <ul>
-                                <li><a href="#" class="styleswitcher" rel="fluid">Fluid</a></li>
-                                <li><a href="#" class="styleswitcher" rel="fixed">Fixed</a></li>
-								<li><a href="sidebar_index.html">Sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="pages.html">
-                                <span class="icon"><img src="/images/menu/pages.png" /></span>
-                                <span class="title">Sample Pages</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="gallery.html">
-                                <span class="icon"><img src="/images/menu/gallery.png" /></span>
-                                <span class="title">Gallery</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="charts.html">
-                                <span class="icon"><img src="/images/menu/charts.png" /></span>
-                                <span class="title">Statistics</span>
-                            </a>
-                        </li> -->
+                
                         <li class="sep">
                             <a href="#">
                                 <span class="notification"><%= @unconfirmedcount %></span>
-                                <span class="icon"><img src="/images/fugue/mail.png" /></span>
+                                <span class="icon"><%= image_tag "fugue/mail.png"%></span>
                                 <span class="title">Confirmed This Week</span>
                             </a>
                         </li>
                         <li>
-                           <% link_to edit_user_path(current_user) do %>
-                                <span class="icon"><img src="/images/fugue/user.png" /></span>
+                           <%= link_to edit_user_path(current_user) do %>
+                                <span class="icon"><%= image_tag "fugue/user.png" %></span>
                                 <span class="title">Account Settings</span>
                             <% end %>
                         </li>
