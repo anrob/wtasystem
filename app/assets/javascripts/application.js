@@ -2,6 +2,6 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 //= require jquery_ujs
-//= require jquery
 //= require jquery-ui
-//= require_tree .
+//= require jquery-1.4.2.min.js
+//= require highcharts.js

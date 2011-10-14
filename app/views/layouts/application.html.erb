@@ -9,7 +9,7 @@
 	<title>WTA Confirmation System</title>
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if !IE 7]><style>#wrap {display:table;height:100%}</style><![endif]-->
-<%#= render 'chart' %>
+<%= render 'chart' %>
 </head>
 <body>
 <div id="wrap">
@@ -60,7 +60,7 @@
                     <!-- <h1 class="left">
                                        Dashboard
                                    </h1> -->
-	<%= render 'messages'%>
+	<%= render 'messages' %>
                     <!-- <a class="btn grey right medium"><span>View Site</span></a> -->
 					<%= render "showmoney" %>
                 </div>
@@ -79,7 +79,7 @@
         <div class="widget_body">
             <div class="widget_content">
                 <div>
-	<!-- <div id="orders_chart" style="wdth:560px; height:300px"></div> -->
+	<div id="orders_chart" style="wdth:560px; height:300px"></div>
                    <%= yield %>
                 </div>
                 <div style="width:690px; float:left;">

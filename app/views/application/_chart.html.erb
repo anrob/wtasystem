@@ -1,39 +1,15 @@
-	<script type="text/javascript" charset="utf-8">
-	  $(function() {
-	    new Highcharts.Chart({
-	      chart: {
-	        renderTo: "orders_chart",
-	defaultSeriesType: 'column'
-	      },
-	      title: {
-	        text: "Orders by Day"
-	      },
-	      xAxis: {
-	        type: 'datetime'
-	      },
-	      yAxis: {
-	        title: {
-	          text: "Dollars"
-	        }
-	      },
-	      tooltip: {
-	        formatter: function() {
-	          return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' +
-	            "$" + Highcharts.numberFormat(this.y, 2);
-	        }
-	      },
-	     series: [
-
-	{
-	
-pointInterval: <%= Time.now.beginning_of_month.to_i + 12 %>,
-pointStart: <%=  Time.now.beginning_of_year.to_i * 1000 %>,
-// data: <%= (Date.today.to_date..1.month.from_now.to_date).map {|date| Contract.total_on(date).to_f}.inspect  %> 
-data: <% @contracts.each do | contract | %>
-<%= contract.contract_price %>
-	},
-<% end %>
-	]
-	    });
-	  });
-	</script>
+<script type="text/javascript" charset="utf-8">
+		 $(function () {  
+		  new Highcharts.Chart({  
+		    chart: { renderTo: 'orders_chart' },  
+		    title: { text: 'Orders by Day' },  
+		    xAxis: { type: 'datetime' },  
+		    yAxis: {  
+		      title: { text: 'Dollars'}  
+		    },  
+		    series: [{  
+		      data: [1, 2, 5, 7, 3]  
+		    }]  
+		  });  
+		});
+</script>
