@@ -4,6 +4,7 @@ respond_to :html, :xml, :json
   def index
    @user = current_user
    @contracts = Contract.mytoday.mystuff(current_user)
+   @contract_month = @contracts.group_by { |t| t.date_of_event.beginning_of_month }
    @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
    @unconfirmedcount = @unconfirmed
    @otheracts = User.getotheracts(current_user)
@@ -37,6 +38,7 @@ respond_to :html, :xml, :json
     @pd = @cother.first
     @cc = @contracts.mytoday.sum(:contract_price) 
     @test = @contracts.mytoday.count
+     @message = Message.last
     add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
     #@listact = User.find_by_id(params[:management_id])
   else

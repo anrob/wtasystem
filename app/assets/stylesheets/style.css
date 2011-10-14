@@ -1,5 +1,5 @@
 html {font-size: 100%;}
-body {font-size: .75em;line-height: 1.5; background: url(../images/bg.png) repeat; text-align:left;}
+body {font-size: .75em;line-height: 1.5; background: url(bg.png) repeat; text-align:left;}
 
 a {text-decoration: none; color: #004a80; cursor: pointer;}
 a:hover {text-decoration: underline}
@@ -18,12 +18,12 @@ h6 {font-size: 1em}
 
 p {margin: 5px 0}
 
-/* Header
+/* Header g
 -------------------------------------------------------------------*/
-header {background-image: url(../images/header_bg.png); background-repeat: no-repeat; padding-top: 10px}
+header {background-image: url("header_bg.png"); background-repeat: no-repeat; padding-top: 10px}
 
 nav {
-     background-image: url("../images/menu/bg-r.png"); background-repeat: no-repeat; background-position: top right;
+     background-image: url("menu/bg-r.png"); background-repeat: no-repeat; background-position: top right;
     -moz-border-radius-topleft: 3px;
     -moz-border-radius-topright: 3px;
     -moz-border-radius-bottomright: 0px;
@@ -32,10 +32,10 @@ nav {
     border-radius: 3px 3px 0px 0px; 
     margin-top: 25px;
 }
-#navcontainer {background: url("../images/menu/bg.png") repeat-x scroll left top; margin-right: 3px}
+#navcontainer {background: url("menu/bg.png") repeat-x scroll left top; margin-right: 3px}
 
 #logo {
-    background: url(../images/logo.png) no-repeat;
+    background: url("logo.png") no-repeat;
     width: 219px; height: 39px; display: block; float: left; margin-top: 5px;
 text-indent: -99999px;
 }
@@ -49,7 +49,7 @@ nav ul li a.ui-tabs-selected, nav ul li a:hover {color:#fff}
 nav ul .icon {height: 20px; width: 20px; margin: 0 auto; display: block}
 nav ul .notification {background: #b01e1e;border-radius: 30px 30px 30px 30px;-moz-border-radius: 30px 30px 30px 30px;-webkit-border-radius: 30px 30px 30px 30px;box-shadow: 1px 1px 1px #333333;color: #E4E4E4;display: block;font-size: 10px;height: 6px;line-height: 4px;padding: 5px;position: absolute;left: 33px;text-align: center;top: 6px;}
 
-nav .sf-menu li.active {background: url(../images/menu/selected.png) no-repeat bottom center;}
+nav .sf-menu li.active {background: url(menu/selected.png) no-repeat bottom center;}
 nav ul li.active {opactiy: 0.2}
 
 #user {width: 225px; float: left; padding: 10px 0 0 10px}
@@ -59,7 +59,7 @@ nav ul li.active {opactiy: 0.2}
 #user .username {display: block}
 #user li, #user a {color: #777; padding: 0}
 
-#user img {width: 32px; height: 32px; background:url(../images/menu/avatarframe.png); border-radius: 2px; -moz-border-radius: 2px; -webkit--moz-border-radius: 2px; display: block; float: left; margin-right: 5px; padding: 5px;}
+#user img {width: 32px; height: 32px; background:url(menu/avatarframe.png); border-radius: 2px; -moz-border-radius: 2px; -webkit--moz-border-radius: 2px; display: block; float: left; margin-right: 5px; padding: 5px;}
 #user ul a {text-decoration: underline}
 
 #pagetitle {background: #fff; padding: 10px}
@@ -94,7 +94,7 @@ nav ul li.active {opactiy: 0.2}
 /* Widgets
 -------------------------------------------------------------------*/
 .widget {margin-top: 15px; margin-bottom: 10px; 
-        background-image: url(../images/menu/title-r.png); background-repeat: no-repeat; background-position: top right;
+        background-image: url(menu/title-r.png); background-repeat: no-repeat; background-position: top right;
         -moz-border-radius:4px;border-radius:4px; -moz-border-radius:4px;
 }
 
@@ -102,7 +102,7 @@ nav ul li.active {opactiy: 0.2}
     -moz-border-radius-topleft: 4px;-moz-border-radius-topright: 0px;-moz-border-radius-bottomright: 0px;-moz-border-radius-bottomleft: 0px;
     -webkit-border-radius: 4px 0px 0px 0px; border-radius: 4px 0px 0px 0px;
     margin-right: 4px;
-    background: url(../images/menu/title.png) top left;
+    background: url(menu/title.png) top left;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
 }
 
@@ -112,8 +112,8 @@ nav ul li.active {opactiy: 0.2}
 
 .widget_title ul li a {display: block;padding: 4px 6px 5px 9px;margin-right: 3px}
 
-.widget_title .ui-tabs-selected {background: url(../images/form/tab-r.png) no-repeat top right; }
-.widget_title .ui-tabs-selected a {background: url(../images/form/tab.png) no-repeat top left; margin-right: 3px;}
+.widget_title .ui-tabs-selected {background: url(form/tab-r.png) no-repeat top right; }
+.widget_title .ui-tabs-selected a {background: url(form/tab.png) no-repeat top left; margin-right: 3px;}
 
 .widget_title .ui-tabs-nav li {font-size: 0.87em;font-weight: bold;}
 
@@ -122,7 +122,7 @@ nav ul li.active {opactiy: 0.2}
 .widget_title .ui-tabs-selected a {color: #fff;}
 
 .ui-toolbar input[type='text'], .ui-toolbar input[type='password'], .ui-toolbar input[type='file'], .ui-toolbar textarea, .ui-toolbar select,
-.widget_options input[type='text'], .widget_options input[type='password'], .widget_options input[type='file'], .widget_options textarea, .widget_options select {margin-bottom: 0px}
+.widget_options input[type='text'], .widget_options input[type='password'], .widget_options input[type='file'], .widget_options textarea, .widget_options select {margin-bottom: 4px}
     
 .widget_body {border-radius:0 0 4px 4px;-moz-border-radius:0 0 3px 3px; background: #fff; padding-bottom: 10px; border: 1px solid #c1c1c1;}
 .widget_options {background: #f7f7f7; border-bottom: 1px solid #d4d4d4; padding: 10px}
@@ -147,7 +147,7 @@ table .piped, table .piped a {color:#777; font-size: 0.917em;}
 
 /* Form
 -------------------------------------------------------------------*/
-input[type='text'], input[type='password'], input[type='file'], textarea, select {
+input[type='text'], input[type='password'], input[type='file'], input[type='email'],input[type='select'] textarea, select {
     background-color: #f6f6f6;
     border: 1px solid #929292;
     border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
@@ -167,17 +167,17 @@ select.small {padding:2px 1px}
 .nested ul, .nested ol {margin-left: 2em}
 
 span.vanadium-advice {margin-left: 15px}
-span.vanadium-invalid {background: url("../images/fugue/cross.png") no-repeat scroll left center transparent; padding:1px 0 1px 18px}
+span.vanadium-invalid {background: url("fugue/cross.png") no-repeat scroll left center transparent; padding:1px 0 1px 18px}
 
 .upload {display: inline}
 /*.realupload {position: relative;left: -21%;opacity:0;-moz-opacity:0;filter:alpha(opacity:0);z-index:2;width:20%;}*/
-.fakeupload {background-image:url(../images/form/selectfile.png);background-position: 100% 50%;background-repeat:no-repeat;}
+.fakeupload {background-image:url(form/selectfile.png);background-position: 100% 50%;background-repeat:no-repeat;}
 
 .inputHighlight {color: #959595 !important}
 
 /* Login Page
 -------------------------------------------------------------------*/
-#loginpage {background-image: url(../images/login_bg.png); background-repeat: no-repeat; background-position: top center;}
+#loginpage {background-image: url(login_bg.png); background-repeat: no-repeat; background-position: top center;}
 #loginpage img {position: relative; top: 130px}
 #login {margin-top: 170px}
 #login .widget_content {width: 85%; margin: 5px auto 10px;}
@@ -218,7 +218,7 @@ footer a {color: #aaa}
 -------------------------------------------------------------------*/
 
 header .search {
-    /* background: url("../images/form/h_search.png") no-repeat transparent !important; */ /* Remove for semi-transparent search */
+    /* background: url("form/h_search.png") no-repeat transparent !important; */ /* Remove for semi-transparent search */
     border: 0 none !important;
     box-shadow: none !important; color: #DDDDDD;
     width: 200px !important;
@@ -233,7 +233,7 @@ header .search {
     border: 1px solid #b6b6b6;
     border-radius:3px;-webkit-border-radius:3px; -moz-border-radius:3px;
     padding: 3px 20px 3px 3px;
-    background: url(../images/custom/search_s.png) no-repeat 98% center #fff !important;
+    background: url(custom/search_s.png) no-repeat 98% center #fff !important;
     box-shadow: 0 1px 1px #BBBBBB inset; -moz-box-shadow: 0 1px 1px #BBBBBB inset; -webkit-box-shadow: 0 1px 1px #BBBBBB inset;
     float: right;
 }
@@ -242,7 +242,7 @@ header .search {
 
 /* Sidebar
 -------------------------------------------------------------------*/
-#sidebar{position:absolute;top:0;left:0;width:204px;height:100%;background-image: url(../images/menu/sidebar_bg.png); background-repeat: repeat-y; background-position: top right}
+#sidebar{position:absolute;top:0;left:0;width:204px;height:100%;background-image: url(menu/sidebar_bg.png); background-repeat: repeat-y; background-position: top right}
 @media screen{
   body>div#sidebar{position:fixed;}
 }
@@ -254,7 +254,7 @@ header .search {
 .sidebarred #pagetitle h1 {line-height: 1.2em}
 
 #sidebar nav {margin-top: 0}
-#sidebar #user {width: 184px; padding: 12px 12px 12px 8px; background: url(../images/menu/sidebar_top.png) no-repeat top left}
+#sidebar #user {width: 184px; padding: 12px 12px 12px 8px; background: url(menu/sidebar_top.png) no-repeat top left}
 #sidebar .username a {display: block}
 
 #sidemenu {display: block; width:204px;}
@@ -265,16 +265,16 @@ header .search {
 #sidemenu li a {padding: 10px; color: #777;}
 #sidemenu li ul {display: block; }
 #sidemenu .notification {top: 4px; left: auto; right:23px}
-#sidemenu .active a {background: url(../images/menu/sidebar_acc_border.png) bottom repeat-x; }
-#sidemenu .active {background: url(../images/menu/sidebar_acc_border.png) top repeat; }
+#sidemenu .active a {background: url(menu/sidebar_acc_border.png) bottom repeat-x; }
+#sidemenu .active {background: url(menu/sidebar_acc_border.png) top repeat; }
 #sidemenu li.sep {border-top: 1px solid #000000}
-#sidemenu li li {background: url(../images/menu/bullet.png) 12px center no-repeat;}
-#sidemenu li li a {display: block; background: url(../images/menu/sidebar_acc_active.png);  padding: 5px 0px 5px 25px;}
+#sidemenu li li {background: url(menu/bullet.png) 12px center no-repeat;}
+#sidemenu li li a {display: block; background: url(menu/sidebar_acc_active.png);  padding: 5px 0px 5px 25px;}
 
-.nothingpending {background: url(../images/nothingpending.png); height:127px;
+.nothingpending {background: url(nothingpending.png); height:127px;
 	border: 1px solid #d6d5d6;margin-top: 11px;}
 .nothingpending_ten { height:127px;
 	border: 1px solid #d6d5d6;
-	background-image: url(../images/nothingpending_ten.png);
+	background-image: url(nothingpending_ten.png);
 	margin-top: 11px;
 }

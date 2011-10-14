@@ -455,6 +455,6 @@ button, .btn, input[type=button], input[type=submit],.ui-button {
 /* Other buttons
 -------------------------------------------------------------------*/
 
-.close, .ui-dialog-titlebar-close {text-indent: -9999em; background: url(../images/custom/close.png) no-repeat center; height: 17px; width: 13px;display: block; float: right}
+.close, .ui-dialog-titlebar-close {text-indent: -9999em; background: url(../custom/close.png) no-repeat center; height: 17px; width: 13px;display: block; float: right}
 
 .pieLabel {background: rgba(240,240,240,0.85)}

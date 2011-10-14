@@ -25,14 +25,14 @@
 				<tbody>
 				<% @contracts.thisweek.each do |contract| %>
 				 <tr>
-					<td><%= l contract.date_of_event, :format => :long %></td>
+					<td><%= contract.formatted_date_of_event %></td>
 					<td><%= link_to contract.contract_number, contract %>
 				    <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
 				    <td><%= "#{contract.formatted_event_start_time} - #{contract.formatted_event_end_time}" %></td>
 
 
 				    <td><%= contract.type_of_event %></td>
-				    <td><%= contract.location_name %></td>
+				    <td><%= truncate(contract.location_name, :length => 40, :omission =>"...") %></td>
 
 				    <td><% if contract.confirmation == 1 %>
 					<%= link_to 'Get Info', contract, :class => 'btn success' %>

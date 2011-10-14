@@ -33,7 +33,7 @@ code, pre {font-family: "Consolas","Bitstream Vera Sans Mono","Courier New",Cour
 .disc {list-style: disc inside;}
 abbr, acronym {border-bottom: 1px dotted #161a1f}
 
-pre {background: url(../images/code_bg.gif);padding: 20px 10px;border-radius: 1px 1px 1px 1px;box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);display: block;border: 1px solid #E0E0E0;overflow: auto;font-size: 12px;line-height: 20px;margin: 15px 0;white-space: pre-wrap;}
+pre {background: url(code_bg.gif);padding: 20px 10px;border-radius: 1px 1px 1px 1px;box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);display: block;border: 1px solid #E0E0E0;overflow: auto;font-size: 12px;line-height: 20px;margin: 15px 0;white-space: pre-wrap;}
 
 dd {margin-left: 2em;}
 
