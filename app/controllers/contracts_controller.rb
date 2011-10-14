@@ -55,6 +55,7 @@ respond_to :html, :xml, :json
     @management = Management.find_by_id(current_user.management_id)
     @user = current_user
     @pd = @user
+    @message = Message.last
     @contracts = Contract.mytoday.mystuff(@user)
     @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
      @unconfirmedcount = @unconfirmed
