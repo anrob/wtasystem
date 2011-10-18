@@ -3,21 +3,26 @@
 		  new Highcharts.Chart({  
 		    chart: { renderTo: 'orders_chart' },  
 		    title: { text: 'Orders by Day' },  
-		    xAxis: { type: 'datetime' },  
+		    xAxis: {
+			         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+			            'Jul', 'Aug', 'Sep', 'October', 'November', 'Dec']
+			      },  
 		    yAxis: {  
 		      title: { text: 'Dollars'}  
-		    },  
-			tooltip: {  
-			      formatter: function () {  
-			        return Highcharts.dateFormat("%B %e %Y", this.x) + ': ' +  
-			          '$' + Highcharts.numberFormat(this.y, 2);  
-			      }  
+		    },   
+			tooltip: {
+			      formatter: function () {
+			        return Highcharts.dateFormat("%B %e %Y", this.x) + ': ' +
+			          '$' + Highcharts.numberFormat(this.y, 2);
+			      }
 			    },
-		    series: [{  
-			pointInterval: <%= 1.day * 1000 %>,
-			
-		      data: [1, 2, 5, 7, 3]  
-		    }]  
-		  });  
+	
+		series: [{
+			<%= @contracts.each do | contract|  %>  
+			data: [1,1,2]
+				
+		    }]
+		  }); 
+		<% end %> 
 		});
 </script>
