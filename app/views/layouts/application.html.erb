@@ -79,7 +79,8 @@
         <div class="widget_body">
             <div class="widget_content">
                 <div>
-	<div id="orders_chart" style="wdth:560px; height:300px"></div>
+	<% if can? :see_money, @contract %> <%= render :partial => 'thechart' %>
+ <% end %>
                    <%= yield %>
                 </div>
                 <div style="width:690px; float:left;">
