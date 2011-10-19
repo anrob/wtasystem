@@ -79,7 +79,7 @@
         <div class="widget_body">
             <div class="widget_content">
                 <div>
-	<% if can? :see_chart, @contract %> <%= render :partial => 'thechart' %>
+	<% unless can? :see_chart, @contract %> <%= render :partial => 'thechart' %>
  <% end %>
                    <%= yield %>
                 </div>
