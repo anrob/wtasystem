@@ -75,6 +75,33 @@ respond_to :html, :xml, :json
     ContractMailer.event_info_email(@user).deliver
     flash[:notice] = "Job Confirmed"
       redirect_to :root
-
+   end
+   
+   def import_contracts
+     #@importedfile = Import.find(params[:id])
+      require 'csv'
+      filename = "public/import/000075.txt"
+     #filename = CSV.open('public/import/040811AMIII.TXT')
+     CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
+       @contracts = Contract.find_or_create_by_unique3(row[0])
+       @contracts.update_attributes({ 
+        :unique3             =>  row[0],
+        :prntkey23             =>  row[1],
+        :prntkey13         =>  row[2],
+        :act_code            =>  row[3],
+        :agent       => row[7],
+        :act_booked => row[8],
+        :contract_number    => row[28],
+        :type_of_event    => row[63],
+        :date_of_event    => row[67],
+        :first_name    => row[68],
+        :last_name    => row[69],
+        :confirmation => 0 }
+       )
+       
+       #@contracts.save
+     end
+     flash[:notice] = "New posts were successfully processed."
+     redirect_to contracts_path
    end
 end

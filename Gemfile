@@ -31,6 +31,8 @@ gem "will_paginate"
 gem "breadcrumbs_on_rails"
 gem "thin"
 #gem 'whenever', :require => false
+#gem "fastercsv"
+gem "switch_user"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
