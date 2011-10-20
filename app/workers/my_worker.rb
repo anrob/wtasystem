@@ -3,7 +3,7 @@ class MyWorker < SimpleWorker::Base
   def run
        require 'csv'
        require 'net/ftp'
-      Dir.chdir("tmp") do
+      Dir.chdir(Rails.root/tmp) do
                Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
                  ftp.passive = true
                  ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
