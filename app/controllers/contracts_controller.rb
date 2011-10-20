@@ -56,11 +56,11 @@ respond_to :html, :xml, :json
     @user = current_user
     @pd = @user
     @message = Message.last
-    @contracts = Contract.mytoday.mystuff(@user)
+    @contracts = Contract.mytoday.mystuff(current_user)
     @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
      @unconfirmedcount = @unconfirmed
-     @contract = Contract.find(params[:id])
-    @additional = Contract.additional(@contract)
+     @contract = @contracts.find(params[:id])
+     @additional = Contract.additional(@contract)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @contract }
@@ -79,29 +79,7 @@ respond_to :html, :xml, :json
    
    def import_contracts
      #@importedfile = Import.find(params[:id])
-      require 'csv'
-      filename = "public/import/000075.txt"
-     #filename = CSV.open('public/import/040811AMIII.TXT')
-     CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
-       @contracts = Contract.find_or_create_by_unique3(row[0])
-       @contracts.update_attributes({ 
-        :unique3             =>  row[0],
-        :prntkey23             =>  row[1],
-        :prntkey13         =>  row[2],
-        :act_code            =>  row[3],
-        :agent       => row[7],
-        :act_booked => row[8],
-        :contract_number    => row[28],
-        :type_of_event    => row[63],
-        :date_of_event    => row[67],
-        :first_name    => row[68],
-        :last_name    => row[69],
-        :confirmation => 0 }
-       )
-       
-       #@contracts.save
-     end
-     flash[:notice] = "New posts were successfully processed."
-     redirect_to contracts_path
+     worker = MyWorker.new
+     worker.queue
    end
 end
