@@ -79,38 +79,7 @@ respond_to :html, :xml, :json
    
    def import_contracts
      #@importedfile = Import.find(params[:id])
-<<<<<<< Updated upstream
      worker = MyWorker.new
      worker.queue
-=======
-      require 'csv'
-      require 'open-uri'
-      #url = 'http://www.testing.com/test.csv'open(url) do |f|  f.each_line do |line|    
-     # FasterCSV.parse(line) do |row|      # Your code here    end  endend
-      
-      filename = "public/import/000075.txt"open(filename)
-     #filename = CSV.open('public/import/040811AMIII.TXT')
-     CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
-       @contracts = Contract.find_or_create_by_unique3(row[0])
-       @contracts.update_attributes({ 
-        :unique3             =>  row[0],
-        :prntkey23             =>  row[1],
-        :prntkey13         =>  row[2],
-        :act_code            =>  row[3],
-        :agent       => row[7],
-        :act_booked => row[8],
-        :contract_number    => row[28],
-        :type_of_event    => row[63],
-        :date_of_event    => row[67],
-        :first_name    => row[68],
-        :last_name    => row[69],
-        :confirmation => 0 }
-       )
-       
-       #@contracts.save
-     end
-     flash[:notice] = "New posts were successfully processed."
-     redirect_to contracts_path
->>>>>>> Stashed changes
    end
 end
