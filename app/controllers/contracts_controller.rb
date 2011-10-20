@@ -80,8 +80,8 @@ respond_to :html, :xml, :json
    def import_contracts
      #@importedfile = Import.find(params[:id])
      worker = MyWorker.new
-     # worker.queue
-     worker.run_local
+     worker.queue
+     # worker.run_local
        filename = "000075.txt"
      CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
        @contracts = Contract.find_or_create_by_unique3(row[0])
