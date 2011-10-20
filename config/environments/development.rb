@@ -27,9 +27,6 @@ Wtasystem::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
-<<<<<<< HEAD
   ENV['SIMPLE_WORKER_ACCESS_KEY'] = '10064cd192a56c673542b7099b4b7101'
   ENV['SIMPLE_WORKER_SECRET_KEY'] = '5208965304a4130a2c9566545b9c29c4'
-=======
->>>>>>> parent of 88a9142... simple worker test
 end
