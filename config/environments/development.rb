@@ -27,4 +27,6 @@ Wtasystem::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
+  ENV['SIMPLE_WORKER_ACCESS_KEY'] = 'dad1a05cbf4157b4e31bc9c916e88aae'
+  ENV['SIMPLE_WORKER_SECRET_KEY'] = 'f985aa0d99174db0a2d323f61a97dd36'
 end
