@@ -81,6 +81,7 @@ respond_to :html, :xml, :json
      #@importedfile = Import.find(params[:id])
      worker = MyWorker.new
      worker.queue
+     worker.wait_until_complete
      # worker.run_local
        filename = "000075.txt"
      CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
