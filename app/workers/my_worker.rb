@@ -3,7 +3,7 @@ class MyWorker < SimpleWorker::Base
   def run
        require 'csv'
        require 'net/ftp'
-      Dir.chdir(Rails.root/tmp) do
+      #Dir.chdir(Rails.root.join("tmp")) do
                Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
                  ftp.passive = true
                  ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
@@ -16,8 +16,8 @@ class MyWorker < SimpleWorker::Base
                end
                filename = "000075.txt"
             CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
-              @contracts = Contract.find_or_create_by_unique3(row[0])
-              @contracts.update_attributes({ 
+              Contract.find_or_create_by_unique3(row[0])
+              Contract.update_attributes({ 
                :unique3             =>  row[0],
                :prntkey23             =>  row[1],
                :prntkey13         =>  row[2],
@@ -32,7 +32,7 @@ class MyWorker < SimpleWorker::Base
                :confirmation => 0 }
               )
 
-      end
+     # end
     end
     
   end

@@ -80,6 +80,7 @@ respond_to :html, :xml, :json
    def import_contracts
      #@importedfile = Import.find(params[:id])
      worker = MyWorker.new
-     worker.queue
+     # worker.queue
+     worker.run_local
    end
 end
