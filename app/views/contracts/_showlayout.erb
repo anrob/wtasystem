@@ -12,7 +12,7 @@
 	  					<%= @contract.contract_price %></h4>
 		</div>
 		<div>
-		<% unless @contract.location_name.blank? %>	<b> Location :</b>
+		<% unless @contract.location_name.empty? %>	<b> Location :</b>
 			
 			 <h5><%= @contract.location_name %><br>
 			<%= @contract.location_address_line_1 %><br>

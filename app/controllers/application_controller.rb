@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Access denied."
     redirect_to root_url
   end  
-  rescue_from ActiveRecord::RecordNotFound do
-    render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
-  end
   protect_from_forgery
   #check_authorization :unless => :devise_controller?
   #load_and_authorize_resource

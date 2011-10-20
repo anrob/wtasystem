@@ -3,7 +3,6 @@ class Contract < ActiveRecord::Base
   belongs_to :user
   default_scope :order => 'date_of_event ASC'
   #default_scope :actorder => 'act_code ASC'
-  
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user.actcode)}
   scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)}
