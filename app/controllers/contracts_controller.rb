@@ -78,45 +78,39 @@ respond_to :html, :xml, :json
    end
    
    def import_contracts
-      #   require 'csv'
-      #      require 'net/ftp'
-      #     Dir.chdir("tmp") do
-      #              Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-      #                ftp.passive = true
-      #                ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-      #                #ftp.chdir("uploads")
-      #                file = ftp.nlst("*.TXT")
-      #                #@file = file
-      #                file.each{|filename| #Loop through each element of the array
-      #                  ftp.getbinaryfile(filename,filename) #Get the file
-      #                }
-      # 
-      #   end
-      # #   
-      # #     # #@importedfile = Import.find(params[:id])
-      # #     #  worker = MyWorker.new
-      # #     #  # worker.queue
-      # #     #  #     worker.wait_until_complete
-      # #     # worker.run_local
-      # #       filename = "000075.TXT"
-      # #     CSV.foreach(filename, {:headers => true, :col_sep => "|"}) do |row|
-      # #       @contracts = Contract.find_or_create_by_unique3(row[0])
-      # #       @contracts.update_attributes({ 
-      # #        :unique3             =>  row[0],
-      # #        :prntkey23             =>  row[1],
-      # #        :prntkey13         =>  row[2],
-      # #        :act_code            =>  row[3],
-      # #        :agent       => row[7],
-      # #        :act_booked => row[8],
-      # #        :contract_number    => row[28],
-      # #        :type_of_event    => row[63],
-      # #        :date_of_event    => row[67],
-      # #        :first_name    => row[68],
-      # #        :last_name    => row[69],
-      # #        :confirmation => 0 }
-      # #       ) 
-      # #       end
-      # #     redirect_to :root
+       @management = Management.find_by_id(current_user.management_id)
+        @user = current_user
+        @pd = @user
+        @message = Message.last
+        require 'csv'
+      #require 'net/ftp'
+      Dir.chdir(Rails.root + "tmp")
+      #@thedir = Dir.getwd
+      @listit = Dir.glob("*.TXT")
+      @listit.each do |listit|
+      #filename = "000075.TXT"
+              CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+                                      @contracts = Contract.find_or_create_by_unique3(row[0])
+                                      @contracts.update_attributes({ 
+                                       :unique3             =>  row[0],
+                                       :prntkey23             =>  row[1],
+                                       :prntkey13         =>  row[2],
+                                       :act_code            =>  row[3],
+                                       :agent       => row[7],
+                                       :act_booked => row[8],
+                                       :contract_number    => row[28],
+                                       :type_of_event    => row[63],
+                                       :date_of_event    => row[67],
+                                       :first_name    => row[68],
+                                       :last_name    => row[69] }
+                                      ) 
+                                      end
+                                    end
+                                    FileUtils.rm Dir.glob('*.TXT')
+      #           # Dir.chdir("../")
+      #             
+      #             
+      #         redirect_to :root
       # # 
       # #  
      end
