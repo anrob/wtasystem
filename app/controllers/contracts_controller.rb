@@ -114,4 +114,12 @@ respond_to :html, :xml, :json
       # # 
       # #  
      end
+     
+     def alljobs
+          @management = Management.find_by_id(current_user.management_id)
+           @user = current_user
+           @pd = @user
+           @message = Message.last
+       @contracts = Contract.unconfirmedevent.actnet
+     end
 end

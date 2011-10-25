@@ -10,6 +10,7 @@ resources :users
    match '/confirmjob', :to => "contracts#confirmjob"
    match '/otheracts', :to => "contracts#otheracts"
    match '/import', :to => "contracts#import_contracts"
+   match '/alljobs', :to => "contracts#alljobs"
    #match '/otheracts/*actcode', :to => "contracts#otheracts"
    match '/users/:id'  => "users#edit"
 end
