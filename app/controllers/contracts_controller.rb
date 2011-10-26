@@ -87,9 +87,10 @@ respond_to :html, :xml, :json
       Dir.chdir(Rails.root + "tmp")
       #@thedir = Dir.getwd
       @listit = Dir.glob("*.TXT")
+      
       @listit.each do |listit|
       #filename = "000075.TXT"
-              CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+              CSV..strip.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
                                       @contracts = Contract.find_or_create_by_unique3(row[0])
                                       @contracts.update_attributes({ 
                                        :unique3             =>  row[0],
@@ -116,10 +117,10 @@ respond_to :html, :xml, :json
      end
      
      def alljobs
-          @management = Management.find_by_id(current_user.management_id)
+           @management = Management.find_by_id(current_user.management_id)
            @user = current_user
            @pd = @user
            @message = Message.last
-       @contracts = Contract.unconfirmedevent.actnet
+           @contracts = Contract.unconfirmedevent.actnet
      end
 end

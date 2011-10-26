@@ -11,12 +11,12 @@ class Contract < ActiveRecord::Base
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))
   scope :tenday, where(:date_of_event => (my_date + 8.days)..(my_date + 11.days))
-  scope :thirtyday, where(:date_of_event => (my_date + 11.days)..(my_date + 30.days))
+  scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
   scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
-  scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 365.days))
+  scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 90.days))
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
-  scope :actnet, where(:date_of_event => (my_date)..(my_date + 30.days))
+  scope :actnet, where(:date_of_event => (my_date)..(my_date + 11.days))
  
  def self.total_on(month)
    where("date(date_of_event) = ?", month).sum(:contract_price)
@@ -28,3 +28,5 @@ class Contract < ActiveRecord::Base
   end
   
 end
+
+
