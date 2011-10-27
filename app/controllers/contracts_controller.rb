@@ -1,7 +1,6 @@
 class ContractsController < ApplicationController
  load_and_authorize_resource
 respond_to :html, :xml, :json
-    
   def index
    @user = current_user
    @contracts = Contract.mytoday.mystuff(current_user)
@@ -91,7 +90,7 @@ respond_to :html, :xml, :json
       
       @listit.each do |listit|
       #filename = "000075.TXT"
-      CSV..strip.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+              CSV..strip.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
                                       @contracts = Contract.find_or_create_by_unique3(row[0])
                                       @contracts.update_attributes({ 
                                        :unique3             =>  row[0],
@@ -109,8 +108,12 @@ respond_to :html, :xml, :json
                                       end
                                     end
                                     FileUtils.rm Dir.glob('*.TXT')
-      #           # Dir.chdir("../")          
+      #           # Dir.chdir("../")
+      #             
+      #             
       #         redirect_to :root
+      # # 
+      # #  
      end
      
      def alljobs
@@ -120,20 +123,4 @@ respond_to :html, :xml, :json
            @message = Message.last
            @contracts = Contract.unconfirmedevent.actnet
      end
-     
-     def mailchimp
-             @management = Management.find_by_id(current_user.management_id)
-             @user = current_user
-             @pd = @user
-             @message = Message.last
-      gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2") 
-      #@gblist = gb.lists({:start => 0, :limit=> 100})
-      #gb = gb.listMemberInfo({:id => "9e862a6c03", :email_address => "fresh@sofreshentertainment.com"})
-      @users = User.all
-      @users.each do |us|
-        gb.list_subscribe(:id => "9e862a6c03", :email_address => us.email,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MMERGE3 => us.updated_at } )
-        
-     # gb.list_batch_subscribe(:id => "9e862a6c03", :email_address => us.email, :merge_vars => {:FNAME => us.actcode, :MMERGE3 => us.updated_at } )
-    end
-      end
 end
