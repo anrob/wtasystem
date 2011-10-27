@@ -1,25 +1,20 @@
-<%= table_for @contracts, :class => "users_table" do |t| %>
-
+<%= table_for @contracts, :class => "simple" do |t| %>
  <%= t.head do %>
 <%= t.r do %>
 <%= t.h('Client Name') %>
-    <%= t.h('Contract #') %>
+ <%= t.h('Contract #') %>
+<%= t.h('Act Booked') %>
+
+
   <% end %>
 <% end %>
 <%= t.body_r do |contract| %>
-  <%= t.d(h("#{contract.first_name} #{contract.last_name}" )) %>
-  <%= t.d(h("#{contract.contract_number}" )) %>
+ 	<%= t.d(h("#{contract.first_name} #{contract.last_name}" )) %>
+	<%= t.d(h("#{contract.contract_number}" )) %>
+	<%= t.d(h("#{contract.act_booked}" )) %>
 <% end %>
-<% @contracts.each do | contract | %>
-	
-<%= %>
 <% end %>
 
-
-
-
-
-<% end %>
 
 
 

@@ -1,3 +1,5 @@
+
+
 html {font-size: 100%;}
 body {font-size: .75em;line-height: 1.5; background: url(bg.png) repeat; text-align:left;}
 
@@ -134,6 +136,11 @@ nav ul li.active {opactiy: 0.2}
 table {width: 100%}
 caption {background: #525252;color: #FFFFFF;font-weight: bold;line-height: 2em;}
 thead th, thead td {color:#777; font-size: 0.917em; font-weight: bold; vertical-align: middle; padding: 10px 5px}
+th, thead td{
+background: #DDD;
+  color: #666;
+  text-align: center;
+}
 td {text-align: left; padding: 5px; vertical-align: middle}
 tbody tr.odd  {background:#f7f7f7}
 tbody tr.even {background:#ededed}
