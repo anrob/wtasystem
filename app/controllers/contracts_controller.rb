@@ -1,6 +1,7 @@
 class ContractsController < ApplicationController
  load_and_authorize_resource
 respond_to :html, :xml, :json
+ before_filter :everypage
     
   def index
    @user = current_user
@@ -26,22 +27,16 @@ respond_to :html, :xml, :json
   end
  
   def otheracts
-    
-    #@user = current_user
-    
-    @management = Management.find_by_id(current_user.management_id)
     @otheracts = User.getotheracts(current_user)
     if User.getotheracts(current_user)
     @contracts = Contract.where(:act_code => params[:act_code])
     @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
-     @unconfirmedcount = @unconfirmed
+    @unconfirmedcount = @unconfirmed
     @cother = User.where(:actcode => params[:act_code])
     @pd = @cother.first
     @cc = @contracts.mytoday.sum(:contract_price) 
     @test = @contracts.mytoday.count
-     @message = Message.last
     add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
-    #@listact = User.find_by_id(params[:management_id])
   else
     flash[:error] = "Access denied."
     redirect_to root_url
@@ -53,15 +48,11 @@ respond_to :html, :xml, :json
   # GET /contracts/1.xml
   def show
     add_breadcrumb "Show Contract", contract_path
-    @management = Management.find_by_id(current_user.management_id)
-    @user = current_user
-    @pd = @user
-    @message = Message.last
     @contracts = Contract.mytoday.mystuff(current_user)
     @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
-     @unconfirmedcount = @unconfirmed
-     @contract = @contracts.find(params[:id])
-     @additional = Contract.additional(@contract)
+    @unconfirmedcount = @unconfirmed
+    @contract = @contracts.find(params[:id])
+    @additional = Contract.additional(@contract)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @contract }
@@ -70,12 +61,10 @@ respond_to :html, :xml, :json
   
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
-      @management = Management.find_by_id(current_user.management_id)
-      @user = current_user
-      @pd = @user
-      @message = Message.last
       @contracts = Contract.threesixfive.all
-      # @contracts = @contract.actnet
+  end
+  def alljobs
+      @contracts = Contract.actnet.all
   end
   
   def confirmjob
@@ -89,10 +78,6 @@ respond_to :html, :xml, :json
    end
    
    def import_contracts
-       @management = Management.find_by_id(current_user.management_id)
-        @user = current_user
-        @pd = @user
-        @message = Message.last
         require 'csv'
       #require 'net/ftp'
       Dir.chdir(Rails.root + "tmp")
@@ -123,19 +108,9 @@ respond_to :html, :xml, :json
       #         redirect_to :root
      end
      
-     def alljobs
-           @management = Management.find_by_id(current_user.management_id)
-           @user = current_user
-           @pd = @user
-           @message = Message.last
-           @contracts = Contract.unconfirmedevent.actnet
-     end
+
      
      def mailchimp
-             @management = Management.find_by_id(current_user.management_id)
-             @user = current_user
-             @pd = @user
-             @message = Message.last
       gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2") 
       #@gblist = gb.lists({:start => 0, :limit=> 100})
       #gb = gb.listMemberInfo({:id => "9e862a6c03", :email_address => "fresh@sofreshentertainment.com"})
@@ -145,5 +120,5 @@ respond_to :html, :xml, :json
         
      # gb.list_batch_subscribe(:id => "9e862a6c03", :email_address => us.email, :merge_vars => {:FNAME => us.actcode, :MMERGE3 => us.updated_at } )
     end
-      end
+  end
 end

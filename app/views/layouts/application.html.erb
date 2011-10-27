@@ -89,7 +89,10 @@
         <div class="widget_body">
             <div class="widget_content">
                 <div>
-
+						<% flash.each do |key, msg| -%>
+								  <%= content_tag :p, msg, :id => key -%>
+								<% end -%>
+							</div>
                    <%= yield %>
                 </div>
                 <div style="width:690px; float:left;">
