@@ -93,8 +93,7 @@ respond_to :html, :xml, :json
                         file.each{|filename| #Loop through each element of the array
                         ftp.getbinaryfile(filename,filename) #Get the file
                         }
-                        end
-         end
+                      
       #Dir.chdir(Rails.root + "tmp")
       #@thedir = Dir.getwd
       @listit = Dir.glob("*.TXT")
@@ -119,6 +118,8 @@ respond_to :html, :xml, :json
                                       end
                                     end
                                     FileUtils.rm Dir.glob('*.TXT')
+                                 end
+                       end
       #           # Dir.chdir("../")          
       #         redirect_to :root
      end
