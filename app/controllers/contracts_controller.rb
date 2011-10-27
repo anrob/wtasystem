@@ -33,7 +33,7 @@ respond_to :html, :xml, :json
     @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
     @unconfirmedcount = @unconfirmed
     @cother = User.where(:actcode => params[:act_code])
-    @pd = @cother.first
+    @pd = User.find_by_actcode(params[:act_code])
     @cc = @contracts.mytoday.sum(:contract_price) 
     @test = @contracts.mytoday.count
     add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
@@ -48,10 +48,15 @@ respond_to :html, :xml, :json
   # GET /contracts/1.xml
   def show
     add_breadcrumb "Show Contract", contract_path
-    @contracts = Contract.mytoday.mystuff(current_user)
-    @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
-    @unconfirmedcount = @unconfirmed
-    @contract = @contracts.find(params[:id])
+    #@contracts = Contract.mytoday.mystuff(current_user)
+    #@unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
+    #@unconfirmedcount = @unconfirmed
+    if can? :everything, Contract
+    @contract = Contract.find(params[:id])
+  else
+    @otheracts = User.find(params[current_user.management_id])
+    @contract = @otheracts.contract.find(params[:id])
+  end
     @additional = Contract.additional(@contract)
     respond_to do |format|
       format.html # show.html.erb
@@ -79,14 +84,24 @@ respond_to :html, :xml, :json
    
    def import_contracts
         require 'csv'
-      #require 'net/ftp'
-      Dir.chdir(Rails.root + "tmp")
+        require 'net/ftp'
+              Dir.chdir(Rails.root + "tmp") do
+                      Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                        ftp.passive = true
+                        ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                        file = ftp.nlst("*.TXT")
+                        file.each{|filename| #Loop through each element of the array
+                        ftp.getbinaryfile(filename,filename) #Get the file
+                        }
+              end
+         end
+      #Dir.chdir(Rails.root + "tmp")
       #@thedir = Dir.getwd
       @listit = Dir.glob("*.TXT")
       
       @listit.each do |listit|
       #filename = "000075.TXT"
-      CSV..strip.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+      CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
                                       @contracts = Contract.find_or_create_by_unique3(row[0])
                                       @contracts.update_attributes({ 
                                        :unique3             =>  row[0],
@@ -107,9 +122,7 @@ respond_to :html, :xml, :json
       #           # Dir.chdir("../")          
       #         redirect_to :root
      end
-     
-
-     
+  
      def mailchimp
       gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2") 
       #@gblist = gb.lists({:start => 0, :limit=> 100})
