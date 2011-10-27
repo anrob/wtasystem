@@ -1,0 +1,8 @@
+<div>
+	<% calendar_for @contracts do |calendar|  %>
+	
+	<% calendar.day(:day_method => :date_of_event) do |date, contracts|%>
+	<%= date.day %>
+	<% end %>
+	<% end %>
+</div>

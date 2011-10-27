@@ -49,7 +49,6 @@ GEM
       warden (~> 1.0.3)
     easy_dates (0.1.1)
     erubis (2.7.0)
-    event-calendar (2.3.3)
     eventmachine (0.12.10)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -157,7 +156,6 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise
   easy_dates
-  event-calendar
   formtastic
   gibbon
   inherited_resources

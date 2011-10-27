@@ -35,7 +35,7 @@ gem "thin"
 gem "switch_user"
 gem 'simple_worker'
 gem 'gibbon'
-gem 'event-calendar'
+# gem 'event-calendar'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
