@@ -33,26 +33,36 @@
                     <div id="navclose"></div>
                     
                     <ul class="sf-menu">
-                        <li class="active">
+                        <li class="sep">
                            		<%= link_to root_url do %>
                                 <span class="icon"><%= image_tag "fugue/dashboard.png"%></span>
                                 <span class="title">Dashboard</span>
 								<% end %>
                         </li>
                 
-                        <li class="sep">
+                    
+						<li class="sep">
                             <a href="#">
                                 <span class="notification"><%= @unconfirmedcount %></span>
                                 <span class="icon"><%= image_tag "fugue/mail.png"%></span>
                                 <span class="title">Confirmed This Week</span>
                             </a>
                         </li>
-                        <li>
-                           <%= link_to edit_user_path(current_user) do %>
-                                <span class="icon"><%= image_tag "fugue/user.png" %></span>
-                                <span class="title">Account Settings</span>
+						<% if can? :eveything, @contract %>
+                        <li class="sep">
+                           <%= link_to calendar_path do %>
+                                <span class="icon"><%= image_tag "fugue/calendar-day.png" %></span>
+                                <span class="title">Calendar</span>
                             <% end %>
                         </li>
+<% end %>
+						      <li class="sep">
+		                           <%= link_to edit_user_path(current_user) do %>
+		                                <span class="icon"><%= image_tag "fugue/user.png" %></span>
+		                                <span class="title">Account Settings</span>
+		                            <% end %>
+		                        </li>
+
                     </ul>
                     </div>
                 </nav>
@@ -109,7 +119,7 @@
                     Powered by So Fresh Engine
                 </p>
                 <p class="right">
-                    &copy <a href="http://wtadb.herokuapp.com">WTA Act Manager</a> 2011
+                    &copy <a href="http://wtav1.herokuapp.com">WTA Act Manager</a> 2011
                 </p>
             </div>
         </div>

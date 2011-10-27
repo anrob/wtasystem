@@ -68,6 +68,16 @@ respond_to :html, :xml, :json
     end
   end
   
+  def calendar
+      @date = params[:month] ? Date.parse(params[:month]) : Date.today
+      @management = Management.find_by_id(current_user.management_id)
+      @user = current_user
+      @pd = @user
+      @message = Message.last
+      @contracts = Contract.threesixfive.all
+      # @contracts = @contract.actnet
+  end
+  
   def confirmjob
     @user = current_user
     @management = Management.find_by_id(current_user)
