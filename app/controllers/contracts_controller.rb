@@ -85,7 +85,7 @@ respond_to :html, :xml, :json
    def import_contracts
         require 'csv'
         require 'net/ftp'
-              Dir.chdir("#{RAILS_ROOT}/tmp") do
+              Dir.chdir("#{Rails.root}/tmp/#{Process.pid}") do
                       Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
                         ftp.passive = true
                         ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
@@ -93,7 +93,7 @@ respond_to :html, :xml, :json
                         file.each{|filename| #Loop through each element of the array
                         ftp.getbinaryfile(filename,filename) #Get the file
                         }
-              end
+                        end
          end
       #Dir.chdir(Rails.root + "tmp")
       #@thedir = Dir.getwd
