@@ -64,7 +64,7 @@ respond_to :html, :xml, :json
       @contracts = Contract.threesixfive.all
   end
   def alljobs
-      @contracts = Contract.actnet.all
+      @contracts = Contract.unconfirmedevent.actnet.all
   end
   
   def confirmjob

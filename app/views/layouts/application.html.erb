@@ -50,12 +50,18 @@
                         </li>
 						<% if can? :eveything, @contract %>
                         <li class="sep">
-                           <%= link_to calendar_path do %>
-                                <span class="icon"><%= image_tag "fugue/calendar-day.png" %></span>
-                                <span class="title">Calendar</span>
+                           <%= link_to alljobs_path do %>
+                                <span class="icon"><%= image_tag "fugue/chart--plus.png" %></span>
+                                <span class="title">Reports</span>
                             <% end %>
                         </li>
-<% end %>
+						 <li class="sep">
+	                           <%= link_to calendar_path do %>
+	                                <span class="icon"><%= image_tag "fugue/calendar-day.png" %></span>
+	                                <span class="title">Calendar</span>
+	                            <% end %>
+	                        </li>
+						<% end %>
 						      <li class="sep">
 		                           <%= link_to edit_user_path(current_user) do %>
 		                                <span class="icon"><%= image_tag "fugue/user.png" %></span>
