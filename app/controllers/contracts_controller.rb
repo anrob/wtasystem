@@ -85,7 +85,7 @@ respond_to :html, :xml, :json
    def import_contracts
         require 'csv'
         require 'net/ftp'
-              Dir.chdir("#{Rails.root}/tmp/#{Process.pid}") do
+              Dir.chdir("#{Rails.root}/tmp") do
                       Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
                         ftp.passive = true
                         ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
