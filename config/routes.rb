@@ -11,6 +11,7 @@ resources :users
    match '/otheracts', :to => "contracts#otheracts"
    match '/import', :to => "contracts#import_contracts"
    match '/alljobs', :to => "contracts#alljobs"
+   match '/mailchimp', :to => "contracts#mailchimp"
    #match '/otheracts/*actcode', :to => "contracts#otheracts"
    match '/users/:id'  => "users#edit"
 end
