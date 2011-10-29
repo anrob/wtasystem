@@ -8,9 +8,15 @@ common: &common
   username: postgres
   password: shaina # from psql setup, see Postgresql
 
+# development:
+#   <<: *common
+#   database: wtadb
+
 development:
-  <<: *common
-  database: wtadb
+    adapter: sqlite3
+    database: db/development.sqlite3
+    pool: 5
+    timeout: 5000
 
 
 production:

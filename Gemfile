@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 
 group :development do
@@ -24,17 +21,17 @@ gem 'devise'
 gem "cancan"
 gem 'formtastic'
 #gem 'activerecord-import'
-#gem 'prawn'
+
 gem 'inherited_resources'
 gem 'easy_dates'
 gem "will_paginate"
 gem "breadcrumbs_on_rails"
 gem "thin"
-#gem 'whenever', :require => false
-#gem "fastercsv"
+
+
 gem "switch_user"
-gem 'simple_worker'
-gem 'gibbon'
+#gem 'simple_worker'
+#gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
 

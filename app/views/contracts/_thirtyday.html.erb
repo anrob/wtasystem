@@ -25,7 +25,7 @@
 				<tbody>
 				<% @contracts.thirtyday.each do |contract| %>
 				 <tr>
-					<td><%= contract.formatted_date_of_event %></td>
+					<td><%= contract.date_of_event %></td>
 					<td><%= link_to contract.contract_number, contract %>
 				    <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
 				    <td><%= "#{contract.formatted_event_start_time} - #{contract.formatted_event_end_time}" %></td>

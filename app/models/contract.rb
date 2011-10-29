@@ -19,14 +19,15 @@ class Contract < ActiveRecord::Base
   scope :unconfirmedevent, where(:confirmation => 0)
   scope :actnet, where(:date_of_event => (my_date)..(my_date + 11.days))
  
- def self.total_on(month)
-   where("date(date_of_event) = ?", month).sum(:contract_price)
- end
+ # def self.total_on(month)
+ #    where("date(date_of_event) = ?", month).sum(:contract_price)
+ #  end
  
  define_easy_dates do 
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
     format_for :date_of_event, :format => "%m/%d/%y"
   end
+
   
 end
 

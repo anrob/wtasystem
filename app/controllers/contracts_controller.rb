@@ -85,24 +85,25 @@ respond_to :html, :xml, :json
    def import_contracts
         require 'csv'
         require 'net/ftp'
-              Dir.chdir("#{Rails.root}/tmp") do
-                      Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-                        ftp.passive = true
-                        ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                        file = ftp.nlst("*.TXT")
-                        file.each{|filename| #Loop through each element of the array
-                        ftp.getbinaryfile(filename,filename) #Get the file
-                        }
-                      
-      #Dir.chdir(Rails.root + "tmp")
-      #@thedir = Dir.getwd
-      @listit = Dir.glob("*.TXT")
-      
-      @listit.each do |listit|
-      #filename = "000075.TXT"
+                Dir.chdir("#{Rails.root}/tmp") do
+                        Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                          ftp.passive = true
+                          ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                          file = ftp.nlst("*.TXT")
+                          file.each{|filename| #Loop through each element of the array
+                          ftp.getbinaryfile(filename,filename) #Get the file
+                          }
+                        
+        
+        #@thedir = Dir.getwd
+        @listit = Dir.glob("*.TXT")
+        
+        @listit.each do |listit|
+       # Dir.chdir(Rails.root + "tmp")
+      #listit = "000076.TXT"
       CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
                                       @contracts = Contract.find_or_create_by_unique3(row[0])
-                                      @contracts.update_attributes({ 
+                                      @contracts.update_attributes( {
                                        :unique3             =>  row[0],
                                        :prntkey23             =>  row[1],
                                        :prntkey13         =>  row[2],
@@ -111,16 +112,16 @@ respond_to :html, :xml, :json
                                        :act_booked => row[8],
                                        :contract_number    => row[28],
                                        :type_of_event    => row[63],
-                                       :date_of_event    => row[67],
+                                       :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
                                        :first_name    => row[68],
-                                       :last_name    => row[69] }
-                                      ) 
+                                       :last_name    => row[69],
+                                       :location_name => row[41]}) 
                                       end
                                     end
-                                    FileUtils.rm Dir.glob('*.TXT')
-                                 end
+                                FileUtils.rm Dir.glob('*.TXT')
+                            end
                        end
-      #           # Dir.chdir("../")          
+     Dir.chdir("../")          
       #         redirect_to :root
      end
   
