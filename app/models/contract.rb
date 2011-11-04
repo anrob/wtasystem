@@ -29,11 +29,7 @@ class Contract < ActiveRecord::Base
  #   where("prntkey23 = ?", prntkey23)
  # end
  
-def themap
-  
-  puts "#{@contract.location_address_line_1}+#{@contract.location_city}+#{@contract.location_state}+#{@contract.location_zip}"
-  
-end
+
  
  define_easy_dates do 
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"

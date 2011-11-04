@@ -24,7 +24,6 @@ Wtasystem::Application.configure do
 
   # Do not compress assets
   config.assets.compress = true
- 
 
   # Expands the lines which load the assets
   config.assets.debug = false
