@@ -11,8 +11,9 @@
 	      <%= date.day %>
 	<ul>
 	 <% contracts.group_by(&:prntkey23).each do |pk, con| %>
-	          <li class="groupby"><%#= pk %>
-				<%= con.map(&:act_booked).join(', ') %>
+	          <li class="groupby"><%#= pk %>  
+	          
+				<%= link_to con.map(&:act_booked).join(', '), "#{"contracts/"}" "#{con.map(&:id).join('')}" %>
 	          </li>
 	        <% end %>
 	      </ul>

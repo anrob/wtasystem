@@ -1,10 +1,11 @@
 <%= semantic_form_for(@user,:html => { :class => "form-stacked", :method => :put}, :as => @user) do |f| %>
 <%= f.inputs :email %>
-<%= f.inputs :first_name, :last_name, :phone_number, :management %>
+<%= f.inputs :first_name, :last_name, :phone_number %>
 <% if can? :everything, @user %>
-<%= f.inputs :actcode %>
+<%= f.inputs :actcode, :management %>
 <% else %>
-Actcode : <%= @user.actcode %>
+<p>Actcode : <%= @user.actcode %><br>
+Management Company : <%= @user.management.name %></p>
 <% end %>
 
 <% if can? :assign_roles, @user %>

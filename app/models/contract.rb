@@ -6,7 +6,7 @@ class Contract < ActiveRecord::Base
   
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user.actcode)}
-  #scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)}
+  scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)}
   #scope :mymanager, lambda { |myman| where("")}
   #scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)} 
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
@@ -18,15 +18,16 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(:date_of_event => (my_date)..(my_date + 365.days))
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
+  #scope :additional, where(|addi| "prntkey23 = ?", addi.prntkey23)
   scope :actnet, where(:date_of_event => (my_date)..(my_date + 11.days))
  
  # def self.total_on(month)
  #    where("date(date_of_event) = ?", month).sum(:contract_price)
  #  end
  
- def self.additional(prntkey23)
-   where("prntkey23 = ?", prntkey23)
- end
+ # def self.additional(prntkey23)
+ #   where("prntkey23 = ?", prntkey23)
+ # end
  
 
  

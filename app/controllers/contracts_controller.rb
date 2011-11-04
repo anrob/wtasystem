@@ -49,7 +49,9 @@ respond_to :html, :xml, :json
       themanager 
     else
       @contract = Contract.mystuff(current_user).find(params[:id])
+      @additional = Contract.additional(@contract)
     end
+    
 end
   
   def calendar
@@ -128,8 +130,8 @@ end
   def themanager
         @manger = User.getotheracts(current_user).map {|m| m.actcode}
         @ismanager = @manger.include?(@contract.act_code).to_s
-        if @ismanager == "true"
         @additional = Contract.additional(@contract)
+        if @ismanager == "true"
         @contract = Contract.find(params[:id])
       else
          @contract = Contract.mystuff(current_user).find(params[:id])

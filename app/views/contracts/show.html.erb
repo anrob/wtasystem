@@ -1,3 +1,6 @@
+
+
+
 <h1 class="maroon">Event Information</h1>
 <div class="alert-message block-message info">
   <div>
@@ -20,8 +23,11 @@
 			<%= @contract.location_address_line_2 %><br>
 			<%= @contract.location_city %> <%= @contract.location_state %>  <%= @contract.location_zip %><br>
 			Phone:<%= @contract.location_phone %></h5>
-			<h3>Additional Services</h3>
-	
+			<h3>Additional Services Provided</h3>
+			<% @additional.each do |addi| %>
+					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
+				<% end %>
+					
 			<% end %>
 		</div>
 
