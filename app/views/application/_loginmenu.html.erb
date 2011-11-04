@@ -1,8 +1,8 @@
 <%= tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
-  <%= tab.home 'Homepage', root_path %>
+  <%= tab.home 'Home', root_path %>
 <% if can? :everything, @contract %>
-  <%= tab.dashboard 'Management Companies', managements_path %>
-  <%= tab.account   'Account', users_path %>
+  <%= tab.dashboard 'Companies', managements_path %>
+  <%= tab.account   'Users', users_path %>
 <% end %>
 <%= tab.logout 'Logout', destroy_user_session_path %>
 <% end %>

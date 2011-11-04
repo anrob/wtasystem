@@ -1,10 +1,7 @@
-<% @contracts.group_by(&:prntkey23).each do |pk, con| %>
-<li><%= pk %> - 
+<% @contract.group_by(&:prntkey23).each do |pk, con| %>
+<li><%#= pk %> 
 
 <%= con.map(&:act_booked).join(', ') %></li>
-
-
-
 <% end %>
 
 

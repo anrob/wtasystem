@@ -41,14 +41,6 @@
 								<% end %>
                         </li>
                 
-                    
-						<li class="sep">
-                            <a href="#">
-                                <span class="notification"><%= @unconfirmedcount %></span>
-                                <span class="icon"><%= image_tag "fugue/mail.png"%></span>
-                                <span class="title">Confirmed This Week</span>
-                            </a>
-                        </li>
 						<% if can? :eveything, @contract %>
                         <li class="sep">
                            <%= link_to alljobs_path do %>

@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
  load_and_authorize_resource
 respond_to :html, :xml, :json
  before_filter :everypage
- helper_method :themanager
+ helper_method :themanager, :themap
     
   def index
    @user = current_user
@@ -34,7 +34,7 @@ respond_to :html, :xml, :json
       if @ismanager == "true"
     @otheracts = User.getotheracts(current_user)
     @contract = Contract.where(:act_code => params[:act_code])
-    @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
+    @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
     @unconfirmedcount = @unconfirmed
   else
     redirect_to root_url
@@ -59,7 +59,7 @@ end
       @contracts = Contract.threesixfive.all
   end
   def alljobs
-      @contracts = Contract.unconfirmedevent.actnet.all
+      @contract = Contract.unconfirmedevent.actnet
   end
   
   def confirmjob
@@ -136,5 +136,9 @@ end
       else
          @contract = Contract.mystuff(current_user).find(params[:id])
       end
+  end
+  
+  def themap
+    "#{@contract.location_address_line_1}+#{@contract.location_city}+#{@contract.location_state}+#{@contract.location_zip}"
   end
 end

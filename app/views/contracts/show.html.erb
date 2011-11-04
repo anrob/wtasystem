@@ -1,29 +1,22 @@
-
-
-
-<h1 class="maroon">Event Information</h1>
 <div class="alert-message block-message info">
-  <div>
-	  <h4 class="blue"> <b>Event Time</b> 
-		<%#= @contract.theeventdate %>
-	</h4>
-	</div>
-	<div>
+  <div class="grid_9">
+	  <h4 class="blue"> <b>Event Time</b>	</h4>
 	<h2>	Agent : <%= @contract.agent %> </h2>
-		<div>
-		 <h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
-					  <h4 class="green">Contract price:
-	  					<%= @contract.contract_price %></h4>
-		</div>
-		<div>
-		<% unless @contract.location_name.blank? %>	<b> Location :</b>
-			
-			 <h5><%= @contract.location_name %><br>
-			<%= @contract.location_address_line_1 %><br>
-			<%= @contract.location_address_line_2 %><br>
-			<%= @contract.location_city %> <%= @contract.location_state %>  <%= @contract.location_zip %><br>
-			Phone:<%= @contract.location_phone %></h5>
-			<h3>Additional Services Provided</h3>
+	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
+	<h4 class="green">Contract price: <%= @contract.contract_price %></h4>
+  </div>
+<div class="grid_6 address">
+		<% unless @contract.location_name.blank? %>	
+		<b> Location :</b>
+		<%= @contract.location_name %><br>
+		<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+			Phone:<%= @contract.location_phone %><br>
+			<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=320x320&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map of Chicago, Illinois"></img>
+			</div>
+			<div class="grid_12 clearfix">
+					<h2>Contract Provisions</h2>
+					<%= @contract.contract_provisions %>
+		<h3>Additional Services Provided</h3>
 			<% @additional.each do |addi| %>
 					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
 				<% end %>
@@ -31,8 +24,7 @@
 			<% end %>
 		</div>
 
-	</div>
-	</div>
+</div>
 
 
 

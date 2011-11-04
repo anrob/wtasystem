@@ -28,6 +28,7 @@ gem "will_paginate"
 gem "breadcrumbs_on_rails"
 gem "thin"
 gem "tabs_on_rails"
+gem 'googlestaticmap'
 
 
 gem "switch_user"
