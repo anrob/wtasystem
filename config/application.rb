@@ -41,8 +41,9 @@ module Wtasystem
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.debug = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.5'
+    config.assets.version = '1.7'
   end
 end

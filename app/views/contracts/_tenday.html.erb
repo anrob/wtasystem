@@ -5,7 +5,7 @@
 <div class="widget_body">
         <div class="widget_content">
             <div>
-               	<% unless @contracts.tenday.blank? %>
+               	<% unless @contract.tenday.blank? %>
 			
 				<table class="dataTable">
 					<thead>
@@ -23,8 +23,8 @@
 				  </tr>
 				</thead>
 				<tbody>
-				<% @contracts.tenday.each do |contract| %>
-				 <tr>
+				<% @contract.tenday.each do |contract| %>
+				 <tr class="<%= cycle("even", "odd") %>">
 					<td><%= contract.date_of_event %></td>
 					<td><%= link_to contract.contract_number, contract %>
 				    <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
@@ -32,7 +32,7 @@
 
 
 				    <td><%= contract.type_of_event %></td>
-				    <td><%= contract.location_name %></td>
+				    <td><%= truncate(contract.location_name, :length => 20, :omission =>"...") %></td>
 
 				    <td><% if contract.confirmation == 1 %>
 					<%= link_to 'Get Info', contract, :class => 'btn success' %>

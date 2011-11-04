@@ -1,6 +1,5 @@
-
 <% if can? :see_money, @contract %>
 <h4 class="right notice msg">
-<%= @pd.fullname %> has <%= @test %> advance bookings. - Your Total : $<%= @cc.to_f %>
+<%= @pd.fullname %> has <%= @test %> advance bookings. - Your Total : $<%#="%.2f" % @cc %><%= $cc  %>
 </h4>
 <% end %>

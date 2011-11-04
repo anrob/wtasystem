@@ -21,7 +21,8 @@ class Ability
         end
         
         if user.is? :manager
-          can :see_others, :all
+          can :see_others, :all 
+          
           can :modify, Contract
         end
   end

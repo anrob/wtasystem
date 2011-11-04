@@ -27,12 +27,16 @@ gem 'easy_dates'
 gem "will_paginate"
 gem "breadcrumbs_on_rails"
 gem "thin"
+gem "tabs_on_rails"
 
 
 gem "switch_user"
 #gem 'simple_worker'
 #gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
+
+gem 'gravatar_image_tag'
+gem 'draper'
 
 
 # To use ActiveModel has_secure_password

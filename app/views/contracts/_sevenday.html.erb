@@ -5,7 +5,7 @@
 <div class="widget_body">
         <div class="widget_content">
             <div>
-               	<% unless @contracts.thisweek.blank? %>
+               	<% unless @contract.thisweek.blank? %>
 			
 				<table class="dataTable">
 					<thead>
@@ -23,8 +23,8 @@
 				  </tr>
 				</thead>
 				<tbody>
-				<% @contracts.thisweek.each do |contract| %>
-				 <tr>
+				<% @contract.thisweek.each do |contract| %>
+				 <tr class="<%= cycle("even", "odd") %>">
 					<td><%= contract.date_of_event %></td>
 					<td><%= link_to contract.contract_number, contract %>
 				    <td><%= "#{contract.first_name} #{contract.last_name}" %></td>

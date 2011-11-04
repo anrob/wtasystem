@@ -1,19 +1,12 @@
-<%= table_for @contracts, :class => "simple" do |t| %>
- <%= t.head do %>
-<%= t.r do %>
-<%= t.h('Client Name') %>
- <%= t.h('Contract #') %>
-<%= t.h('Act Booked') %>
+<% @contracts.group_by(&:prntkey23).each do |pk, con| %>
+<li><%= pk %> - 
+
+<%= con.map(&:act_booked).join(', ') %></li>
 
 
-  <% end %>
+
 <% end %>
-<%= t.body_r do |contract| %>
- 	<%= t.d(h("#{contract.first_name} #{contract.last_name}" )) %>
-	<%= t.d(h("#{contract.contract_number}" )) %>
-	<%= t.d(h("#{contract.act_booked}" )) %>
-<% end %>
-<% end %>
+
 
 
 

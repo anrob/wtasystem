@@ -2,12 +2,13 @@ class ContractsController < ApplicationController
  load_and_authorize_resource
 respond_to :html, :xml, :json
  before_filter :everypage
+ helper_method :themanager
     
   def index
    @user = current_user
-   @contracts = Contract.mytoday.mystuff(current_user)
-   @contract_month = @contracts.group_by { |t| t.date_of_event.beginning_of_month }
-   @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
+   @contract = Contract.mytoday.mystuff(current_user)
+   @contract_month = @contract.group_by { |t| t.date_of_event.beginning_of_month }
+   @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
    @unconfirmedcount = @unconfirmed
    @otheracts = User.getotheracts(current_user)
    @co = @otheracts.collect(&:actcode)
@@ -16,53 +17,40 @@ respond_to :html, :xml, :json
    @pd = @user
    @managements = Management.find_by_id(current_user.management_id)
    @message = Message.last
-   @cc = @contracts.mytoday.sum(:contract_price)
+   @cc = @contract.mytoday.sum(:contract_price)
    @cp = Contract.where(:act_code => current_user.actcode)
    @test = @cp.mytoday.count
-   # respond_to do |format|
-   #        format.html # index.html.erb
-   #        format.xml  { render :xml => @contracts.thirtyday }
-   #        format.json { render :json => @contracts.thirtyday }
-   #   end
+   respond_to do |format|
+          format.html # index.html.erb
+          format.xml  { render :xml => @contract.thirtyday }
+          format.json { render :json => @contract.ninetyday }
+     end
   end
  
   def otheracts
+    add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
+      @manger = User.getotheracts(current_user).map {|m| m.actcode}
+      @ismanager =  @manger.include?(params[:act_code]).to_s
+      if @ismanager == "true"
     @otheracts = User.getotheracts(current_user)
-    if User.getotheracts(current_user)
-    @contracts = Contract.where(:act_code => params[:act_code])
+    @contract = Contract.where(:act_code => params[:act_code])
     @unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
     @unconfirmedcount = @unconfirmed
-    @cother = User.where(:actcode => params[:act_code])
-    @pd = User.find_by_actcode(params[:act_code])
-    @cc = @contracts.mytoday.sum(:contract_price) 
-    @test = @contracts.mytoday.count
-    add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
   else
-    flash[:error] = "Access denied."
     redirect_to root_url
-    end
-   
+  end
   end
 
   # GET /contracts/1
   # GET /contracts/1.xml
   def show
-    add_breadcrumb "Show Contract", contract_path
-    #@contracts = Contract.mytoday.mystuff(current_user)
-    #@unconfirmed = @contracts.unconfirmedevent.thisweek.count + @contracts.unconfirmedevent.tenday.count
-    #@unconfirmedcount = @unconfirmed
-    if can? :everything, Contract
-    @contract = Contract.find(params[:id])
-  else
-    @otheracts = User.find(params[current_user.management_id])
-    @contract = @otheracts.contract.find(params[:id])
-  end
-    @additional = Contract.additional(@contract)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @contract }
+      add_breadcrumb "Show Contract", contract_path
+      if can? :see_others, Contract
+      themanager 
+    else
+      @contract = Contract.mystuff(current_user).find(params[:id])
     end
-  end
+end
   
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
@@ -122,7 +110,6 @@ respond_to :html, :xml, :json
                             end
                        end
      Dir.chdir("../")          
-      #         redirect_to :root
      end
   
      def mailchimp
@@ -135,5 +122,17 @@ respond_to :html, :xml, :json
         
      # gb.list_batch_subscribe(:id => "9e862a6c03", :email_address => us.email, :merge_vars => {:FNAME => us.actcode, :MMERGE3 => us.updated_at } )
     end
+  end
+  
+ 
+  def themanager
+        @manger = User.getotheracts(current_user).map {|m| m.actcode}
+        @ismanager = @manger.include?(@contract.act_code).to_s
+        if @ismanager == "true"
+        @additional = Contract.additional(@contract)
+        @contract = Contract.find(params[:id])
+      else
+         @contract = Contract.mystuff(current_user).find(params[:id])
+      end
   end
 end

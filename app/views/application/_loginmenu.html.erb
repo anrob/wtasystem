@@ -1,10 +1,8 @@
-	<% if user_signed_in? %>
-	<li><%= link_to "Home", root_url %></li>
-	<% if can? :everything, @contract %>
-	<li><%= link_to "Users", users_path %></li>
-	<li><%= link_to "Management", managements_path %></li>
-	<!-- <li><%#= link_to "Messages", messages_path %></li> -->
-	<% end %>
-	<li> <%= link_to 'Logout', destroy_user_session_path %></li>
-
-	<% end %>
+<%= tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
+  <%= tab.home 'Homepage', root_path %>
+<% if can? :everything, @contract %>
+  <%= tab.dashboard 'Management Companies', managements_path %>
+  <%= tab.account   'Account', users_path %>
+<% end %>
+<%= tab.logout 'Logout', destroy_user_session_path %>
+<% end %>

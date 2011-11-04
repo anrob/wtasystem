@@ -1,5 +1,6 @@
 <div id="calendar">
 	<h2 id="month">
+		<%= link_to "Today", :month => (Date.today).strftime("%Y-%m-%d") %>- 
     <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d") %>
     <%=h @date.strftime("%B %Y") %>
     <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d") %>
@@ -9,8 +10,10 @@
 	 <%= calendar.day(:day_method => :date_of_event) do |date, contracts| %>
 	      <%= date.day %>
 	<ul>
-	 <% contracts.map do |contract| %>
-	          <li><%= link_to h("#{contract.first_name} #{contract.last_name}"), contract %></li>
+	 <% contracts.group_by(&:prntkey23).each do |pk, con| %>
+	          <li class="groupby"><%#= pk %>
+				<%= con.map(&:act_booked).join(', ') %>
+	          </li>
 	        <% end %>
 	      </ul>
 	    <% end %>

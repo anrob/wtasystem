@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
      @user = current_user
      @pd = @user
      @message = Message.last
+    # @cc = @contracts.sum(:contract_price) 
   end
   
   protected
