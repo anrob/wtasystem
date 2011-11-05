@@ -1,4 +1,3 @@
-/* @override http://localhost:5000/assets/style.css?body=1 */
 
 html {font-size: 100%;}
 body {font-size: .75em;line-height: 1.5; background: url(bg.png) repeat; text-align:left;}
