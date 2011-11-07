@@ -38,6 +38,7 @@ gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.gi
 
 gem 'gravatar_image_tag'
 gem 'draper'
+gem 'lazy_high_charts'
 
 
 # To use ActiveModel has_secure_password

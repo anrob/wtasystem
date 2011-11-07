@@ -2,13 +2,10 @@ class Contract < ActiveRecord::Base
   
   belongs_to :user
   default_scope :order => 'date_of_event ASC'
-  #default_scope :actorder => 'act_code ASC'
   
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user.actcode)}
-  scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)}
-  #scope :mymanager, lambda { |myman| where("")}
-  #scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)} 
+  scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)} 
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))
   scope :tenday, where(:date_of_event => (my_date + 8.days)..(my_date + 11.days))
@@ -18,25 +15,49 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(:date_of_event => (my_date)..(my_date + 365.days))
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
-  #scope :additional, where(|addi| "prntkey23 = ?", addi.prntkey23)
   scope :actnet, where(:date_of_event => (my_date)..(my_date + 11.days))
- 
- # def self.total_on(month)
- #    where("date(date_of_event) = ?", month).sum(:contract_price)
- #  end
- 
- # def self.additional(prntkey23)
- #   where("prntkey23 = ?", prntkey23)
- # end
- 
-
  
  define_easy_dates do 
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
     format_for :date_of_event, :format => "%m/%d/%y"
   end
-
   
+  
+  def self.import_contracts
+        require 'csv'
+        require 'net/ftp'
+                Dir.chdir("#{Rails.root}/tmp") do
+                        Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                          ftp.passive = true
+                          ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                          file = ftp.nlst("*.TXT")
+                          file.each{|filename| #Loop through each element of the array
+                          ftp.getbinaryfile(filename,filename) #Get the file
+                          }
+        @listit = Dir.glob("*.TXT")
+        @listit.each do |listit|
+      CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+                                      @contracts = Contract.find_or_create_by_unique3(row[0])
+                                      @contracts.update_attributes( {
+                                       :unique3             =>  row[0],
+                                       :prntkey23             =>  row[1],
+                                       :prntkey13         =>  row[2],
+                                       :act_code            =>  row[3],
+                                       :agent       => row[7],
+                                       :act_booked => row[8],
+                                       :contract_number    => row[28],
+                                       :type_of_event    => row[63],
+                                       :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
+                                       :first_name    => row[68],
+                                       :last_name    => row[69],
+                                       :location_name => row[41]}) 
+                                      end
+                                    end
+                                FileUtils.rm Dir.glob('*.TXT')
+                            end
+                       end
+     Dir.chdir("../")          
+     end
 end
 
 
