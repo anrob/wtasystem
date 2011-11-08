@@ -1,11 +1,10 @@
-<% @contract.group_by(&:prntkey23).each do |pk, con| %>
-<li><%#= pk %> 
-
-<%= con.map(&:act_booked).join(', ') %></li>
+<% @contract.each do |m| %>
+<li><%= m.act_booked %> - <% @contract_actcode.each do |e| %>
+<%= e %>
+<%# end %> </li>
+<% end %>
 <% end %>
 
-
-
-
+<%#= @useremail.map {|m|m.act_code} %>
 
 

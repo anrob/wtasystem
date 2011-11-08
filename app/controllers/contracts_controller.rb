@@ -68,6 +68,8 @@ end
   end
   def alljobs
       @contract = Contract.unconfirmedevent.actnet
+      @contract_actcode = @contract.user.email
+      @useremail = User.find_by_actcode(@contract_actcode)
   end
   
   def confirmjob
@@ -80,42 +82,6 @@ end
       redirect_to :root
    end
    
-   # def import_contracts
-   #       require 'csv'
-   #       require 'net/ftp'
-   #               Dir.chdir("#{Rails.root}/tmp") do
-   #                       Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-   #                         ftp.passive = true
-   #                         ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-   #                         file = ftp.nlst("*.TXT")
-   #                         file.each{|filename| #Loop through each element of the array
-   #                         ftp.getbinaryfile(filename,filename) #Get the file
-   #                         }
-   #       @listit = Dir.glob("*.TXT")
-   #       @listit.each do |listit|
-   #     CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
-   #                                     @contracts = Contract.find_or_create_by_unique3(row[0])
-   #                                     @contracts.update_attributes( {
-   #                                      :unique3             =>  row[0],
-   #                                      :prntkey23             =>  row[1],
-   #                                      :prntkey13         =>  row[2],
-   #                                      :act_code            =>  row[3],
-   #                                      :agent       => row[7],
-   #                                      :act_booked => row[8],
-   #                                      :contract_number    => row[28],
-   #                                      :type_of_event    => row[63],
-   #                                      :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
-   #                                      :first_name    => row[68],
-   #                                      :last_name    => row[69],
-   #                                      :location_name => row[41]}) 
-   #                                     end
-   #                                   end
-   #                               FileUtils.rm Dir.glob('*.TXT')
-   #                           end
-   #                      end
-   #    Dir.chdir("../")          
-   #    end
-  
      def mailchimp
       gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2") 
       #@gblist = gb.lists({:start => 0, :limit=> 100})
