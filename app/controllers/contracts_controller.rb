@@ -63,10 +63,7 @@ end
       @contracts = Contract.threesixfive.all
   end
   def alljobs
-      @contract = Contract.unconfirmedevent.actnet(:include => :users)
-      #@user = User.find_by_actcode(:actcode).find(params[:actcode])
-      #@contract_actcode = @contract
-      #@useremail = User.mystuff(@user)
+      @contract = Contract.includes(:user).unconfirmedevent.actnet
   end
   
   def confirmjob
