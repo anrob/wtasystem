@@ -5,32 +5,8 @@ class ContractsController < ApplicationController
  helper_method :themanager, :themap
     
   def index
-   @user = current_user
    @contract = Contract.mytoday.mystuff(current_user)
-   @contract_month = @contract.group_by { |t| t.date_of_event.beginning_of_month }
-   @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
-   @unconfirmedcount = @unconfirmed
    @otheracts = User.getotheracts(current_user)
-   @co = @otheracts.collect(&:actcode)
-   @cd = Contract.mytoday.where(:act_code => @co).sum(:contract_price)
-   @@cother = User.where(@user)
-   @pd = @user
-   @managements = Management.find_by_id(current_user.management_id)
-   @message = Message.last
-   @cc = @contract.mytoday.sum(:contract_price)
-   @cp = Contract.where(:act_code => current_user.actcode)
-   @test = @cp.mytoday.count
-   
-   @h = LazyHighCharts::HighChart.new('graph') do |f|
-        f.options[:chart][:defaultSeriesType] = "column"
-        f.options[:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
-       f.series(:name=>'Contract Price', :data => @contract.map {|m|m.contract_price})
-     end
-   respond_to do |format|
-          format.html # index.html.erb
-          format.xml  { render :xml => @contract.thirtyday }
-          format.json { render :json => @contract.ninetyday }
-     end
   end
  
   def otheracts
