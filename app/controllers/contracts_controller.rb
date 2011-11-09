@@ -25,8 +25,6 @@ class ContractsController < ApplicationController
         f.options[:chart][:defaultSeriesType] = "column"
         f.options[:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
        f.series(:name=>'Contract Price', :data => @contract.map {|m|m.contract_price})
-      
-       #f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
      end
    respond_to do |format|
           format.html # index.html.erb
@@ -49,8 +47,6 @@ class ContractsController < ApplicationController
   end
   end
 
-  # GET /contracts/1
-  # GET /contracts/1.xml
   def show
       add_breadcrumb "Show Contract", contract_path
       if can? :see_others, Contract
@@ -67,9 +63,10 @@ end
       @contracts = Contract.threesixfive.all
   end
   def alljobs
-      @contract = Contract.unconfirmedevent.actnet
-      @contract_actcode = @contract.user.email
-      @useremail = User.find_by_actcode(@contract_actcode)
+      @contract = Contract.unconfirmedevent.actnet(:include => :users)
+      #@user = User.find_by_actcode(:actcode).find(params[:actcode])
+      #@contract_actcode = @contract
+      #@useremail = User.mystuff(@user)
   end
   
   def confirmjob
@@ -82,19 +79,6 @@ end
       redirect_to :root
    end
    
-     def mailchimp
-      gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2") 
-      #@gblist = gb.lists({:start => 0, :limit=> 100})
-      #gb = gb.listMemberInfo({:id => "9e862a6c03", :email_address => "fresh@sofreshentertainment.com"})
-      @users = User.all
-      @users.each do |us|
-        gb.list_subscribe(:id => "9e862a6c03", :email_address => us.email,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MMERGE3 => us.updated_at } )
-        
-     # gb.list_batch_subscribe(:id => "9e862a6c03", :email_address => us.email, :merge_vars => {:FNAME => us.actcode, :MMERGE3 => us.updated_at } )
-    end
-  end
-  
- 
   def themanager
         @manger = User.getotheracts(current_user).map {|m| m.actcode}
         @ismanager = @manger.include?(@contract.act_code).to_s

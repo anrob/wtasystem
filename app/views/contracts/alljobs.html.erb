@@ -1,10 +1,8 @@
 <% @contract.each do |m| %>
-<li><%= m.act_booked %> - <% @contract_actcode.each do |e| %>
-<%= e %>
+<li><%= "#{m.act_booked} " "-" " #{m.user.email unless m.user.blank?}"  %> 
 <%# end %> </li>
-<% end %>
+
 <% end %>
 
-<%#= @useremail.map {|m|m.act_code} %>
 
 

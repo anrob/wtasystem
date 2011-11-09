@@ -1,6 +1,7 @@
 class Contract < ActiveRecord::Base
   
   belongs_to :user
+  has_one :user, :foreign_key => 'actcode', :primary_key => 'act_code'
   default_scope :order => 'date_of_event ASC'
   
   my_date = Date.today
@@ -16,12 +17,12 @@ class Contract < ActiveRecord::Base
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
   scope :actnet, where(:date_of_event => (my_date)..(my_date + 11.days))
+  
  
  define_easy_dates do 
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
     format_for :date_of_event, :format => "%m/%d/%y"
   end
-  
   
   def self.import_contracts
         require 'csv'
@@ -58,6 +59,14 @@ class Contract < ActiveRecord::Base
                        end
      Dir.chdir("../")          
      end
+     
+def self.mailchimp
+    gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")
+    @users = User.all
+    @users.each do |us|
+    gb.list_subscribe(:id => "9e862a6c03", :email_address => us.email,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MMERGE3 => us.updated_at } )
+    end
+  end
 end
 
 
