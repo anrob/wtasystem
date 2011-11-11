@@ -7,6 +7,11 @@ class ContractsController < ApplicationController
   def index
    @contract = Contract.mytoday.mystuff(current_user)
    @otheracts = User.getotheracts(current_user)
+   respond_to do |format|
+           format.html # index.html.erb
+            format.xml  { render :xml => @contract.thirtyday }
+            format.json { render :json => @contract.ninetyday }
+  end
   end
  
   def otheracts
@@ -40,6 +45,7 @@ end
   end
   def alljobs
       @contract = Contract.includes(:user).unconfirmedevent.actnet
+      #@contract = @contracts.group_by(&:act_code)
   end
   
   def confirmjob

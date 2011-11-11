@@ -51,7 +51,9 @@ class Contract < ActiveRecord::Base
                                        :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
                                        :first_name    => row[68],
                                        :last_name    => row[69],
-                                       :location_name => row[41]}) 
+                                       :location_name => row[41],
+                                       :act_notes => row[77],
+                                       :contract_provisions => row[78]}) 
                                       end
                                     end
                                 FileUtils.rm Dir.glob('*.TXT')

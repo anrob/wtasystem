@@ -7,7 +7,7 @@
   </div>
 <div class="grid_6 address">
 		<% unless @contract.location_name.blank? %>	
-		<b> Location :</b>
+		<h3> Location :</h3>
 		<%= @contract.location_name %><br>
 		<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
 			Phone:<%= @contract.location_phone %><br>
@@ -16,11 +16,12 @@
 			<div class="grid_12 clearfix">
 					<h2>Contract Provisions</h2>
 					<%= @contract.contract_provisions %>
+					<h2>Act Notes</h2>
+					<%= @contract.act_notes %>
 		<h3>Additional Services Provided</h3>
 			<% @additional.each do |addi| %>
 					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
 				<% end %>
-					
 			<% end %>
 		</div>
 
