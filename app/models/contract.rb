@@ -1,7 +1,8 @@
 class Contract < ActiveRecord::Base
-  
   belongs_to :user
-  has_one :user, :foreign_key => 'actcode', :primary_key => 'act_code'
+  #has_one :user
+  #has_many :users, :class_name => "Contract", :foreign_key => "actcode", :primary_key => 'act_code'
+
   default_scope :order => 'date_of_event ASC'
   
   my_date = Date.today
@@ -16,7 +17,7 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(:date_of_event => (my_date)..(my_date + 365.days))
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
-  scope :actnet, where(:date_of_event => (my_date)..(my_date + 11.days))
+  scope :innextten, where(:date_of_event => (my_date)..(my_date + 11.days))
   
  
  define_easy_dates do 
@@ -60,6 +61,13 @@ class Contract < ActiveRecord::Base
                             end
                        end
      Dir.chdir("../")          
+     end
+     
+     def self.send_reminders
+        @contract = Contract.unconfirmedevent.innextten.includes(:user)
+         @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+         @recipients = @users.collect {|m| m.email}
+         ContractMailer.send_reminder(@recipients).deliver
      end
      
 def self.mailchimp

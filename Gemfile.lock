@@ -62,6 +62,12 @@ GEM
       multi_json (~> 1.0)
     formtastic (2.0.2)
       rails (~> 3.0)
+    gmail (0.4.0)
+      gmail_xoauth (>= 0.3.0)
+      mail (>= 2.2.1)
+      mime (>= 0.1)
+    gmail_xoauth (0.3.0)
+      oauth (>= 0.3.6)
     googlestaticmap (1.1.0)
     gravatar_image_tag (1.0.0)
     has_scope (0.5.1)
@@ -80,8 +86,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mime (0.1)
     mime-types (1.17.2)
     multi_json (1.0.3)
+    oauth (0.4.5)
     orm_adapter (0.0.5)
     pg (0.11.0)
     polyglot (0.3.2)
@@ -157,6 +165,7 @@ DEPENDENCIES
   draper
   easy_dates
   formtastic
+  gmail
   googlestaticmap
   gravatar_image_tag
   inherited_resources

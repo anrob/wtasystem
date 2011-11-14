@@ -44,16 +44,18 @@ end
       @contracts = Contract.threesixfive.all
   end
   def alljobs
-      @contract = Contract.includes(:user).unconfirmedevent.actnet
-      #@contract = @contracts.group_by(&:act_code)
+      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      # @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+      #  @recipients = @users.collect {|m| m.email}
+      #  ContractMailer.send_reminder(@recipients).deliver
   end
   
   def confirmjob
-    @user = current_user
-    @management = Management.find_by_id(current_user)
+    #@user = current_user
+    #@management = Management.find_by_id(current_user)
     @contract = Contract.find(params[:id])
     @contract.update_attributes(:confirmation => 1)
-    ContractMailer.event_info_email(@user).deliver
+    #ContractMailer.event_info_email(@user).deliver
     flash[:notice] = "Job Confirmed"
       redirect_to :root
    end
@@ -71,5 +73,15 @@ end
   
   def themap
     "#{@contract.location_address_line_1}+#{@contract.location_city}+#{@contract.location_state}+#{@contract.location_zip}"
+  end
+  
+  def gmail
+    #require 'gmail'
+    gmail = Gmail.connect("fresh@sofreshentertainment.com","shaina")
+    @mailcount = gmail.inbox.find(:unread) do |email|
+      email.read!
+    end
+    @maillabels = gmail.labels.all
+    gmail.logout
   end
 end

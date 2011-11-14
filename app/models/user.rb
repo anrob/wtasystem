@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   belongs_to :management
   has_many :contracts
-  
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
          scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}
+         #scope :unconfirmedevent, lambda { |contract|  where(:confirmation => 0)}
          
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   ROLES = %w[everything money manager chart]

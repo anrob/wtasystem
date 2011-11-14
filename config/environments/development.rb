@@ -14,7 +14,7 @@ Wtasystem::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -29,4 +29,13 @@ Wtasystem::Application.configure do
   config.assets.debug = false
   ENV['SIMPLE_WORKER_ACCESS_KEY'] = '10064cd192a56c673542b7099b4b7101'
   ENV['SIMPLE_WORKER_SECRET_KEY'] = '5208965304a4130a2c9566545b9c29c4'
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'sofreshentertainment.com',
+    :user_name            => 'fresh@sofreshentertainment.com',
+    :password             => 'shaina',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  
+  }
 end
