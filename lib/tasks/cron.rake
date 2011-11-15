@@ -6,7 +6,9 @@ task :cron => :environment do
     Contract.import_contracts
     puts "done."
   end
-  if Time.now.hour == 19 # run at midnight
+  if Time.now.hour == 4 # run at midnight
+    puts "Sending Reminders..."
       Contract.send_reminders
+      puts "done."
   end
 end
