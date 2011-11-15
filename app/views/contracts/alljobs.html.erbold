@@ -4,7 +4,7 @@
 <%= con.map(&:act_booked).join(', ') %></li>
 <% end %>
 
-
+<%= Time.now.hour %>
 
 
 
