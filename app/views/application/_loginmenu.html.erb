@@ -1,5 +1,5 @@
-<%= tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
-  <%= tab.home 'Home', root_path %>
+<%= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
+  <%= tab.home 'Home', root_path, html_options = {:title => 'title'} %>
 <% if can? :everything, @contract %>
   <%= tab.dashboard 'Companies', managements_path %>
   <%= tab.account   'Users', users_path %>

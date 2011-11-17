@@ -14,11 +14,15 @@
 			<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=320x320&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map of Chicago, Illinois"></img>
 			</div>
 			<div class="grid_12 clearfix">
-					<h2>Contract Provisions</h2>
-					<%= @contract.contract_provisions %>
+					
+						<ul class="logs">
+							<h2>Contract Provisions</h2>
+				<li>	<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %></li>
+					</ul>
 					<h2>Act Notes</h2>
 					<%= @contract.act_notes %>
 		<h3>Additional Services Provided</h3>
+	
 			<% @additional.each do |addi| %>
 					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
 				<% end %>

@@ -1,10 +1,7 @@
-<div class="widget">
-    <div class="widget_title clearfix">
-        <h2>Ten Day Contracts</h2>
-    </div> 
-<div class="widget_body">
-        <div class="widget_content">
-            <div>
+<article class="full-block clearfix">
+<div>
+       	<header> <h2>Ten Day Contracts</h2></header>
+
                	<% unless @contract.tenday.blank? %>
 			
 				<table class="dataTable">
@@ -35,9 +32,9 @@
 				    <td><%= truncate(contract.location_name, :length => 20, :omission =>"...") %></td>
 
 				    <td><% if contract.confirmation == 1 %>
-					<%= link_to 'Get Info', contract, :class => 'btn success' %>
+					<%= link_to 'Get Info', contract, :class => 'button green small' %>
 					<% else %> 
-					<%= link_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'btn danger' %> 
+					<%= link_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'button' %> 
 					<% end %>
 					</td>
 
@@ -49,10 +46,5 @@
 				<% else %>
 				<div class="nothingpending_ten"> </div>
 				<% end %>
-            </div>
-      
-            <div class="clear"></div>
-        </div>
-    </div>
-  </div>
-
+       </div>
+</article>

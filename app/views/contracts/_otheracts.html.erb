@@ -1,20 +1,21 @@
 <%#= @but.inspect %>
+<article class="third-block clearfix">
 <% if can? :see_others, @contract %>
-<h3>Other Acts</h3>
-<table id="grid">
+<h4>Other Acts</h4>
+<table class="table-actions">
   <thead>
       <tr>
-          <th data-field="title">Act Name<th>
-          <th data-field="year">Act Code<th>
+          <th>Act Name</th>
+          <th>Act Code</th>
       </tr>
-  </thead>
-  <tbody>
-	<% @otheracts.each do |otheract| %>
-      <tr>
+  </thead>	
+<% @otheracts.each do |otheract| %>  
+<tr>
           <td><%= link_to otheract.fullname, otheracts_path(:act_code => otheract.actcode) %> </td>
           <td><%= link_to otheract.actcode, otheracts_path(:act_code => otheract.actcode) %></td>
       </tr>
-<% end %>
-  </tbody>
+
+ <% end %>
  </table>
 <% end %>
+</article>

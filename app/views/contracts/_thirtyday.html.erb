@@ -1,10 +1,6 @@
-<div class="widget">
-    <div class="widget_title clearfix">
-        <h2>Thirty Day Contracts</h2>
-    </div> 
-<div class="widget_body">
-        <div class="widget_content">
-            <div>
+<article class="full-block clearfix">	
+       <div class="notification success"> <header><strong><h2 class="blue">Thirty Day Contracts</h2></strong></header></div>
+
                	<% unless @contract.thirtyday.blank? %>
 			
 				<table class="dataTable">
@@ -34,7 +30,7 @@
 				    <td><%= contract.type_of_event %></td>
 				    <td><%= truncate(contract.location_name, :length => 20, :omission =>"...") %></td>
 
-				    <td><%= link_to 'Get Info', contract, :class => 'btn green' %>
+				    <td><%= link_to 'Get Info', contract, :class => 'button blue' %>
 					</td>
 
 				  </tr>
@@ -45,10 +41,4 @@
 				<% else %>
 				<div class="nothingpending_ten"> </div>
 				<% end %>
-            </div>
-      
-            <div class="clear"></div>
-        </div>
-    </div>
-  </div>
-
+           </article>

@@ -26,18 +26,21 @@ class Contract < ActiveRecord::Base
   end
   
   def self.import_contracts
+    $KCODE = "U"
         require 'csv'
+        
         require 'net/ftp'
                 Dir.chdir("#{Rails.root}/tmp") do
                         Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
                           ftp.passive = true
                           ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                          file = ftp.nlst("*.TXT")
+                          file = ftp.nlst("*.TXTT")
                           file.each{|filename| #Loop through each element of the array
                           ftp.getbinaryfile(filename,filename) #Get the file
                           }
         @listit = Dir.glob("*.TXT")
         @listit.each do |listit|
+       $KCODE = 'UTF8'   
       CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
                                       @contracts = Contract.find_or_create_by_unique3(row[0])
                                       @contracts.update_attributes( {
@@ -53,11 +56,11 @@ class Contract < ActiveRecord::Base
                                        :first_name    => row[68],
                                        :last_name    => row[69],
                                        :location_name => row[41],
-                                       :act_notes => row[77],
-                                       :contract_provisions => row[78]}) 
+                                       :act_notes => row[77].inspect,
+                                       :contract_provisions => row[78].inspect}) 
                                       end
                                     end
-                                FileUtils.rm Dir.glob('*.TXT')
+                                #FileUtils.rm Dir.glob('*.TXT')
                             end
                        end
      Dir.chdir("../")          

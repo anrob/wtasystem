@@ -9,6 +9,7 @@ doc/
 */pids
 # Thumbnails
 ._*
+.txt
 
 # Files that might appear on external disk
 .Spotlight-V100

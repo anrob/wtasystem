@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
      @user = current_user
      @pd = @user
      @message = Message.last
+     @otheracts = User.getotheracts(current_user).order("first_name")
     # @cc = @contracts.sum(:contract_price) 
   end
   

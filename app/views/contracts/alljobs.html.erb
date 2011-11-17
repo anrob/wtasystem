@@ -1,6 +1,8 @@
+<div class="notification success">
 <% @contract.each do |m| %>
 <li><%= "#{m.act_booked} " "-" " #{m.user.email unless m.user.blank?}"  %> 
 <%# end %> </li>
 
 <% end %>
-<%= Time.now.hour %>
+<%#= Time.now.hour %>
+</div>

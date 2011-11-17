@@ -6,7 +6,7 @@ class ContractsController < ApplicationController
     
   def index
    @contract = Contract.mytoday.mystuff(current_user)
-   @otheracts = User.getotheracts(current_user)
+   
    respond_to do |format|
            format.html # index.html.erb
             format.xml  { render :xml => @contract.thirtyday }
@@ -19,7 +19,7 @@ class ContractsController < ApplicationController
       @manger = User.getotheracts(current_user).map {|m| m.actcode}
       @ismanager =  @manger.include?(params[:act_code]).to_s
       if @ismanager == "true"
-    @otheracts = User.getotheracts(current_user)
+    # @otheracts = User.getotheracts(current_user)
     @contract = Contract.where(:act_code => params[:act_code])
     @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
     @unconfirmedcount = @unconfirmed
@@ -45,9 +45,6 @@ end
   end
   def alljobs
       @contract = Contract.unconfirmedevent.innextten.includes(:user)
-      # @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
-      #  @recipients = @users.collect {|m| m.email}
-      #  ContractMailer.send_reminder(@recipients).deliver
   end
   
   def confirmjob
