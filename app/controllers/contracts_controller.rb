@@ -44,6 +44,7 @@ end
       @contracts = Contract.threesixfive.all
   end
   def alljobs
+
       @contract = Contract.unconfirmedevent.innextten.includes(:user)
   end
   
