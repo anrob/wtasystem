@@ -1,0 +1,14 @@
+/* #wrap {display:table;height:100%} */
+
+nav .sf-menu li a {width: 5em; display: block; text-align: center; height: 3em}
+nav .sf-menu li li a, nav .sf-menu li li li a {height: auto; width: auto; text-align: left}
+
+.widget_title h2 {float: left;}
+
+.msg {position: relative}
+.msg .close {position: absolute; right: 10px}
+
+.ui-progressbar {margin-left: 10px}
+.ui-progressbar-value {margin-left: -10px}
+
+.iPhoneCheckContainer {width: 81px}

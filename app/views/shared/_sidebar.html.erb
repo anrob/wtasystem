@@ -1,0 +1,22 @@
+<section role="navigation">
+	<header>
+	<%= link_to "WTA Act Manager", root_url, {:class => 'logo'}%>
+	<h1>Washington Talent Act Manager</h1>
+	
+</header>
+
+<section id="user-info">
+		<%= gravatar_image_tag current_user.email, :size => 30 %>
+		<div> Welcome, <em><%= current_user.first_name %></em></div>
+		<div>	<%= link_to 'Logout', destroy_user_session_path, :class => 'button blue small' %></div>
+</section>
+
+<nav id="main-nav">
+<ul class="list-style-arrow">
+       	<%= render 'loginmenu' %>
+</ul>
+</nav>
+<section><%= render 'otheracts-sidebar' %></section>
+<section class="sidebar separator"><%= render 'messages' %></section>
+</section>
+
