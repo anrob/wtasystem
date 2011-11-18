@@ -15,30 +15,16 @@ class ContractsController < ApplicationController
  end 
  end
 
- 
-  def otheracts
-    add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
-      @manger = User.getotheracts(current_user).map {|m| m.actcode}
-      @ismanager =  @manger.include?(params[:act_code]).to_s
-      if @ismanager == "true"
-    @contract = Contract.where(:act_code => params[:act_code])
-    # @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
-    #    @unconfirmedcount = @unconfirmed
-  else
-    redirect_to root_url
-  end
-  end
-
   def show
       add_breadcrumb "Show Contract", contract_path
-      if can? :see_others, @contract
-      themanager 
-    else
-      @contract = Contract.mystuff(current_user).find(params[:id])
-      @additional = Contract.additional(@contract)
-    end
-    
-end
+           case @but when "true"
+                   unless cannot? :see_others, @contract
+                       @contract = Contract.mystuff(current_user).find(params[:id])
+                    end
+              end
+         @additional = Contract.additional(@contract)
+  end
+ 
   
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
