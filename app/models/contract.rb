@@ -25,6 +25,8 @@ class Contract < ActiveRecord::Base
     format_for :date_of_event, :format => "%m/%d/%y"
   end
   
+ 
+  
   def self.import_contracts
     $KCODE = "U"
         require 'csv'

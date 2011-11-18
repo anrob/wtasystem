@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
 
   def everypage
      @management = Management.find_by_id(current_user.management_id)
+     @manger = User.getotheracts(current_user).map {|m| m.actcode}
+     @but = @manger.include?(params[:act_code]).to_s
      @user = current_user
      @pd = @user
      @message = Message.last

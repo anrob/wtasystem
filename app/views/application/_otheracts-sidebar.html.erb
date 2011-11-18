@@ -1,13 +1,11 @@
 <%#= @but.inspect %>
 <% if can? :see_others, @contract %>
-
-
 <ul class="sidebar nested blackback">
 	<h2>Other Acts</h2>
 	<table>
 <% @otheracts.each do |otheract| %>
 <tr>
-          <td><%= link_to "#{otheract.fullname}", otheracts_path(:act_code => otheract.actcode) %> </td>
+          <td><%= link_to "#{otheract.fullname}", contracts_path(:act_code => otheract.actcode) %> </td>
 			<td><%= link_to "#{otheract.actcode}", otheracts_path(:act_code => otheract.actcode) %></td>
     </tr>
 <% end %>

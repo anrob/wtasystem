@@ -5,24 +5,25 @@ class ContractsController < ApplicationController
  helper_method :themanager, :themap
     
   def index
-   @contract = Contract.mytoday.mystuff(current_user)
-   
-   respond_to do |format|
-           format.html # index.html.erb
-            format.xml  { render :xml => @contract.thirtyday }
-            format.json { render :json => @contract.ninetyday }
-  end
-  end
+    case @but when "true"
+   @contract = Contract.where(:act_code => params[:act_code])
+   if cannot? :see_others, @contract
+     redirect_to root_url
+   end
+ else
+  @contract = Contract.mytoday.mystuff(current_user)
+ end 
+ end
+
  
   def otheracts
     add_breadcrumb "Other Acts", otheracts_path, :title => "Back to Index"
       @manger = User.getotheracts(current_user).map {|m| m.actcode}
       @ismanager =  @manger.include?(params[:act_code]).to_s
       if @ismanager == "true"
-    # @otheracts = User.getotheracts(current_user)
     @contract = Contract.where(:act_code => params[:act_code])
-    @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
-    @unconfirmedcount = @unconfirmed
+    # @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
+    #    @unconfirmedcount = @unconfirmed
   else
     redirect_to root_url
   end
