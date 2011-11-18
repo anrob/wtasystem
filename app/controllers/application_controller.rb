@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     render :file => "#{Rails.root}/public/404.html", :layout => true, :status => 404
    
   end
-  protect_from_forgery
+  #protect_from_forgery
   layout :special_layout
 
   def everypage

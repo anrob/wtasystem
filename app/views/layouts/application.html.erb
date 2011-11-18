@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- CSS Styles -->
   <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
+ 
 	<!-- Google WebFonts -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 </head>
@@ -62,5 +62,6 @@
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));
 	</script>
+	 <%= javascript_include_tag "application" %>
 </body>
 </html>
