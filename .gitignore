@@ -10,6 +10,7 @@ doc/
 # Thumbnails
 ._*
 .txt
+*.TXT
 
 # Files that might appear on external disk
 .Spotlight-V100
