@@ -1,7 +1,22 @@
 <%#= render 'chart' %>
-<%= render 'sevenday' %>
-<%= render 'tenday' %>
-<%= render 'thirtyday' %>
-<%= render 'otheracts' %>
+<article class="full-block clearfix">
+<div class="notification success"> <header><strong><h2>Events in the next 7 days</h2></strong></header></div>
+</header>
+
+<%= render :partial => 'sevenday', :collection => @contract.thisweek  %>
+
+</article>
+<article class="full-block clearfix">
+<div class="notification success"> <header><strong><h2>Events in the next 10 days</h2></strong></header></div>
+</header>
+<%= render :partial => 'sevenday', :collection => @contract.tenday  %>
+</article>
+<article class="full-block clearfix">
+<div class="notification success"> <header><strong><h2>Events in the next 30 days</h2></strong></header></div>
+</header>
+<%= render :partial => 'sevenday', :collection => @contract.thirtyday  %>
+</article>
+<%#= render 'thirtyday' %
+<%#= render 'otheracts' %>
 
 

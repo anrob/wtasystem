@@ -1,7 +1,3 @@
-<article class="full-block clearfix">
-<div class="notification success"> <header><strong><h2>Events in the next 7 days</h2></strong></header></div>
-</header>
-<% unless @contract.thisweek.blank? %>
 <table class="dataTable">
 	<thead>
 	 <tr>
@@ -18,34 +14,31 @@
 				  </tr>
 				</thead>
 	<tbody>
-				<% @contract.thisweek.each do |contract| %>
+			
 				 <tr class="<%= cycle("even", "odd") %>">
-					<td><%= contract.date_of_event %></td>
-					<td><%= link_to contract.contract_number, contract %>
-				    <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
-				    <td><%= "#{contract.formatted_event_start_time} - #{contract.formatted_event_end_time}" %></td>
+					<td><%= sevenday.date_of_event %></td>
+					<td><%= link_to sevenday.contract_number, sevenday %>
+				    <td><%= "#{sevenday.first_name} #{sevenday.last_name}" %></td>
+				    <td><%= "#{sevenday.formatted_event_start_time} - #{sevenday.formatted_event_end_time}" %></td>
 
 
-				    <td><%= contract.type_of_event %></td>
-				    <td><%= truncate(contract.location_name, :length => 40, :omission =>"...") %></td>
+				    <td><%= sevenday.type_of_event %></td>
+				    <td><%= truncate(sevenday.location_name, :length => 40, :omission =>"...") %></td>
 
-				    <td><% if contract.confirmation == 1 %>
-					<%= link_to 'Get Info', contract, :class => 'button green small' %>
-					<% else %> 
-					
-					<%= link_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'button' %> 
+				    <td>
+					<% unless sevenday.confirmation == 0  %>
+					<%= link_to 'Get Info', sevenday, :class => 'button green small' %>
+					<% else %>
+					<%= link_to 'CONFIRM', confirmjob_path(:id => sevenday.id), :class => 'button' %> 
 					<% end %>
+					<%#= link_to 'Get Info', sevenday, :class => 'button blue' %>
+			
 					</td>
 
 				  </tr>
 
-				<% end %>
+			
 				  </tbody>
 				</table>
-				<% else %>
-				<div class="nothingpending_ten"> </div>
-				<% end %>
-         
-      
-</div>
-</article>
+
+
