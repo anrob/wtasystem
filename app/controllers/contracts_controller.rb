@@ -31,7 +31,7 @@ class ContractsController < ApplicationController
 
   def show
       add_breadcrumb "Show Contract", contract_path
-      if can? :see_others, Contract
+      if can? :see_others, @contract
       themanager 
     else
       @contract = Contract.mystuff(current_user).find(params[:id])
