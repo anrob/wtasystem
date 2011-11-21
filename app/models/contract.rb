@@ -18,6 +18,7 @@ class Contract < ActiveRecord::Base
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
   scope :innextten, where(:date_of_event => (my_date)..(my_date + 11.days))
+  scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   
  
  define_easy_dates do 

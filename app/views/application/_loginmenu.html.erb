@@ -1,6 +1,6 @@
 <%= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
   <%= tab.home 'Home', root_path, html_options = {:title => 'title'} %>
-<% if can? :everything, @contract %>
+<% unless can? :everything, Contract %>
   <%= tab.dashboard 'Companies', managements_path %>
   <%= tab.account   'Users', users_path %>
 <% end %>

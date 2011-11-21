@@ -17,11 +17,15 @@ class ContractsController < ApplicationController
 
   def show
       add_breadcrumb "Show Contract", contract_path
-           case @but when "true"
-                   unless cannot? :see_others, @contract
-                       @contract = Contract.mystuff(current_user).find(params[:id])
-                    end
-              end
+      @contract = Contract.mystuff(current_user).find(params[:id])
+      @ismanager = @manger.include?(@contract.act_code).to_s
+      case @ismanager when "true"
+     if cannot? :see_others, @contract
+      redirect_to root_url        
+      end
+    else
+       @contract = Contract.find(params[:id])
+    end
          @additional = Contract.additional(@contract)
   end
  
