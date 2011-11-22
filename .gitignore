@@ -7,10 +7,10 @@ doc/
 .DS_Store
 */cache
 */pids
-# Thumbnails
-._*
 .txt
 *.TXT
+test
+spec
 
 # Files that might appear on external disk
 .Spotlight-V100
