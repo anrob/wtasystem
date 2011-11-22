@@ -3,7 +3,7 @@
 
 <div class="alert-message block-message info">
   <div class="grid_9">
-	  <h4 class="blue"> <b>Event Time</b>	</h4>
+	  <h4 class="blue"> <b>Event Time</b><%= @contract.eventtime %>	</h4>
 	<h2>	Agent : <%= @contract.agent %> </h2>
 	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
 	<h4 class="green">Contract price: <%= @contract.contract_price %></h4>
@@ -14,7 +14,7 @@
 		<%= @contract.location_name %><br>
 		<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
 			Phone:<%= @contract.location_phone %><br>
-			<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=320x320&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map of Chicago, Illinois"></img>
+			<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=320x320&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img>
 			</div>
 			<div class="grid_12 clearfix">
 					

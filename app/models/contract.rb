@@ -83,6 +83,10 @@ def self.mailchimp
     gb.list_subscribe(:id => "9e862a6c03", :email_address => us.email,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MMERGE3 => us.updated_at } )
     end
   end
+  
+  def eventtime
+     "#{event_start_time} #{event_end_time}"
+   end
 end
 
 
