@@ -75,7 +75,7 @@ class Contract < ActiveRecord::Base
          @recipients = @users.collect {|m| m.email}
          @recipients_number = @users.collect {|m| m.phone_number}
          #ContractMailer.send_reminder(@recipients).deliver
-         sms = Moonshado::Sms.new("#{@recipients_number}", "Your Have Events to confirm. Please log-in")
+         sms = Moonshado::Sms.new("3012162564", "Your Have Events to confirm. Please log-in")
          sms.deliver_sms
      end
      
