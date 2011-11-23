@@ -73,7 +73,8 @@ class Contract < ActiveRecord::Base
         @contract = Contract.unconfirmedevent.innextten.includes(:user)
          @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
          @recipients = @users.collect {|m| m.email}
-         ContractMailer.send_reminder(@recipients).deliver
+         #ContractMailer.send_reminder(@recipients).deliver
+         Moonshado::Sms.new("#{@recipients.phone_number}", "Your Have Events to confirm. Please log-in").deliver_sms
      end
      
 def self.mailchimp

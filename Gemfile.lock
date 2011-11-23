@@ -103,6 +103,9 @@ GEM
       treetop (~> 1.4.8)
     mime (0.1)
     mime-types (1.17.2)
+    moonshado-sms (1.1.1)
+      json (>= 1.2.0)
+      rest-client (>= 1.6.0)
     multi_json (1.0.3)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -140,6 +143,8 @@ GEM
     rdoc (3.11)
       json (~> 1.4)
     responders (0.6.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     ruby-hmac (0.4.0)
     sass (3.1.10)
     sass-rails (3.1.4)
@@ -192,6 +197,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails
   lazy_high_charts
+  moonshado-sms
   pg
   rack (= 1.3.3)
   rails (= 3.1.1)

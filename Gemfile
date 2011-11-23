@@ -5,6 +5,7 @@ gem 'rails', '3.1.1'
 gem 'pg'
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem "asset_sync"
+gem "moonshado-sms"
 
 group :development do
 gem 'sqlite3'
