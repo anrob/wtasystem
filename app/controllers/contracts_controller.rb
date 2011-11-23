@@ -26,7 +26,7 @@ class ContractsController < ApplicationController
     else
        @contract = Contract.find(params[:id])
     end
-         @additional = Contract.additional(@contract)
+      @additional = Contract.additional(@contract)
   end
  
   
