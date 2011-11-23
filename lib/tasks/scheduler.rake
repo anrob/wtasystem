@@ -1,14 +1,11 @@
-
 desc "This task is called by the Heroku cron add-on"
-task :cron => :environment do
-  if Time.now.hour % 1 == 0 # run every 1 hours
+task :update_contracts => :environment do
     puts "Updating feed..."
     Contract.import_contracts
     puts "done."
   end
-  if Time.now.hour == 5 # run at midnight
-    puts "Sending Reminders..."
+  
+  task :send_reminder => :environment do 
       Contract.send_reminders
-      puts "done."
   end
 end
