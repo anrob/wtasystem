@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   add_breadcrumb "Home", :root_path
   before_filter :authenticate_user!
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
+    flash[:error] = "Access deniedd."
     redirect_to root_url
   end  
   rescue_from ActiveRecord::RecordNotFound do
