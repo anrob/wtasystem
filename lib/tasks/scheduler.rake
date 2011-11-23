@@ -8,4 +8,3 @@ task :update_contracts => :environment do
   task :send_reminder => :environment do 
       Contract.send_reminders
   end
-end
