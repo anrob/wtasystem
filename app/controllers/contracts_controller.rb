@@ -13,6 +13,8 @@ class ContractsController < ApplicationController
  else
   @contract = Contract.mytoday.mystuff(current_user)
  end 
+ #@sms = Moonshado::Sms
+ #@smss = @sms.get_credit
  end
 
   def show

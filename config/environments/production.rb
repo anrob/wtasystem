@@ -55,10 +55,10 @@ Wtasystem::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   
   config.after_initialize do
-    Moonshado::Sms.configure do |config|
-      config.api_key = ENV['MOONSHADOSMS_URL']
-    end
-  end
+     Moonshado::Sms.configure do |config|
+       config.api_key = ENV['MOONSHADOSMS_URL']
+     end
+   end
   
   config.i18n.fallbacks = true
   config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"

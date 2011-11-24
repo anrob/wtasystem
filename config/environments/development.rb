@@ -25,6 +25,12 @@ Wtasystem::Application.configure do
 
   # Do not compress assets
   config.assets.compress = true
+  
+  config.after_initialize do
+     Moonshado::Sms.configure do |config|
+       config.api_key = "http://c4dfedefb71374a5@heroku.moonshado.com" #ENV['MOONSHADOSMS_URL']
+     end
+   end
 
   # Expands the lines which load the assets
   config.assets.debug = false
