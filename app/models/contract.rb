@@ -74,9 +74,12 @@ class Contract < ActiveRecord::Base
          @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
          @recipients = @users.collect {|m| m.email}
          @recipients_number = @users.collect {|m| m.phone_number}
-         #ContractMailer.send_reminder(@recipients).deliver
-         sms = Moonshado::Sms.new("13019563147", "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
+        #ContractMailer.send_reminder(@recipients).deliver
+        @recipients_number.compact.each do |phonenumber|
+         sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
          sms.deliver_sms
+
+     end
      end
      
 def self.mailchimp
