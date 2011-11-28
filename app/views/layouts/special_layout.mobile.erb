@@ -21,10 +21,10 @@
 	<div class="toolbar"> 	
 		<h1 id="pageTitle"></h1>
 		<a id="backButton" class="button" href="#"></a>	
-		<%= link_to "Logout", destroy_user_session_path, :class => "button", :target => '_blank'  %>
 	</div>
 	
-<div id="screen1" title="Contracts" class="panel" selected="true">		
+	
+
 <%= yield %>
 	<%= javascript_include_tag "mobile/iui/iui" %>
 </body>

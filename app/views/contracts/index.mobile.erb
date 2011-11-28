@@ -1,13 +1,11 @@
-
-<h2>Events in the next 7 days</h2>
+<div id="mainpage" title="Contracts" class="panel" selected="true">	
+<h2>Events This Month</h2>
 <ul>
-<li class="group">Contracts</li>
-<%= render :partial => 'sevenday', :collection => @contract.thisweek  %>
 
-
-<%= render :partial => 'sevenday', :collection => @contract.tenday  %>
-
-<%= render :partial => 'sevenday', :collection => @contract.thirtyday  %>
+<%= render :partial => 'sevenday', :collection => @contract.thisweek%>
+<%= render :partial => 'sevenday', :collection => @contract.tenday%>
+<%= render :partial => 'sevenday', :collection => @contract.thirtyday%>
 </ul>
+</div>
 
 
