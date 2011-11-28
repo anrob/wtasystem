@@ -1,0 +1,13 @@
+<li>
+					<%= link_to "#{sevenday.date_of_event} - #{sevenday.first_name} #{sevenday.last_name} - #{sevenday.formatted_event_start_time} - #{sevenday.formatted_event_end_time}", sevenday, :target => "_replace" %>
+			
+					<% unless sevenday.confirmation == 0  %>
+					<%#= link_to 'Get Info', sevenday, :class => 'bubble' %>
+					<% else %>
+					<%= link_to 'CONFIRM', confirmjob_path(:id => sevenday.id), :class => '' %> 
+					<% end %>
+</li>
+
+			
+				
+

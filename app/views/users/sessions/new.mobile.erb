@@ -1,0 +1,20 @@
+
+<%= semantic_form_for(resource,:html => { :class => "", :name => "formname"},:as => resource_name, :url => session_path(resource_name)) do |f| %>
+ <%= devise_error_messages! %>
+ <fieldset>
+  <div class="row">
+	<%= label(:email, "Email Address") %>
+
+  <%= f.input :email, :label => ". ", :required => false %>
+   </div>
+  <div class="row">
+	<%= label(:password, "Password") %>
+
+  <%= f.input :password, :label => ". ", :required => false, %>
+
+</div>
+ </fieldset>
+<a class="whiteButton" href="javascript:formname.submit()">Login me in!</a>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

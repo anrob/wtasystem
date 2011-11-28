@@ -15,6 +15,7 @@
 <div id="wrap">
     <div id="main">
         <header>
+MOBILE
             <div class="container_16 clearfix">
                 <div class="clearfix">
                     <%= link_to root_url, {},:id => 'logo'%>

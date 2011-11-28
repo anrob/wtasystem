@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WTA Admin Center</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <link rel="apple-touch-icon" href='<%= image_path('iui/iui-logo-touch-icon.png') %>'>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- CSS Styles -->
+  <%= stylesheet_link_tag "iui/iui", "iui/t/ipdc/ipdc-theme.css", "css/iui-panel-list" %>
+<meta name="apple-mobile-web-app-capable" content="no">
+<link rel="apple-touch-startup-image" href='<%= image_path('startup.png') %>'>
+ 
+	<!-- Google WebFonts -->
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+</head>
+
+<!-- Add class .fixed for fixed layout. You would need also edit CSS file for width -->
+<body>
+	<div class="toolbar"> 	
+		<h1 id="pageTitle"></h1>
+		<a id="backButton" class="button" href="#"></a>	
+		<%= link_to "Logout", destroy_user_session_path, :class => "button", :target => '_blank'  %>
+	</div>
+	
+<div id="screen1" title="Contracts" class="panel" selected="true">		
+<%= yield %>
+	<%= javascript_include_tag "iui/iui" %>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+<h2>Events in the next 7 days</h2>
+<ul>
+<li class="group">Contracts</li>
+<%= render :partial => 'sevenday', :collection => @contract.thisweek  %>
+
+
+<%= render :partial => 'sevenday', :collection => @contract.tenday  %>
+
+<%= render :partial => 'sevenday', :collection => @contract.thirtyday  %>
+</ul>
+
+
