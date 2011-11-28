@@ -60,8 +60,8 @@ Wtasystem::Application.configure do
   #    end
   #  end
   
-  config.i18n.fallbacks = true
-  config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+  # config.i18n.fallbacks = true
+  #  config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
   
 
   # Send deprecation notices to registered listeners

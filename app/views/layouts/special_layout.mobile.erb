@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!-- CSS Styles -->
-  <%= stylesheet_link_tag "iui/iui", "iui/t/ipdc/ipdc-theme", "css/iui-panel-list" %>
+  <%= stylesheet_link_tag "mobile/mobile", "mobile/iui/t/ipdc/ipdc-theme" %>
 <meta name="apple-mobile-web-app-capable" content="no">
 <link rel="apple-touch-startup-image" href='<%= image_path('startup.png') %>'>
  
@@ -26,6 +26,6 @@
 	
 <div id="screen1" title="Contracts" class="panel" selected="true">		
 <%= yield %>
-	<%= javascript_include_tag "iui/iui" %>
+	<%= javascript_include_tag "mobile/iui/iui" %>
 </body>
 </html>

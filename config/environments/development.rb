@@ -24,8 +24,7 @@ Wtasystem::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   # Do not compress assets
-  config.assets.compress = true
-   config.assets.compile = true
+  config.assets.compress = false
   
   config.after_initialize do
      Moonshado::Sms.configure do |config|
