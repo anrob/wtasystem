@@ -25,6 +25,7 @@ Wtasystem::Application.configure do
 
   # Do not compress assets
   config.assets.compress = true
+   config.assets.compile = true
   
   config.after_initialize do
      Moonshado::Sms.configure do |config|
