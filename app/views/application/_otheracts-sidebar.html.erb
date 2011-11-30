@@ -5,8 +5,15 @@
 <tr>
           <td><%= link_to "#{otheract.fullname}", contracts_path(:act_code => otheract.actcode) %> </td>
 			<td><%= link_to "#{otheract.actcode}", contracts_path(:act_code => otheract.actcode) %></td>
+			
+			<td><%= link_to otheract.management.name, contracts_path(:act_code => otheract.actcode)  %></td>
     </tr>
 <% end %>
 </table>
+<% @getallbycompnay.each do |getall| %>
+
+<li><%= link_to getall.actcode, contracts_path(:act_code => getall.actcode)  %></li>
+
+<% end %>
 </ul>
 
