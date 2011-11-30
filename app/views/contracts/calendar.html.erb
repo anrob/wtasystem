@@ -1,13 +1,13 @@
-<div class="fullcalendar"></div>
+<div id="calendar">
 
-		<%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'button blue small' %>- 
+		<div class="topbar"><%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'button blue small' %>- 
     <%= link_to "<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
     <%=h @date.strftime("%B %Y") %>
     <%= link_to ">", {:month => (@date.end_of_month+1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
-
-	<%= calendar_for @contracts,{:year => @date.year, :month => @date.month}, :html => {:class =>"fullcalendar fc fc-content"} do |calendar| %>
+</div>
+	<%= calendar_for @contracts,{:year => @date.year, :month => @date.month} do |calendar| %>
 	    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-	 <%= calendar.day(:day_method => :date_of_event, :class => 'fc-widget-content') do |date, contracts| %>
+	 <%= calendar.day(:day_method => :date_of_event) do |date, contracts| %>
 	      <%= date.day %>
 	<ul>
 	 <% contracts.group_by(&:prntkey23).each do |pk, con| %>

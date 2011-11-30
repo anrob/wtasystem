@@ -2,4 +2,6 @@
 *= require_self
 *= require "css/style"
 *= require "css/colors"
+*= require "css/fc"
+*= rewuire "css/jquery.fullcalendar"
 */

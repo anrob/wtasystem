@@ -1,3 +1,5 @@
+/* @override http://localhost:5000/assets/css/style.css?body=1 */
+
 @charset "utf-8";
 
 html, body, div, span, object, iframe,
@@ -16,6 +18,13 @@ time, mark, audio, video {
 	font:inherit;
 	vertical-align:baseline;
 }
+
+#tab0 table.fullcalendar.fc.fc-content tbody tr.fc-widget-content td {
+	width: auto;
+	height: auto;
+}
+
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
 blockquote, q { quotes: none; }
 blockquote:before, blockquote:after,
