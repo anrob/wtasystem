@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Actcode:</b>
+  <%= @actcode.actcode %>
+</p>
+
+<p>
+  <b>Management Company:</b>
+  <%= @actcode.management_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_actcode_path(@actcode) %> |
+<%= link_to 'Back', actcodes_path %>

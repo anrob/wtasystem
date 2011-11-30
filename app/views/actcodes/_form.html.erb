@@ -1,0 +1,26 @@
+<%= form_for(@actcode) do |f| %>
+  <% if @actcode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actcode.errors.count, "error") %> prohibited this actcode from being saved:</h2>
+
+      <ul>
+      <% @actcode.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :actcode %><br />
+    <%= f.text_field :actcode %>
+  </div>
+  <div class="field">
+    <%= f.label :management_id %><br />
+   
+<%= f.text_field :management_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
