@@ -9,11 +9,9 @@
 			<td><%= link_to otheract.management.name, contracts_path(:act_code => otheract.actcode)  %></td>
     </tr>
 <% end %>
-</table>
+</table><%#= @getallbycompnay.inspect %>
 <% @getallbycompnay.each do |getall| %>
-
-<li><%= link_to getall.actcode, contracts_path(:act_code => getall.actcode)  %></li>
-
+<li><%= link_to getall.actcode, contracts_path(:act_code => getall.actcode)  %> <%= "#{getall.actcode.inspect}" %></li>
 <% end %>
 </ul>
 

@@ -1,24 +1,27 @@
 class ContractsController < ApplicationController
- load_and_authorize_resource
+ #load_and_authorize_resource
  before_filter :everypage
  helper_method :themanager, :themap
     
   def index
     case @but when "true"
-   @contract = Contract.where(:act_code => params[:act_code])
+    @contract = Contract.where(:act_code => params[:act_code])
    if cannot? :see_others, @contract
      redirect_to root_url
    end
  else
-  @contract = Contract.mytoday.mystuff(current_user)
+  @mana = Actcode.find_by_id(current_user.actcode_id)
+  @contract = Contract.mytoday.mystuff(@mana.actcode)
  end 
  respond_with :contracts => @contract.thisweek
  end
 
   def show
       add_breadcrumb "Show Contract", contract_path
-      @contract = Contract.mystuff(current_user).find(params[:id])
+      @contract = Contract.find(params[:id])
+      if @contract.act_code = current_user.actcode
       @ismanager = @manger.include?(@contract.act_code).to_s
+    end
       case @ismanager when "true"
      if cannot? :see_others, @contract
       redirect_to root_url        
@@ -35,8 +38,8 @@ class ContractsController < ApplicationController
       @contracts = Contract.threesixfive.all
   end
   def alljobs
-
-      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+   
+      @contract = Contract.mystuff(@mana.actcode).ninetyday
   end
   
   def confirmjob

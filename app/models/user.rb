@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
   belongs_to :management
   has_many :contracts
+  # has_many :actcodes
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
-         scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}
+         #scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}
          #scope :unconfirmedevent, lambda { |contract|  where(:confirmation => 0)}
          
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   ROLES = %w[everything money manager chart]
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :actcode, :management_id, :manager, :roles, :first_name, :last_name, :phone_number
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :actcode_id, :management_id, :manager, :roles, :first_name, :last_name, :phone_number
  
    def roles=(roles)
      self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum

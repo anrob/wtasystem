@@ -1,4 +1,4 @@
-/* @override http://localhost:5000/assets/css/style.css?body=1 */
+/* @override http://lvh.me:5000/assets/css/style.css?body=1 */
 
 @charset "utf-8";
 
@@ -17,6 +17,11 @@ time, mark, audio, video {
 	font-size:100%;
 	font:inherit;
 	vertical-align:baseline;
+}
+
+li {
+	list-style-image: none;
+	list-style-type: none;
 }
 
 #tab0 table.fullcalendar.fc.fc-content tbody tr.fc-widget-content td {
@@ -55,12 +60,11 @@ body, select, input, textarea { color:#666; }
 
 /*  General Settings  */
 body {
-	background:url('images/bgs/bg_aside_main.png') repeat-y 263px 0;
+	background: black url('images/bgs/bg_aside_main.png') repeat-y 263px 0;
 	font-family:'PT Sans', Arial, sans-serif;
 	font-size:14px;
 	*font-size:small;
 	zoom:1;
-	background-color:#d3e7f7;
 }
 body section[role=navigation] {
 	width:271px;
@@ -94,8 +98,8 @@ a.outside {
 
 /*  Fixed Layout  */
 body.fixed {
-	background-color:#e6e6e6;
-	background-image:none;
+	background-color: #000;
+	/*background-image:none;*/
 }
 .fixed .fixed-wraper {
 	width:990px;
@@ -190,7 +194,7 @@ section[role=navigation] header h1 {
 #main-nav > ul li:last-child { padding-bottom:2px; } /* Proper background rendering */
 #main-nav ul li a {
 	display:block;
-	font-weight:bold;
+	/*font-weight:bold;*/
 	padding:7px 0 7px 50px;
 	text-decoration:none;
 	-webkit-transition:color 400ms ease;
@@ -199,6 +203,7 @@ section[role=navigation] header h1 {
 	background-position:25px 8px;
 	background-repeat:no-repeat;
 	height:21px;
+	font: 14px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 #main-nav ul ul {
 	margin-left:50px;
@@ -231,7 +236,10 @@ section[role=navigation] header h1 {
 .ie7 #main-nav ul li span, .ie8 #main-nav ul li span { top:-28px; }
 
 /*  Sample Icons  */
-#main-nav ul li a.dashboard { background-image:url('images/icons/icon_nav_dashboard.png'); color: #06A; }
+#main-nav ul li a.dashboard { background-image:url('images/icons/icon_nav_dashboard.png'); color: #bbe6db;
+	letter-spacing: 2px;
+	font-variant: normal;
+}
 #main-nav ul li a.projects { background-image:url('images/icons/icon_nav_projects.png'); }
 #main-nav ul li a.products { background-image:url('images/icons/icon_nav_products.png'); }
 #main-nav ul li a.events { background-image:url('images/icons/icon_nav_events.png'); }

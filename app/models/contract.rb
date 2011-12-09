@@ -6,7 +6,7 @@ class Contract < ActiveRecord::Base
   default_scope :order => 'date_of_event ASC'
   
   my_date = Date.today
-  scope :mystuff, lambda { |user| where("act_code = ?", user.actcode)}
+  scope :mystuff, lambda { |user| where("act_code = ?", user)}
   scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)} 
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))

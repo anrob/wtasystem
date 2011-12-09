@@ -1,3 +1,5 @@
+/* @override http://lvh.me:5000/assets/css/colors.css?body=1 */
+
 @charset "utf-8";
 
 /* Chromatron Admin Theme Color Settings 
@@ -15,7 +17,7 @@ a, #main-nav ul li.current a, #main-nav ul li.current li.current a, #main-nav ul
 #main-nav ul li a, #main-nav ul li.current li a, #main-nav ul li span, .wizard-steps li a,
 .sidebar h2, .jq-datepicker .datepick-month-header select, .jq-datepicker .datepick-month th,
 .jq-datepicker .datepick-month th a, .tab-switch li a, .sidetab-switch li a
-{ color:#999; }
+{ color: silver; }
 section[role=navigation] header h1, article footer, .widget.add-new-widget a:hover strong,
 .sidetab-switch p, .jq-datepicker .datepick-month td .datepick-weekend, .ticket-data-ticket
 { color:#999; }
@@ -37,16 +39,20 @@ section[role=navigation] header h1, article footer, .widget.add-new-widget a:hov
 .htmlcalendar .day.today, .htmlcalendar tr:nth-child(even) .day.today { color:#737373; }
 #user-info div > a { color:#fff; }
 .htmlcalendar .week { color:#d6d6d6; }
-.htmlcalendar .day { color:#a6a6a6; }
+.htmlcalendar .day { color:#a6a6a6;
+	
+}
 dd p { color:#888; }
 a:hover { color:#036; }
 
 /*  Background Color  */
-body, body.login, body.error-page, tbody tr:hover, .tickets .ticket-data .ticket-details dl { background-color:#ccc; }
+body, body.login, body.error-page, tbody tr:hover, .tickets .ticket-data .ticket-details dl { background-color: #242424; }
 .widget.add-new-widget, .htmlcalendar tr:nth-child(even) .day, tbody tr:nth-child(even), .tickets .ticket-data:nth-child(2n+1),
 .jq-datepicker .datepick-month-header select, input:disabled, input.disabled, input, textarea, select, input.datepicker { background-color:#fafafa; }
-#user-info { background-color:#d9d9d9; }
-.htmlcalendar .calendar-event .event.blue { background-color:#058dc7; }
+#user-info { background-color: white; border-right: 1px solid white;}
+.htmlcalendar .calendar-event .event.blue { background-color:#058dc7;
+	border-style: none;
+}
 .htmlcalendar .calendar-event .event.green { background-color:#77ab13; }
 .htmlcalendar .calendar-event .event.orange { background-color:#ef561a; }
 .htmlcalendar .calendar-event .event.black { background-color:#4d4d4d; }

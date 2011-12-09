@@ -3,5 +3,6 @@
 *= require "css/style"
 *= require "css/colors"
 *= require "css/fc"
+*= require "css/weekly"
 *= rewuire "css/jquery.fullcalendar"
 */
