@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
  #load_and_authorize_resource
+ set_tab :home
  before_filter :everypage
  helper_method :themanager, :themap
     

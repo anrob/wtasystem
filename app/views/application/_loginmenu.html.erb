@@ -1,8 +1,26 @@
-<%= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
-  <%= tab.home 'Home', root_path, html_options = {:title => 'title'} %>
-<% unless can? :everything, Contract %>
-  <%= tab.dashboard 'Companies', managements_path %>
-  <%= tab.account   'Users', users_path %>
+
+<li><%= link_to(root_path) do %>
+<span>Home</span>
 <% end %>
-<%= tab.logout 'Logout', destroy_user_session_path %>
+</li>
+<li><%= link_to(managements_path) do %>
+<span>Companies</span>
 <% end %>
+</li>
+<li><%= link_to(users_path) do %>
+<span>Users</span>
+<% end %>
+</li>
+<li><%= link_to(root_path) do %>
+<span>logout</span>
+<% end %>
+</li>
+
+<!-- <%#= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
+<%#= tab.home 'Home', root_path, html_options = {:title => 'title'} %>
+<%# if can? :everything, Contract %>
+  <%#= tab.company 'Companies', managements_path %>
+  <%#= tab.account   'Users', users_path %>
+<%# end %>
+<%#= tab.logout 'Logout', destroy_user_session_path %>
+<%# end %> -->

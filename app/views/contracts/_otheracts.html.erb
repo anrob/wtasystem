@@ -1,6 +1,6 @@
 <%#= @but.inspect %>
 <article class="third-block clearfix">
-<% if can? :see_others, @contract %>
+<% unless can? :see_others, @contract %>
 <h4>Other Acts</h4>
 <table class="table-actions">
   <thead>

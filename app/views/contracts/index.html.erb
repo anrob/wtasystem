@@ -1,24 +1,36 @@
-<%= @start_date.inspect %>
-<%=  @events.inspect %>
-<%= @str.inspect %>
+<!-- <%#= @start_date.inspect %>
+<%#=  @events.inspect %>
+<%#= @str.inspect %> -->
+<table cellpadding="0" cellspacing="0" class="sTable3" width="100%">
+	<thead>
+	 <tr>
+					<th>Date of Event</th>
+					<th>Contract #</th>
+				    <th>Client Name</th>
+				    <th>Hours of coverage</th>
 
-<article class="full-block clearfix">
-<div class="notification success"> <header><strong><h2>Events in the next 7 days</h2></strong></header></div>
-</header>
 
+				    <th>Event Type</th>
+				    <th>Location</th>
+
+					<th> </th>
+				  </tr>
+				</thead>
+	<tbody>
+
+<!-- <dd>Events in the next 7 days</dd> -->
 <%= render :partial => 'sevenday', :collection => @contract.thisweek  %>
-
-</article>
-<article class="full-block clearfix">
-<div class="notification success"> <header><strong><h2>Events in the next 10 days</h2></strong></header></div>
-</header>
+<!-- <dd>Events in the next 10 days</dd> -->
 <%= render :partial => 'sevenday', :collection => @contract.tenday  %>
-</article>
-<article class="full-block clearfix">
-<div class="notification success"> <header><strong><h2>Events in the next 30 days</h2></strong></header></div>
-</header>
+<!-- <dd>Events in the next 30 days</dd></strong> -->
 <%= render :partial => 'sevenday', :collection => @contract.thirtyday  %>
-</article>
+
+
+
+
+
+  </tbody>
+</table>
 
 
 

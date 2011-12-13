@@ -1,20 +1,4 @@
-<table class="dataTable">
-	<thead>
-	 <tr>
-					<th>Date of Event</th>
-					<th>Contract #</th>
-				    <th>Client Name</th>
-				    <th>Hours of coverage</th>
 
-
-				    <th>Event Type</th>
-				    <th>Location</th>
-
-					<th> </th>
-				  </tr>
-				</thead>
-	<tbody>
-			
 				 <tr class="<%= cycle("even", "odd") %>">
 					<td><%= sevenday.date_of_event %></td>
 					<td><%= link_to sevenday.contract_number, sevenday %>
@@ -27,18 +11,12 @@
 
 				    <td>
 					<% unless sevenday.confirmation == 0  %>
-					<%= link_to 'Get Info', sevenday, :class => 'button green small' %>
+					<%= button_to 'Get Info', sevenday, :class => 'button button_green' %>
 					<% else %>
-					<%= link_to 'CONFIRM', confirmjob_path(:id => sevenday.id), :class => 'button' %> 
+					<%= button_to 'CONFIRM', confirmjob_path(:id => sevenday.id), :class => 'button button_red' %> &nbsp;
 					<% end %>
 					<%#= link_to 'Get Info', sevenday, :class => 'button blue' %>
 			
 					</td>
 
 				  </tr>
-
-			
-				  </tbody>
-				</table>
-
-

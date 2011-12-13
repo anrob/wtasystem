@@ -1,8 +1,11 @@
 /*
 *= require_self
 *= require "css/style"
-*= require "css/colors"
-*= require "css/fc"
-*= require "css/weekly"
-*= rewuire "css/jquery.fullcalendar"
+*= require "css/colorbox"
+*= require "css/fullcalendar"
+*= require "css/jquery.ui"
+*= require "css/jquery.alerts"
+*= require "css/ie9"
+*= require "css/ie8"
+*= require "css/ie7"
 */

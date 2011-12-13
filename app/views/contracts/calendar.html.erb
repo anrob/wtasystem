@@ -1,4 +1,4 @@
-<div id="calendar">
+<div id="calendar" class="fc">
 
 		<div class="topbar"><%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'button blue small' %>- 
     <%= link_to "<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
