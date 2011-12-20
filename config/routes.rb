@@ -1,7 +1,5 @@
 Wtasystem::Application.routes.draw do
-  resources :actcodes
-
-resources :actnotes, :managements, :contracts, :messages
+resources :actnotes, :managements, :contracts, :messages, :actcodes
 devise_for :users, :controllers => {:sessions => 'devise/sessions'}, :skip => [:sessions] do
                  get 'signin' => 'devise/sessions#new', :as => :new_user_session
                  post 'signin' => 'devise/sessions#create', :as => :user_session

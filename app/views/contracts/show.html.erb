@@ -1,39 +1,49 @@
-<div class="alert-message block-message info">
-  <div class="grid_9">
+
+<h1 class="pageTitle">Contract</h1>
+<div class="invoice  last">
+	<div class="invoice_inner">
+	<div class="one_half">
+	                	<%= @contract.location_name %><br>
+	                  				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+									Phone:<%= @contract.location_phone %><br>
+	                </div>
 	  <h4 class="blue"> <b>Event Time</b><%= @contract.eventtime %>	</h4>
 	<h2>	Agent : <%= @contract.agent %> </h2>
 	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
 	<h4 class="green">Contract price: <%= @contract.contract_price %></h4>
-  </div>
-<div class="grid_6 address">
-		<% unless @contract.location_name.blank? %>	
-		<h3> <span>Location :</span></h3>
-	
-			<% content_for :map do %>
+
+<% content_for :map do %>
+<% unless @contract.location_name.blank? %>	
+<div class="widgetbox">
+<h3> <span>Event Location</span></h3>
+	<div class="content">
+				
 				<%= @contract.location_name %><br>
-		<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-			Phone:<%= @contract.location_phone %><br>
-	<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img>
-               <% end %>
-		
-			</div>
-			<div class="grid_12 clearfix">
-					
-						<ul class="logs">
-							<h3><span>Contract Provisions</span></h3>
+				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+				Phone:<%= @contract.location_phone %><br>
+				<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img>
+       
+	 	</div>
+	</div>
+	<% end %>
+	<% end %>
+	
+						<strong>Contract Provisions</strong>
 				<li>	<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %></li>
 					</ul>
-					<h3><span>Act Notes</span></h3>
+					<strong>Act Notes</strong><br>
 					<%= @contract.act_notes %>
 		<h3><span>Additional Services Provided</span></h3>
-	
+		<table cellpadding="0" cellspacing="0" class="sTable2" width="100%">
 			<% @additional.each do |addi| %>
-					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
-				<% end %>
-			<% end %>
-		</div>
-
+		
+				<tr>
+				<td><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></td>
+				</tr>
+			
+				<% end %>	</table>
+			<% #end %>
+	
 </div>
-
-
+</div>
 

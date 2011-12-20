@@ -1,23 +1,12 @@
-
-<%= semantic_form_for(resource,:html => { :class => ""},:as => resource_name, :url => session_path(resource_name)) do |f| %>
- <%= devise_error_messages! %>
-		<dl>
-			<dt>
-	<%= label(:email, "Email Address") %>
-	</dt>
-		<dd>
-  <%= f.input :email, :label => ". ", :required => false %>
-</dd>
-<dt>
-	<%= label(:password, "Password") %>
-	</dt>
-	<dd>
-  <%= f.input :password, :label => ". ", :required => false, %>
-</dd>
-
-
-  <%= f.buttons %>
-
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => { :id => "loginform" }) do |f| %>
+<div class="loginbox">	
+	<div class="loginbox_inner">
+    	<div class="loginbox_content">
+		<%= f.email_field :email,  :class => "username" %>
+		<%= f.password_field :password,  :class => "password" %>
+	
+		<%= button_tag "Login", :class => "submit" %>		
+         </div><!--loginbox_content-->
+    </div><!--loginbox_inner-->
+</div><!--loginbox-->
 <% end %>
-
-<%= render :partial => "devise/shared/links" %>

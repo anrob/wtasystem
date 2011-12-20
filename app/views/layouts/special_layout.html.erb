@@ -10,39 +10,21 @@
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- CSS Styles -->
-  <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application", :debug => 'true'%>
   <%= javascript_include_tag "application" %>
 	<!-- Google WebFonts -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 </head>
-<body class="login">
-	<section role="main">
-	
-		<a href="/" title="Back to Homepage"></a>
-	
-		<!-- Login box -->
-		<article id="login-box">
-		
-			<div class="article-container">
-			
-				<p>Welcome to the New WTA Act Manager and Confirmation Center.</p>
-				
-				<!-- Notification -->
-				<div class="notification error">
-					<a href="#" class="close-notification" title="Hide Notification" rel="tooltip">x</a>
-					<% flash.each do |key, msg| -%>
-								  <%= content_tag :p, msg, :id => key -%>
-								<% end -%>
-				</div>
-				<!-- /Notification -->
-		
-			<%= yield %>
-		
-			</div>
-		
-		</article>
-		<!-- /Login box -->
-	
-	</section>
+
+<body>
+
+<div class="loginlogo">
+	<!-- <img src="images/logo.png" alt="Logo" /> -->
+</div><!--loginlogo-->
+
+<div class="notification notifyError loginNotify"><% flash.each do |key, msg| -%>
+			  <%= content_tag :p, msg, :id => key -%>
+			<% end -%></div>
+<%= yield %>
 </body>
 </html>

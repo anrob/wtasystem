@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :management
   has_many :contracts
-  # has_many :actcodes
+  belongs_to :actcode
+  has_many :actcodes
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
          #scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}

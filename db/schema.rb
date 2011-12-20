@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130065408) do
+ActiveRecord::Schema.define(:version => 20111220091909) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -216,7 +216,6 @@ ActiveRecord::Schema.define(:version => 20111130065408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "roles_mask"
-    t.string   "actcode"
     t.integer  "management_id"
     t.boolean  "manager",                               :default => false
     t.string   "first_name"

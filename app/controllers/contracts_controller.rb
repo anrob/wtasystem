@@ -33,6 +33,7 @@ class ContractsController < ApplicationController
       @additional = Contract.additional(@contract)
   end
  
+ 
   
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today

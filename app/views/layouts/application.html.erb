@@ -23,31 +23,7 @@
 <div class="headerspace"></div>
 
 <div class="header">
-	
-    <form id="search" action="" method="post">
-    	<input type="text" name="keyword" /> <button class="searchbutton"></button>
-    </form>
-    
-    <div class="topheader">
-        <ul class="notebutton">
-            <li class="note">
-                <a href="pages/message.html" class="messagenotify">
-                    <span class="wrap">
-                        <span class="thicon msgicon"></span>
-                        <span class="count">1</span>
-                    </span>
-                </a>
-            </li>
-            <li class="note">
-            	<a href="pages/info.html" class="alertnotify">
-                	<span class="wrap">
-                    	<span class="thicon infoicon"></span>
-                        <span class="count">5</span>
-                    </span>
-                </a>
-            </li>
-        </ul>
-    </div><!-- topheader -->
+<!-- topheader -->
 
 
     <!-- logo -->
@@ -56,20 +32,19 @@
     <div class="tabmenu">
     	<ul>
 	  	<%= render 'loginmenu' %>
-        	<li class="current"><a href="dashboard.html" class="dashboard"><span>Dashboard</span></a></li>
-            <li><a href="elements.html" class="elements"><span>Elements</span></a></li>
-            <li><a href="reports.html" class="reports"><span>Reports</span></a></li>
-            <li><a href="users.html" class="users"><span>Users</span></a></li>
+        	<!-- <li class="current"><a href="dashboard.html" class="dashboard"><span>Dashboard</span></a></li> -->
         </ul>
     </div><!-- tabmenu -->
     
     <div class="accountinfo">
-    	<img src="images/avatar.png" alt="Avatar" />
+    
+<%= gravatar_image_tag current_user.email,:gravatar => { :size => 50 }, :alt => 'Avatar' %>
         <div class="info">
-        	<h3>John Doe</h3>
-            <small>youremail@domain.com</small>
+        	<h3><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+            <small><%= "#{current_user.email}" %></small>
             <p>
-            	<a href="">Account Settings</a> <a href="index.html">Logout</a>
+            	<%= link_to "Account Settings", edit_user_path(current_user) %> <%= link_to "Logout", destroy_user_session_path %>
+
             </p>
         </div><!-- info -->
     </div><!-- accountinfo -->
@@ -85,7 +60,7 @@
             </ul>
         </div>
         <h3 class="open">Custom Text</h3>
-        <div class="content" style="display: block;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+        <div class="content" style="display: block;"></div>
 	</div>
 	
 </div><!-- leftmenu -->
@@ -95,10 +70,10 @@
 	<div class="two_third maincontent_inner ">
     	<div class="left">
         
-        	<div class="notification msginfo">
-            	<a class="close"></a>
-            	There are 3 submitted items from users. <a href="">Click to approve</a>
-            </div><!-- notification info -->
+        	<!-- <div class="notification msginfo">
+        	            	<a class="close"></a>
+        	            	There are 3 submitted items from users. <a href="">Click to approve</a>
+        	            </div> --><!-- notification info -->
         
       			<div class="breadcrumbs">
 					 <%= render_breadcrumbs :class => "breadcrumbs" %>	
@@ -108,166 +83,24 @@
 		
             	
             <div class="widgetbox">
-            	<h3><span>Sample Chart</span></h3>
-                <div class="content nopadding ohidden">
+            	<h3><span>Contract Info</span></h3>
+                <div class="content">
                 <%= yield %>
                 </div><!-- content -->
             </div><!-- widgetbox2 -->
             
-            <div class="widgetbox">
-            	<h3><span>Sample Chart</span></h3>
-                <div class="content">
-                	<div id="chartplace" style="height:300px;"></div>
-                </div><!-- content -->
-            </div><!-- widgetbox2 -->
-            
-            <div class="widgetbox">
-                <h3><span>Buttons</span></h3>
-                <div class="content">
-                	<button class="button button_white">Button</button> &nbsp;
-                    <button class="button button_blue">Button</button> &nbsp;
-                    <button class="button button_black">Button</button> &nbsp;
-                    <button class="button button_red">Button</button> &nbsp;
-                    <button class="button button_yellow">Button</button> &nbsp;
-                    <button class="button button_green">Button</button> &nbsp;
-                    <button class="button button_brown">Button</button> &nbsp;
-                    <button class="button button_lblue">Button</button> <br />
-                </div><!-- conten t-->
-            </div><!-- widgetbox -->
-            
-            <div class="widgetbox">
-            	<h3><span>Form with validation</span></h3>
-                <div class="content">
-                	<form id="form" action="" method="post">
-                
-                    <div class="form_default">
-                            
-                            <p>
-                                <label for="name">Name</label>
-                                <input type="text" name="name"  id="name" class="sf" />
-                            </p>
-                            
-                            <p>
-                                <label for="email">Email</label>
-                                <input type="text" name="email"  id="email" class="sf" />
-                            </p>
-                            
-                            <p>
-                                <label for="location">Location</label>
-                                <textarea name="location" class="mf" rows="" cols=""></textarea>
-                            </p>
-                            
-                            <p>
-                                <label for="gender" class="nopadding">Gender</label>
-                                <input type="radio" name="gender" value="0" /> Male &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="1" /> Female
-                            </p>
-                            
-                            <p>
-                                <label for="language" class="nopadding">Language</label>
-                                <input type="checkbox" name="language[]" value="0" /> English &nbsp;&nbsp;&nbsp;&nbsp; 
-                                <input type="checkbox" name="language[]" value="1" /> Mandarin &nbsp;&nbsp;&nbsp;&nbsp; 
-                                <input type="checkbox" name="language[]" value="1" /> German
-                            </p>
-                            
-                            <p>
-                                <label for="occupation">Occupation</label>
-                                <select name="occupation" id="occupation">
-                                  <option value="">Choose One</option>
-                                  <option value="0">Web Designer</option>
-                                  <option value="1">Web Developer</option>
-                                  <option value="2">Software Engineer</option>
-                                  <option value="3">Application Engineer</option>
-                                  <option value="4">Programmer</option>
-                                  <option value="5">Analyst</option>
-                                        
-                                </select>
-                            </p>
-                            
-                            <p>
-                                <button>Submit</button>
-                            </p>
-        
-                    </div><!--form-->
-                	</form>
-                    
-                </div><!-- content -->
-            </div><!-- widgetbox -->
-            
-            <br />
-                        
+       
         </div><!-- left -->            
     </div><!-- two_third -->
     
     <div class="one_third last">
     	<div class="right">
-        
-            <div class="widgetbox">
-                <h3><span>EARNINGS</span></h3>
-                <div class="content">
-              <%= yield :map %>
-                </div><!-- content -->
+        <%= yield :map %>
+                <!-- content -->
             </div><!-- widgetbox -->
             
-            <div class="widgetbox">
-            	<h3><span>PROGRESS BAR</span></h3>
-                <div class="content">
-                	
-                    <div class="progress">
-                        Storage (60%)
-                        <div class="bar"><div class="value bluebar" style="width: 60%;"></div></div>
-                    </div><!-- progress -->
-                    
-                    <div class="progress">
-                        Bandwidth (86%)
-                        <div class="bar"><div class="value orangebar" style="width: 86%;"></div></div>
-                    </div><!-- progress -->
-                    
-                    <div class="progress">
-                        Impression (34%)
-                        <div class="bar"><div class="value redbar" style="width: 34%;"></div></div>
-                    </div><!-- progres s-->
-                    
-                </div><!-- content -->
-            </div><!-- widgetbox -->
-            
-            <div class="widgetbox2">
-                <h3><span>Widget Box 2</span></h3>
-                <div class="content">
-                    
-                    <p><img src="images/assets/image1.png" alt="" class="imgleft" />Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
-                    
-                    
-                </div><!--content-->
-            </div><!--widgetbox2 -->
-            
-            <div id="tabs" class="tabs2">
-                <ul>
-                    <li><a href="#tabs-1">Tab A</a></li>
-                    <li><a href="#tabs-2">Tab B</a></li>
-                    <li><a href="#tabs-3">Tab C</a></li>
-                </ul>
-                <div id="tabs-1">
-                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-                </div>
-                <div id="tabs-2">
-                    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
-                </div>
-                <div id="tabs-3">
-                    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-                </div>
-                
-            </div><!-- tabs -->
-            
-            <br />
-            
-            <div class="accordion">
-                <h3><a href="#">First header</a></h3>
-                <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
-                <h3><a href="#">Second header</a></h3>
-                <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
-                <h3><a href="#">Third header</a></h3>
-                <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
-            </div><!-- accordion -->
+          
+   
             
     	</div><!--right-->
     </div><!--one_third last-->

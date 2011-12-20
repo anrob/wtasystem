@@ -1,8 +1,9 @@
-<h2>Group Acts</h2>
+
+<h3 class="open">Group Acts</h3>
 <ul class="leftmenu">
-<% @otheracts.each do |otheract| %>
-        <li> <%= link_to "#{otheract.fullname}", contracts_path(:act_code => otheract.actcode) %></li>
-<% end %>
+<%# @otheracts.each do |otheract| %>
+        <!-- <li> <%#= link_to "#{otheract.fullname}", contracts_path(:act_code => otheract.actcode) %></li> -->
+<%# end %>
 <% @getallbycompnay.each do |getall| %>
 <li><%= link_to getall.actcode, contracts_path(:act_code => getall.actcode)  %></li>
 <% end %>

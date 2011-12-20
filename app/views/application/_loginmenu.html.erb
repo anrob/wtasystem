@@ -1,18 +1,24 @@
 
-<li><%= link_to(root_path) do %>
+<li><%= link_to(root_path, html_options = {:class => "home"} ) do %>
 <span>Home</span>
 <% end %>
 </li>
-<li><%= link_to(managements_path) do %>
+<% if can? :everything, @user %>
+<li><%= link_to(managements_path, html_options = {:class => "elements"}) do %>
 <span>Companies</span>
 <% end %>
 </li>
-<li><%= link_to(users_path) do %>
+<li><%= link_to(users_path, html_options = {:class => "users"}) do %>
 <span>Users</span>
 <% end %>
 </li>
-<li><%= link_to(root_path) do %>
-<span>logout</span>
+<li><%= link_to(actcodes_path, html_options = {:class => "users"}) do %>
+<span>Actcodes</span>
+<% end %>
+</li>
+<% end %>
+<li><%= link_to (destroy_user_session_path) do %>
+<span>Logout</span>
 <% end %>
 </li>
 
