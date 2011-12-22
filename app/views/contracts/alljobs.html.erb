@@ -1,6 +1,6 @@
 <div class="">
 <% @contract.each do |m| %>
-<li><%= "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.formatted_event_start_time} - #{m.formatted_event_end_time}"  %> 
+<li><%= "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}"  %> 
 <%# end %> </li>
 <% end %>
 </div>

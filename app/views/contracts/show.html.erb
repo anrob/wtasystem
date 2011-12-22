@@ -6,12 +6,13 @@
 	
 	                	<%= @contract.location_name %><br>
 	                  				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-									Phone:<%= @contract.location_phone %><br>
+									Phone:<%= @contract.location_phone %><br><br clear="all">
 	                </div>
+	<h4 class="blue"> <b>Date of event: </b><%= @contract.date_of_event %>	</h4>
 	  <h4 class="blue"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
 	<h4>	Agent : <%= @contract.agent %> </h4>
 	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
-	<h4 class="green">Contract price: <%= @contract.contract_price %></h4>
+	<h2 class="prize">Contract price: <%= @contract.contract_price %></h4>
 		<h4 class="green">Contract Net: <%= @contract.act_net %></h4>
 <br clear="all">
 <% content_for :map do %>
