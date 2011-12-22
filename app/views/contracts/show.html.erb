@@ -51,9 +51,15 @@
 		<div class="content">
 		<table cellpadding="0" cellspacing="0" class="sTable2" width="100%">
 			<% @additional.each do |addi| %>
-		
+		<%#=current_user.actcode.inspect %>
 				<tr>
-				<td><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></td>
+					<% if  %>
+					<td><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></td>
+					<% else %>
+					  	<td><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></td>
+					<% end %>
+					
+			
 				</tr>
 			
 				<% end %>	</table>
