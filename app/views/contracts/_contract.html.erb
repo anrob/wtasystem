@@ -1,0 +1,22 @@
+<tr class="<%= cycle("even", "odd") %>">
+
+	<td><%= contract.date_of_event %></td>
+	<td><%= link_to contract.contract_number, contract %>
+   <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
+   <td><%= "#{contract.event_start_time} - #{contract.event_end_time}" %></td>
+
+
+   <td><%= contract.type_of_event %></td>
+   <td><%= truncate(contract.location_name, :length => 40, :omission =>"...") %></td>
+
+   <td>
+	<% unless contract.confirmation == 0  %>
+	<%= button_to 'Get Info', contract, :class => 'button button_green' %>
+	<% else %>
+	<%= button_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'button button_red' %> &nbsp;
+	<% end %>
+	<%#= link_to 'Get Info', contract, :class => 'button blue' %>
+
+	</td>
+
+ </tr>

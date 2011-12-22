@@ -1,17 +1,19 @@
-
-<h1 class="pageTitle">Contract</h1>
-<div class="invoice  last">
-	<div class="invoice_inner">
-	<div class="one_half">
+<div class="invoicez last">
+	<div class="invoice_inners">
+	<div class="one_half">	<h2><%= @contract.act_booked %></h2>
+		<h2><%= @contract.type_of_event %></h2>
+		<h4><%= @contract.act_form %></h4>
+	
 	                	<%= @contract.location_name %><br>
 	                  				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
 									Phone:<%= @contract.location_phone %><br>
 	                </div>
-	  <h4 class="blue"> <b>Event Time</b><%= @contract.eventtime %>	</h4>
-	<h2>	Agent : <%= @contract.agent %> </h2>
+	  <h4 class="blue"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
+	<h4>	Agent : <%= @contract.agent %> </h4>
 	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
 	<h4 class="green">Contract price: <%= @contract.contract_price %></h4>
-
+		<h4 class="green">Contract Net: <%= @contract.act_net %></h4>
+<br clear="all">
 <% content_for :map do %>
 <% unless @contract.location_name.blank? %>	
 <div class="widgetbox">
@@ -20,20 +22,29 @@
 				
 				<%= @contract.location_name %><br>
 				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-				Phone:<%= @contract.location_phone %><br>
+				Phone: <%= @contract.location_phone %>	<br clear="all">	<br clear="all">
 				<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img>
        
 	 	</div>
 	</div>
 	<% end %>
 	<% end %>
-	
-						<strong>Contract Provisions</strong>
-				<li>	<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %></li>
-					</ul>
-					<strong>Act Notes</strong><br>
+	<div class="widgetbox one_half">
+		<h3><span>Contract Provisions</span></h3>
+						<div class="content">
+				<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+					</div>
+					</div>
+					<div class="widgetbox one_half last">
+					<h3><span>Act Notes</span></h3>
+						<div class="content">
 					<%= @contract.act_notes %>
+					</div>
+						</div>
+						<br clear="all">
+					<div class="widgetbox">
 		<h3><span>Additional Services Provided</span></h3>
+		<div class="content">
 		<table cellpadding="0" cellspacing="0" class="sTable2" width="100%">
 			<% @additional.each do |addi| %>
 		
@@ -43,6 +54,8 @@
 			
 				<% end %>	</table>
 			<% #end %>
+			</div>
+			</div>
 	
 </div>
 </div>

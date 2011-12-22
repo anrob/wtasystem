@@ -16,6 +16,10 @@
 <span>Actcodes</span>
 <% end %>
 </li>
+<li><%= link_to(calendar_path, html_options = {:class => "users"}) do %>
+<span>Calendars</span>
+<% end %>
+</li>
 <% end %>
 <li><%= link_to (destroy_user_session_path) do %>
 <span>Logout</span>

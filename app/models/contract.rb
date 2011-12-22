@@ -29,44 +29,125 @@ class Contract < ActiveRecord::Base
  
   
   def self.import_contracts
+    #Contract.delete_all
     $KCODE = "U"
-        require 'csv'
-        
-        require 'net/ftp'
-                Dir.chdir("#{Rails.root}/tmp") do
-                        Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-                          ftp.passive = true
-                          ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                          file = ftp.nlst("*.TXTT")
-                          file.each{|filename| #Loop through each element of the array
-                          ftp.getbinaryfile(filename,filename) #Get the file
-                          }
-        @listit = Dir.glob("*.TXT")
-        @listit.each do |listit|
-       $KCODE = 'UTF8'   
-      CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
-                                      @contracts = Contract.find_or_create_by_unique3(row[0])
-                                      @contracts.update_attributes( {
-                                       :unique3             =>  row[0],
-                                       :prntkey23             =>  row[1],
-                                       :prntkey13         =>  row[2],
-                                       :act_code            =>  row[3],
-                                       :agent       => row[7],
-                                       :act_booked => row[8],
-                                       :contract_number    => row[28],
-                                       :type_of_event    => row[63],
-                                       :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
-                                       :first_name    => row[68],
-                                       :last_name    => row[69],
-                                       :location_name => row[41],
-                                       :act_notes => row[77].inspect,
-                                       :contract_provisions => row[78].inspect}) 
-                                      end
-                                    end
-                                #FileUtils.rm Dir.glob('*.TXT')
-                            end
-                       end
-     Dir.chdir("../")          
+                    require 'csv'
+                    
+                    require 'net/ftp'
+                            Dir.chdir("#{Rails.root}/tmp") do
+                                    Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                                    ftp.passive = true
+                                    ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                                    file = ftp.nlst("*.TXT")
+                                    file.each{|filename| #Loop through each element of the array
+                                    ftp.getbinaryfile(filename,filename) #Get the file
+                                     }
+                    @listit = Dir.glob("*.TXT")
+                    @listit.each do |listit|
+                   $KCODE = 'UTF8'   
+                  CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+                                                  @contracts = Contract.find_or_create_by_unique3(row[0])
+                                                  @contracts.update_attributes( {
+                                                   # :unique3             =>  row[0],
+                                                   #                                                  :prntkey23             =>  row[1],
+                                                   #                                                  :prntkey13         =>  row[2],
+                                                   #                                                  :act_code            =>  row[3],
+                                                   #                                                  :agent       => row[7],
+                                                   #                                                  :act_booked => row[8],
+                                                   #                                                  :contract_number    => row[28],
+                                                   #                                                  :type_of_event    => row[63],
+                                                   #                                                  :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
+                                                   #                                                  :first_name    => row[68],
+                                                   #                                                  :last_name    => row[69],
+                                                   #                                                  :location_name => row[41],
+                                                   #                                                  :act_notes => row[77].inspect,
+                                                   #                                                  :contract_provisions => row[78].inspect
+                                                  
+                                                   :unique3 => row[0],
+                                                   :prntkey23 => row[1],
+                                                   :prntkey13 => row[2],
+                                                   :act_code => row[3],
+                                                   :accounting_confirmation_date => row[4],
+                                                   :act_form => row[5],
+                                                   :act_net => row[6],
+                                                   :agent => row[7],
+                                                   :act_booked => row[8],
+                                                   :credit_card_fee => row[9],
+                                                   :ceremonoy_location_name => row[10],
+
+                                                   :ceremony_address_line_2 => row[12],
+                                                   :ceremony_location_city => row[13],
+                                                   :ceremony_instrumenttation => row[14],
+                                                   :seremonly_location_state => row[15],
+                                                   :ceremony_location_zip => row[16],
+                                                   :ceremony_start_time => row[17],
+                                                   :ceremony_charge => row[18],
+                                                   :cocktails_charge => row[19],
+                                                   :early_setup_charge => row[20],
+                                                   :early_setup_time => row[21],
+                                                   :contract_price => row[22],
+                                                   :charge_per_horn => row[23],
+                                                   :other_charges => row[24],
+                                                   :cocktail_instrumentation => row[25],
+                                                   :confirmation_date => row[26],
+                                                   :contract_sent_date => row[27],
+                                                   :contract_number => row[28],
+                                                   :contract_revision_number => row[29],
+                                                   :date_of_cancellation => row[30],
+                                                   :date_of_ceremony => row[31],
+                                                   :charge_per_dancer => row[32],
+                                                   :number_of_dancers => row[33],
+                                                   :giveaways => row[34],
+                                                   :giveaways_charge => row[35],
+                                                   :dj_tech_charge => row[36],
+                                                   :tech => row[37],
+                                                   :event_end_time => row[38],
+                                                   :number_of_horns => row[39],
+                                                   :type_of_light_show => row[40],
+                                                   :location_name => row[41],
+                                                   :location_address_line_1 => row[42],
+                                                   :location_address_line_2 => row[43],
+                                                   :location_city => row[44],
+                                                   :location_state => row[45],
+                                                   :location_zip => row[46],
+                                                   :location_phone => row[47],
+                                                   :non_commissionable_charges => row[48],
+                                                   :pick_up_amount => row[49],
+                                                   :explanation_opf_pickup_adjustment => row[50],
+                                                   :capital_music_player => row[51],
+                                                   :capital_music_pay => row[52],
+                                                   :base_price_of_act => row[53],
+                                                   :questionnaire_received_date => row[54],
+                                                   :questionnaire_sent_date => row[55],
+                                                   :referral_fee_amount => row[56],
+                                                   :referral_fee_to => row[57],
+                                                   :song_requests => row[58],
+                                                   :event_start_time => row[59],
+                                                   :contract_status => row[60],
+                                                   :tax_amount => row[61],
+                                                   :type_of_act => row[62],
+                                                   :type_of_event => row[63],
+                                                   :videographer_1 => row[64],
+                                                   :videographer_2 => row[65],
+                                                   :videgrapher_3 => row[66],
+                                                   :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
+                                                   :first_name => row[68],
+                                                   :last_name => row[69],
+                                                   :email_address => row[70],
+                                                   :company => row[71],
+                                                   :brides_names => row[72],
+                                                   :grooms_name => row[73],
+                                                   :home_phone => row[74],
+                                                   :work_phone => row[75],
+                                                   :cell_phone => row[76],
+                                                   :act_notes => row[77].inspect,
+                                                   :contract_provisions => row[78].inspect}) 
+                                                  end
+                                                end
+                                            #FileUtils.rm Dir.glob('*.TXT')
+                                        end
+                                   end
+                 Dir.chdir("../")          
      end
      
      def self.send_reminders

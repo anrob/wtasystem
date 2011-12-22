@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220091909) do
+ActiveRecord::Schema.define(:version => 20111221213740) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20111220091909) do
     t.integer  "giveaways_charge"
     t.integer  "dj_tech_charge"
     t.string   "tech"
-    t.datetime "event_end_time"
+    t.string   "event_end_time"
     t.datetime "early_setup_time"
     t.integer  "number_of_horns"
     t.string   "type_of_light_show"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20111220091909) do
     t.integer  "referral_fee_amount"
     t.string   "referral_fee_to"
     t.string   "song_requests"
-    t.datetime "event_start_time"
+    t.string   "event_start_time"
     t.string   "contract_status"
     t.integer  "tax_amount"
     t.string   "type_of_act"

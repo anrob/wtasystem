@@ -1,12 +1,13 @@
 <table cellpadding="0" cellspacing="0" class="sTable" width="100%">
+		<thead class="sTableHead">
   <tr>
-    <th>Email Address</th>
-    <th>Edit</th>
+    <th class="head0">Email Address</th>
+    <th class="head0">Edit</th>
 
    
-    <th>Delete</th>
+    <th class="head0">Delete</th>
   </tr>
-
+	</thead>
 <% @users.each do |u| %>
  <tr>
 	<td><%= link_to u.email, edit_user_path(u) %> </td>
@@ -19,7 +20,7 @@
 
 	<br />
 
-	<%= link_to 'New User', new_user_path %>
+	<%= button_to 'New User', new_user_path, :class => 'button button_blue' %>
 	
 	<%= will_paginate @users %>
 

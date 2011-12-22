@@ -14,7 +14,7 @@ class ContractsController < ApplicationController
   @mana = Actcode.find_by_id(current_user.actcode_id)
   @contract = Contract.mytoday.mystuff(@mana.actcode)
  end 
- respond_with :contracts => @contract.thisweek
+ #respond_with :contracts => @contract.thisweek
  end
 
   def show
@@ -32,8 +32,6 @@ class ContractsController < ApplicationController
     end
       @additional = Contract.additional(@contract)
   end
- 
- 
   
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today

@@ -3,7 +3,7 @@
 <div class="notification success"> <header><strong><h2>Events in the next 7 days</h2></strong></header></div>
 </header>
 
-<%= render :partial => 'sevenday', :collection => @contract.thisweek  %>
+<%= render @contract.thisweek  %>
 
 </article>
 <article class="full-block clearfix">

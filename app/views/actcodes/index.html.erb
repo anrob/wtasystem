@@ -1,13 +1,14 @@
 
 <table cellpadding="0" cellspacing="0" class="sTable" width="100%">
+			<thead class="sTableHead">
   <tr>
-    <th>Actcode</th>
-    <th>Management Company</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="head0">Actcode</th>
+    <th class="head0">Management Company</th>
+    <th class="head0"></th>
+    <th class="head0"></th>
+    <th class="head0"></th>
   </tr>
-
+</thead>
 <% @actcodes.each do |actcode| %>
   <tr>
     <td><%= actcode.actcode %></td>
@@ -21,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Actcode', new_actcode_path %>
+<%= button_to 'New Actcode', new_actcode_path, :class => 'button button_blue' %>
