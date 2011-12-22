@@ -1,19 +1,19 @@
-<div id="calendar"></div>
 
-		<div><%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'button blue small' %>- 
+
+	<%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'button blue small' %>- 
     <%= link_to "<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
     <%=h @date.strftime("%B %Y") %>
     <%= link_to ">", {:month => (@date.end_of_month+1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
-</div>
+
 	<%= calendar_for @contracts,{:year => @date.year, :month => @date.month} do |calendar| %>
 	    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
 	 <%= calendar.day(:day_method => :date_of_event) do |date, contracts| %>
 	      <%= date.day %>
 
-	<table>
+	<table class="fullCalendar">
 	 <% contracts.group_by(&:prntkey23).each do |pk, con| %>
 	<tr>
-	          <td>
+	          <td class="fc-event-title">
 				<%= link_to con.map(&:act_booked).join(', '), "#{"contracts/"}" "#{con.map(&:id).join('')}" %>
 	          </td>
 	</tr>
@@ -21,5 +21,5 @@
 	      </table>
 	    <% end %>
 	  <% end %>
+<div id="calendar" class="fc"></div>
 
-</div>

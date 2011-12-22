@@ -11,9 +11,12 @@
 	<h4 class="blue"> <b>Date of event: </b><%= @contract.date_of_event %>	</h4>
 	  <h4 class="blue"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
 	<h4>	Agent : <%= @contract.agent %> </h4>
+
 	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
+		<% unless cannot? :see_money, Contract %>
 	<h2 class="prize">Contract price: <%= @contract.contract_price %></h4>
-		<h4 class="green">Contract Net: <%= @contract.act_net %></h4>
+	<h4 class="green">Contract Net: <%= @contract.act_net %></h4>
+		<% end %>
 <br clear="all">
 <% content_for :map do %>
 <% unless @contract.location_name.blank? %>	
