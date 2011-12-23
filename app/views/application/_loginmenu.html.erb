@@ -3,6 +3,10 @@
 <span>Home</span>
 <% end %>
 </li>
+<li><%= link_to(calendar_path, html_options = {:class => "users"}) do %>
+<span>Calendar</span>
+<% end %>
+</li>
 <% if can? :everything, @user %>
 <li><%= link_to(managements_path, html_options = {:class => "elements"}) do %>
 <span>Companies</span>
@@ -16,10 +20,7 @@
 <span>Actcodes</span>
 <% end %>
 </li>
-<li><%= link_to(calendar_path, html_options = {:class => "users"}) do %>
-<span>Calendars</span>
-<% end %>
-</li>
+
 <% end %>
 <li><%= link_to (destroy_user_session_path) do %>
 <span>Logout</span>

@@ -35,7 +35,11 @@ class ContractsController < ApplicationController
   
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
-      @contracts = Contract.threesixfive.all
+      @mana = Actcode.find_by_id(current_user.actcode_id)
+       @contracts = Contract.mystuff(@mana.actcode).threesixfive.all
+       
+      #@contracts = Contract.threesixfive.all
+      respond_with :contracts => @contracts
   end
   def alljobs
    

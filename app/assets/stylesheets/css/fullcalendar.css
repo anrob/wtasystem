@@ -1,3 +1,7 @@
+/* @override 
+	http://localhost:5000/assets/css/fullcalendar.css?body=1
+*/
+
 /*
  * FullCalendar v1.5.2 Stylesheet
  *
@@ -8,6 +12,7 @@
  * Date: Sun Aug 21 22:06:09 2011 -0700
  *
  */
+
 
 
 .fc {
@@ -576,3 +581,88 @@ table.fc-border-separate {
 .fc-button-month:active, 
 .fc-button-agendaWeek:active, .fc-button-agendaDay:active, 
 .fc-button-today:active { background-position: 0 0; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 10px;
+
+}
+
+#calendar .notmonth {
+  color: #CCC;
+}
+
+#calendar .events {
+	border:none;
+	padding:0;
+	margin:0;
+	height:auto;
+}
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+#calendar .today {
+  background-color: #D7F2FF;
+}
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+#calendar div.fc-headers {
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+#calendar div.fc-headers span {
+	font-weight: bold;
+	font-size: 26px;
+	padding-right: 10px;
+	padding-left: 10px;
+	color: #138bb2;
+}
+

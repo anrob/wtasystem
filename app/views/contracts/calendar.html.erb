@@ -1,25 +1,28 @@
+<div id="calendar">
 
-
-	<%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'button blue small' %>- 
-    <%= link_to "<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
-    <%=h @date.strftime("%B %Y") %>
-    <%= link_to ">", {:month => (@date.end_of_month+1).strftime("%Y-%m-%d")}, :class => 'button blue small' %>
-
+	<div class="fc-headers">	
+		<h2><%= link_to "Today", {:month => (Date.today).strftime("%Y-%m-%d")},:class => 'fc-header-title' %></h2>
+    <%= link_to "<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, :class => 'anchorbutton button button_blue' %>
+    <span><%=h @date.strftime("%B %Y") %></span>
+    <%= link_to ">", {:month => (@date.end_of_month+1).strftime("%Y-%m-%d")}, :class => 'anchorbutton button button_blue' %>
+</div>
 	<%= calendar_for @contracts,{:year => @date.year, :month => @date.month} do |calendar| %>
 	    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
 	 <%= calendar.day(:day_method => :date_of_event) do |date, contracts| %>
 	      <%= date.day %>
 
-	<table class="fullCalendar">
-	 <% contracts.group_by(&:prntkey23).each do |pk, con| %>
+	<table>
+		<% contracts.each do |contract| %>
+	 <!-- <%# contracts.group_by(&:prntkey23).each do |pk, con| %> -->
 	<tr>
-	          <td class="fc-event-title">
-				<%= link_to con.map(&:act_booked).join(', '), "#{"contracts/"}" "#{con.map(&:id).join('')}" %>
+	          <td class="events">
+				<%#= link_to con.map(&:act_booked).join(', '), "#{"contracts/"}" "#{con.map(&:id).join('')}" %>
+				<%= link_to "#{contract.first_name} #{contract.last_name}", contract %>
 	          </td>
 	</tr>
 	        <% end %>
 	      </table>
 	    <% end %>
 	  <% end %>
-<div id="calendar" class="fc"></div>
+</div>
 
