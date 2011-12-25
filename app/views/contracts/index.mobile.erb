@@ -2,9 +2,11 @@
 <h2>Events This Month</h2>
 <ul>
 
-<%= render :partial => 'sevenday', :collection => @contract.thisweek%>
-<%= render :partial => 'sevenday', :collection => @contract.tenday%>
-<%= render :partial => 'sevenday', :collection => @contract.thirtyday%>
+	<%= render @contract.thisweek   %>
+
+	<%= render @contract.tenday %>
+
+	<%= render @contract.thirtyday  %>
 </ul>
 </div>
 

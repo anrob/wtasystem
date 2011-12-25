@@ -3,6 +3,7 @@
 *= require "css/style"
 *= require "css/colorbox"
 *= require "css/fullcalendar"
+*= require "css/weekly"
 *= require "css/jquery.ui"
 *= require "css/jquery.alerts"
 *= require "css/ie9"

@@ -43,6 +43,7 @@ gem 'gravatar_image_tag'
 gem 'draper'
 gem 'lazy_high_charts'
 gem 'gmail'
+gem 'prawn'
 
 
 # To use ActiveModel has_secure_password

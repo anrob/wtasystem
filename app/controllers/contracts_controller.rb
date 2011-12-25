@@ -30,6 +30,11 @@ class ContractsController < ApplicationController
     else
        @contract = Contract.find(params[:id])
     end
+    respond_to do |format|
+      format.html
+      format.js
+      format.pdf { render :layout => false }
+    end
       @additional = Contract.additional(@contract)
   end
   
