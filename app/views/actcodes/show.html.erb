@@ -9,7 +9,10 @@
   <b>Management Company:</b>
   <%= @actcode.management.name %>
 </p>
-
+<p>
+  <b>Descripttion:</b>
+  <%= @actcode.description %>
+</p>
 
 <%= link_to 'Edit', edit_actcode_path(@actcode) %> |
 <%= link_to 'Back', actcodes_path %>

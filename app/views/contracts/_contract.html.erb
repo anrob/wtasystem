@@ -1,13 +1,13 @@
 <tr class="<%= cycle("even", "odd") %>">
 
-	<td><%= contract.date_of_event %></td>
+	<td><%= link_to contract.date_of_event, contract %></td>
 	<td><%= link_to contract.contract_number, contract %>
-   <td><%= "#{contract.first_name} #{contract.last_name}" %></td>
-   <td><%= "#{contract.event_start_time} - #{contract.event_end_time}" %></td>
+   <td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
+   <td><%= link_to "#{contract.event_start_time} - #{contract.event_end_time}", contract %></td>
 
 
-   <td><%= contract.type_of_event %></td>
-   <td><%= truncate(contract.location_name, :length => 40, :omission =>"...") %></td>
+   <td><%= link_to contract.type_of_event, contract %></td>
+   <td><%= link_to truncate(contract.location_name, :length => 40, :omission =>"..."), contract %></td>
 
    <td>
 	<% unless contract.confirmation == 0  %>

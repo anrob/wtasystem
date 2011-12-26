@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :management
-  has_many :contracts
   belongs_to :actcode
+  has_many :contracts
   has_many :actcodes
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable

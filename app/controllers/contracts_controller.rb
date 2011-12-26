@@ -7,6 +7,7 @@ class ContractsController < ApplicationController
   def index
     case @but when "true"
     @contract = Contract.where(:act_code => params[:act_code])
+     @reflec = Actcode.reflect_on_all_associations
    if cannot? :see_others, @contract
      redirect_to root_url
    end
