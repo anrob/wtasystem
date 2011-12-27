@@ -1,3 +1,4 @@
+Search By:
 <%= form_for @search, :url => actcodes_path, :html => {:method => :get} do |f| %>
   <%= f.label :description %>
   <%= f.text_field :description_contains %><br />

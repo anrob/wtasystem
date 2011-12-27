@@ -1,11 +1,13 @@
 <div class="form_default">
 
 <%= semantic_form_for(@user,:html => { :class => "form_default", :method => :put}, :as => @user) do |f| %>
-<%= f.inputs :email %>
+<%= f.inputs :email,:hint => 'Hey - no more than 255 characters can be input!!!', %>
 <%= f.inputs :first_name, :last_name, :phone_number %>
-<% if can? :everything, @user %>
-<%= f.inputs :actcode %>
+<% if can? :everything, User %>
 <%= f.inputs :management %>
+<%#= f.input :actcode, :as => :select, :collection => Actcode.all.map {|m|[m.actcode, m.id]} %>
+<%= f.input :actcode, :as => :select, :collection => Actcode.all.map {|m|[m.actcode, m.id]} %>
+
 <% else %>
 <% unless @user.actcode_id.blank? %>
 <p><strong>Actcode : <%= @user.actcode.actcode %>

@@ -32,7 +32,7 @@ gem "breadcrumbs_on_rails"
 gem "thin"
 gem "tabs_on_rails"
 gem 'googlestaticmap'
-
+gem 'jintastic'
 
 gem "switch_user"
 #gem 'simple_worker'

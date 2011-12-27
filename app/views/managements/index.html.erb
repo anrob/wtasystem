@@ -1,20 +1,20 @@
 
 <table cellpadding="0" cellspacing="0" class="sTable" width="100%">
 	<thead class="sTableHead">
-  <tr>
+  <tr> <th class="head0">Management ID</th>
     <th class="head0">Name</th>
     <th class="head0">Manageagement code</th>
-    <th class="head0">Management ID</th>
+   
     <th class="head0"></th>
 	<th class="head0"></th>
     <th class="head0"></th>
   </tr>
 	</thead>
 <% @managements.each do |management| %>
-  <tr>
+  <tr>	<td><%= management.id %></td>
     <td><%= management.name %></td>
     <td><%= management.manageagement_code %></td>
-	<td><%= management.id %></td>
+
     <td><%= link_to 'Show', management %></td>
     <td><%= link_to 'Edit', edit_management_path(management) %></td>
     <td><%= link_to 'Destroy', management, :confirm => 'Are you sure?', :method => :delete %></td>

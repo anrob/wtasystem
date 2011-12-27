@@ -172,9 +172,17 @@ h2.prize { font-size: 20px; color: #000; font-family: Arial, Helvetica, sans-ser
 .tabmenu ul li a.users span { background: url(../images/icons/users.png) no-repeat 15px 14px; }
 .tabmenu ul li.current a.users span { background: url(../images/icons/users.png) no-repeat 15px -59px; }
 
+div.pagination {
+	text-align: center;
+	margin-top: 20px;
+	padding-right: 0;
+	padding-top: 20px;
+	border-top: 1px outset #e1e1e1;
+}
+
 
 /***SIDEBAR (all page)***/
-.sidebar { padding: 20px 0 20px 10px; width: 210px; display: block; float: left; }
+.sidebar { padding: 20px 0 20px 3px; width: 210px; display: block; float: left; }
 
 #accordion h3 { background: url(../images/arrow.png) no-repeat 0 6px; padding-left: 15px; }
 #accordion h3 { cursor: pointer; font-size: 12px; color: #333; text-transform: uppercase; }
@@ -183,7 +191,11 @@ h2.prize { font-size: 20px; color: #000; font-family: Arial, Helvetica, sans-ser
 
 .leftmenu { list-style: none; }
 .leftmenu li { display: block; margin-bottom: 1px; }
-.leftmenu li a { font-size: 12px; display: block; padding: 5px 0 5px 40px; color: #333; }
+.leftmenu li a { display: block; color: #333;
+	padding: 5px 0 5px 40px;
+	font-size: 11px;
+	white-space: normal;
+}
 .leftmenu li a { -moz-border-radius: 3px 0 0 3px; -webkit-border-radius: 3px 0 0 3px; border-radius: 3px 0 0 3px; }
 .leftmenu li a:hover { text-decoration: none; background: #d8e5f4; }
 .leftmenu li.current a { background-color: #eee; border-right: 0; color: #069; }
