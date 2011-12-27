@@ -1,3 +1,7 @@
+<%#= @manger.inspect %>
+<%#= @mana.actcode.inspect %>
+<%#= @contracts.inspect %>
+
 <div id="calendar">
 
 	<div class="fc-headers">	
@@ -17,7 +21,7 @@
 	<tr>
 	          <td class="events">
 				<%#= link_to con.map(&:act_booked).join(', '), "#{"contracts/"}" "#{con.map(&:id).join('')}" %>
-				<%= link_to "#{contract.first_name} #{contract.last_name}", contract %>
+				<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}", contract %>
 	          </td>
 	</tr>
 	        <% end %>

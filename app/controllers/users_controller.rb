@@ -7,6 +7,6 @@ class UsersController < BaseController
  
  def index
    @users = User.page(params[:page]).all
-    @reflec = User.reflect_on_all_association(:has_many)
+    #@reflec = User.reflect_on_all_association(:has_many)
  end
 end

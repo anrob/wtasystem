@@ -4,17 +4,16 @@ class ContractsController < ApplicationController
  before_filter :everypage
  helper_method :themanager, :themap
     
-  def index
+  def index 
     case @but when "true"
     @contract = Contract.where(:act_code => params[:act_code])
-     @reflec = Actcode.reflect_on_all_associations
-   if cannot? :see_others, @contract
+    if cannot? :see_others, @contract
      redirect_to root_url
-   end
- else
-  @mana = Actcode.find_by_id(current_user.actcode_id)
-  @contract = Contract.mytoday.mystuff(@mana.actcode)
- end 
+    end
+    else
+      @mana = Actcode.find_by_id(current_user.actcode_id)
+      @contract = Contract.mytoday.mystuff(@mana.actcode)
+    end 
  #respond_with :contracts => @contract.thisweek
  end
 
@@ -37,14 +36,19 @@ class ContractsController < ApplicationController
   def calendar
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
       @mana = Actcode.find_by_id(current_user.actcode_id)
-       @contracts = Contract.mystuff(@mana.actcode).threesixfive.all
-       
-      #@contracts = Contract.threesixfive.all
+      #case @but when "true"
+      unless can? :see_others, Contract
+       @contracts = Contract.mystuff(@user.actcode.actcode).threesixfive.all  
+      else
+         @contracts = Contract.where(:act_code => @manger.split(",")).threesixfive.all
+        end
       respond_with :contracts => @contracts
   end
   def alljobs
-   
-      @contract = Contract.mystuff(@mana.actcode).ninetyday
+      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+       @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+       @recipients = @users.collect {|m| m.email}
+     # @contract = Contract.mystuff(@mana.actcode).ninetyday
   end
   
   def confirmjob

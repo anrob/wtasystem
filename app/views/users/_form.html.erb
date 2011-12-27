@@ -7,8 +7,14 @@
 <%= f.inputs :actcode %>
 <%= f.inputs :management %>
 <% else %>
-<p><strong>Actcode : <%= @user.actcode.actcode %><br>
-Management Company : <%= @user.management.name %></p></strong>
+<% unless @user.actcode_id.blank? %>
+<p><strong>Actcode : <%= @user.actcode.actcode %>
+	<% end %>
+	<br>
+	<% unless @user.management_id.blank?%>
+Management Company : <%= @user.management.name %></p>
+<% end %>
+</strong>
 <% end %>
 <p>
 <% if can? :assign_roles, @user %>

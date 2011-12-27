@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'devise' 
 gem "cancan"
 gem 'formtastic'
-#gem 'activerecord-import'
+gem 'meta_search'
 
 gem 'inherited_resources'
 gem 'easy_dates'

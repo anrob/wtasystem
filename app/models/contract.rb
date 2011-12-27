@@ -7,6 +7,7 @@ class Contract < ActiveRecord::Base
   
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
+ 
   scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)} 
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))
@@ -26,10 +27,8 @@ class Contract < ActiveRecord::Base
     format_for :date_of_event, :format => "%m/%d/%y"
   end
   
- 
-  
   def self.import_contracts
-    #Contract.delete_all
+    Contract.delete_all
     $KCODE = "U"
                     require 'csv'
                     
@@ -48,21 +47,6 @@ class Contract < ActiveRecord::Base
                   CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
                                                   @contracts = Contract.find_or_create_by_unique3(row[0])
                                                   @contracts.update_attributes( {
-                                                   # :unique3             =>  row[0],
-                                                   #                                                  :prntkey23             =>  row[1],
-                                                   #                                                  :prntkey13         =>  row[2],
-                                                   #                                                  :act_code            =>  row[3],
-                                                   #                                                  :agent       => row[7],
-                                                   #                                                  :act_booked => row[8],
-                                                   #                                                  :contract_number    => row[28],
-                                                   #                                                  :type_of_event    => row[63],
-                                                   #                                                  :date_of_event => Date.strptime(row[67], "%m/%d/%Y").to_s(:db),
-                                                   #                                                  :first_name    => row[68],
-                                                   #                                                  :last_name    => row[69],
-                                                   #                                                  :location_name => row[41],
-                                                   #                                                  :act_notes => row[77].inspect,
-                                                   #                                                  :contract_provisions => row[78].inspect
-                                                  
                                                    :unique3 => row[0],
                                                    :prntkey23 => row[1],
                                                    :prntkey13 => row[2],
@@ -151,7 +135,7 @@ class Contract < ActiveRecord::Base
      end
      
      def self.send_reminders
-        @contract = Contract.unconfirmedevent.innextten.includes(:user)
+         @contract = Contract.unconfirmedevent.innextten.includes(:user)
          @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
          @recipients = @users.collect {|m| m.email}
          @recipients_number = @users.collect {|m| m.phone_number}
