@@ -172,6 +172,17 @@ h2.prize { font-size: 20px; color: #000; font-family: Arial, Helvetica, sans-ser
 .tabmenu ul li a.users span { background: url(../images/icons/users.png) no-repeat 15px 14px; }
 .tabmenu ul li.current a.users span { background: url(../images/icons/users.png) no-repeat 15px -59px; }
 
+a.confirmed {
+	color: green;
+}
+
+a.unconfirmed {
+	color: #fd2217;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 9px;
+}
+
 div.pagination {
 	text-align: center;
 	margin-top: 20px;

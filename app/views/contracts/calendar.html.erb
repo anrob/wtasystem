@@ -20,8 +20,13 @@
 	 <!-- <%# contracts.group_by(&:prntkey23).each do |pk, con| %> -->
 	<tr>
 	          <td class="events">
+		<% unless contract.confirmation == 0  %>
+		<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}", contract, :class => "confirmed" %>
+		<% else %>
+		
 				<%#= link_to con.map(&:act_booked).join(', '), "#{"contracts/"}" "#{con.map(&:id).join('')}" %>
-				<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}", contract %>
+				<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}", contract, :class => "unconfirmed" %>
+				<% end %>
 	          </td>
 	</tr>
 	        <% end %>
