@@ -11,7 +11,7 @@
 
    <td>
 	<% unless contract.confirmation == 0  %>
-	<%= button_to 'Get Info', contract, :class => 'button button_green' %>
+	<%= button_to 'Get Info', contract, :class => 'button button_green',:method => :get %>
 	<% else %>
 	<%= button_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'button button_red' %> &nbsp;
 	<% end %>

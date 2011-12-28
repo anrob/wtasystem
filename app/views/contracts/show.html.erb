@@ -17,6 +17,8 @@
 	<h2 class="prize">Contract price: <%= @contract.contract_price %></h4>
 	<h4 class="green">Contract Net: <%= @contract.act_net %></h4>
 		<% end %>
+	<h4 class="green">Pickup Amount: <%= @contract.pick_up_amount %></h4>
+	
 <br clear="all">
 <% content_for :map do %>
 <% unless @contract.location_name.blank? %>	
