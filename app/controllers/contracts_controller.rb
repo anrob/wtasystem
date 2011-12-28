@@ -13,6 +13,16 @@ class ContractsController < ApplicationController
     else
       @mana = Actcode.find_by_id(current_user.actcode_id)
       @contract = Contract.mytoday.mystuff(@mana.actcode)
+  # @contract_count = Contract.where(:act_code => params[@getallbycompnay]).count
+  #  @c = @getallbycompnay.each do |actcodeee|
+  #  # Contract.where(:act_code => actcodeee.actcode).thirtyday.count
+  #  # Contract.getcount(actcodeee.actcode).thirtyday.count
+  #  @d = Contract.find_all_by_act_code(actcodeee.actcode)
+  #  @e = @d.count
+  # end
+    # end
+      @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
+      
     end 
  #respond_with :contracts => @contract.thisweek
  end
@@ -45,8 +55,8 @@ class ContractsController < ApplicationController
       respond_with :contracts => @contracts
   end
   def alljobs
-      @contract = Contract.unconfirmedevent.innextten.includes(:user)
-       @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+       @contract = Contract.unconfirmedevent.innextten.includes(:user)
+       @users = User.find_all_by_actcode_id(@contract.map {|m| m.act_code}) 
        @recipients = @users.collect {|m| m.email}
      # @contract = Contract.mystuff(@mana.actcode).ninetyday
   end

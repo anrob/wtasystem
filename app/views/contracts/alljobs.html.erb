@@ -1,6 +1,14 @@
 <div class="">
 <% @contract.each do |m| %>
-<li><%= "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}"  %> 
-<%# end %> </li>
+<% unless m.confirmation == 0  %>
+<li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m, :class => "confirmed"  %></li>
+<% else %>
+  <li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m, :class => "unconfirmed"  %></li>
+<% end %>
+
+
 <% end %>
 </div>
+<% @recipients.each do |email| %>
+<li><%= email%></li>
+<% end %>

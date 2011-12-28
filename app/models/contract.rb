@@ -20,8 +20,8 @@ class Contract < ActiveRecord::Base
   scope :unconfirmedevent, where(:confirmation => 0)
   scope :innextten, where(:date_of_event => (my_date)..(my_date + 11.days))
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
+  scope :getcount, lambda {|contra| where("act_code = ?", contra)}
   
- 
  define_easy_dates do 
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
     format_for :date_of_event, :format => "%m/%d/%y"

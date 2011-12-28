@@ -44,6 +44,8 @@ class ApplicationController < ActionController::Base
      @message = Message.last
      @otheracts = User.getotheracts(current_user).order("first_name")
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode")
+     # @cp = Contract.where(:act_code => current_user.actcode)
+     #      @test = @cp.mytoday.count
     # @cc = @contracts.sum(:contract_price) 
   end
   

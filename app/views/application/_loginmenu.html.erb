@@ -20,6 +20,10 @@
 <span>Actcodes</span>
 <% end %>
 </li>
+<li><%= link_to(alljobs_path, html_options = {:class => "users"}) do %>
+<span>All Job In Next Ten Days</span>
+<% end %>
+</li>
 
 <% end %>
 <li><%= link_to (destroy_user_session_path) do %>
