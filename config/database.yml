@@ -20,6 +20,9 @@ development:
 #     pool: 5
 #     timeout: 5000
 
+test:
+  <<: *common
+  database: wtatest
 
 production:
   <<: *common
