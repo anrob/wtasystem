@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :management
-  belongs_to :actcode
+  has_one :actcode
   has_many :contracts
   #accepts_nested_attributes_for :actcode
     default_scope :order => 'email ASC'
