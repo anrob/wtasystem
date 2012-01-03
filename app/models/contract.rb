@@ -158,8 +158,19 @@ def self.mailchimp
   end
   
   def eventtime
-     "#{event_start_time} #{event_end_time}"
+     "#{event_start_time} #{event_end_time} WHAT"
    end
+   
+   def status
+    if contract_status == "Contract Received"
+      @status = "recieved"
+    elsif contract_status == "Booked- PAY ACT"
+      @status = "booked"
+     else contract_status == "Hold"
+        @status = "hold"
+   end 
+   @status
+ end
 end
 
 
