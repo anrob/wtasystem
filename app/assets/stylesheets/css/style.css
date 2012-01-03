@@ -67,11 +67,11 @@ h2.prize { font-size: 20px; color: #000; font-family: Arial, Helvetica, sans-ser
 .notification { padding: 10px 10px 10px 45px; margin: 0 0 20px 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; position: relative; }
 .notification .close { position: absolute; right: 5px; top: 5px; display: inline-block; width: 8px; height: 8px; cursor: pointer; }
 .notification .close { background: url(../images/icons/close.png) no-repeat 0 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
-.notifyError { border: 1px solid #ff0000; background: #FFECEC; color: #ff0000; font-size: 11px; }
+.notifyError, .hold { border: 1px solid #ff0000; background: #FFECEC; color: #ff0000; font-size: 11px; }
 
-.msgalert { border: 1px solid #eac572; background: #ffe9ad url(../images/icons/warning.png) no-repeat 10px center; }
+.msgalert,.booked { border: 1px solid #eac572; background: #ffe9ad url(../images/icons/warning.png) no-repeat 10px center; }
 .msginfo { border: 1px solid #99c4ea; background: #d1e4f3 url(../images/icons/info.png) no-repeat 10px center; }
-.msgsuccess { border: 1px solid #c1d779; background: #effeb9 url(../images/icons/success.png) no-repeat 10px center; }
+.msgsuccess, .recieved { border: 1px solid #c1d779; background: #effeb9 url(../images/icons/success.png) no-repeat 10px center; }
 .msgerror { border: 1px solid #e18b7c; background: #fad5cf url(../images/icons/error.png) no-repeat 10px center; }
 
 /***LOGIN PAGE (index.html)***/
@@ -550,6 +550,10 @@ input[type=radio], input[type=checkbox] { margin: 0; padding: 0; vertical-align:
 .padding1020 { padding: 10px 20px; }
 .padding20 { padding: 20px; overflow: hidden; }
 .borderbottom { border-bottom: 1px solid #eee; }
+.textindent { text-indent: 31px;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
 .floatleft { float: left; }
 .width50 { width: 50px; }
 .ohidden { overflow: hidden; }
