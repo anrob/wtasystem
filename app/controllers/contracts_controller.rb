@@ -41,6 +41,17 @@ class ContractsController < ApplicationController
        @contract = Contract.find(params[:id])
     end
       @additional = Contract.additional(@contract)
+      respond_with do |format|
+        # format.html
+        format.pdf do
+        pdf = ContractPdf.new(@contract, view_context)
+        send_data pdf.render, filename: "contract_#{@contract.contract_number}.pdf",
+        
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
+ 
   end
   
   def calendar
