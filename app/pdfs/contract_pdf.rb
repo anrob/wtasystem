@@ -16,7 +16,7 @@ class ContractPdf < Prawn::Document
   def contract_number
    font "Times-Roman"
    fill_color "336699"
-    text "Contract number:\##{@contract.contract_number}", :size => 20, :style => :bold, :align => :center
+    text "Contract \##{@contract.contract_number}", :size => 10, :style => :bold, :align => :left
     
     fill_color "336699"
     text "#{@contract.act_booked}", size: 12, style: :bold, :color =>"#336699"

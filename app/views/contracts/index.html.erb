@@ -1,9 +1,15 @@
-<!-- <%#= @start_date.inspect %>
-<%#=  @events.inspect %>
-<%#= @str.inspect %> -->
-<%#= render :partial => 'weekly' %>
-<%= @e %>
-<%#= @contract.mystuff(current_user) %>
+<% if can? :everything, @user %>
+
+<ul class="widgetlist">
+                <li><a href=""><%= image_tag("images/icons/document.png") %><span>Add New Article</span></a></li>
+                <li><a href=""><%= image_tag("images/icons/createreport.png") %><span>Create Report</span></a></li>
+                <li><a href=""><%= image_tag("images/icons/mail.png") %><span>Compose Mail</span></a></li>
+                <li><a href=""><%= image_tag("images/icons/calendar.png") %><span>Manage Events</span></a></li>
+                <li><a href=""><%= image_tag("images/icons/media.png") %><span>Media Library</span></a></li>
+ </ul>
+	<% end %>
+
+
 <table cellpadding="0" cellspacing="0" class="sTable" width="100%">
 	<thead class="sTableHead">
 	 <tr>
