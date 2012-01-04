@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   belongs_to :management
-  has_one :actcode
+  belongs_to :actcode
   has_many :contracts
-  #accepts_nested_attributes_for :actcode
-    default_scope :order => 'email ASC'
+  accepts_nested_attributes_for :actcode
+  default_scope :order => 'email ASC'
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable
          #scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}

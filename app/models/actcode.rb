@@ -1,6 +1,6 @@
 class Actcode < ActiveRecord::Base
   belongs_to :management
- belongs_to :user
+  has_many :users
  attr_accessible :actcode, :description, :management_id, :user_id
  
   default_scope :order => 'actcode ASC'
