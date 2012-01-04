@@ -7,21 +7,22 @@ class ContractsController < ApplicationController
   def index 
     case @but when "true"
     @contract = Contract.where(:act_code => params[:act_code])
+    @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
+    @contractcount = Contract.getcount(params[:getall])
     if cannot? :see_others, @contract
      redirect_to root_url
     end
     else
       @mana = Actcode.find_by_id(current_user.actcode_id)
       @contract = Contract.mytoday.mystuff(@mana.actcode)
-  # @contract_count = Contract.where(:act_code => params[@getallbycompnay]).count
+      @contract_count = Contract.where(:act_code => params[@getallbycompnay]).count
   #  @c = @getallbycompnay.each do |actcodeee|
   #  # Contract.where(:act_code => actcodeee.actcode).thirtyday.count
   #  # Contract.getcount(actcodeee.actcode).thirtyday.count
   #  @d = Contract.find_all_by_act_code(actcodeee.actcode)
   #  @e = @d.count
   # end
-    # end
-      @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
+  # end
       
     end 
  #respond_with :contracts => @contract.thisweek

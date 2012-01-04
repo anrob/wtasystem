@@ -1,7 +1,8 @@
+
 <div class="invoicez last">
 	<div class="invoice_inners">
 	<div class="one_half">	
-		<p><%= link_to "Printable Receipt (PDF)", contract_path(@contract, format: "pdf") %></p><br>
+		<p><%= link_to "Printable Version (PDF)", contract_path(@contract, format: "pdf") %></p><br>
 		<h2><%= @contract.act_booked %></h2>
 		<h2><%= @contract.type_of_event %></h2>
 		<h4><%= @contract.act_form %></h4>
@@ -16,10 +17,10 @@
 	<h4 class="blue"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
 	<h4>Agent : <%= @contract.agent %> </h4>
 	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
-	<h4 class="green">Pickup Amount: <%= @contract.pick_up_amount %></h4>
+	<h4 class="green">Pickup Amount: $<%= @contract.pick_up_amount %></h4>
 	<% unless cannot? :see_money, Contract %>
-	<h4 class="green">Contract price: <%= @contract.contract_price %></h4>
-	<h4 class="green">Contract Net: <%= @contract.act_net %></h4>
+	<h4 class="green">Contract price: $<%= @contract.contract_price %></h4>
+	<h4 class="green">Contract Net: $<%= @contract.act_net %></h4>
 	<% end %>
 	
 	</div>
@@ -41,6 +42,7 @@
 	</div>
 	<% end %>
 	<% end %>
+
 	<div class="widgetbox one_half">
 		<h3><span>Contract Provisions</span></h3>
 						<div class="content">
@@ -54,6 +56,7 @@
 					</div>
 						</div>
 						<br clear="all">
+	
 					<div class="widgetbox">
 		<h3><span>Additional Services Provided</span></h3>
 		<div class="content">
@@ -77,6 +80,95 @@
 	
 </div>
 </div>
+<div clas="content">
+	<% unless cannot? :see_money, Contract %>
+	<%= @contract.cocktails_charge %>
+	<%= @contract.ceremony_charge %>
+	<%= @contract.early_setup_charge %>
+	<%= @contract.charge_per_horn %>
+	<%= @contract.other_charges %>
+	<%= @contract.charge_per_dancer %>
+	<%= @contract.giveaways_charge %>
+	<%= @contract.dj_tech_charge %>
+	<%= @contract.non_commissionable_charges %>
+	<%= @contract.capital_music_pay %>
+	<%= @contract.base_price_of_act %>
+	<%= @contract.referral_fee_amount %>
+	<%= @contract.tax_amount %>
+	<% end %>
+	</div>
+<div class="content">
+<%= @contract.act_code %>
+
+<%= @contract.act_form %>
+
+<%= @contract.agent %>
+<%= @contract.act_booked %>
+
+<%= @contract.ceremonoy_location_name %>
+
+<%= @contract.ceremony_address_line_2 %>
+<%= @contract.ceremony_location_city %>
+<%= @contract.ceremony_instrumenttation %>
+<%= @contract.seremonly_location_state %>
+<%= @contract.ceremony_location_zip %>
+<%= @contract.ceremony_start_time %>
 
 
-					
+
+<%= @contract.early_setup_time %>
+
+
+<%= @contract.cocktail_instrumentation %>
+
+
+<%= @contract.contract_number %>
+
+
+
+<%= @contract.number_of_dancers %>
+<%= @contract.giveaways %>
+
+<%= @contract.tech %>
+<%= @contract.event_end_time %>
+<%= @contract.number_of_horns %>
+<%= @contract.type_of_light_show %>
+<%= @contract.location_name %>
+<%= @contract.location_address_line_1 %>
+<%= @contract.location_address_line_2 %>
+<%= @contract.location_city %>
+<%= @contract.location_state %>
+<%= @contract.location_zip %>
+<%= @contract.location_phone %>
+
+
+<%= @contract.explanation_opf_pickup_adjustment %>
+<%= @contract.capital_music_player %>
+
+<%= @contract.questionnaire_received_date %>
+
+
+<%= @contract.referral_fee_to %>
+<%= @contract.song_requests %>
+<%= @contract.event_start_time %>
+<%= @contract.contract_status %>
+
+<%= @contract.type_of_act %>
+<%= @contract.type_of_event %>
+<%= @contract.videographer_1 %>
+<%= @contract.videographer_2 %>
+<%= @contract.videgrapher_3 %>
+<%= @contract.date_of_event %>
+<%= @contract.first_name %>
+<%= @contract.last_name %>
+<%= @contract.email_address %>
+<%= @contract.company %>
+<%= @contract.brides_names %>
+<%= @contract.grooms_name %>
+<%= @contract.home_phone %>
+<%= @contract.work_phone %>
+<%= @contract.cell_phone %>
+<%= @contract.act_notes %>
+<%= @contract.contract_provisions %>
+
+</div>		

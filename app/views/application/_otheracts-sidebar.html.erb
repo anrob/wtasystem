@@ -1,12 +1,15 @@
 <%#= @d.inspect %>
-<%#= @getallbycompnay.inspect %>
+ <%#= @contractcount %>
 <% if can? :see_others, Contract %>
-
-<h3 class="open">Group Acts</h3>
-<ul class="leftmenu">
-<% @getallbycompnay.each do |getall| %>
-	<li>
-<%= link_to "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %></li>
-<% end %>
-</ul>
+<div class="widgetbox2">
+	<h3 class="open"><span>Management Company Acts</span></h3>
+	<div class="content marginbottom">
+	<ul class="leftmenu noleftpadding">
+	<% @getallbycompnay.each do |getall| %>
+		<li>  <%= @unconfirmed %>
+	<%= link_to "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %> <%#= @contractcount(params[]) %> - <span class="count"><%= @unconfirmed.inspect %></span></li>
+	<% end %>
+	</ul>
+</div>
+</div>
 <% end %>

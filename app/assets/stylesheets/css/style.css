@@ -202,10 +202,16 @@ div.pagination {
 
 .leftmenu { list-style: none; }
 .leftmenu li { display: block; margin-bottom: 1px; }
-.leftmenu li a { display: block; color: #333;
-	padding: 5px 0 5px 40px;
+.leftmenu li a { display: inline-block; color: #333;
+	padding: 1px 0 5px 37px;
 	font-size: 11px;
 	white-space: normal;
+	margin-top: -4px;
+	line-height: 27px;
+}
+
+.marginbottom {
+	margin-bottom: 10px;
 }
 .leftmenu li a { -moz-border-radius: 3px 0 0 3px; -webkit-border-radius: 3px 0 0 3px; border-radius: 3px 0 0 3px; }
 .leftmenu li a:hover { text-decoration: none; background: #d8e5f4; }
@@ -249,8 +255,12 @@ div.pagination {
 
 .maincontent_inner { width:68.33%; margin-right: 1%; }
 
-.breadcrumbs { font-size: 11px; padding: 0 15px 0 30px; margin: 20px 15px 0 15px; border: 1px solid #ddd; padding: 5px 20px 5px 0;
+.breadcrumbs { font-size: 11px; padding: 0 15px 0 30px; margin: 2px 15px 0; border: 1px solid #ddd; padding: 5px 20px 5px 0;
 	text-indent: 30px;
+}
+
+#switch_user_identifier {
+	width: 100%;
 }
 .breadcrumbs { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; background: #f7f7f7 url(../images/icons/homesmall.png) no-repeat 10px 13px; }
 .breadcrumbs { -moz-box-shadow: 1px 1px 0 #f3f3f3; }
@@ -261,7 +271,13 @@ div.pagination {
 .breadcrumbs a:hover { text-decoration: none; }
 .breadcrumbs span { color: #666; }
 
-.widgetlist { list-style: none; }
+.widgetlist { list-style: none; overflow: hidden;
+}
+
+div.inner {width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
 .widgetlist li { display: inline-block; float: left; width: 130px; margin: 0 10px 10px 0; }
 .widgetlist li a { display: block; padding: 15px; border: 1px solid #ccc; color: #333; text-align: center; background: #f7f7f7; }
 .widgetlist li a { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 1px 1px 0 #fff; color: #069; }
@@ -428,19 +444,24 @@ input[type=radio], input[type=checkbox] { margin: 0; padding: 0; vertical-align:
 
 
 .sTableHead { border-collapse: collapse; }
-.sTableHead td { padding: 8px 10px; color: #ccc; text-shadow: 1px 1px #444; font-size: 12px; text-transform: uppercase; border-right: 1px solid #777; }
-.sTableHead .head0 { background: #666; }
-.sTableHead .head1 { background: #555; }
+.sTableHead td { padding: 8px 10px; color: #ccc; text-shadow: 1px 1px #444; font-size: 12px; text-transform: uppercase; border-right: 1px solid #e6e8e8; }
+/*.sTableHead .head0 { background: #666; }
+.sTableHead .head1 { background: #555; }*/
 
 .sTableHead { border-collapse: collapse; }
-.sTableHead th { padding: 8px 10px; color: #ccc; text-shadow: 1px 1px #444; font-size: 09px; text-transform: uppercase; border-right: 1px solid #777; }
-.sTableHead .head0 { background: #666; }
-.sTableHead .head1 { background: #555; }
+.sTableHead th { padding: 8px 10px; color: #fefffe; text-shadow: #595a5a 1px 1px 0; font-size: 11px; text-transform: capitalize; border-right: 1px solid #cacccc; }
+.sTableHead .head0 { background: #688ab5 url(../images/titlebg.png) repeat-x top left; }
+.sTableHead .head1 { background: #688ab5 url(../images/titlebg.png) repeat-x top left; }
+
+tr.odd {
+	background-color: #f8fbe1;
+}
 
 .sTableWrapper { border: 1px solid #bbb; border-top: 0; }
 
 .sTable { border-collapse: collapse; }
 .sTable tr td { padding: 8px 10px; border-right: 1px solid #fff; border-bottom: 1px solid #ddd; vertical-align: top; }
+
 .sTable tr td:last-child { border-right: 0; }
 .sTable tr:last-child td { border-bottom: 0; }
 .sTable tr:hover { background: #ddd; }
@@ -545,6 +566,15 @@ input[type=radio], input[type=checkbox] { margin: 0; padding: 0; vertical-align:
 .widgetbox .content .bright { border-right: 1px solid #ddd; width: 47%; }
 .clear { clear: both; height: 15px;  }
 .nopadding { padding: 0 !important; }
+
+ul.leftmenu.noleftpadding li{
+	margin-left: -36px;
+}
+
+ul.leftmenu.noleftpadding {
+	margin-top: -18px;
+	margin-bottom: -13px;
+}
 .loaders img { vertical-align: middle; display: inline-block; margin-right: 10px; }
 .padding15 { padding: 15px; overflow: hidden; }
 .padding1020 { padding: 10px 20px; }
@@ -553,6 +583,9 @@ input[type=radio], input[type=checkbox] { margin: 0; padding: 0; vertical-align:
 .textindent { text-indent: 31px;
 	font-size: 14px;
 	margin-bottom: 8px;
+}
+.center {
+	margin: 0 auto;
 }
 .floatleft { float: left; }
 .width50 { width: 50px; }

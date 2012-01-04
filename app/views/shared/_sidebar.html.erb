@@ -1,16 +1,9 @@
-
-
 <nav id="main-nav">
 <ul class="leftmenu">
-       	<%= render 'loginmenu' %>
+<%= render 'loginmenu' %>
 <%= switch_user_select %>
 </ul>
 </nav>
-
-
-<% if can? :see_others, @contract %> 
-<section><%= render 'otheracts-sidebar'%> </section>
-<% end%>
 
 <section class="sidebar separator"><%= render 'messages' %></section>
 
