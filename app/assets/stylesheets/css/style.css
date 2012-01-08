@@ -202,13 +202,30 @@ div.pagination {
 
 .leftmenu { list-style: none; }
 .leftmenu li { display: block; margin-bottom: 1px; }
-.leftmenu li a { display: inline-block; color: #333;
+.leftmenu li a { display: block; color: #333;
 	padding: 1px 0 5px 37px;
 	font-size: 11px;
 	white-space: normal;
 	margin-top: -4px;
 	line-height: 27px;
 }
+
+li.bold {
+	font-size: 15px;
+	color: #000;
+}
+
+span.count {
+	padding: 1px 5px 0 5px;
+display: inline-block;
+font-size: 10px;
+background: #C00;
+color: white;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
 
 .marginbottom {
 	margin-bottom: 10px;
@@ -568,12 +585,24 @@ tr.odd {
 .nopadding { padding: 0 !important; }
 
 ul.leftmenu.noleftpadding li{
-	margin-left: -36px;
+	width: 50%;
+	float: left;
 }
 
 ul.leftmenu.noleftpadding {
 	margin-top: -18px;
 	margin-bottom: -13px;
+}
+
+ul.leftmenu.noleftpadding li a{
+	padding-left: 0;
+	margin: 0 0 0 8px;
+	padding: 0;
+	display: inline-block;
+}
+ul.leftmenu.noleftpadding li a:hover {
+	text-decoration: underline;
+	background-color: transparent;
 }
 .loaders img { vertical-align: middle; display: inline-block; margin-right: 10px; }
 .padding15 { padding: 15px; overflow: hidden; }

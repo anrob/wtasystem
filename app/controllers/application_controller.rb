@@ -37,11 +37,11 @@ class ApplicationController < ActionController::Base
      @mana = Actcode.find_by_id(current_user.actcode_id)
      
      # @manger = User.getotheracts(current_user).map {|m| m.actcode}
-     @manger =Actcode.getallbycompany(current_user).map {|m| m.actcode}
+     @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode}
      @but = @manger.include?(params[:act_code]).to_s
      @user = current_user
      @pd = @user
-     @message = Message.last
+     # @message = Message.last
      @otheracts = User.getotheracts(current_user).order("first_name")
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode")
      # @cp = Contract.where(:act_code => current_user.actcode)

@@ -11,3 +11,4 @@ class ContractMailer < ActionMailer::Base
             :body => "You have unconfirmed Events")
    end
 end
+# add hyperlink 

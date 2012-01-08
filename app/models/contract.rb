@@ -1,6 +1,6 @@
 class Contract < ActiveRecord::Base
   belongs_to :user
-  #has_one :user
+  has_one :actcode
   #has_many :users, :class_name => "Contract", :foreign_key => "actcode", :primary_key => 'act_code'
 
   default_scope :order => 'date_of_event ASC'
@@ -11,6 +11,7 @@ class Contract < ActiveRecord::Base
   scope :additional, lambda { |addi| where("prntkey23 = ?", addi.prntkey23)} 
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))
+  scope :justimported, where(:created_at => (my_date - 7.days)..(my_date))
   scope :tenday, where(:date_of_event => (my_date + 8.days)..(my_date + 11.days))
   scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
   scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
@@ -20,7 +21,8 @@ class Contract < ActiveRecord::Base
   scope :unconfirmedevent, where(:confirmation => 0)
   scope :innextten, where(:date_of_event => (my_date)..(my_date + 11.days))
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
-  scope :getcount, lambda {|contra| where("act_code = ?", contra)}
+  scope :getcount, lambda {|contra| 
+    unconfirmedevent.where("act_code = ?", contra)}
   
  define_easy_dates do 
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
@@ -155,6 +157,17 @@ def self.mailchimp
     @users.each do |us|
     gb.list_subscribe(:id => "9e862a6c03", :email_address => us.email,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MMERGE3 => us.updated_at } )
     end
+  end
+  
+  def isincluded
+  
+   unless @contract.nil?
+      @isinclud = "normal"
+    else
+      @isinclud = "bold"
+    end
+    @isinclud
+
   end
   
   def eventtime

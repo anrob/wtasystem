@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
- #load_and_authorize_resource
+  inherit_resources
+  # load_and_authorize_resource
  set_tab :home
  before_filter :everypage
  helper_method :themanager, :themap
@@ -7,51 +8,53 @@ class ContractsController < ApplicationController
   def index 
     case @but when "true"
     @contract = Contract.where(:act_code => params[:act_code])
-    @unconfirmed = @contract.unconfirmedevent.thisweek.count + @contract.unconfirmedevent.tenday.count
-    @contractcount = Contract.getcount(params[:getall])
+    #@contracts = Contract.find_all_by_act_code(:act_code =>[:act_code])
+   # @unconfirmed = Contract.getcount(@manger.split(",")).thisweek.count + @contract.getcount(@manger.split(",")).tenday.count
+   
     if cannot? :see_others, @contract
      redirect_to root_url
     end
     else
       @mana = Actcode.find_by_id(current_user.actcode_id)
       @contract = Contract.mytoday.mystuff(@mana.actcode)
-      @contract_count = Contract.where(:act_code => params[@getallbycompnay]).count
-  #  @c = @getallbycompnay.each do |actcodeee|
-  #  # Contract.where(:act_code => actcodeee.actcode).thirtyday.count
-  #  # Contract.getcount(actcodeee.actcode).thirtyday.count
-  #  @d = Contract.find_all_by_act_code(actcodeee.actcode)
-  #  @e = @d.count
-  # end
-  # end
-      
-    end 
+      @getcompan = Actcode.getallbycompany(current_user)
+      #@gt = Actcode.find_all_by_management_id(@contract.map {|m| m.act_code}) 
+      @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
+      @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
+      #@cont = @cont.tenday
+      @gp = @gt.map {|m| m.actcode}
+      #@contract_count = Contract.where(:act_code => params[@manger]).count
+      # @unconfirmed = Contract.getcount( @manger.split(",")).thisweek.count + Contract.getcount( @manger.split(",")).tenday.count
+      #@contractcount = @contract.getcount((@getallbycompnay.map {|m| m.actcode}))
+      #@unconfirmedd = Contract.getcount(@manger.split(",")).thisweek
+  end 
  #respond_with :contracts => @contract.thisweek
  end
 
   def show
       add_breadcrumb "Show Contract", contract_path
       @contract = Contract.find(params[:id])
-      if @contract.act_code = current_user.actcode
-      @ismanager = @manger.include?(@contract.act_code).to_s
-    end
-      case @ismanager when "true"
-     if cannot? :see_others, @contract
-      redirect_to root_url        
+        if @contract.act_code = current_user.actcode
+        @ismanager = @manger.include?(@contract.act_code).to_s
       end
-    else
-       @contract = Contract.find(params[:id])
-    end
+        case @ismanager when "true"
+       if cannot? :see_others, @contract
+        redirect_to root_url        
+        end
+      else
+         @contract = Contract.find(params[:id])
+      end
       @additional = Contract.additional(@contract)
-      respond_with do |format|
-        # format.html
-        format.pdf do
-        pdf = ContractPdf.new(@contract, view_context)
-        send_data pdf.render, filename: "contract_#{@contract.contract_number}.pdf",
-        
-        type: "application/pdf",
-        disposition: "inline"
-      end
-    end
+     respond_with do |format|
+            format.html
+            format.pdf do
+            pdf = ContractPdf.new(@contract, view_context)
+                 send_data pdf.render, filename: "contract_#{@contract.contract_number}.pdf",
+                 
+                 type: "application/pdf",
+                 disposition: "inline"
+              end
+       end
  
   end
   
@@ -67,6 +70,7 @@ class ContractsController < ApplicationController
       respond_with :contracts => @contracts
   end
   def alljobs
+        @noactcode = Contract.justimported
        @contract = Contract.unconfirmedevent.innextten.includes(:user)
        @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
        @users = User.find_all_by_management_id(@actcodes.map {|m| m.management_id}) 

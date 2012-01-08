@@ -95,7 +95,15 @@
     
     <div class="one_third last">
     	<div class="right">
+
+	
         <%= yield :map %>
+<% unless cannot? :see_money, @user %>
+<%= yield :money %>
+<% end %>
+
+		
+
                 <!-- content -->
             </div><!-- widgetbox -->
             

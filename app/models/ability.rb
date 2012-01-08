@@ -8,8 +8,8 @@ class Ability
           can :manage, :all
           can :assign_roles, :all
         else
-          #can :manage, Contract, :act_code => user.actcode
-           can :manage, @contract
+          can :manage, @contract, :act_code => user.actcode
+           #can :manage, @contract
           cannot :destroy, Contract
           can :update, User, :id => user.id
         end
