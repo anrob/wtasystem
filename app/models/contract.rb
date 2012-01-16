@@ -19,7 +19,7 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(:date_of_event => (my_date)..(my_date + 365.days))
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => 0)
-  scope :innextten, where(:date_of_event => (my_date)..(my_date + 11.days))
+  scope :innextten, where(:date_of_event => (my_date)..(my_date + 10.days))
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   scope :getcount, lambda {|contra| 
     unconfirmedevent.where("act_code = ?", contra)}
@@ -171,7 +171,7 @@ def self.mailchimp
   end
   
   def eventtime
-     "#{event_start_time} #{event_end_time} WHAT"
+     "#{event_start_time} #{event_end_time}"
    end
    
    def status

@@ -46,7 +46,12 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 /***GENERAL STYLES***/
-body { font-family: DroidSansRegular, "Segoe UI", "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 12px; }
+/*body { font-family: DroidSansRegular, "Segoe UI", "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 12px; }*/
+body {
+	font: 1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+
 body { background: #333 url(../images/texturebg.png); line-height: 21px; }
 input, select, textarea, button { outline: none; font-family: DroidSansRegular, "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 12px; }
 input, select, textarea, button { border: 1px solid #ccc; padding: 5px; }
@@ -476,8 +481,41 @@ tr.odd {
 
 .sTableWrapper { border: 1px solid #bbb; border-top: 0; }
 
-.sTable { border-collapse: collapse; }
-.sTable tr td { padding: 8px 10px; border-right: 1px solid #fff; border-bottom: 1px solid #ddd; vertical-align: top; }
+.sTable { border-collapse: collapse;
+	font-size: 11px;
+}
+
+div.tan {
+	overflow: hidden;
+	padding: 8px;
+	background: #dbe6ec;
+	border: 1px solid #aeb7bd;
+}
+
+hr.show-line {
+	background: #024242;
+	border-bottom: 1px solid #80bfea;
+	opacity: 0.34;
+}
+
+div.tan h2.yesido {
+	color: #b2605b;
+	font-size: 23px;
+}
+
+.mapsection img {
+	border: 1px solid #c0c0c0;
+	padding: 4px;
+}
+
+div.content.lesspadding {
+	
+	padding: 7px;
+	font: 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+.sTable tr td { padding: 8px 10px; border-right: 1px solid #fff; border-bottom: 1px solid #ddd; vertical-align: top;
+	color: #b21221;
+}
 
 .sTable tr td:last-child { border-right: 0; }
 .sTable tr:last-child td { border-bottom: 0; }
@@ -613,6 +651,8 @@ ul.leftmenu.noleftpadding li a:hover {
 	font-size: 14px;
 	margin-bottom: 8px;
 }
+
+
 .center {
 	margin: 0 auto;
 }
@@ -632,4 +672,85 @@ ul.leftmenu.noleftpadding li a:hover {
 .mgright5 { margin-right: 5px; }
 .inlineblock { display: inline-block; }
 .alignright { text-align: right; }
+
+
+div.invoicez p.address {
+	margin-top: 3px;
+	font-style: italic;
+	font-size: 15px;
+}
+
+div.invoicez {
+	line-height: 19px;
+}
+
+div.invoicez h2 {
+	color: #085591;
+	line-height: 26px;
+}
+div.invoicez h4 {
+	color: #138bb2;
+	line-height: 29px;
+}
 .bordertop { border-top: 1px solid #ccc; }
+
+
+div#quickdash {
+	border-bottom: 1px solid #d5d5d5;
+	margin-bottom: 15px;
+	width: 100%;
+	margin-top: -20px;
+}
+
+
+
+div.dash  {
+	/*line-height: 45px;*/
+	color: #085591;
+	font-weight: bold;
+	vertical-align: top;
+}
+#money dt span {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	color: #9b9396;
+}
+div#money {
+	background-color: #fff8d9;
+	border-bottom: 1px solid #f3d97e;
+	margin-bottom: 12px;
+	overflow: hidden;
+	padding: 11px;
+
+	width: 101%;
+	margin-left: -16px;
+}
+
+#money dt {
+	float: left;
+	width: 33%;
+	text-align: center;
+
+}
+
+span span {
+	font-weight: normal;
+	font-style: normal;
+		font-size: 27px;
+	font-weight: bold;
+}
+
+#money dt b.themoney {
+	display: block;
+	font-size: 22px;
+display: block;
+color: #474643;
+letter-spacing: -0.1px;
+padding-bottom: 5px;
+}
+#money dt.middle {
+	border-right: 1px solid #ced2ad;
+	border-left: 1px solid #ced2ad;
+}

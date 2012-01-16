@@ -1,36 +1,52 @@
+<div id="quickdash">
+	<div id="money">
+		<dt><b class="themoney">$<%= @contract.contract_price %></b><span>Contract price:</span>        </dt>
+		<dt class="middle"><b class="themoney">$<%= @contract.act_net %></b><span>Contract Net:</span> 			</dt>
+		<dt><b class="themoney">$<%= @contract.pick_up_amount %></b><span>Pickup Amount:</span> 		</dt>                    
+	</div>
+	<div class="dash one_half">
+			Dashboard
+	</div>
+	<div class="dash alignright one_half last">
+	 <li><%= image_tag("images/printer.png") %>
+		<%= link_to "Printable Version (PDF)", contract_path(@contract, format: "pdf") %></li>
+	</div>
 
-<div class="invoicez last">
+		<br clear="all">
+</div>
+
+<div class="invoicez">
 	<div class="invoice_inners">
+		<div class="tan">
 	<div class="one_half">	
-		<p><%= link_to "Printable Version (PDF)", contract_path(@contract, format: "pdf") %></p><br>
 		<h2><%= @contract.act_booked %></h2>
 		<h2><%= @contract.type_of_event %></h2>
 		<h4><%= @contract.act_form %></h4>
-		<%= @contract.location_name %><br>
+		<p class="address"><%= @contract.location_name %><br>
 	   	<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-									Phone:<%= @contract.location_phone %><br><br clear="all">
+	Phone:<%= @contract.location_phone %></p><br><br clear="all">
 	</div>
 	
 	<div class="one_half last">
 	<h5 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h5>
-	<h4 class="blue"> <b>Date of event: </b><%= @contract.date_of_event %>	</h4>
-	<h4 class="blue"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
-	<h4>Agent : <%= @contract.agent %> </h4>
-	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
-	<h4 class="green">Pickup Amount: $<%= @contract.pick_up_amount %></h4>
-	<% unless cannot? :see_money, Contract %>
+	<h2 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event %>	</h2>
+	<h2 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h2>
+	<h5>Agent : <%= @contract.agent %> </h4>
+	<h5 class="blue">Contract number: <%= @contract.contract_number %></h5>
+	<h5 class="green">Pickup Amount: $<%= @contract.pick_up_amount %></h5>
+	<%unless cannot? :see_money, Contract %>
 	<h4 class="green">Contract price: $<%= @contract.contract_price %></h4>
 	<h4 class="green">Contract Net: $<%= @contract.act_net %></h4>
 	<% end %>
 	
 	</div>
-<br clear="all">
+</div>
 
 <% content_for :map do %>
 <% unless @contract.location_name.blank? %>	
 <div class="widgetbox">
 <h3> <span>Event Location</span></h3>
-	<div class="content">
+	<div class="content mapsection">
 	<%= @contract.location_name %><br>
 				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
 				Phone: <%= @contract.location_phone %>	<br clear="all">	<br clear="all">
@@ -41,38 +57,44 @@
 
 	<% end %>
 	<% end %>
-
+<hr class="show-line">
 	<div class="widgetbox one_half">
 		<h3><span>Contract Provisions</span></h3>
-						<div class="content">
-				<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
-					</div>
+						<div class="content lesspadding">
+							<% unless @contract.contract_provisions == "nil" %>
+								<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+							<% end %>
+						</div>
 					</div>
 					<div class="widgetbox one_half last">
 					<h3><span>Act Notes</span></h3>
-						<div class="content">
-					<%= @contract.act_notes %>
+						<div class="content lesspadding">
+							<% unless  @contract.act_notes == "nil" %>
+								<%= @contract.act_notes %>
+							<% end %>
+							
+					
 					</div>
 						</div>
 						<br clear="all">
 	
 					<div class="widgetbox">
 		<h3><span>Additional Services Provided</span></h3>
-		<div class="content">
-		<table cellpadding="0" cellspacing="0" class="sTable2" width="100%">
+		<div class="content lesspadding">
+		<!-- <table cellpadding="0" cellspacing="0" class="sTable2" width="100%"> --><ul>
 			<% @additional.each do |addi| %>
 		<%#=current_user.actcode.inspect %>
-				<tr>
+				<!-- <tr> -->
 					<% if  %>
-					<td><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></td>
+					<!-- <td> --><li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li><!-- </td> -->
 					<% else %>
-					  	<td><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></td>
+					  	<!-- <td> --><li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li><!-- </td> -->
 					<% end %>
 					
 			
-				</tr>
+				<!-- </tr> -->
 			
-				<% end %>	</table>
+				<% end %>	<!-- </table> --></ul>
 			<% #end %>
 			</div>
 			</div>
@@ -105,10 +127,7 @@
 <div class="content">
 <%= @contract.act_code %>
 
-<%= @contract.act_form %>
 
-<%= @contract.agent %>
-<%= @contract.act_booked %>
 
 <%= @contract.ceremonoy_location_name %>
 
@@ -173,7 +192,6 @@
 <%= @contract.home_phone %>
 <%= @contract.work_phone %>
 <%= @contract.cell_phone %>
-<%= @contract.act_notes %>
-<%= @contract.contract_provisions %>
+
 
 </div>		

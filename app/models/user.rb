@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
   belongs_to :management
   belongs_to :actcode
-  has_many :contracts
+  #has_many :contracts
   accepts_nested_attributes_for :actcode
   default_scope :order => 'email ASC'
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable
          #scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}
          #scope :unconfirmedevent, lambda { |contract|  where(:confirmation => 0)}
+        # scope :ismanager, where(if user.role == "manager")
          
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   ROLES = %w[everything money manager chart]

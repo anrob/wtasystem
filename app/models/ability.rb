@@ -8,11 +8,11 @@ class Ability
           can :manage, :all
           can :assign_roles, :all
         else
-          can :manage, @contract, :act_code => user.actcode
-           #can :manage, @contract
-          cannot :destroy, Contract
-          can :update, User, :id => user.id
-        end
+          # can :manage, @contract
+          #    #can :manage, @contract
+          #   cannot :destroy, Contract
+          #   can :update, User, :id => user.id
+           end
         
         if user.is? :money
           can :see_money, :all
@@ -25,7 +25,7 @@ class Ability
         if user.is? :manager
           can :see_others, :all 
           
-          can :modify, @contract
+          #can :modify, @contract
         end
   end
 end

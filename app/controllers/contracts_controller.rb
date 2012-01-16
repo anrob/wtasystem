@@ -1,34 +1,28 @@
 class ContractsController < ApplicationController
   inherit_resources
-  # load_and_authorize_resource
+  #load_and_authorize_resource
  set_tab :home
+ 
  before_filter :everypage
  helper_method :themanager, :themap
     
   def index 
     case @but when "true"
-    @contract = Contract.where(:act_code => params[:act_code])
-    #@contracts = Contract.find_all_by_act_code(:act_code =>[:act_code])
-   # @unconfirmed = Contract.getcount(@manger.split(",")).thisweek.count + @contract.getcount(@manger.split(",")).tenday.count
-   
-    if cannot? :see_others, @contract
-     redirect_to root_url
-    end
-    else
-      @mana = Actcode.find_by_id(current_user.actcode_id)
-      @contract = Contract.mytoday.mystuff(@mana.actcode)
-      @getcompan = Actcode.getallbycompany(current_user)
-      #@gt = Actcode.find_all_by_management_id(@contract.map {|m| m.act_code}) 
-      @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
-      @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
-      #@cont = @cont.tenday
-      @gp = @gt.map {|m| m.actcode}
-      #@contract_count = Contract.where(:act_code => params[@manger]).count
-      # @unconfirmed = Contract.getcount( @manger.split(",")).thisweek.count + Contract.getcount( @manger.split(",")).tenday.count
-      #@contractcount = @contract.getcount((@getallbycompnay.map {|m| m.actcode}))
-      #@unconfirmedd = Contract.getcount(@manger.split(",")).thisweek
-  end 
- #respond_with :contracts => @contract.thisweek
+        @contract = Contract.where(:act_code => params[:act_code])
+        if cannot? :see_others, @contract
+                   redirect_to root_url
+                  end
+        else
+          @mana = Actcode.find_by_id(current_user.actcode_id)
+                        @contract = Contract.mytoday.mystuff(@mana.actcode)
+                        @getcompan = Actcode.getallbycompany(current_user)
+                        @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
+                        @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
+                     
+                        @gp = @gt.map {|m| m.actcode}
+      
+      end 
+     #respond_with :contracts => @contract.thisweek
  end
 
   def show
@@ -73,10 +67,15 @@ class ContractsController < ApplicationController
         @noactcode = Contract.justimported
        @contract = Contract.unconfirmedevent.innextten.includes(:user)
        @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-       @users = User.find_all_by_management_id(@actcodes.map {|m| m.management_id}) 
+       @users = User.find_all_by_actcode_id(@actcodes) 
+      #@recipients = @users.collect {|m| m.email}
+      
+       @theusers = User.find_all_by_management_id(@actcodes.map {|m| m.management_id})
+       #@theusers = User.find_all_by_actcode_id(@contract.map {|m| m.act_code}) 
+       #@theusers = User.contracts
        # @confirmed User.where(:confirmation => )
-       @recipients = @users.collect {|m| m.email}
-     # @contract = Contract.mystuff(@mana.actcode).ninetyday
+       @recipients = @theusers.collect {|m| m.email}
+       # @contract = Contract.mystuff(@mana.actcode).ninetyday
   end
   
   def confirmjob
