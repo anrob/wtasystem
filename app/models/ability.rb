@@ -7,12 +7,10 @@ class Ability
         if user.is? :everything
           can :manage, :all
           can :assign_roles, :all
+          # can :update, User
         else
-          # can :manage, @contract
-          #    #can :manage, @contract
-          #   cannot :destroy, Contract
-          #   can :update, User, :id => user.id
-           end
+          can :update, User, :id => user.id
+        end
         
         if user.is? :money
           can :see_money, :all
@@ -29,3 +27,9 @@ class Ability
         end
   end
 end
+
+     # can :manage, @contract
+      #    #can :manage, @contract
+      #   cannot :destroy, Contract
+      
+      ## controls user edit of account screen
