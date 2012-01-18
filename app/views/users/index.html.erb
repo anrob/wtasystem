@@ -4,15 +4,19 @@
     <th class="head0">Email Address</th>
     <th class="head0">Edit</th>
 
-   
+ <% if current_user.is? :everything? %>  
     <th class="head0">Delete</th>
+<% end %>
   </tr>
 	</thead>
 <% @users.each do |u| %>
  <tr>
 	<td><%= link_to u.email, edit_user_path(u) %> </td>
 	<td><%= link_to 'Edit', edit_user_path(u) %></td>
+<% if current_user.is? :everything? %>
 	<td><%= link_to 'Destroy', u, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>
+
 	</tr>
 	<% end %>
 	
