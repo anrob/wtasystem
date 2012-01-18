@@ -7,8 +7,8 @@ class Ability
         if user.is? :everything
           can :manage, :all
           can :assign_roles, :all
-          # can :update, User
         else
+          can :manage, Contract, :act_code => user.actcode.actcode
           can :update, User, :id => user.id
         end
         
@@ -22,6 +22,9 @@ class Ability
         
         if user.is? :manager
           can :see_others, :all 
+          can :manage, User, :management_id => user.management_id
+          can :manage, Contract, :act_code => user.actcode_id
+          cannot :destroy, User
           
           #can :modify, @contract
         end

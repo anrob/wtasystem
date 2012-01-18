@@ -8,10 +8,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end  
   rescue_from ActiveRecord::RecordNotFound do
-     
-    render :file => "#{Rails.root}/public/404.html", :layout => true, :status => 404
-   
-  end
+      
+     render :file => "#{Rails.root}/public/404.html", :layout => true, :status => 404
+    
+   end
+   WillPaginate.per_page = 10
   #protect_from_forgery
   layout :special_layout
  

@@ -21,7 +21,7 @@ Management Company : <%= @user.management.name %></p>
 </strong>
 <% end %>
 <p>
-<% if can? :assign_roles, @user %>
+<% if current_user.is? :everything %>
 <h3>Privileges</h3> 
 <% for role in User::ROLES %>
 <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>

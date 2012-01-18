@@ -1,8 +1,7 @@
 class ContractsController < ApplicationController
-  inherit_resources
-  #load_and_authorize_resource
  set_tab :home
- 
+ inherit_resources
+ load_and_authorize_resource
  before_filter :everypage
  helper_method :themanager, :themap
     
@@ -27,17 +26,17 @@ class ContractsController < ApplicationController
 
   def show
       add_breadcrumb "Show Contract", contract_path
-      @contract = Contract.find(params[:id])
-        if @contract.act_code = current_user.actcode
-        @ismanager = @manger.include?(@contract.act_code).to_s
-      end
-        case @ismanager when "true"
-       if cannot? :see_others, @contract
-        redirect_to root_url        
-        end
-      else
-         @contract = Contract.find(params[:id])
-      end
+      # @contract = Contract.find(params[:id])
+      #   if @contract.act_code = current_user.actcode
+      #   @ismanager = @manger.include?(@contract.act_code).to_s
+      # end
+      #   case @ismanager when "true"
+      #  if cannot? :see_others, @contract
+      #   redirect_to root_url        
+      #   end
+      # else
+      #    @contract = Contract.find(params[:id])
+      # end
       @additional = Contract.additional(@contract)
      respond_with do |format|
             format.html
@@ -56,7 +55,7 @@ class ContractsController < ApplicationController
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
       @mana = Actcode.find_by_id(current_user.actcode_id)
       #case @but when "true"
-      unless can? :see_others, Contract
+      unless current_user.is? :manager
        @contracts = Contract.mystuff(@user.actcode.actcode).threesixfive.all  
       else
          @contracts = Contract.where(:act_code => @manger.split(",")).threesixfive.all
