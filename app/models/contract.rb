@@ -149,9 +149,9 @@ class Contract < ActiveRecord::Base
          @recipients = @users.collect {|m| m.email}
          @recipients_number = @users.collect {|m| m.phone_number}
         ContractMailer.send_reminder(@recipients).deliver
-        @recipients_number.compact.each do |phonenumber|
-         sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
-         sms.deliver_sms
+       # @recipients_number.compact.each do |phonenumber|
+      #   sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
+       #  sms.deliver_sms
       
         
 
