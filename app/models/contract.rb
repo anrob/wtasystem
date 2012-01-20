@@ -155,7 +155,7 @@ class Contract < ActiveRecord::Base
       
         
 
-     end
+     #end
      end
      
 def self.mailchimp
