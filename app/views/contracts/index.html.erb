@@ -17,6 +17,7 @@
 <% if current_user.is? :manager %>
 <%= render 'otheracts-sidebar' %>
 <% end %>
+<h3><span>Contracts in the Next 10 Days</span></h3>
 <table cellpadding="0" cellspacing="0" class="sTable" width="100%">
 	<thead class="sTableHead">
 	 <tr>
@@ -34,11 +35,11 @@
 				</thead>
 <tbody>
 
-<%= render @contract.thisweek   %>
+<%#= render @contract.thisweek   %>
 
 <%= render @contract.tenday %>
 
-<%= render @contract.thirtyday  %>
+<%#= render @contract.thirtyday  %>
 </tbody>
 </table>
 

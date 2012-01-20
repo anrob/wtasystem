@@ -486,6 +486,7 @@ tr.odd {
 
 .sTable { border-collapse: collapse;
 	font-size: 11px;
+	margin-top: 8px;
 }
 
 div.tan {

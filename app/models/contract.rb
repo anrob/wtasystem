@@ -12,7 +12,7 @@ class Contract < ActiveRecord::Base
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))
   scope :justimported, where(:created_at => (my_date - 7.days)..(my_date))
-  scope :tenday, where(:date_of_event => (my_date + 8.days)..(my_date + 11.days))
+  scope :tenday, where(:date_of_event => (my_date)..(my_date + 11.days))
   scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
   scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
   scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 90.days))
@@ -141,11 +141,14 @@ class Contract < ActiveRecord::Base
      end
      
      def self.send_reminders
+         # @contract = Contract.unconfirmedevent.innextten.includes(:user)
+         #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
          @contract = Contract.unconfirmedevent.innextten.includes(:user)
-         @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+          @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+          @users = User.find_all_by_actcode_id(@actcodes)
          @recipients = @users.collect {|m| m.email}
          @recipients_number = @users.collect {|m| m.phone_number}
-        #ContractMailer.send_reminder(@recipients).deliver
+        ContractMailer.send_reminder(@recipients).deliver
         @recipients_number.compact.each do |phonenumber|
          sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
          sms.deliver_sms

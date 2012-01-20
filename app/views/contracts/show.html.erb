@@ -10,8 +10,8 @@
 			Dashboard
 	</div>
 	<div class="dash alignright one_half last">
-	 <li><%= image_tag("images/printer.png") %>
-		<%= link_to "Printable Version (PDF)", contract_path(@contract, format: "pdf") %></li>
+	 <li><%#= image_tag("images/printer.png") %>
+		<%= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <%= button_to "Email Job Imformation", contract_path(@contract, format: "pdf"), :class => 'button button_blue',:method => :get %></li>
 	</div>
 
 		<br clear="all">
@@ -87,7 +87,7 @@
 			<% @additional.each do |addi| %>
 		<%#=current_user.actcode.inspect %>
 				<!-- <tr> -->
-					<% if  %>
+					<% if current_user.is? :everything %>
 					<!-- <td> --><li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li><!-- </td> -->
 					<% else %>
 					  	<!-- <td> --><li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li><!-- </td> -->
@@ -129,7 +129,7 @@
 <div class="content">
 <%= @contract.act_code %>
 
-
+<%#= @contract.unique3%>
 
 <%= @contract.ceremonoy_location_name %>
 
