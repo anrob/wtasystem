@@ -1,9 +1,11 @@
 <div id="quickdash">
-	<div id="money">
+	<% unless cannot? :see_money, Contract %>
+<div id="money">
 		<dt><b class="themoney">$<%= @contract.contract_price %></b><span>Contract price:</span>        </dt>
 		<dt class="middle"><b class="themoney">$<%= @contract.act_net %></b><span>Contract Net:</span> 			</dt>
 		<dt><b class="themoney">$<%= @contract.pick_up_amount %></b><span>Pickup Amount:</span> 		</dt>                    
 	</div>
+	<% end %>
 	<div class="dash one_half">
 			Dashboard
 	</div>
