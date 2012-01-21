@@ -1,5 +1,5 @@
 <div id="quickdash">
-	<% unless cannot? :see_money, Contract %>
+	<% if can? :see_money, @contracts %>
 <div id="money">
 		<dt><b class="themoney">$<%= @contract.contract_price %></b><span>Contract price:</span>        </dt>
 		<dt class="middle"><b class="themoney">$<%= @contract.act_net %></b><span>Contract Net:</span> 			</dt>
@@ -31,12 +31,12 @@
 	
 	<div class="one_half last">
 	<h5 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h5>
-	<h2 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event %>	</h2>
+	<h2 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %>	</h2>
 	<h2 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h2>
 	<h5>Agent : <%= @contract.agent %> </h4>
 	<h5 class="blue">Contract number: <%= @contract.contract_number %></h5>
 	<h5 class="green">Pickup Amount: $<%= @contract.pick_up_amount %></h5>
-	<%unless cannot? :see_money, Contract %>
+		<% if can? :see_money, @contracts %>
 	<h4 class="green">Contract price: $<%= @contract.contract_price %></h4>
 	<h4 class="green">Contract Net: $<%= @contract.act_net %></h4>
 	<% end %>
@@ -59,7 +59,66 @@
 
 	<% end %>
 	<% end %>
+	<hr>
+		<div class="widgetbox one_half">
+	<h3> <span>Client Section</span></h3>
+	<div class="content">
+	<%= @contract.ceremonoy_location_name %>
+	<%= @contract.ceremony_address_line_2 %>
+	<%= @contract.ceremony_location_city %>
+	<%= @contract.ceremony_instrumenttation %>
+	<%= @contract.seremonly_location_state %>
+	<%= @contract.ceremony_location_zip %>
+	<%= @contract.ceremony_start_time %>
+
+	Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
+	Email Address: <%= @contract.email_address %><br>
+	Bride / Bat Mitzvah Name: <%= @contract.brides_names %><br>
+	Grooms / Bar Mitzvah Name: <%= @contract.grooms_name %><br>
+
+	Home Phone: <%= @contract.home_phone %><br>
+	Work Phone: <%= @contract.work_phone %><br>
+	Cell Phone: <%= @contract.cell_phone %><br>
+	</div>
+	</div>
+		<div class="widgetbox one_half last">
+			<h3> <span>Extras Section</span></h3>
+			<div class="content">
+	<%= @contract.early_setup_time %>
+
+
+	<%= @contract.cocktail_instrumentation %>
+
+
+	Giveaways: <%= @contract.giveaways %><br>
+
+
+
+	Type of Light Show : <%= @contract.type_of_light_show %>
+
+
+
+	<%= @contract.explanation_opf_pickup_adjustment %>
+	<%= @contract.capital_music_player %>
+
+	<%= @contract.questionnaire_received_date %><br>
+
+
+	Referral Fee to :<%= @contract.referral_fee_to %><br>
+	Song Requests: <%= @contract.song_requests %><br>
+
+	<%= @contract.videographer_1 %>
+	<%= @contract.videographer_2 %>
+	<%= @contract.videgrapher_3 %>
+
+
+	<%= @contract.company %>
+
+
+	</div>
+	</div>
 <hr class="show-line">
+
 	<div class="widgetbox one_half">
 		<h3><span>Contract Provisions</span></h3>
 						<div class="content lesspadding">
@@ -83,21 +142,14 @@
 					<div class="widgetbox">
 		<h3><span>Additional Services Provided</span></h3>
 		<div class="content lesspadding">
-		<!-- <table cellpadding="0" cellspacing="0" class="sTable2" width="100%"> --><ul>
+	<ul>
 			<% @additional.each do |addi| %>
-		<%#=current_user.actcode.inspect %>
-				<!-- <tr> -->
 					<% if current_user.is? :everything %>
-					<!-- <td> --><li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li><!-- </td> -->
+				<li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li>
 					<% else %>
-					  	<!-- <td> --><li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li><!-- </td> -->
+					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
 					<% end %>
-					
-			
-				<!-- </tr> -->
-			
-				<% end %>	<!-- </table> --></ul>
-			<% #end %>
+				<% end %></ul>
 			</div>
 			</div>
 	
@@ -108,13 +160,13 @@
 <div class="widgetbox">
 	<h3> <span>Money Section</span></h3>
 <div class="content">
-	<% unless cannot? :see_money, Contract %>
+	<% if can? :see_money, @contracts %>
 <li class="<%= @contract.isincluded %>">cocktails charge: $	<%= @contract.cocktails_charge %></li>
 <li class="<%= @contract.isincluded %>">ceremony charge: $ <%= @contract.ceremony_charge %></li>
 <li class="<%= @contract.isincluded %>">early setup charge: $ <%= @contract.early_setup_charge %></li>
-<li class="<%= @contract.isincluded %>">charge per horn: $<%= @contract.charge_per_horn %></li>
+<li class="<%= @contract.isincluded %>">charge per horn: <%= @contract.number_of_horns %> @ $<%= @contract.charge_per_horn %></li>
 <li class="<%= @contract.isincluded %>">other charges: $<%= @contract.other_charges %></li>
-<li class="<%= @contract.isincluded %>">charge per dancer: $<%= @contract.charge_per_dancer %></li>
+<li class="<%= @contract.isincluded %>">charge per dancer:<%= @contract.number_of_dancers %> @ $<%= @contract.charge_per_dancer %></li>
 <li class="<%= @contract.isincluded %>">giveaways charge: $<%= @contract.giveaways_charge %></li>
 <li class="<%= @contract.isincluded %>">dj tech_charge: $<%= @contract.dj_tech_charge %></li>
 <li class="<%= @contract.isincluded %>">non-commissionable charges: $<%= @contract.non_commissionable_charges %></li>
@@ -126,74 +178,5 @@
 	</div>
 	</div>
 	<% end %>
-<div class="content">
-<%= @contract.act_code %>
 
-<%#= @contract.unique3%>
-
-<%= @contract.ceremonoy_location_name %>
-
-<%= @contract.ceremony_address_line_2 %>
-<%= @contract.ceremony_location_city %>
-<%= @contract.ceremony_instrumenttation %>
-<%= @contract.seremonly_location_state %>
-<%= @contract.ceremony_location_zip %>
-<%= @contract.ceremony_start_time %>
-
-
-
-<%= @contract.early_setup_time %>
-
-
-<%= @contract.cocktail_instrumentation %>
-
-
-<%= @contract.contract_number %>
-
-
-
-<%= @contract.number_of_dancers %>
-<%= @contract.giveaways %>
-
-<%= @contract.tech %>
-<%= @contract.event_end_time %>
-<%= @contract.number_of_horns %>
-<%= @contract.type_of_light_show %>
-<%= @contract.location_name %>
-<%= @contract.location_address_line_1 %>
-<%= @contract.location_address_line_2 %>
-<%= @contract.location_city %>
-<%= @contract.location_state %>
-<%= @contract.location_zip %>
-<%= @contract.location_phone %>
-
-
-<%= @contract.explanation_opf_pickup_adjustment %>
-<%= @contract.capital_music_player %>
-
-<%= @contract.questionnaire_received_date %>
-
-
-<%= @contract.referral_fee_to %>
-<%= @contract.song_requests %>
-<%= @contract.event_start_time %>
-<%= @contract.contract_status %>
-
-<%= @contract.type_of_act %>
-<%= @contract.type_of_event %>
-<%= @contract.videographer_1 %>
-<%= @contract.videographer_2 %>
-<%= @contract.videgrapher_3 %>
-<%= @contract.date_of_event %>
-<%= @contract.first_name %>
-<%= @contract.last_name %>
-<%= @contract.email_address %>
-<%= @contract.company %>
-<%= @contract.brides_names %>
-<%= @contract.grooms_name %>
-<%= @contract.home_phone %>
-<%= @contract.work_phone %>
-<%= @contract.cell_phone %>
-
-
-</div>		
+	<br clear="all">	

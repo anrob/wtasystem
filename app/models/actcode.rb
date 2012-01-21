@@ -6,7 +6,7 @@ class Actcode < ActiveRecord::Base
  
   default_scope :order => 'actcode ASC'
   scope :getallbycompany, lambda { |acts| where("management_id = ?", acts.management_id) }
-  
+  scope :isassigned, where("management_id IS NOT NULL")
   scope :getcontracts, lambda {
        joins(:contracts).group("actcodes.id") & Contract.tenday.all
      }

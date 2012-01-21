@@ -23,9 +23,9 @@
 	</table>
 
 	<br />
-
+	<% if current_user.is? :everything %>
 	<%= button_to 'New User', new_user_path, :class => 'button button_blue',:method => :get %>
-	
+	<% end %>
 	<%= will_paginate @users %>
 
 	

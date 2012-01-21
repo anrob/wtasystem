@@ -16,9 +16,9 @@ class Contract < ActiveRecord::Base
   scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
   scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
   scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 90.days))
-  scope :threesixfive, where(:date_of_event => (my_date)..(my_date + 5.years))
+  scope :threesixfive, where(:date_of_event => (my_date - 60.days)..(my_date + 5.years))
   scope :confirmedevent, :conditions => {:confirmation => 1}
-  scope :unconfirmedevent, where(:confirmation => 0)
+  scope :unconfirmedevent, where(:confirmation => "0")
   scope :innextten, where(:date_of_event => (my_date)..(my_date + 10.days))
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   scope :getcount, lambda {|contra| 
@@ -40,13 +40,13 @@ class Contract < ActiveRecord::Base
                     
                     require 'net/ftp'
                             Dir.chdir("#{Rails.root}/tmp") do
-                                    # Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-                                    #                                   ftp.passive = true
-                                    #                                   ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                                    #                                   file = ftp.nlst("*.TXT")
-                                    #                                   file.each{|filename| #Loop through each element of the array
-                                    #                                   ftp.getbinaryfile(filename,filename) #Get the file
-                                    #                                    }
+                                    Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                                                                                                       ftp.passive = true
+                                                                                                       ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                                                                                                       file = ftp.nlst("*.TXT")
+                                                                                                       file.each{|filename| #Loop through each element of the array
+                                                                                                       ftp.getbinaryfile(filename,filename) #Get the file
+                                                                                                        }
                     @listit = Dir.glob("*.TXT")
                     @listit.each do |listit|
                    $KCODE = 'UTF8'   
@@ -136,7 +136,7 @@ class Contract < ActiveRecord::Base
                                                 end
                                             #FileUtils.rm Dir.glob('*.TXT')
                                         end
-                                  #end
+                                  end
                  Dir.chdir("../")          
      end
      

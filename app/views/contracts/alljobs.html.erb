@@ -1,22 +1,6 @@
-<%#= simple_format @users.to_yaml %>
-<%# @actcodes.each do |act| %>
-<%#= act.actcode %>
-<%# end %>
-
 <div class="">
 <% @contract.each do |m| %>
-<% unless m.confirmation == 0  %>
-<li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m, :class => "confirmed"  %></li>
-<% else %>
-  <li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m, :class => "unconfirmed"  %>
-	<% unless m.user.nil? %>
-<%= " - #{m.user}" %>
-	<% end %>
-	
-	</li>
-<% end %>
-
-
+<li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m  %></li>
 <% end %>
 </div>
 <hr>
@@ -24,13 +8,6 @@
 <% @recipients.each do |email| %>
 <li><%= email%></li>
 <% end %>
-
-
-<div>
-	<%# @noactcode.each do |ac| %>
-	<li><%#= ac.act_code %></li>
-	<%# end %>
-</div>	
 <hr>
 <div id="name">
 	<% @users.each do |user| %>
