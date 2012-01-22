@@ -16,7 +16,7 @@ class Contract < ActiveRecord::Base
   scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
   scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
   scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 90.days))
-  scope :threesixfive, where(:date_of_event => (my_date - 60.days)..(my_date + 5.years))
+  scope :threesixfive, where(:date_of_event => (my_date - 120.days)..(my_date + 5.years))
   scope :confirmedevent, :conditions => {:confirmation => 1}
   scope :unconfirmedevent, where(:confirmation => "0")
   scope :innextten, where(:date_of_event => (my_date)..(my_date + 10.days))

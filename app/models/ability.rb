@@ -27,6 +27,8 @@ class Ability
           cannot :destroy, User
         end
   end
+  
+
 end
 
      # can :manage, @contract

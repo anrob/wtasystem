@@ -67,14 +67,11 @@ class ContractsController < ApplicationController
        @contract = Contract.unconfirmedevent.innextten.includes(:user)
        @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
        @users = User.find_all_by_actcode_id(@actcodes) 
-      #@recipients = @users.collect {|m| m.email}
-      
-       @theusers = User.find_all_by_management_id(@actcodes.map {|m| m.management_id})
-       #@theusers = User.find_all_by_actcode_id(@contract.map {|m| m.act_code}) 
-       #@theusers = User.contracts
-       # @confirmed User.where(:confirmation => )
+      #if params[:user][:manager]
+       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+       
        @recipients = @theusers.collect {|m| m.email}
-       # @contract = Contract.mystuff(@mana.actcode).ninetyday
+     #end
   end
   
   def confirmjob

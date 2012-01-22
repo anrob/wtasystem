@@ -10,8 +10,8 @@
 			Dashboard
 	</div>
 	<div class="dash alignright one_half last">
-	 <li><%#= image_tag("images/printer.png") %>
-		<%= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <%= button_to "Email Job Imformation", contract_path(@contract, format: "pdf"), :class => 'button button_blue',:method => :get %></li>
+	 <%#= image_tag("images/printer.png") %>
+		<%= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <%= button_to "Email Job Imformation", contract_path(@contract, format: "pdf"), :class => 'button button_blue',:method => :get %>
 	</div>
 
 		<br clear="all">
@@ -90,7 +90,7 @@
 	<%= @contract.cocktail_instrumentation %>
 
 
-	Giveaways: <%= @contract.giveaways %><br>
+	<span>Giveaways:</span> <%= @contract.giveaways %><br>
 
 
 
