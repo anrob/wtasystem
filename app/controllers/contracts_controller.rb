@@ -26,7 +26,13 @@ class ContractsController < ApplicationController
 
   def show
       add_breadcrumb "Show Contract", contract_path
+      # unless current_user.is? :manager
+      #    @contract = Contract.all
+      #     @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+      #    @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+      #  else
       @additional = Contract.additional(@contract)
+   
      respond_with do |format|
             format.html
             format.pdf do

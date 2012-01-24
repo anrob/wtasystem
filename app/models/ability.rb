@@ -24,6 +24,7 @@ class Ability
           can :see_others, :all 
           can :manage, User, :management_id => user.management_id
           can :manage, Contract, :act_code => user.actcode_id
+          can :manage, Contract
           cannot :destroy, User
         end
   end
