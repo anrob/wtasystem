@@ -26,17 +26,6 @@ class ContractsController < ApplicationController
 
   def show
       add_breadcrumb "Show Contract", contract_path
-      # @contract = Contract.find(params[:id])
-      #   if @contract.act_code = current_user.actcode
-      #   @ismanager = @manger.include?(@contract.act_code).to_s
-      # end
-      #   case @ismanager when "true"
-      #  if cannot? :see_others, @contract
-      #   redirect_to root_url        
-      #   end
-      # else
-      #    @contract = Contract.find(params[:id])
-      # end
       @additional = Contract.additional(@contract)
      respond_with do |format|
             format.html
@@ -67,11 +56,11 @@ class ContractsController < ApplicationController
        @contract = Contract.unconfirmedevent.innextten.includes(:user)
        @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
        @users = User.find_all_by_actcode_id(@actcodes) 
-      #if params[:user][:manager]
+   
        @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
        
        @recipients = @theusers.collect {|m| m.email}
-     #end
+    
   end
   
   def confirmjob
