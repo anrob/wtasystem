@@ -31,6 +31,7 @@ class ContractsController < ApplicationController
       #     @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
       #    @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
       #  else
+     
       @additional = Contract.additional(@contract)
    
      respond_with do |format|
@@ -62,19 +63,18 @@ class ContractsController < ApplicationController
        @contract = Contract.unconfirmedevent.innextten.includes(:user)
        @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
        @users = User.find_all_by_actcode_id(@actcodes) 
-   
        @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-       
        @recipients = @theusers.collect {|m| m.email}
     
   end
   
   def confirmjob
-    #@user = current_user
-    #@management = Management.find_by_id(current_user)
+    @user = current_user
     @contract = Contract.find(params[:id])
-    @contract.update_attributes(:confirmation => 1)
-    #ContractMailer.event_info_email(@user).deliver
+    @additional = Contract.additional(@contract)
+    ContractMailer.deliver(@user,@contract,@additional)
+    #ContractMailer.delay.deliver(mail_hash)
+    #@contract.update_attributes(:confirmation => 1)
     flash[:notice] = "Job Confirmed"
       redirect_to :root
    end

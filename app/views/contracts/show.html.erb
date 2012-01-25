@@ -11,7 +11,8 @@
 	</div>
 	<div class="dash alignright one_half last">
 	 <%#= image_tag("images/printer.png") %>
-		<%= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <%= button_to "Email Job Imformation", contract_path(@contract, format: "pdf"), :class => 'button button_blue',:method => :get %>
+		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> 
+		<%= button_to 'Email Job Information', confirmjob_path(:id => @contract.id), :class => 'button button_blue' %>
 	</div>
 
 		<br clear="all">

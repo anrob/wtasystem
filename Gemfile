@@ -25,6 +25,7 @@ gem 'devise'
 gem "cancan"
 gem 'formtastic'
 gem 'meta_search'
+gem 'delayed_job_active_record'
 
 gem 'inherited_resources'
 gem 'easy_dates'

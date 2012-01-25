@@ -29,6 +29,18 @@ class Contract < ActiveRecord::Base
     format_for :date_of_event, :format => "%m/%d/%y"
   end
   
+  def deliver(user, contract, additional)
+    event_info_email(user, contract, additional)
+  end
+  
+  def event_info_email(user, contract, additional)
+      @user = user
+      @contract = contract
+      @additional = additional
+     mail( :to => user.email, 
+           :subject => "Your Event info")
+   end
+  
   def self.import_contracts
     Contract.delete_all
     ActiveRecord::Base.connection.reset_pk_sequence!('Contract')
