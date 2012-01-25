@@ -21,9 +21,9 @@
 	<tr>
 	          <td class="events">
 		<% unless contract.confirmation == 0  %>
-		<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}", contract, :class => "confirmed" %>
+		<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code} ", contract, :class => "confirmed" %>
 		<% else %>
-		<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}", contract, :class => "unconfirmed" %>
+		<%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code}- #{contract.unique3}", contract, :class => "unconfirmed" %>
 				<% end %>
 	          </td>
 	</tr>
