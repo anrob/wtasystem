@@ -6,6 +6,7 @@ task :update_contracts => :environment do
   end
   
   task :send_reminder => :environment do 
+     puts "Sending Emails"
       Contract.send_reminders
-      #puts "#{@recipients_number}"
+     puts "done."
   end

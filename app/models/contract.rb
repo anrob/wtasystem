@@ -32,6 +32,21 @@ class Contract < ActiveRecord::Base
   def deliver(user, contract, additional)
     event_info_email(user, contract, additional)
   end
+  def self.send_reminders
+      # @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+      @users = User.find_all_by_actcode_id(@actcodes) 
+      @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+      @recipients = @theusers.collect {|m| m.email}
+      @recipients_number = @theusers.collect {|m| m.phone_number}
+     ContractMailer.send_reminder(@recipients).deliver
+    # @recipients_number.compact.each do |phonenumber|
+    #   sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
+    #  sms.deliver_sms
+    #end
+  end
   
   def event_info_email(user, contract, additional)
       @user = user
@@ -152,23 +167,24 @@ class Contract < ActiveRecord::Base
                  Dir.chdir("../")          
      end
      
-     def self.send_reminders
-         # @contract = Contract.unconfirmedevent.innextten.includes(:user)
-         #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
-         @contract = Contract.unconfirmedevent.innextten.includes(:user)
-          @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-          @users = User.find_all_by_actcode_id(@actcodes)
-         @recipients = @users.collect {|m| m.email}
-         @recipients_number = @users.collect {|m| m.phone_number}
-        ContractMailer.send_reminder(@recipients).deliver
-       # @recipients_number.compact.each do |phonenumber|
-      #   sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
-       #  sms.deliver_sms
-      
-        
-
-     #end
-     end
+     # def self.send_reminders
+     #       # @contract = Contract.unconfirmedevent.innextten.includes(:user)
+     #       #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+     #       @contract = Contract.unconfirmedevent.innextten.includes(:user)
+     #       @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+     #       @users = User.find_all_by_actcode_id(@actcodes) 
+     #       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+     #       @recipients = @users.collect {|m| m.email}
+     #       @recipients_number = @theusers.collect {|m| m.phone_number}
+     #      ContractMailer.send_reminder(@recipients).deliver
+     #     # @recipients_number.compact.each do |phonenumber|
+     #    #   sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
+     #     #  sms.deliver_sms
+     #    
+     #      
+     # 
+     #   #end
+     #   end
      
 def self.mailchimp
     gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")

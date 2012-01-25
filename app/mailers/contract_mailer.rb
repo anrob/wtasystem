@@ -1,5 +1,5 @@
 class ContractMailer < ActionMailer::Base
-  default :from => "confirmmygig.com"
+  default :from => "fresh@sofreshentertainment.com"
   def event_info_email(user, contract, additional)
       @user = user
       @contract = contract
@@ -9,9 +9,10 @@ class ContractMailer < ActionMailer::Base
    end
    
    def send_reminder(user) 
+    # @user = user
      mail(  :bcc => user, 
-            :subject => "Please Confirm Jobs",
-            :body => "You have unconfirmed Events")
+            :subject => "Please Confirm Jobs")
+            #:body => "You have unconfirmed Events"
    end
    
    def deliver(user,contract,additional)
