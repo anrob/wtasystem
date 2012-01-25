@@ -11,8 +11,12 @@
 	</div>
 	<div class="dash alignright one_half last">
 	 <%#= image_tag("images/printer.png") %>
-		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> 
+		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <% if @contract.confirmation = "0" %>
+		<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
+		<% else %>
+		  
 		<%= button_to 'Email Job Information', confirmjob_path(:id => @contract.id), :class => 'button button_blue' %>
+		<% end %>
 	</div>
 
 		<br clear="all">
@@ -180,4 +184,7 @@
 	</div>
 	<% end %>
 
-	<br clear="all">	
+	<br clear="all">
+	<% if @contract.confirmation = "0" %>
+	<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
+	<% end %>	

@@ -99,14 +99,15 @@
 		<ul>
 				<% @additional.each do |addi| %>
 				
-						<li><%= addi.act_booked %> - <%#= addi.type_of_act %> - <%#= addi.act_form %></li>
+						<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
 					</ul>
+					<% end %>
 				</div>
 				</div>
 
 	</div>
 	</div>
 	<br clear="all">
-<% end %>
+
   </body>
 </html>
