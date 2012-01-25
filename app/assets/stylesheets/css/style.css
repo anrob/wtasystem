@@ -1,7 +1,4 @@
-/* @override 
-	http://localhost:5000/assets/css/style.css?body=1
-
-*/
+/* @override http://localhost:5000/assets/css/style.css?body=1 */
 
 /***
  * Created by: Mienard Lumaad
@@ -737,6 +734,15 @@ div#money {
 	width: 33%;
 	text-align: center;
 
+}
+
+div#notice.alert.message {
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	background-color: #ffcac7;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 span span {

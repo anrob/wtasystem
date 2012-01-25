@@ -22,9 +22,7 @@
 	 <%= image_tag ("images/logo.png") %> 
 </div><!--loginlogo-->
 
-<div class="notification notifyError loginNotify"><% flash.each do |key, msg| -%>
-			  <%= content_tag :p, msg, :id => key -%>
-			<% end -%></div>
+<div class="notificatiosn notifyErrors loginNotifys"></div>
 <%= yield %>
 </body>
 </html>
