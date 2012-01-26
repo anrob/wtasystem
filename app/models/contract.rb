@@ -29,9 +29,10 @@ class Contract < ActiveRecord::Base
     format_for :date_of_event, :format => "%m/%d/%y"
   end
   
-  def deliver(user, contract, additional)
-    event_info_email(user, contract, additional)
-  end
+  # def deliver(user, contract, additional)
+  #   event_info_email(user, contract, additional)
+  #   handle_asynchronously :deliver
+  # end
   def self.send_reminders
       # @contract = Contract.unconfirmedevent.innextten.includes(:user)
       #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
@@ -161,7 +162,7 @@ class Contract < ActiveRecord::Base
                                                    :contract_provisions => row[78].inspect}) 
                                                   end
                                                 end
-                                            #FileUtils.rm Dir.glob('*.TXT')
+                                            FileUtils.rm Dir.glob('*.TXT')
                                         end
                                   end
                  Dir.chdir("../")          

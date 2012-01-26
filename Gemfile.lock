@@ -72,9 +72,6 @@ GEM
     daemons (1.1.4)
     delayed_job (3.0.1)
       activesupport (~> 3.0)
-    delayed_job_active_record (0.3.1)
-      activerecord (> 2.1.0)
-      delayed_job (~> 3.0.0)
     devise (1.5.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -228,7 +225,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   cancan
   coffee-rails (~> 3.1.1)
-  delayed_job_active_record
+  delayed_job
   devise
   draper
   easy_dates

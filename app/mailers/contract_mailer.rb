@@ -16,8 +16,9 @@ class ContractMailer < ActionMailer::Base
    end
    
    def deliver(user,contract,additional)
-      ContractMailer.event_info_email(user,contract,additional).deliver
+      event_info_email(user,contract,additional).deliver
       contract.update_attributes(:confirmation => 1)
+      #handle_asynchronously :deliver
     end
 end
 
