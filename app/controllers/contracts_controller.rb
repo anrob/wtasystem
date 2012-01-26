@@ -76,7 +76,7 @@ class ContractsController < ApplicationController
     #ContractMailer.delay.deliver(mail_hash)
     #@contract.update_attributes(:confirmation => 1)
     flash[:notice] = "Job Confirmed"
-      redirect_to :root
+      redirect_to :back
    end
    
   def themanager
