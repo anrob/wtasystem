@@ -8,33 +8,27 @@ class ContractsController < ApplicationController
   def index 
     case @but when "true"
         @contract = Contract.where(:act_code => params[:act_code])
+        @actcode = Actcode.where(:actcode => params[:act_code]).first
         if cannot? :see_others, @contract
                    redirect_to root_url
-                  end
+        end
         else
-          @mana = Actcode.find_by_id(current_user.actcode_id)
+          #@mana = Actcode.find_by_id(current_user.actcode_id)
                         @contract = Contract.mytoday.mystuff(@mana.actcode)
+                        @actcode = current_user.actcode
                         @getcompan = Actcode.getallbycompany(current_user)
                         @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
                         @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
                      
                         @gp = @gt.map {|m| m.actcode}
-      
       end 
      #respond_with :contracts => @contract.thisweek
  end
 
   def show
       add_breadcrumb "Show Contract", contract_path
-      # unless current_user.is? :manager
-      #    @contract = Contract.all
-      #     @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-      #    @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-      #  else
-     
       @additional = Contract.additional(@contract)
-   
-     respond_with do |format|
+      respond_with do |format|
             format.html
             format.pdf do
             pdf = ContractPdf.new(@contract, view_context)

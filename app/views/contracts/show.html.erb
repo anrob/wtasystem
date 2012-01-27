@@ -11,12 +11,14 @@
 	</div>
 	<div class="dash alignright one_half last">
 	 <%#= image_tag("images/printer.png") %>
-		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <% if @contract.confirmation == 0  %>
+		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <% if @contract.date_of_event < Date.today + 10.days %>
+		<% if @contract.confirmation == 0  %>
 		<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
 		<% else %>
 		  
 		<%= button_to 'Email Job Information', confirmjob_path(:id => @contract.id), :class => 'button button_blue' %>
 		<% end %>
+			<% end %>
 	</div>
 
 		<br clear="all">
@@ -76,14 +78,14 @@
 	<%= @contract.ceremony_location_zip %>
 	<%= @contract.ceremony_start_time %>
 
-	Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
-	Email Address: <%= @contract.email_address %><br>
-	Bride / Bat Mitzvah Name: <%= @contract.brides_names %><br>
-	Grooms / Bar Mitzvah Name: <%= @contract.grooms_name %><br>
+<dt>	Client Info:</dt> <%= @contract.first_name %> <%= @contract.last_name %><br>
+<dt>	Email Address:</dt> <%= @contract.email_address %><br>
+<dt>	Bride / Bat Mitzvah Name:</dt> <%= @contract.brides_names %><br>
+<dt>	Grooms / Bar Mitzvah Name: </dt><%= @contract.grooms_name %><br>
 
-	Home Phone: <%= @contract.home_phone %><br>
-	Work Phone: <%= @contract.work_phone %><br>
-	Cell Phone: <%= @contract.cell_phone %><br>
+<dt>	Home Phone:</dt> <%= @contract.home_phone %><br>
+<dt>	Work Phone:</dt> <%= @contract.work_phone %><br>
+<dt>	Cell Phone: </dt><%= @contract.cell_phone %><br>
 	</div>
 	</div>
 		<div class="widgetbox one_half last">
@@ -95,22 +97,23 @@
 	<%= @contract.cocktail_instrumentation %>
 
 
-	<span>Giveaways:</span> <%= @contract.giveaways %><br>
+	<dt>Giveaways:</dt> <%= @contract.giveaways %><br>
 
 
 
-	Type of Light Show : <%= @contract.type_of_light_show %>
+<dt>Type of Light Show :</dt> <%= @contract.type_of_light_show %><br>
 
 
-
+<dt> Number of Horns:</dt> <%= @contract.number_of_horns %><br>
+ <dt>Number of Dancers:</dt> <%= @contract.number_of_dancers %><br>
 	<%= @contract.explanation_opf_pickup_adjustment %>
 	<%= @contract.capital_music_player %>
 
 	<%= @contract.questionnaire_received_date %><br>
 
 
-	Referral Fee to :<%= @contract.referral_fee_to %><br>
-	Song Requests: <%= @contract.song_requests %><br>
+<dt>	Referral Fee to :</dt><%= @contract.referral_fee_to %><br>
+<dt>	Song Requests: </dt><%= @contract.song_requests %><br>
 
 	<%= @contract.videographer_1 %>
 	<%= @contract.videographer_2 %>
@@ -152,7 +155,7 @@
 					<% if current_user.is? :everything %>
 				<li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li>
 					<% else %>
-					<li><%= addi.act_booked %> - <%= addi.type_of_act %> - <%= addi.act_form %></li>
+					<li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
 					<% end %>
 				<% end %></ul>
 			</div>
@@ -172,7 +175,7 @@
 <li class="<%= @contract.isincluded %>">charge per horn: <%= @contract.number_of_horns %> @ $<%= @contract.charge_per_horn %></li>
 <li class="<%= @contract.isincluded %>">other charges: $<%= @contract.other_charges %></li>
 <li class="<%= @contract.isincluded %>">charge per dancer:<%= @contract.number_of_dancers %> @ $<%= @contract.charge_per_dancer %></li>
-<li class="<%= @contract.isincluded %>">giveaways charge: $<%= @contract.giveaways_charge %></li>
+<li class="<%= @contract.isincluded %>">giveaways charge: $<%= @contract.giveaways_charge rescue "0" %></li>
 <li class="<%= @contract.isincluded %>">dj tech_charge: $<%= @contract.dj_tech_charge %></li>
 <li class="<%= @contract.isincluded %>">non-commissionable charges: $<%= @contract.non_commissionable_charges %></li>
 <li class="<%= @contract.isincluded %>">capital music pay: $<%= @contract.capital_music_pay %></li>
@@ -185,6 +188,8 @@
 	<% end %>
 
 	<br clear="all">
-	<% if @contract.confirmation == 1  %>
+	<% if @contract.date_of_event < Date.today + 10.days %>
+	<% if @contract.confirmation == 0  %>
 	<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
+	<% end %>
 	<% end %>	

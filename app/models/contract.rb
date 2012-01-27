@@ -220,6 +220,7 @@ def self.mailchimp
    end 
    @status
  end
+
 end
 
 
