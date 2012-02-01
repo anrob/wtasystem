@@ -12,7 +12,7 @@ class Contract < ActiveRecord::Base
   scope :mytoday, lambda { where("date_of_event >= ?", my_date)}
   scope :thisweek, where(:date_of_event => (my_date)..(my_date + 7.days))
   scope :justimported, where(:created_at => (my_date - 7.days)..(my_date))
-  scope :tenday, where(:date_of_event => (my_date)..(my_date + 11.days))
+  scope :tenday, where(:date_of_event => (my_date)..(my_date + 10.days))
   scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
   scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
   scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 90.days))
