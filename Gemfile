@@ -7,6 +7,7 @@ gem 'pg'
 gem 'activeadmin'
 gem "asset_sync"
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
+gem 'newrelic_rpm'
 
 group :development do
 gem 'sqlite3'
