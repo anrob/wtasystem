@@ -7,6 +7,7 @@ class Ability
         if user.is? :everything
           can :manage, :all
           can :assign_roles, :all
+          can :create,  :all
         else
           can :manage, Contract, :act_code => user.actcode.actcode
           can :update, User, :id => user.id
