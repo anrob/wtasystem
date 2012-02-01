@@ -2,7 +2,11 @@ class UsersController < BaseController
   set_tab :account
   inherit_resources
    load_and_authorize_resource #:skip_authorization_check #:user, :through => :contract 
-
+   rescue_from CanCan::AccessDenied do |exception|
+     Rails.logger.error(exception, exception.backtrace)
+     # :back isn't defined all the time...
+     redirect_to :back, :alert => exception.message
+   end
     #before_filter :everypage
    #respond_to :html, :xml, :json
  

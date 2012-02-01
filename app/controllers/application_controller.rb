@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery
   layout :special_layout
  
-  before_filter :prepare_for_mobile
+ # before_filter :prepare_for_mobile
 
   private
 
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def special_layout
-     if devise_controller?
+     if devise_controller? && resource_name == :admin
        "special_layout"
      else
        "application"

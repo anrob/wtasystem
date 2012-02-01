@@ -9,6 +9,8 @@ class ContractsController < ApplicationController
     case @but when "true"
         @contract = Contract.where(:act_code => params[:act_code])
         @actcode = Actcode.where(:actcode => params[:act_code]).first
+        @unconfirmed = Contract.count
+        
         if cannot? :see_others, @contract
                    redirect_to root_url
         end
@@ -19,7 +21,8 @@ class ContractsController < ApplicationController
                         @getcompan = Actcode.getallbycompany(current_user)
                         @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
                         @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
-                     
+                        # @unconfirmed = Contract.includes("actcodes").where(:act_code => params[:act_code]).count
+                        @unconfirmed = Contract.count
                         @gp = @gt.map {|m| m.actcode}
       end 
      #respond_with :contracts => @contract.thisweek

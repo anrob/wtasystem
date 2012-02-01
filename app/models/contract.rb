@@ -28,11 +28,7 @@ class Contract < ActiveRecord::Base
     format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
     format_for :date_of_event, :format => "%m/%d/%y"
   end
-  
-  # def deliver(user, contract, additional)
-  #   event_info_email(user, contract, additional)
-  #   handle_asynchronously :deliver
-  # end
+
   def self.send_reminders
       # @contract = Contract.unconfirmedevent.innextten.includes(:user)
       #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
@@ -58,11 +54,8 @@ class Contract < ActiveRecord::Base
    end
   
   def self.import_contracts
-    Contract.delete_all
-    ActiveRecord::Base.connection.reset_pk_sequence!('Contract')
-   # ActiveRecord::Base.connection.tables.each do |table| 
-   #        ActiveRecord::Base.connection.execute("TRUNCATE #{table}") 
-   #    end
+   # Contract.delete_all
+   # ActiveRecord::Base.connection.reset_pk_sequence!('Contract')
     $KCODE = "U"
                     require 'csv'
                     
@@ -74,6 +67,7 @@ class Contract < ActiveRecord::Base
                                                                                                        file = ftp.nlst("*.TXT")
                                                                                                        file.each{|filename| #Loop through each element of the array
                                                                                                        ftp.getbinaryfile(filename,filename) #Get the file
+                                                                                                       #ftp.delete("*.TXT")
                                                                                                         }
                     @listit = Dir.glob("*.TXT")
                     @listit.each do |listit|
@@ -92,7 +86,6 @@ class Contract < ActiveRecord::Base
                                                    :act_booked => row[8],
                                                    :credit_card_fee => row[9],
                                                    :ceremonoy_location_name => row[10],
-
                                                    :ceremony_address_line_2 => row[12],
                                                    :ceremony_location_city => row[13],
                                                    :ceremony_instrumenttation => row[14],
@@ -168,24 +161,7 @@ class Contract < ActiveRecord::Base
                  Dir.chdir("../")          
      end
      
-     # def self.send_reminders
-     #       # @contract = Contract.unconfirmedevent.innextten.includes(:user)
-     #       #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
-     #       @contract = Contract.unconfirmedevent.innextten.includes(:user)
-     #       @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-     #       @users = User.find_all_by_actcode_id(@actcodes) 
-     #       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-     #       @recipients = @users.collect {|m| m.email}
-     #       @recipients_number = @theusers.collect {|m| m.phone_number}
-     #      ContractMailer.send_reminder(@recipients).deliver
-     #     # @recipients_number.compact.each do |phonenumber|
-     #    #   sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
-     #     #  sms.deliver_sms
-     #    
-     #      
-     # 
-     #   #end
-     #   end
+      
      
 def self.mailchimp
     gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")

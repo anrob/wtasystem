@@ -1,4 +1,4 @@
-<div class="loginoption"><h2>Forgot your password?</h2>
+<div class="loginoption"><h2>Change your password?</h2>
 
 <%= semantic_form_for(resource,:html => { :class => "form-stacked xlarge", :method => :post}, :as => resource_name, :url => password_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -7,7 +7,7 @@
  
 
   	<%= f.buttons do %>
-		<%= f.commit_button :button_html => { :class => "btn success"},:label => "Reset Password" %>
+		<%= f.commit_button :button_html => { :class => "btn success"},:label => "Change Password" %>
 		<% end %>
 <% end %>
 

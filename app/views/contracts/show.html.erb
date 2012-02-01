@@ -85,7 +85,7 @@
 
 <dt>	Home Phone:</dt> <%= @contract.home_phone %><br>
 <dt>	Work Phone:</dt> <%= @contract.work_phone %><br>
-<dt>	Cell Phone: </dt><%= @contract.cell_phone %><br>
+<dt><%= "Cell Phone: #{@contract.cell_phone}" unless nil? %>	 </dt><br>
 	</div>
 	</div>
 		<div class="widgetbox one_half last">

@@ -1,14 +1,14 @@
 <div class="one_halfd">
-	<%#= @contracts.inspect %>
-
+<%#= @gp %>
+<%#= debug(params) %>
 <div class="widgetbox2">
 	<h3 class="open"><span>Management Company Acts</span></h3>
 	<div class="content marginbottom">
 	<ul class="leftmenu noleftpadding">
 	<% @getallbycompnay.each do |getall| %>
-		 <%#= @unconfirmed %>
-<li> <span class="count"><%#= @unconfirmed %><%= @unconfirmed %></span><%= link_to "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %> <%#= @contractcount(params[]) %> - </li>
+<li> <span class="count"><%#= @unconfirmed(@bob) %><%= @unconfirmed %></span><%= link_to "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %> <%#= @contractcount(params[]) %> </li>
 	<% end %>
+
 	</ul>
 	<br class="clear">
 </div>
