@@ -1,9 +1,9 @@
 <div id="quickdash">
 	<% if can? :see_money, @contracts %>
 <div id="money">
-		<dt><b class="themoney">$<%= @contract.contract_price %></b><span>Contract price:</span>        </dt>
-		<dt class="middle"><b class="themoney">$<%= @contract.act_net %></b><span>Contract Net:</span> 			</dt>
-		<dt><b class="themoney">$<%= @contract.pick_up_amount %></b><span>Pickup Amount:</span> 		</dt>                    
+		<dt><b class="themoney"><%= number_to_currency(@contract.contract_price) %></b><span>Contract price:</span>        </dt>
+		<dt class="middle"><b class="themoney"><%= number_to_currency(@contract.act_net) %></b><span>Contract Net:</span> 			</dt>
+		<dt><b class="themoney"><%= number_to_currency(@contract.pick_up_amount) %></b><span>Pickup Amount:</span> 		</dt>                    
 	</div>
 	<% end %>
 	<div class="dash one_half">
@@ -44,10 +44,10 @@
 	<h2 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h2>
 	<h5>Agent : <%= @contract.agent %> </h4>
 	<h5 class="blue">Contract number: <%= @contract.contract_number %></h5>
-	<h5 class="green">Pickup Amount: $<%= @contract.pick_up_amount %></h5>
+	<h5 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h5>
 		<% if can? :see_money, @contracts %>
-	<h4 class="green">Contract price: $<%= @contract.contract_price %></h4>
-	<h4 class="green">Contract Net: $<%= @contract.act_net %></h4>
+	<h4 class="green">Contract price: <%= number_to_currency(@contract.contract_price) %></h4>
+	<h4 class="green">Contract Net: <%= number_to_currency(@contract.act_net) %></h4>
 	<% end %>
 	
 	</div>
@@ -87,7 +87,7 @@
 		<div class="widgetbox one_half last">
 			<h3> <span>Extras Section</span></h3>
 			<div class="content">
-<dt>Early setup Time:</dt>	<%= @contract.early_setup_time %>
+<dt>Early setup Time:</dt>	<%= @contract.early_setup_time %><br>
 
 	<dt>Giveaways:</dt> <%= @contract.giveaways %><br>
 
@@ -106,7 +106,7 @@
 
 <dt>	Referral Fee to :</dt><%= @contract.referral_fee_to %><br>
 <dt>	Song Requests: </dt><%= @contract.song_requests %><br>
-
+	<dt>  Cocktail Instrumentation: </dt> <%= @contract.cocktail_instrumentation %><br>
 
 
 
@@ -116,25 +116,27 @@
 	</div>
 	</div>
 	<br clear="all">
+	<% unless @contract.ceremonoy_location_name  %>
 	<div class="widgetbox one_half">
 		<h3><span>Wedding Section</span></h3>
 			<div class="content">
-	<dt>	Ceremony Location:</dt>	<%= @contract.ceremonoy_location_name %><br>
-	<dt>	Ceremony Address:</dt>	<%= @contract.ceremony_address_line_2 %><br>
-	<dt>	Ceremony City:</dt>	<%= @contract.ceremony_location_city %><br>
-	<dt>	Ceremony State:	</dt><%= @contract.seremonly_location_state %><br>
-	<dt>	Ceremony Zip:</dt>	<%= @contract.ceremony_location_zip %><br>
-	<dt>	Ceremony Start Time:</dt>	<%= @contract.ceremony_start_time %><br>
-	<dt>	Ceremony Instrumentation:</dt>	<%= @contract.ceremony_instrumenttation %>
+	<dt>Ceremony Location:</dt>	<%= @contract.ceremonoy_location_name %><br>
+	<dt>Ceremony Address:</dt>	<%= @contract.ceremony_address_line_2 %><br>
+	<dt>Ceremony City:</dt>	<%= @contract.ceremony_location_city %><br>
+	<dt>Ceremony State:	</dt><%= @contract.seremonly_location_state %><br>
+	<dt>Ceremony Zip:</dt>	<%= @contract.ceremony_location_zip %><br>
+	<dt>Ceremony Start Time:</dt>	<%= @contract.ceremony_start_time %><br>
+	<dt>Ceremony Instrumentation:</dt>	<%= @contract.ceremony_instrumenttation %><br>
+	<dt>  Cocktail Instrumentation:</dt> <%= @contract.cocktail_instrumentation %>
 		</div>
 	</div>
-	
+	<% end %>	
 	<div class="widgetbox one_half last">
 		<h3><span>Video Section</span></h3>
 			<div class="content">
-		<dt>	Videographer 1: </dt><%= @contract.videographer_1 %><br>
-		<dt>		Videographer 2:</dt> <%= @contract.videographer_2 %><br>
-		<dt>		Videographer 3: </dt><%= @contract.videgrapher_3 %>
+		<dt>Videographer 1: </dt><%= @contract.videographer_1 %><br>
+		<dt>Videographer 2:</dt> <%= @contract.videographer_2 %><br>
+		<dt>Videographer 3: </dt><%= @contract.videgrapher_3 %>
 		</div>
 	</div>
 		<br clear="all">
@@ -182,19 +184,19 @@
 	<h3> <span>Money Section</span></h3>
 <div class="content">
 	<% if can? :see_money, @contracts %>
-<li class="<%= @contract.isincluded %>">cocktails charge: $	<%= @contract.cocktails_charge %></li>
-<li class="<%= @contract.isincluded %>">ceremony charge: $ <%= @contract.ceremony_charge %></li>
-<li class="<%= @contract.isincluded %>">early setup charge: $ <%= @contract.early_setup_charge %></li>
-<li class="<%= @contract.isincluded %>">charge per horn: <%= @contract.number_of_horns %> @ $<%= @contract.charge_per_horn %></li>
-<li class="<%= @contract.isincluded %>">other charges: $<%= @contract.other_charges %></li>
-<li class="<%= @contract.isincluded %>">charge per dancer:<%= @contract.number_of_dancers %> @ $<%= @contract.charge_per_dancer %></li>
-<li class="<%= @contract.isincluded %>">giveaways charge: $<%= @contract.giveaways_charge rescue "0" %></li>
-<li class="<%= @contract.isincluded %>">dj tech_charge: $<%= @contract.dj_tech_charge %></li>
-<li class="<%= @contract.isincluded %>">non-commissionable charges: $<%= @contract.non_commissionable_charges %></li>
-<li class="<%= @contract.isincluded %>">capital music pay: $<%= @contract.capital_music_pay %></li>
-<li class="<%= @contract.isincluded %>">base price_of act: $<%= @contract.base_price_of_act %></li>
-<li class="<%= @contract.isincluded %>">referral fee amount: $<%= @contract.referral_fee_amount %></li>
-<li class="<%= @contract.isincluded %>">tax amount: $<%= @contract.tax_amount %></li>
+<li class="<%= @contract.isincluded %>">cocktails charge:  			<%= number_to_currency(@contract.cocktails_charge) %></li>
+<li class="<%= @contract.isincluded %>">ceremony charge:  			<%= number_to_currency(@contract.ceremony_charge) %></li>
+<li class="<%= @contract.isincluded %>">early setup charge: 		<%= number_to_currency(@contract.early_setup_charge) %></li>
+<li class="<%= @contract.isincluded %>">charge per horn:  			<%= @contract.number_of_horns %> @ <%= number_to_currency(@contract.charge_per_horn) %></li>
+<li class="<%= @contract.isincluded %>">other charges:    			<%= number_to_currency(@contract.other_charges) %></li>
+<li class="<%= @contract.isincluded %>">charge per dancer: 			<%= @contract.number_of_dancers %> @ <%= number_to_currency(@contract.charge_per_dancer)%></li>
+<li class="<%= @contract.isincluded %>">giveaways charge: 			<%= number_to_currency(@contract.giveaways_charge) rescue "0" %></li>
+<li class="<%= @contract.isincluded %>">dj tech_charge:    			<%= number_to_currency(@contract.dj_tech_charge) %></li>
+<li class="<%= @contract.isincluded %>">non-commissionable charges: <%= number_to_currency(@contract.non_commissionable_charges) %></li>
+<li class="<%= @contract.isincluded %>">capital music pay: 			<%= number_to_currency(@contract.capital_music_pay) %></li>
+<li class="<%= @contract.isincluded %>">base price_of act: 			<%= number_to_currency(@contract.base_price_of_act) %></li>
+<li class="<%= @contract.isincluded %>">referral fee amount: 		<%= number_to_currency(@contract.referral_fee_amount) %></li>
+<li class="<%= @contract.isincluded %>">tax amount: 				<%= number_to_currency(@contract.tax_amount) %></li>
 	<% end %>
 	</div>
 	</div>

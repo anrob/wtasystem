@@ -10,6 +10,7 @@ class ContractsController < ApplicationController
         @contract = Contract.where(:act_code => params[:act_code])
         @actcode = Actcode.where(:actcode => params[:act_code]).first
         @unconfirmed = Contract.count
+        @totalcount = @contract.count
         
         if cannot? :see_others, @contract
                    redirect_to root_url
@@ -24,6 +25,8 @@ class ContractsController < ApplicationController
                         # @unconfirmed = Contract.includes("actcodes").where(:act_code => params[:act_code]).count
                         @unconfirmed = Contract.count
                         @gp = @gt.map {|m| m.actcode}
+                            @totalcount = @contract.threesixfive.count
+                            @totalnum = @contract.threesixfive.sum(:contract_price)
       end 
      #respond_with :contracts => @contract.thisweek
  end

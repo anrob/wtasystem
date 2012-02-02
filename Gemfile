@@ -8,6 +8,7 @@ gem 'activeadmin'
 gem "asset_sync"
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'newrelic_rpm'
+#gem 'searchlogic'
 
 group :development do
 gem 'sqlite3'

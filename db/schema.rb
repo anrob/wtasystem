@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125012826) do
+ActiveRecord::Schema.define(:version => 20120202150719) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20120125012826) do
 
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "actnotes", :force => true do |t|
     t.string   "uniquekey"
@@ -44,6 +43,19 @@ ActiveRecord::Schema.define(:version => 20120125012826) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "admin_notes", :force => true do |t|
+    t.integer  "resource_id",     :null => false
+    t.string   "resource_type",   :null => false
+    t.integer  "admin_user_id"
+    t.string   "admin_user_type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_notes", ["admin_user_type", "admin_user_id"], :name => "index_admin_notes_on_admin_user_type_and_admin_user_id"
+  add_index "admin_notes", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -83,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20120125012826) do
     t.string   "ceremony_instrumenttation"
     t.string   "ceremonoy_location_name"
     t.string   "seremonly_location_state"
-    t.datetime "ceremony_start_time"
+    t.string   "ceremony_start_time"
     t.string   "ceremony_location_zip"
     t.integer  "ceremony_charge"
     t.integer  "cocktails_charge"
@@ -105,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20120125012826) do
     t.integer  "dj_tech_charge"
     t.string   "tech"
     t.string   "event_end_time"
-    t.datetime "early_setup_time"
+    t.string   "early_setup_time"
     t.integer  "number_of_horns"
     t.string   "type_of_light_show"
     t.string   "location_address_line_1"
