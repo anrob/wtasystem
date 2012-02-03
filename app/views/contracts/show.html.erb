@@ -81,7 +81,7 @@
 
 <dt>	Home Phone:</dt> <%= @contract.home_phone %><br>
 <dt>	Work Phone:</dt> <%= @contract.work_phone %><br>
-<dt><%= "Cell Phone: #{@contract.cell_phone}" unless nil? %>	 </dt><br>
+<dt> 	Cell Phone:</dt> <%= @contract.cell_phone %>
 	</div>
 	</div>
 		<div class="widgetbox one_half last">
@@ -127,10 +127,8 @@
 	<dt>Ceremony Zip:</dt>	<%= @contract.ceremony_location_zip %><br>
 	<dt>Ceremony Start Time:</dt>	<%= @contract.ceremony_start_time %><br>
 	<dt>Ceremony Instrumentation:</dt>	<%= @contract.ceremony_instrumenttation %><br>
-	<dt>  Cocktail Instrumentation:</dt> <%= @contract.cocktail_instrumentation %>
 		</div>
-	</div>
-	
+	</div>	
 	<div class="widgetbox one_half last">
 		<h3><span>Video Section</span></h3>
 			<div class="content">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202150719) do
+ActiveRecord::Schema.define(:version => 20120203051358) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -170,6 +170,8 @@ ActiveRecord::Schema.define(:version => 20120202150719) do
     t.string   "cell_phone"
     t.date     "date_of_event"
     t.integer  "confirmation",                      :default => 0
+    t.string   "ceremonoy_address_line_1"
+    t.string   "cocktail_time"
   end
 
   create_table "delayed_jobs", :force => true do |t|
