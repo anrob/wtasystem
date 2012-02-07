@@ -33,9 +33,9 @@
 		<h4>Operating as: <%= @contract.type_of_act %></h4>
 		<h4><%= @contract.act_form %></h4>
 		
-		<p class="address"><%= @contract.location_name %><br>
+		<address><%= @contract.location_name %><br>
 	   	<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-	Phone:<%= @contract.location_phone %></p><br><br clear="all">
+	Phone:<%= @contract.location_phone %><br clear="all"></address>
 	</div>
 	
 	<div class="one_half last">

@@ -9,4 +9,5 @@
 *= require "css/ie9"
 *= require "css/ie8"
 *= require "css/ie7"
+*= require "css/bootstrap"
 */
