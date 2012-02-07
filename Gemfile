@@ -3,12 +3,10 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.1'
 
 gem 'pg'
-#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'activeadmin'
 gem "asset_sync"
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'newrelic_rpm'
-#gem 'searchlogic'
 gem 'twitter-bootstrap-rails'
 
 group :development do
@@ -28,7 +26,6 @@ gem 'devise'
 gem "cancan"
 gem 'formtastic'
 gem 'meta_search'
-#gem 'delayed_job_active_record'
 gem "delayed_job"
 
 gem 'inherited_resources'
@@ -41,7 +38,6 @@ gem 'googlestaticmap'
 gem 'jintastic'
 
 gem "switch_user"
-#gem 'simple_worker'
 #gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
