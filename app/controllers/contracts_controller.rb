@@ -67,7 +67,7 @@ class ContractsController < ApplicationController
        @recipients = @theusers.collect {|m| m.email}
     
   end
-  
+
   def confirmjob
     @user = current_user
     @contract = Contract.find(params[:id])

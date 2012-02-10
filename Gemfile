@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-
+gem 'dalli'
 gem 'pg'
 gem 'activeadmin'
 gem "asset_sync"
