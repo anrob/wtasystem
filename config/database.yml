@@ -13,6 +13,7 @@ common: &common
 development:
   <<: *common
   database: wtadb
+  host: localhost
 
 # development:
 #     adapter: sqlite3

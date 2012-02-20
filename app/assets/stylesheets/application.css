@@ -1,5 +1,6 @@
 /*
 *= require_self
+*= require "css/basecamp"
 *= require "css/style"
 *= require "css/colorbox"
 *= require "css/fullcalendar"
@@ -10,4 +11,5 @@
 *= require "css/ie8"
 *= require "css/ie7"
 *= require "css/bootstrap"
+*= require "css/basecamp"
 */

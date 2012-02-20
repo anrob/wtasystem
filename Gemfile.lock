@@ -232,6 +232,9 @@ GEM
     warden (1.1.0)
       rack (>= 1.0)
     will_paginate (3.0.2)
+    zurb-foundation (2.1.5.1)
+      jquery-rails (>= 1.0)
+      rails (~> 3.1)
 
 PLATFORMS
   ruby
@@ -273,3 +276,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   will_paginate
+  zurb-foundation

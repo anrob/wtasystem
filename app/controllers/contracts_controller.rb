@@ -13,8 +13,8 @@ class ContractsController < ApplicationController
         @totalcount = @contract.count
         
         if cannot? :see_others, @contract
-                   redirect_to root_url
-        end
+                               redirect_to root_url
+                    end
         else
           #@mana = Actcode.find_by_id(current_user.actcode_id)
                         @contract = Contract.mytoday.mystuff(@mana.actcode)
