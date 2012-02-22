@@ -9,9 +9,9 @@
 		<div class="invoice_inners">
 			<div class="tan">
 		<div class="one_half">	
-			<h2><%= @contract.act_booked %></h2>
+			<h2>Act Name:<%= @contract.act_booked %></h2>
 			<h2><%= @contract.type_of_event %></h2>
-			<h4><%= @contract.act_form %></h4>
+			<h4>Form Of: <%= @contract.act_form %></h4>
 				<h3> <span>Event Location</span></h3>
 			<p class="address"><%= @contract.location_name %><br>
 		   	<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>

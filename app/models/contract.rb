@@ -186,7 +186,7 @@ def self.mailchimp
   end
   
   def eventtime
-     "#{event_start_time} #{event_end_time}"
+     "#{event_start_time} - #{event_end_time}"
    end
    
    def status
