@@ -1,5 +1,5 @@
 class Contract < ActiveRecord::Base
-  belongs_to :user
+ # belongs_to :user
   has_one :actcode
   #has_many :users, :class_name => "Contract", :foreign_key => "actcode", :primary_key => 'act_code'
 

@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     alias_action :otheracts, :read, :to => :modify
+  
    user ||= User.new # guest user (not logged in)
         if user.is? :everything
           can :manage, :all

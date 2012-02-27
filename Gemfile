@@ -8,6 +8,7 @@ gem "asset_sync"
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
 gem 'sqlite3'
@@ -37,6 +38,7 @@ gem "tabs_on_rails"
 gem 'googlestaticmap'
 gem 'jintastic'
 
+gem 'meta_search'
 gem "switch_user"
 #gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'

@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   add_breadcrumb "Home", :root_path
   before_filter :authenticate_user!
    #load_and_authorize_resource
+   protect_from_forgery
+   
   respond_to :html, :xml, :json
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."

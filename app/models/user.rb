@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :management
   belongs_to :actcode
   #has_many :contracts
+  alias_attribute "name", "email"
   accepts_nested_attributes_for :actcode
   default_scope :order => 'email ASC'
   devise :database_authenticatable, 
