@@ -155,7 +155,8 @@ ftp.getbinaryfile(filename,filename) #Get the file
                                                    :cell_phone => row[77], 
                                                    :party_planner => row[78],
                                                    :act_notes => row[79].inspect,
-                                                   :contract_provisions => row[80].inspect}) 
+                                                   :contract_provisions => row[80].inspect,
+                                                   :reception_location => row[81]}) 
                                                   end
                                                 end
                                             FileUtils.rm Dir.glob('*.TXT')
