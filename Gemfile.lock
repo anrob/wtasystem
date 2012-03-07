@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: 21a58e219492fce942ead7eb46cd47519756def7
+  revision: 97dfdcac9ffa5c4071ae55ddb4dd3325295cf179
   specs:
     rails_admin (0.0.1)
       bbenezech-nested_form (~> 0.0.5)
@@ -47,7 +47,7 @@ GEM
       rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.0.2)
-    activeadmin (0.4.1)
+    activeadmin (0.4.2)
       bourbon (>= 1.0.0)
       devise (>= 1.1.2)
       fastercsv
@@ -73,8 +73,8 @@ GEM
     activesupport (3.1.1)
       multi_json (~> 1.0)
     ansi (1.4.2)
-    arel (2.2.1)
-    asset_sync (0.2.10)
+    arel (2.2.3)
+    asset_sync (0.3.1)
       activemodel
       fog
     bbenezech-nested_form (0.0.5)
@@ -95,7 +95,7 @@ GEM
     commonjs (0.2.0)
       therubyracer (~> 0.9.9)
     daemons (1.1.8)
-    dalli (1.1.4)
+    dalli (1.1.5)
     delayed_job (3.0.1)
       activesupport (~> 3.0)
     devise (2.0.4)
@@ -123,8 +123,8 @@ GEM
       nokogiri (>= 1.4.4)
       ruby-hmac
     formatador (0.2.1)
-    formtastic (2.0.2)
-      rails (~> 3.0)
+    formtastic (2.1.1)
+      actionpack (~> 3.0)
     gmail (0.4.0)
       gmail_xoauth (>= 0.3.0)
       mail (>= 2.2.1)
@@ -160,7 +160,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.0.7)
     libv8 (3.3.10.4)
-    mail (2.3.0)
+    mail (2.3.2)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -171,7 +171,7 @@ GEM
       polyamorous (~> 0.5.0)
     mime (0.1)
     mime-types (1.17.2)
-    minitest (2.11.2)
+    minitest (2.11.3)
     multi_json (1.1.0)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -183,7 +183,7 @@ GEM
     pdf-reader (1.0.0)
       Ascii85 (~> 1.0.0)
       ruby-rc4
-    pg (0.13.1)
+    pg (0.13.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -191,11 +191,11 @@ GEM
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
     rack (1.3.3)
-    rack-cache (1.1)
+    rack-cache (1.2)
       rack (>= 0.4)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
-    rack-pjax (0.5.7)
+    rack-pjax (0.5.8)
       hpricot (~> 0.8.6)
       rack (~> 1.3)
     rack-ssl (1.3.2)
@@ -253,11 +253,11 @@ GEM
     ttfunk (1.0.3)
     turn (0.9.3)
       ansi
-    twitter-bootstrap-rails (2.0.2)
+    twitter-bootstrap-rails (2.0.3)
       actionpack (>= 3.1)
-      less-rails (~> 2.1.5)
+      less-rails (~> 2.1.6)
       railties (>= 3.1)
-    tzinfo (0.3.31)
+    tzinfo (0.3.32)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
