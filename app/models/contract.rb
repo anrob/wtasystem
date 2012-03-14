@@ -45,6 +45,22 @@ class Contract < ActiveRecord::Base
     #end
   end
   
+  def self.send_to_users
+      # @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      #    @users = User.find_all_by_actcode(@contract.map {|m| m.act_code}) 
+      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+      @users = User.find_all_by_actcode_id(@actcodes) 
+      @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+      @recipients = @theusers.collect {|m| m.email}
+      @recipients_number = @theusers.collect {|m| m.phone_number}
+     ContractMailer.send_reminder(@users).deliver
+    # @recipients_number.compact.each do |phonenumber|
+    #   sms = Moonshado::Sms.new(phonenumber, "Your Have Events to confirm. Please log-in to http://wtav1.herokuapp.com to confirm")
+    #  sms.deliver_sms
+    #end
+  end
+  
   def event_info_email(user, contract, additional)
       @user = user
       @contract = contract
@@ -107,7 +123,7 @@ ftp.getbinaryfile(filename,filename) #Get the file
                                                    :contract_number => row[29],
                                                    :contract_revision_number => row[30],
                                                    :date_of_cancellation => row[31],
-                                                   :date_of_ceremony => row[32],
+                                                   :date_of_ceremony => Date.strptime(row[32], "%m/%d/%Y").to_s(:db),
                                                    :charge_per_dancer => row[33],
                                                    :number_of_dancers => row[34],
                                                    :giveaways => row[35],
