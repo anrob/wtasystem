@@ -7,6 +7,14 @@ task :update_contracts => :environment do
   
   task :send_reminder => :environment do 
      puts "Sending Emails"
-      Contract.send_reminders
+     # Contract.send_reminders
+      Contract.send_user_reminders
      puts "done."
   end
+  
+  task :send_user_reminder => :environment do 
+      puts "Sending Emails"
+      # Contract.send_reminders
+       Contract.send_user_reminders
+      puts "done."
+   end

@@ -15,6 +15,13 @@ class ContractMailer < ActionMailer::Base
             #:body => "You have unconfirmed Events"
    end
    
+   def send_user_reminder(user) 
+    # @user = user
+     mail(  :bcc => user, 
+            :subject => "Please Confirm Jobs")
+            #:body => "You have unconfirmed Events"
+   end
+   
    def deliver(user,contract,additional)
       ContractMailer.event_info_email(user,contract,additional).deliver
       contract.update_attributes(:confirmation => 1)
