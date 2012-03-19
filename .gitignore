@@ -9,6 +9,7 @@ doc/
 */pids
 .txt
 *.TXT
+features
 test
 spec
 
