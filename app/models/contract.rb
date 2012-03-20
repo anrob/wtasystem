@@ -70,12 +70,12 @@ class Contract < ActiveRecord::Base
                                     Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
 ftp.passive = true
 ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-file = ftp.nlst("*.TXT")
+file = ftp.nlst("*.txt")
 file.each{|filename| #Loop through each element of the array
 ftp.getbinaryfile(filename,filename) #Get the file
 #ftp.delete("*.TXT")
    }
-                    @listit = Dir.glob("*.TXT")
+                    @listit = Dir.glob("*.txt")
                     @listit.each do |listit|
                    $KCODE = 'UTF8'   
                   CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|

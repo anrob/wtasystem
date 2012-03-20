@@ -16,3 +16,12 @@ spec
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+.DS_Store
+
+app/.DS_Store
+
+app/assets/.DS_Store
+
+config/.DS_Store
+
+lib/.DS_Store
