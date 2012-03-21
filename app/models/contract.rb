@@ -67,18 +67,18 @@ class Contract < ActiveRecord::Base
                     
                     require 'net/ftp'
                             Dir.chdir("#{Rails.root}/tmp") do
-                                    Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-ftp.passive = true
-ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-file = ftp.nlst("*.txt")
-file.each{|filename| #Loop through each element of the array
-ftp.getbinaryfile(filename,filename) #Get the file
-#ftp.delete("*.TXT")
-   }
+                                    # Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                                    #    ftp.passive = true
+                                    #    ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                                    #    file = ftp.nlst("*.txt")
+                                    #    file.each{|filename| #Loop through each element of the array
+                                    #    ftp.getbinaryfile(filename,filename) #Get the file
+                                    #    ftp.delete("*.txt")
+  #}
                     @listit = Dir.glob("*.txt")
                     @listit.each do |listit|
                    $KCODE = 'UTF8'   
-                  CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~"}) do |row|
+                  CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date}) do |row|
                                                   @contracts = Contract.find_or_create_by_unique3(row[0])
                                                   @contracts.update_attributes( {
                                                    :unique3 => row[0],
@@ -113,7 +113,7 @@ ftp.getbinaryfile(filename,filename) #Get the file
                                                    :contract_number => row[29],
                                                    :contract_revision_number => row[30],
                                                    :date_of_cancellation => row[31],
-                                                   :date_of_ceremony => Date.strptime(row[32], "%m/%d/%Y").to_s(:db),
+                                                   :date_of_ceremony => row[32],
                                                    :charge_per_dancer => row[33],
                                                    :number_of_dancers => row[34],
                                                    :giveaways => row[35],
@@ -165,9 +165,9 @@ ftp.getbinaryfile(filename,filename) #Get the file
                                                    :reception_location => row[81]}) 
                                                   end
                                                 end
-                                            FileUtils.rm Dir.glob('*.TXT')
+                                           # FileUtils.rm Dir.glob('*.TXT')
                                         end
-                                  end
+                                # end
                  Dir.chdir("../")          
      end
      
@@ -208,5 +208,3 @@ def self.mailchimp
  end
 
 end
-
-
