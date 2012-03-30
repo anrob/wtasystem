@@ -12,6 +12,7 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
 gem 'sqlite3'
+gem "switch_user"
 end
 
 # Gems used only for assets and not required
@@ -39,7 +40,7 @@ gem 'googlestaticmap'
 gem 'jintastic'
 
 gem 'meta_search'
-gem "switch_user"
+
 #gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
