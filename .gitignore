@@ -13,6 +13,10 @@ features
 test
 spec
 
+*/features
+*/test
+*/spec
+
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
