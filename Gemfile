@@ -9,10 +9,12 @@ gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'postageapp'
+gem "switch_user"
 
 group :development do
 gem 'sqlite3'
-gem "switch_user"
+
 end
 
 # Gems used only for assets and not required
