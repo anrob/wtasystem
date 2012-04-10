@@ -59,8 +59,17 @@ class ContractsController < ApplicationController
       respond_with :contracts => @contracts
   end
   def alljobs
+    
+     @mana = Actcode.find_by_id(current_user.actcode_id)
+      #case @but when "true"
+      unless current_user.is? :manager
+       @contract = Contract.mystuff(@user.actcode.actcode).tenday.all  
+      else
+         @contract = Contract.where(:act_code => @manger.split(",")).tenday.all
+        end
+    
         @noactcode = Contract.justimported
-       @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      # @contract = Contract.unconfirmedevent.innextten.includes(:user)
        @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
        @users = User.find_all_by_actcode_id(@actcodes) 
        @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})

@@ -11,6 +11,7 @@ gem 'twitter-bootstrap-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'postageapp'
 gem "switch_user"
+gem "query_reviewer", :git => "git://github.com/nesquena/query_reviewer.git"
 
 group :development do
 gem 'sqlite3'

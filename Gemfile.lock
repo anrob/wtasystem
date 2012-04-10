@@ -5,6 +5,12 @@ GIT
     table_builder (0.0.3)
 
 GIT
+  remote: git://github.com/nesquena/query_reviewer.git
+  revision: 43b46f92afbc81ae7da8459ff3ae9afa465fe4e8
+  specs:
+    query_reviewer (0.1.5)
+
+GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: 97dfdcac9ffa5c4071ae55ddb4dd3325295cf179
   specs:
@@ -296,6 +302,7 @@ DEPENDENCIES
   pg
   postageapp
   prawn
+  query_reviewer!
   rack (= 1.3.2)
   rails (= 3.1.1)
   rails_admin!
