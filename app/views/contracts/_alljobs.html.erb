@@ -1,0 +1,7 @@
+<div class="">
+<% @contracts.each do |m| %>
+<li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m  %></li>
+<% end %>
+</div>
+<hr>
+</div>

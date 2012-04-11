@@ -1,17 +1,1 @@
-<div class="">
-<% @contract.each do |m| %>
-<li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m  %></li>
-<% end %>
-</div>
-<hr>
-<h3>Emails Being sent To Managers</h3>
-<% @recipients.each do |email| %>
-<li><%= email%></li>
-<% end %>
-<hr>
-<div id="name">
-	<h3>Emails Being sent To Users</h3>
-	<% @users.each do |user| %>
-<li><%= user.email %></li>
-	<% end %>
-</div>
+<%= render :partial => 'alljobs' %>
