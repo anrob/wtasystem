@@ -23,4 +23,6 @@ resources :users
    match '/gmail', :to => "contracts#gmail"
    #match '/otheracts/*actcode', :to => "contracts#otheracts"
    match '/users/:id'  => "users#edit"
+   match 'db/authorize', :controller => 'dropbox', :action => 'authorize'
+   match 'db/upload', :controller => 'dropbox', :action => 'upload'
 end

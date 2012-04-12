@@ -4,6 +4,9 @@ class Contract < ActiveRecord::Base
   #has_many :users, :class_name => "Contract", :foreign_key => "actcode", :primary_key => 'act_code'
 
   default_scope :order => 'date_of_event ASC'
+
+  
+  scope :contractstatsus, :conditions => {:contract_status => "Booked"}
   
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
@@ -67,15 +70,15 @@ class Contract < ActiveRecord::Base
                     
                     require 'net/ftp'
                             Dir.chdir("#{Rails.root}/tmp") do
-                                    # Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-                                    #    ftp.passive = true
-                                    #    ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                                    #    file = ftp.nlst("*.txt")
-                                    #    file.each{|filename| #Loop through each element of the array
-                                    #    ftp.getbinaryfile(filename,filename) #Get the file
-                                    #    ftp.delete("*.txt")
-  #}
-                    @listit = Dir.glob("*.txt")
+                                    Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                                       ftp.passive = true
+                                       ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                                      file = ftp.nlst("*.txt")
+                                       file.each{|filename| #Loop through each element of the array
+                                       ftp.getbinaryfile(filename,filename) #Get the file
+                                      ftp.delete("*.txt")
+  }
+                    @listit = Dir.glob("*.TXT")
                     @listit.each do |listit|
                    $KCODE = 'UTF8'   
                   CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date}) do |row|
@@ -165,9 +168,9 @@ class Contract < ActiveRecord::Base
                                                    :reception_location => row[81]}) 
                                                   end
                                                 end
-                                           # FileUtils.rm Dir.glob('*.TXT')
+                                            FileUtils.rm Dir.glob('*.TXT')
                                         end
-                                # end
+                                 end
                  Dir.chdir("../")          
      end
      
