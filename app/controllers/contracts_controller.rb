@@ -31,14 +31,14 @@ class ContractsController < ApplicationController
       @totalnum = @contract.threesixfive.sum(:contract_price)
     @mana = Actcode.find_by_id(current_user.actcode_id)
       unless current_user.is? :manager
-        @contracts = Contract.mystuff(@user.actcode.actcode)..contractstatsus.tenday.all  
+        @contracts = Contract.mystuff(@user.actcode.actcode).tenday.all  
       else
-        @contracts = Contract.where(:act_code => @manger.split(",")).tenday.contractstatsus.all
+        @contracts = Contract.where(:act_code => @manger.split(",")).tenday.all
         @totalcount = @contracts.count
        # @unconfirmed = @contracts.count('act_code = ?')
       end
     end 
-    respond_with :contracts => @contract.thisweek
+    #respond_with :contracts => @contract.thisweek
   end
 
   def show
@@ -71,13 +71,13 @@ class ContractsController < ApplicationController
   def alljobs
 
     @mana = Actcode.find_by_id(current_user.actcode_id)
-   unless current_user.is? :manager
-      @contracts = Contract.mystuff(@user.actcode.actcode).tenday.all
-      #@contracts = Contract.contractstatsus.unconfirmedevent.innextten
+    unless current_user.is? :manager
+      #@contract = Contract.mystuff(@user.actcode.actcode).tenday.all 
+      @contracts = @contracts.unconfirmedevent.innextten.includes(:user) 
     else
 
       @noactcode = Contract.justimported
-      @contracts = Contract.contractstatsus.unconfirmedevent.innextten
+      @contracts = Contract.unconfirmedevent.innextten.includes(:user)
       @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
       @users = User.find_all_by_actcode_id(@actcodes) 
       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})

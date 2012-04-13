@@ -264,7 +264,7 @@ border-radius: 3px;
 .maincontent .right { padding: 20px 0; padding-right: 15px; overflow: hidden; }
 .maincontent .right .widgetbox:last-child { margin-bottom: 0; border-bottom: 0; }
 
-.maincontent_inner { width:98.33%; margin-right: 1%; }
+.maincontent_inner { width:68.33%; margin-right: 1%; }
 
 .breadcrumbs { font-size: 11px; padding: 0 15px 0 30px; margin: 2px 15px 0; border: 1px solid #ddd; padding: 5px 20px 5px 0;
 	text-indent: 30px;
@@ -764,12 +764,4 @@ padding-bottom: 5px;
 #money dt.middle {
 	border-right: 1px solid #ced2ad;
 	border-left: 1px solid #ced2ad;
-}
-
-a.red {
-	color:red;
-}
-
-a.green {
-	color:green;
 }
