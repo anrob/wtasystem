@@ -168,7 +168,7 @@ class Contract < ActiveRecord::Base
                                                    :reception_location => row[81]}) 
                                                   end
                                                 end
-                                            FileUtils.rm Dir.glob('*.TXT')
+                                           # FileUtils.rm Dir.glob('*.TXT')
                                         end
                                  end
                  Dir.chdir("../")          
