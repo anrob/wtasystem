@@ -73,10 +73,10 @@ class Contract < ActiveRecord::Base
                                     Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
                                        ftp.passive = true
                                        ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                                      file = ftp.nlst("*.txt")
+                                       file = ftp.nlst("*.TXT")
                                        file.each{|filename| #Loop through each element of the array
                                        ftp.getbinaryfile(filename,filename) #Get the file
-                                      ftp.delete("*.txt")
+                                       ftp.delete("*.txt")
   }
                     @listit = Dir.glob("*.TXT")
                     @listit.each do |listit|
