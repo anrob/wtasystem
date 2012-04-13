@@ -13,7 +13,6 @@
 *= require "css/bootstrap"
 *= require "css/redmond/jquery-ui-1.8.18.custom"
 *= require "css/basecamp"
-*= require jquery.ui.core
 *= require jquery.ui.theme
 *= require dataTables/src/demo_table_jui
 */
