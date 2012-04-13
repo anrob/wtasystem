@@ -62,9 +62,9 @@ class ContractsController < ApplicationController
     @mana = Actcode.find_by_id(current_user.actcode_id)
     #case @but when "true"
     unless current_user.is? :manager
-      @contracts = Contract.mystuff(@user.actcode.actcode).threesixfive.all  
+      @contracts = Contract.contractstatsus.mystuff(@user.actcode.actcode).threesixfive.all  
     else
-      @contracts = Contract.where(:act_code => @manger.split(",")).threesixfive.all
+      @contracts = Contract.contractstatsus.where(:act_code => @manger.split(",")).threesixfive.all
     end
     respond_with :contracts => @contracts
   end
