@@ -15,30 +15,11 @@ gem "query_reviewer", :git => "git://github.com/nesquena/query_reviewer.git"
 gem 'dropbox-sdk'
 group :development do
 gem 'sqlite3'
-gem 'jquery-rails'
-gem 'devise' 
-gem "cancan"
-gem 'formtastic'
-gem 'meta_search'
-gem "delayed_job"
-gem 'inherited_resources'
-gem 'easy_dates'
-gem "will_paginate"
-gem "breadcrumbs_on_rails"
-gem "thin"
-gem "tabs_on_rails"
-gem 'googlestaticmap'
-gem 'jintastic'
-gem 'meta_search'
-#gem 'gibbon'
-gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
-gem 'gravatar_image_tag'
-gem 'draper'
-gem 'lazy_high_charts'
-gem 'gmail'
-gem 'prawn'
-gem 'rack', '1.3.2'
 
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
 group :assets do
   gem 'sass-rails',   '<= 3.2.4'
   gem 'coffee-rails', '<= 3.2.2'
@@ -47,8 +28,48 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
+gem 'jquery-rails'
+gem 'devise' 
+gem "cancan"
+gem 'formtastic'
+gem 'meta_search'
+gem "delayed_job"
+
+gem 'inherited_resources'
+gem 'easy_dates'
+gem "will_paginate"
+gem "breadcrumbs_on_rails"
+gem "thin"
+gem "tabs_on_rails"
+gem 'googlestaticmap'
+gem 'jintastic'
+
+gem 'meta_search'
+
+#gem 'gibbon'
+gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
+
+gem 'gravatar_image_tag'
+gem 'draper'
+gem 'lazy_high_charts'
+gem 'gmail'
+gem 'prawn'
+
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Use unicorn as the web server
+# gem 'unicorn'
+gem 'rack', '1.3.2'
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
+
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'minitest'
+	gem 'minitest'
 end
