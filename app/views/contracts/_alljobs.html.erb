@@ -1,7 +1,28 @@
-<div class="">
-<% @contracts.each do |m| %>
-<li><%= link_to "#{m.act_booked} " "-" " #{m.date_of_event} " "-" " #{m.location_city} " "-" " #{m.event_start_time} - #{m.event_end_time}", m  %></li>
+<table id="products" class="table">
+  <thead>
+    <tr>
+      <th>Act Booked</th>
+      <th>Date of Event</th>
+      <th>Location city</th>
+      <th>Start Time</th>
+	<th>End Time</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @contracts.each do |m| %>
+	<tr>
+  	<td>
+		<% unless m.confirmation == 1  %>
+			<%= link_to  "#{m.act_booked}" ,  m, :class => "red" %> 
+			<% else %>
+			<%= link_to  "#{m.act_booked}" ,  m, :class => "green" %>
+			<% end %>
+</td>
+<td><%= m.date_of_event %></td>
+<td><%= m.location_city %></td>
+<td><%= m.event_start_time %></td>
+<td><%= m.event_end_time %></td>
+  </tr>
 <% end %>
-</div>
-<hr>
-</div>
+  </tbody>
+</table>
