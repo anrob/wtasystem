@@ -26,7 +26,7 @@ gem 'easy_dates'
 gem "will_paginate"
 gem "breadcrumbs_on_rails"
 gem "thin"
-gem "tabs_on_rails"
+#gem "tabs_on_rails"
 gem 'googlestaticmap'
 gem 'jintastic'
 gem 'meta_search'
