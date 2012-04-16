@@ -31,7 +31,7 @@ class ContractsController < ApplicationController
       @totalnum = @contract.threesixfive.sum(:contract_price)
     @mana = Actcode.find_by_id(current_user.actcode_id)
       unless current_user.is? :manager
-        @contracts = Contract.mystuff(@user.actcode.actcode)..contractstatsus.tenday.all  
+        @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all  
       else
         @contracts = Contract.where(:act_code => @manger.split(",")).tenday.contractstatsus.all
         @totalcount = @contracts.count

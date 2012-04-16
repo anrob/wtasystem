@@ -76,7 +76,7 @@ class Contract < ActiveRecord::Base
                                        file = ftp.nlst("*.TXT")
                                        file.each{|filename| #Loop through each element of the array
                                        ftp.getbinaryfile(filename,filename) #Get the file
-                                       #ftp.delete("*.txt")
+                                       #ftp.delete("*.TXT")
   }
                     @listit = Dir.glob("*.TXT")
                     @listit.each do |listit|
