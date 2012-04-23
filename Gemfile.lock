@@ -200,9 +200,6 @@ GEM
     prawn (0.12.0)
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
-    rabl (0.6.9)
-      activesupport (>= 2.3.14)
-      multi_json (~> 1.0)
     rack (1.3.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -309,7 +306,6 @@ DEPENDENCIES
   postageapp
   prawn
   query_reviewer!
-  rabl
   rack (= 1.3.2)
   rails (= 3.1.1)
   rails_admin!

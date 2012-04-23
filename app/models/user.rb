@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :actcode
   default_scope :order => 'email ASC'
   devise :database_authenticatable, 
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable,:token_authenticatable
-         
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable
          #scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}
          #scope :unconfirmedevent, lambda { |contract|  where(:confirmation => 0)}
         # scope :ismanager, where(if user.role == "manager")
