@@ -15,6 +15,7 @@ gem "query_reviewer", :git => "git://github.com/nesquena/query_reviewer.git"
 gem 'dropbox-sdk'
 group :development do
 gem 'sqlite3'
+gem 'rabl'
 
 end
 
