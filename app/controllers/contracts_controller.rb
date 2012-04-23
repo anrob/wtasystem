@@ -12,7 +12,7 @@ class ContractsController < ApplicationController
 
       @mana = Actcode.find_by_id(current_user.actcode_id)
       unless current_user.is? :manager
-        @contracts = Contract.mystuff(@user.actcode.actcode).tenday.all  
+       @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all  
       else
         @contracts = Contract.where(:act_code => @manger.split(",")).tenday.all
       end

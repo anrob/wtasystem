@@ -33,7 +33,7 @@ class Contract < ActiveRecord::Base
   end
 
   def self.send_reminders
-      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      @contract = Contract.unconfirmedevent.contractstatsus.tenday.all
       @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
       @users = User.find_all_by_actcode_id(@actcodes) 
       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
@@ -44,7 +44,7 @@ class Contract < ActiveRecord::Base
   end
   
   def self.send_user_reminders
-      @contract = Contract.unconfirmedevent.innextten.includes(:user)
+      @contract = Contract.unconfirmedevent.contractstatsus.tenday.all
       @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
       @users = User.find_all_by_actcode_id(@actcodes) 
       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
