@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ContractsController < ApplicationController
   set_tab :home
   inherit_resources

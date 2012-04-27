@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class MenuTabBuilder < TabsOnRails::Tabs::Builder
   def tab_for(tab, name, options, item_options = {})
      item_options[:class] = (current_tab?(tab) ? 'current' : '')

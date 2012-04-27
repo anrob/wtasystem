@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Notifier < ActionMailer::Base
   default :from => "fresh@washingtontalent.com"
 

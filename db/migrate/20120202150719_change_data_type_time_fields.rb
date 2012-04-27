@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeDataTypeTimeFields < ActiveRecord::Migration
   def up
     change_table :contracts do |t|

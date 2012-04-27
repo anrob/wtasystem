@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   add_breadcrumb "Home", :root_path
   before_filter :authenticate_user!

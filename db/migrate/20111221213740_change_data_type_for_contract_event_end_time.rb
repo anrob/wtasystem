@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeDataTypeForContractEventEndTime < ActiveRecord::Migration
    def self.up
       change_table :contracts do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ManagementsController < BaseController
   set_tab :company
 inherit_resources

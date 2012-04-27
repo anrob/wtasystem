@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'dropbox_sdk'
 
 # This is an example of a Rails 3 controller that authorizes an application

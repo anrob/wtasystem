@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'postageapp/mailer'
 
 class ContractMailer < PostageApp::Mailer
@@ -8,7 +9,7 @@ class ContractMailer < PostageApp::Mailer
       @additional = additional
       postageapp_template 'eventinfo_template'
      mail( :to => user.email, 
-           :subject => "Your Event info")
+           :subject => "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
    end
    
    def send_reminder(user) 

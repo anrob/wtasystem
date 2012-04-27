@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 if defined?(WillPaginate)
   module WillPaginate
     module ActiveRecord

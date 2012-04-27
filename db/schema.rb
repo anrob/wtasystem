@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203051358) do
+ActiveRecord::Schema.define(:version => 20120423181756) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20120203051358) do
   end
 
   create_table "contracts", :force => true do |t|
-    t.date     "accounting_confirmation_date"
+    t.string   "accounting_confirmation_date"
     t.string   "act_form"
     t.integer  "act_net"
     t.string   "agent"
@@ -104,12 +104,12 @@ ActiveRecord::Schema.define(:version => 20120203051358) do
     t.integer  "charge_per_horn"
     t.integer  "other_charges"
     t.string   "cocktail_instrumentation"
-    t.date     "confirmation_date"
-    t.date     "contract_sent_date"
+    t.string   "confirmation_date"
+    t.string   "contract_sent_date"
     t.string   "contract_number"
     t.string   "contract_revision_number"
-    t.date     "date_of_cancellation"
-    t.date     "date_of_ceremony"
+    t.string   "date_of_cancellation"
+    t.string   "date_of_ceremony"
     t.integer  "charge_per_dancer"
     t.integer  "number_of_dancers"
     t.string   "giveaways"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20120203051358) do
     t.integer  "confirmation",                      :default => 0
     t.string   "ceremonoy_address_line_1"
     t.string   "cocktail_time"
+    t.string   "reception_location"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -189,6 +190,13 @@ ActiveRecord::Schema.define(:version => 20120203051358) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "identities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "identifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "managements", :force => true do |t|
     t.string   "name"
@@ -275,6 +283,7 @@ ActiveRecord::Schema.define(:version => 20120203051358) do
     t.string   "phone_number"
     t.string   "authentication_token"
     t.integer  "actcode_id"
+    t.string   "rpx_identifier"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

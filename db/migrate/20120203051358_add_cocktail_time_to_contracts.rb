@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCocktailTimeToContracts < ActiveRecord::Migration
   def change
     add_column :contracts, :cocktail_time, :string

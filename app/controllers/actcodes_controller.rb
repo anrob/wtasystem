@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ActcodesController < BaseController
 inherit_resources
 load_and_authorize_resource

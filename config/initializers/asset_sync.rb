@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 AssetSync.configure do |config|
   config.fog_provider = 'AWS'
   config.fog_directory = "wtasystem-assets"#ENV['FOG_DIRECTORY']

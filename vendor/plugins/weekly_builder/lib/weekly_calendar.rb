@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # WeeklyCalendar by Dan McGrady 2011 http://dmix.ca
 module WeeklyCalendar
   def weekly_calendar(objects, *args)

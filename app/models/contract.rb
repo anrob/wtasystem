@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Contract < ActiveRecord::Base
   belongs_to :user
   has_one :actcode
@@ -6,7 +7,7 @@ class Contract < ActiveRecord::Base
   default_scope :order => 'date_of_event ASC'
 
   
-  scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT", "Call First","Complimentary","Hold- Money OTW","Hold- Money Rec'd","Hold- no dep.","Promotional","Promo- WTA to pay"]}
+  scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Hold- Money OTW","Hold- Money Rec'd","Hold- no dep.","Promotional","Promo- WTA to pay"]}
   
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
@@ -63,25 +64,25 @@ class Contract < ActiveRecord::Base
    end
   
   def self.import_contracts
-   # Contract.delete_all
-   #     ActiveRecord::Base.connection.reset_pk_sequence!('Contract')
+    #Contract.delete_all
+   #   ActiveRecord::Base.connection.reset_pk_sequence!('Contract')
     $KCODE = "U"
                     require 'csv'
                     
                     require 'net/ftp'
                             Dir.chdir("#{Rails.root}/tmp") do
-                                    Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
-                                       ftp.passive = true
-                                       ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
-                                       file = ftp.nlst("*.TXT")
-                                       file.each{|filename| #Loop through each element of the array
-                                       ftp.getbinaryfile(filename,filename) #Get the file
-                                       #ftp.delete("*.TXT")
+                                     Net::FTP.open("ftp.dctalentphotovideo.com") do |ftp|
+                                                                          ftp.passive = true
+                                                                           ftp.login('telemagic@dctalentphotovideo.com', 'shaina99')
+                                                                          file = ftp.nlst("*.TXT")
+                                                                          file.each{|filename| #Loop through each element of the array
+                                                                           ftp.getbinaryfile(filename,filename) #Get the file
+                                   
   }
                     @listit = Dir.glob("*.TXT")
                     @listit.each do |listit|
-                   $KCODE = 'UTF8'   
-                  CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date}) do |row|
+                   $KCODE = "UTF-8"   
+                  CSV.foreach(listit, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date, encoding: "ISO8859-1"}) do |row|
                                                   @contracts = Contract.find_or_create_by_unique3(row[0])
                                                   @contracts.update_attributes( {
                                                    :unique3 => row[0],
@@ -166,9 +167,11 @@ class Contract < ActiveRecord::Base
                                                    :act_notes => row[79].inspect,
                                                    :contract_provisions => row[80].inspect,
                                                    :reception_location => row[81]}) 
+                                                   FileUtils.mv (listit), ("#{Rails.root}/tmp/move")
                                                   end
+                                                  
                                                 end
-                                           # FileUtils.rm Dir.glob('*.TXT')
+                                         
                                         end
                                  end
                  Dir.chdir("../")          

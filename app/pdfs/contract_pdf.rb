@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ContractPdf < Prawn::Document
   def initialize(contract, view)
     super(top_margin: 30)

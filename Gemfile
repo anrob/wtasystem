@@ -13,8 +13,10 @@ gem 'postageapp'
 gem "switch_user"
 gem "query_reviewer", :git => "git://github.com/nesquena/query_reviewer.git"
 gem 'dropbox-sdk'
+gem 'magic_encoding'
 group :development do
 gem 'sqlite3'
+
 
 end
 

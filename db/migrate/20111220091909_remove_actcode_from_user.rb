@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveActcodeFromUser < ActiveRecord::Migration
   def up
     remove_column :users, :actcode
