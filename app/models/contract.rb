@@ -181,9 +181,9 @@ class Contract < ActiveRecord::Base
      
 def self.mailchimp
     gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")
-    @users = User.all
-    @users.each do |us|
-    gb.list_subscribe(:id => "9e862a6c03", :email_address => us.email,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MMERGE3 => us.updated_at } )
+    @contracts = Contract.contractstatsus
+    @contracts.each do |us|
+    gb.list_subscribe(:id => "6a120e7f17", :email_address => us.email_address,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MERGE3 => us.date_of_event, :MMERGE4 => us.contract_status,  :ACTBOOKED => us.act_booked, :EVENTTYPE => us.type_of_event} )
     end
   end
   

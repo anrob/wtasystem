@@ -18,3 +18,10 @@ task :update_contracts => :environment do
        Contract.send_user_reminders
       puts "done."
    end
+   
+   task :mailchimp => :environment do
+     puts "Updating Contacts"
+     Contract.mailchimp
+     puts "done"
+     
+   end

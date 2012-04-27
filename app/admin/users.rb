@@ -10,4 +10,12 @@ ActiveAdmin.register User do
        f.buttons
      end
   
+  
+  csv do
+    column :email
+    column :first_name
+    column :last_name
+    column :actcode_id
+    column :management_id
+  end
 end

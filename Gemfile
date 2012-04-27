@@ -46,7 +46,7 @@ gem 'jintastic'
 
 gem 'meta_search'
 
-#gem 'gibbon'
+gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
 gem 'gravatar_image_tag'

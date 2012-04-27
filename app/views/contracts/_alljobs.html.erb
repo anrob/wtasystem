@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Act Booked</th>
+<th>contract Status</th>
       <th>Date of Event</th>
       <th>Location city</th>
       <th>Start Time</th>
@@ -18,6 +19,7 @@
 			<%= link_to  "#{m.act_booked}" ,  m, :class => "green" %>
 			<% end %>
 </td>
+<td><%= m.contract_status %></td>
 <td><%= m.date_of_event %></td>
 <td><%= m.location_city %></td>
 <td><%= m.event_start_time %></td>
