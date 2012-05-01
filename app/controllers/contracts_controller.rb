@@ -15,7 +15,7 @@ class ContractsController < ApplicationController
       unless current_user.is? :manager
        @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all  
       else
-        @contracts = Contract.where(:act_code => @manger.split(",")).tenday.all
+        @contracts = Contract.where(:act_code => @manger.split(",")).contractstatsus.tenday.all
       end
       if cannot? :see_others, @contract
         redirect_to root_url
@@ -26,7 +26,7 @@ class ContractsController < ApplicationController
       @actcode = current_user.actcode
       @getcompan = Actcode.getallbycompany(current_user)
       @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
-      @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
+      @cont = Contract.contractstatsus.tenday.find_by_act_code(@gt.map {|m| m.actcode})
       # @unconfirmed = Contract.includes("actcodes").where(:act_code => params[:act_code]).count
       @gp = @gt.map {|m| m.actcode}
       @totalnum = @contract.threesixfive.sum(:contract_price)
@@ -44,7 +44,7 @@ class ContractsController < ApplicationController
 
   def show
     add_breadcrumb "Show Contract", contract_path
-    @additional = Contract.additional(@contract)
+    @additional = Contract.contractstatsus.additional(@contract)
     respond_with do |format|
       format.html
       format.pdf do
