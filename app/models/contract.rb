@@ -7,7 +7,7 @@ class Contract < ActiveRecord::Base
   default_scope :order => 'date_of_event ASC'
 
   
-  scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Hold- Money OTW","Hold- Money Rec'd","Hold- no dep.","Promotional","Promo- WTA to pay"]}
+  scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
   
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
