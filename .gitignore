@@ -79,3 +79,5 @@ db/*.sqlite3
 config/.DS_Store
 
 lib/.DS_Store
+
+lib/.DS_Store

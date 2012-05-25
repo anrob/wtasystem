@@ -2,22 +2,22 @@
 	<div class="invoice_inners">
 		<div class="tan">
 	<div class="one_half">	
-		<h2>Act Name: <%= @contract.act_booked %></h2>
-		<h2>Type of Event: <%= @contract.type_of_event %></h2>
+		<h4>Act Name: <%= @contract.act_booked %></h4>
+		<h4>Type of Event: <%= @contract.type_of_event %></h4>
 		<h4>Operating as: <%= @contract.type_of_act %></h4>
 		<h4>Form of: <%= @contract.act_form %></h4>
-		<h2> <span>Event Location</span></h2>
+		<h4> <span>Event Location</span></h4>
 		<address><%= @contract.location_name %><br>
 	   	<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
 	Phone:<%= @contract.location_phone %><br clear="all"></address>
 	</div>
 	<div class="one_half last">
-	<h2 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h2>
-	<h2 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %>	</h2>
-	<h2 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h2>
-	<h2>Agent : <%= @contract.agent %> </h2>
-	<h2 class="blue">Contract number: <%= @contract.contract_number %></h2>
-	<h2 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h2>
+	<h4 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h4>
+	<h4 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %>	</h4>
+	<h4 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
+	<h4>Agent : <%= @contract.agent %> </h4>
+	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
+	<h4 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h4>
 	</div>
 </div>
 <hr>
@@ -36,7 +36,7 @@
 	</div>
 	</div>
 		<div class="widgetbox one_half last">
-			<h2> <span>Extras Section</span></h2>
+			<h4> <span>Extras Section</span></h4>
 			<div class="content">
 				  Cocktail Instrumentation:  <%= @contract.cocktail_instrumentation %><br>
 				  Cocktail Time:  <%= @contract.cocktail_time %><br>

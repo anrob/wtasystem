@@ -6,14 +6,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Actcode.delete_all
-open("db/actcodes.csv") do |countries|
- countries.read.each_line do |country|
-   actcode,name = country.chomp.split("|")
-   Actcode.create!(
-   :actcode => actcode,
-   :description => name
-   )
+# Actcode.delete_all
+# ActiveRecord::Base.connection.reset_pk_sequence!('Actcode')
+# open("db/actcodes.csv") do |countries|
+#  countries.read.each_line do |country|
+#    actcode,name,management_id = country.chomp.split("|")
+#    Actcode.create!(
+#    :actcode => actcode,
+#    :description => name,
+#    :management_id => management_id
+#    )
+#    
+   open("db/users.csv") do |user|
+     user.read.each_line do |users|
+      actcode_id,management_id,first_name,last_name,email,phone = users.chomp.split("|")
+      muser = User.find_or_create_by_email(
+      :email => email,
+      :password => "washington",
+      :password_confirmation => "washington",
+      :management_id => management_id,
+      :actcode_id => actcode_id,
+      :first_name => first_name,
+      :last_name => last_name,
+      :phone => phone
+      )
    # unique3,prntkey23,prntkey13,actcode,acctcnfdat,actform,actnet,agtfulnam,bookedact,ccfee,cerloc,cerloc13,ceradd23,cercity3,cerinst,cerst3,cerzip3,cersttm3,chgcer,chgcoc,chgeset,esettime,chggrs,chghorn,chgothr,cocinst,confdate,consenddat,contractno,contrevnum,datecancl,datecer,djdanchg,djdancnum,djgiveaway,djgivechg,djtechchg,djtechyn,endtime3,hornnum,lightshow,location3,locadd13,locadd23,loccity3,locstate3,loczip3,phnloc3,noncomchg,pickupamnt,pickupexpl,player,playerspay,priceact,quesrecdat,questsent,refamnt,refpay,songreqst,starttm3,status3,tax,typeact3,typeevnt3,videog1,videog2,videog3,dateev,firstname,lastname,numofpages,orgname,name1,name2,phnhme3,phnwrk3,phncell3 = country.chomp.split("|")
    #  Contract.create!( 
    #  :unique3 => unique3,
