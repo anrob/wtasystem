@@ -1,6 +1,7 @@
 class IncomingMailsController < ApplicationController
   require 'mail'
    skip_before_filter :verify_authenticity_token
+   skip_before_filter :authenticate_user!
 
    def create
      message = Mail.new(params[:message])
