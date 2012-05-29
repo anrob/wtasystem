@@ -5,8 +5,11 @@ class IncomingMailsController < ApplicationController
 
    def create
      message = Mail.new(params[:message])
-     Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
-     Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
+     # Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
+     # Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
+     Rails.logger.info params[:headers][:subject]
+     Rails.logger.info params[:plain]
+     Rails.logger.info params[:html]
 
      # Do some other stuff with the mail message
 
