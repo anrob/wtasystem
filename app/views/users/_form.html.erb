@@ -5,7 +5,7 @@
 <%= f.inputs :first_name, :last_name, :phone_number %>
 <% if can? :everything, @users %>
 <%= f.inputs :management %>
-<%= f.input :actcode, :as => :select, :collection => Actcode.all.map {|m|[m.actcode, m.id]} %>
+<%= f.input :actcode_name %>
 <%#= f.semantic_fields_for :actcode do |profile| %>
     <%#= profile.inputs %>
   <%# end %>

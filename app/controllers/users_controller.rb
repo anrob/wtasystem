@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
+ 
   set_tab :account
   inherit_resources
    load_and_authorize_resource #:skip_authorization_check #:user, :through => :contract 

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
    #load_and_authorize_resource
    protect_from_forgery
+  include Mobylette::RespondToMobileRequests
    
   respond_to :html, :xml, :json
   rescue_from CanCan::AccessDenied do |exception|
@@ -39,7 +40,7 @@ class ApplicationController < ActionController::Base
 
   def everypage
      @management = Management.find_by_id(current_user.management_id)
-     @mana = Actcode.find_by_id(current_user.actcode_id)
+     @mana = Actcode.find_by_actcode(current_user.actcode_name)
      # @manger = User.getotheracts(current_user).map {|m| m.actcode}
      @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode}
      @but = @manger.include?(params[:act_code]).to_s

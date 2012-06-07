@@ -11,7 +11,7 @@ class Ability
           can :assign_roles, :all
           can :create,  :all
         else
-          can :manage, Contract, :act_code => user.actcode.actcode
+          can :manage, Contract, :act_code => user.actcode_name
           can :update, User, :id => user.id
         end
         
@@ -26,7 +26,7 @@ class Ability
         if user.is? :manager
           can :see_others, :all 
           can :manage, User, :management_id => user.management_id
-          can :manage, Contract, :act_code => user.actcode_id
+          can :manage, Contract, :act_code => user.actcode_name
           can :manage, Contract
           cannot :destroy, User
         end

@@ -18,9 +18,9 @@
 <% if current_user.is? :manager %>
 <%= render 'otheracts-sidebar' %>
 <% end %>
-<h2 class="fronth"><%= @actcode.description %></h2>
+<h2 class="fronth"><%##= @actcode.description %></h2>
 
-<h3><span><%= @actcode.description %> Contracts in the Next 10 Days</span></h3>
+<h3><span><%#= @actcode.description %> Contracts in the Next 10 Days</span></h3>
 <table id="products" class="table">
 	<thead>
 	 <tr>

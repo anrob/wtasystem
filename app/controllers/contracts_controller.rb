@@ -11,9 +11,9 @@ class ContractsController < ApplicationController
       @contract = Contract.where(:act_code => params[:act_code])
       @actcode = Actcode.where(:actcode => params[:act_code]).first
 
-      @mana = Actcode.find_by_id(current_user.actcode_id)
+      @mana = Actcode.find_by_actcode(current_user.actcode_name)
       unless current_user.is? :manager
-       @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all  
+       @contracts = Contract.mystuff(@user.actcode_name).contractstatsus.tenday.all  
       else
         @contracts = Contract.where(:act_code => @manger.split(",")).contractstatsus.tenday.all
       end
@@ -23,16 +23,16 @@ class ContractsController < ApplicationController
     else
       #@mana = Actcode.find_by_id(current_user.actcode_id)
       @contract = Contract.mytoday.mystuff(@mana.actcode)
-      @actcode = current_user.actcode
+      @actcode = current_user.actcode_name
       @getcompan = Actcode.getallbycompany(current_user)
       @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
       @cont = Contract.contractstatsus.tenday.find_by_act_code(@gt.map {|m| m.actcode})
       # @unconfirmed = Contract.includes("actcodes").where(:act_code => params[:act_code]).count
       @gp = @gt.map {|m| m.actcode}
       @totalnum = @contract.threesixfive.sum(:contract_price)
-    @mana = Actcode.find_by_id(current_user.actcode_id)
+    @mana = Actcode.find_by_actcode(current_user.actcode)
       unless current_user.is? :manager
-        @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all  
+        @contracts = Contract.mystuff(@user.actcode).contractstatsus.tenday.all  
       else
         @contracts = Contract.where(:act_code => @manger.split(",")).tenday.contractstatsus.all
         @totalcount = @contracts.count
@@ -60,10 +60,10 @@ class ContractsController < ApplicationController
 
   def calendar
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    @mana = Actcode.find_by_id(current_user.actcode_id)
+    @mana = Actcode.find_by_actcode(current_user.actcode)
     #case @but when "true"
     unless current_user.is? :manager
-      @contracts = Contract.contractstatsus.mystuff(@user.actcode.actcode).threesixfive.all  
+      @contracts = Contract.contractstatsus.mystuff(@user.actcode_name).threesixfive.all  
     else
       @contracts = Contract.contractstatsus.where(:act_code => @manger.split(",")).threesixfive.all
     end
@@ -71,7 +71,7 @@ class ContractsController < ApplicationController
   end
   def alljobs
 
-    @mana = Actcode.find_by_id(current_user.actcode_id)
+    @mana = Actcode.find_by_actcode(current_user.actcode_name)
    unless current_user.is? :manager
       @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all
       #@contracts = Contract.contractstatsus.unconfirmedevent.innextten
@@ -80,7 +80,7 @@ class ContractsController < ApplicationController
       @noactcode = Contract.justimported
       @contracts = Contract.contractstatsus.unconfirmedevent.innextten
       @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
-      @users = User.find_all_by_actcode_id(@actcodes) 
+      #@users = User.find_all_by_actcode_name(@actcodes.id) 
       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
       @recipients = @theusers.collect {|m| m.email}
     end

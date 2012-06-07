@@ -2,9 +2,11 @@
 <div class="loginbox">	
 	<div class="loginbox_inner">
     	<div class="loginbox_content">
-		<%= f.email_field :email,  :class => "username" %>
+	<%= f.label :actcode %>
+		<%= f.text_field :actcode_name,  :class => "username" %><br /><br />
+		<%= f.label :password %>
 		<%= f.password_field :password,  :class => "password" %>
-	
+	<br /><br />
 		<%= button_tag "Login", :class => "submit" %>		
          </div><!--loginbox_content-->
     <%= render :partial => "devise/shared/links" %></div><!--loginbox_inner-->

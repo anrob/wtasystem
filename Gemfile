@@ -14,8 +14,11 @@ gem "switch_user"
 gem "query_reviewer", :git => "git://github.com/nesquena/query_reviewer.git"
 gem 'dropbox-sdk'
 gem 'magic_encoding'
+
 group :development do
 gem 'sqlite3'
+gem 'mobylette'
+gem 'jquery_mobile_rails'
 
 
 end
@@ -50,7 +53,7 @@ gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
 gem 'gravatar_image_tag'
-gem 'draper'
+#gem 'draper'
 gem 'lazy_high_charts'
 gem 'gmail'
 gem 'prawn'
@@ -71,5 +74,5 @@ gem 'rack', '1.3.2'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-	gem 'minitest'
+  gem 'minitest'
 end

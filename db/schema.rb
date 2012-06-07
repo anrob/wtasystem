@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423181756) do
+ActiveRecord::Schema.define(:version => 20120530075048) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -282,8 +282,8 @@ ActiveRecord::Schema.define(:version => 20120423181756) do
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "authentication_token"
-    t.integer  "actcode_id"
     t.string   "rpx_identifier"
+    t.string   "actcode_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
   alias_attribute "name", "email"
   accepts_nested_attributes_for :actcode
   default_scope :order => 'email ASC'
-  devise :database_authenticatable, 
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable
+  devise :database_authenticatable,:recoverable, :rememberable, :trackable, :timeoutable, :registerable
          #scope :mystuff, lambda { |user| where("actcode = ?", user.act_code)}
          #scope :unconfirmedevent, lambda { |contract|  where(:confirmation => 0)}
         # scope :ismanager, where(if user.role == "manager")
@@ -16,7 +15,7 @@ class User < ActiveRecord::Base
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
   
   ROLES = %w[everything money manager chart newuser]
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :actcode_id, :management_id, :manager, :roles, :first_name, :last_name, :phone_number
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :management_id, :manager, :roles, :first_name, :last_name, :phone_number, :actcode_name
  
    def roles=(roles)
      self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum

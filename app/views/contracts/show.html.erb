@@ -11,7 +11,7 @@
 	</div>
 	<div class="dash alignright one_half last">
 	 <%#= image_tag("images/printer.png") %>
-		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <% if @contract.date_of_event < Date.today + 10.days %>
+		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <% if @contract.date_of_event < Date.today + 11.days %>
 		<% if @contract.confirmation == 0  %>
 		<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
 		<% else %>

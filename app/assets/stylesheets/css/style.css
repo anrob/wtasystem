@@ -41,7 +41,23 @@ body {
 }
 
 
-body { background: #333 url(images/texturebg.png); line-height: 21px; }
+body { 
+	
+	background: #E9ECF2 url('images/background.png');
+	/*background-image: url(http://www.burakvanli.com/supportdesk/images/background.png);*/
+	background-repeat-x: initial;
+	background-repeat-y: initial;
+	background-attachment: initial;
+	background-position-x: initial;
+	background-position-y: initial;
+	background-origin: initial;
+	background-clip: initial;
+	background-color: #E9ECF2;
+	}
+	
+	.homepage {
+		padding: 90px 0 0 0;
+	}
 input, select, textarea, button { outline: none; font-family: DroidSansRegular, "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 12px; }
 input, select, textarea, button { border: 1px solid #ccc; padding: 5px; }
 
@@ -58,7 +74,7 @@ h1.prize { font-size: 28px; color: #000; font-family: Arial, Helvetica, sans-ser
 h2.prize { font-size: 20px; color: #000; font-family: Arial, Helvetica, sans-serif; margin-bottom: 5px; }
 
 /***NOTIFICATION MESSAGES (login.html, dashboard.html)***/
-.notification { padding: 10px 10px 10px 45px; margin: 0 0 20px 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; position: relative; }
+.notification { padding: 10px 10px 10px 10px; margin: 0 0 0 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; position: relative; width:85%;}
 .notification .close { position: absolute; right: 5px; top: 5px; display: inline-block; width: 8px; height: 8px; cursor: pointer; }
 .notification .close { background: url(images/icons/close.png) no-repeat 0 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 .notifyError, .hold { border: 1px solid #ff0000; background: #FFECEC; color: #ff0000; font-size: 11px; }
@@ -69,18 +85,49 @@ h2.prize { font-size: 20px; color: #000; font-family: Arial, Helvetica, sans-ser
 .msgerror { border: 1px solid #e18b7c; background: #fad5cf url(images/icons/error.png) no-repeat 10px center; }
 
 /***LOGIN PAGE (index.html)***/
-.loginlogo { width: 279px; height: 50px; background: url(images/gradcircle.png) no-repeat top left; margin: 80px auto 20px auto; padding: 75px 50px; }
-.loginbox { width: 580px; height: 62px; margin: 10px auto; background: url(images/loginbox.png) no-repeat right -62px; padding-right: 11px; }
-.loginbox_inner { background: url(images/loginbox.png) no-repeat 0 0; height: 62px; padding-left: 11px; }
-.loginbox_content { background: url(images/loginbox.png) repeat-x 0 -124px; height: 62px; overflow: hidden; padding: 15px 2px; }
-
-.loginbox .username { border: 0; background: #eee url(images/usernamefield.png) no-repeat; background-position: top left; width: 190px; margin-right: 10px; }
+.loginlogo { /*width: 279px; height: 50px; background: url(images/gradcircle.png) no-repeat top left; margin: 80px auto 20px auto; padding: 75px 50px;*/ 
+	height: 50px;
+	background: #434B6D url('../images/header-bg.png') repeat-x top left;
+	border-bottom: 1px solid #23283B;
+	box-shadow: 0px 1px 1px #B1B4C3;
+	color: white;
+	font-size: 13px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	}
+.loginbox { /*width: 580px; height: 62px; margin: 10px auto; background: url(images/loginbox.png) no-repeat right -62px; padding-right: 11px; */}
+.loginbox_inner /*{ background: url(images/loginbox.png) no-repeat 0 0; height: 62px; padding-left: 11px; }*/ {
+	
+	width: 490px;
+	background: white;
+	border: 1px solid #ACB0BC;
+	border-radius: 4px;
+	margin: 0px auto;
+	padding: 16px 22px 0px;
+	box-shadow: 0px 0px 5px #C6D3F0;
+}
+.loginbox_content { /*background: url(images/loginbox.png) repeat-x 0 -124px; height: 62px; overflow: hidden; padding: 15px 2px;*/ }
+.loginbox label {font-size: 14px;
+font-weight: bold;
+color: #3F4666;}
+.loginbox .username { border: 0; background: #eee url(images/usernamefield.png) no-repeat; background-position: top left; width: 91%; margin-right: 2px; }
 .loginbox .username { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 7px 5px 6px 40px; display: inline-block; font-size: 14px; }
-.loginbox .username:focus { background-color: #fff; background-position: 0 -32px; }
-.loginbox .password { border: 0; background: #eee url(images/passwordfield.png) no-repeat; background-position: top left; width: 190px; margin-right: 10px; }
+.loginbox .username { background-color: #eee; background-position: 0 -32px; }
+.loginbox .password { border: 0; background: #eee url(images/passwordfield.png) no-repeat; background-position: top left; width: 91%; margin-right:2px; }
 .loginbox .password { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 7px 5px 6px 40px; display: inline-block; font-size: 14px; }
-.loginbox .password:focus { background-color: #fff; background-position: 0 -32px; }
-.loginbox button { background: #4b6592 url(images/buttonbg.png) repeat-x top left; font-size: 13px; padding: 6px 14px; width: 67px; font-weight: bold;}
+.loginbox .password { background-color: #eee; background-position: 0 -32px; }
+.loginbox button { background: #4b6592; font-size: 13px; padding: 6px 14px; width: 99%; font-weight: bold;
+	 background: #364f7e url(images/buttonbg.png) repeat-x 0 -34px; 
+	border: 1px solid #14255E;
+	border-radius: 2px;
+	text-align: center;
+	padding: 10px 0;
+	width: 100%;
+	height: 40px;
+	box-shadow: 0px 1px 2px silver;
+	text-shadow: 0px -1px 0px #254E9A;}
 .loginbox button { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; cursor: pointer; color: #fff; text-shadow: 1px 1px #333; border: 0; }
 .loginbox button:active { -moz-box-shadow: inset 1px 1px 2px #000; -webkit-box-shadow: inset 1px 1px 2px #000; box-shadow: inset 1px 1px 2px #000;}
 .loginbox button:hover { background: #364f7e url(images/buttonbg.png) repeat-x 0 -34px; }
@@ -739,11 +786,12 @@ div#money {
 
 div#notice.alert.message {
 	text-align: center;
-	font-weight: bold;
-	font-size: 20px;
-	background-color: #ffcac7;
+/*	font-weight: bold;*/
+	font-size: 16px;
+/*	background-color: #ffcac7;*/
 	padding-top: 20px;
 	padding-bottom: 20px;
+	width:100%;
 }
 
 span span {
