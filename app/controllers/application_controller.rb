@@ -1,7 +1,8 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   add_breadcrumb "Home", :root_path
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! 
+
    #load_and_authorize_resource
    protect_from_forgery
   #include Mobylette::RespondToMobileRequests
@@ -39,6 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def everypage
+
      @management = Management.find_by_id(current_user.management_id)
      @mana = Actcode.find_by_actcode(current_user.actcode_name)
      # @manger = User.getotheracts(current_user).map {|m| m.actcode}
@@ -52,9 +54,10 @@ class ApplicationController < ActionController::Base
      # @cp = Contract.where(:act_code => current_user.actcode)
      #      @test = @cp.mytoday.count
     # @cc = @contracts.sum(:contract_price) 
-  end
-  
+  # end
+end
   protected
+ 
   def special_layout
      if devise_controller? && resource_name == :admin
        "special_layout"
@@ -63,6 +66,12 @@ class ApplicationController < ActionController::Base
      end
    end
    
+   
+   def update_password 
+     unless current_user.sign_in_count ==! 0
+     redirect_to edit_user_path(current_user), :alert => "Oh no! We want to annoy you so you are forced to update your password."
+   end
+ end
    # def param_posted?(sym)
    #    request.post? and params[sym]
    #  end

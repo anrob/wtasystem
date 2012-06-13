@@ -6,32 +6,38 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Actcode.delete_all
+#Actcode.delete_all
 # ActiveRecord::Base.connection.reset_pk_sequence!('Actcode')
-open("db/actcodes.csv") do |countries|
- countries.read.each_line do |country|
-   actcode,name,management_id = country.chomp.split("|")
-   Actcode.create!(
-   :actcode => actcode,
-   :description => name,
-   :management_id => management_id
-   )
-  
-# User.delete_all
+# open("db/actcodes.csv") do |countries|
+#  countries.read.each_line do |country|
+#    actcode,name,management_id = country.chomp.split("|")
+#    Actcode.create!(
+#    :actcode => actcode,
+#    :description => name,
+#    :management_id => management_id
+#    )
+#   
+User.delete_all
+password_length = 6
+
 #ALTER SEQUENCE users_id_seq RESTART WITH 1
-   # open("db/newuserss.csv") do |user|
-   #   user.read.each_line do |users|
-   #    actcode_name,management_id,first_name,last_name,email,phone = users.chomp.split("|")
-   #    muser = User.create!(
-   #    :email => email,
-   #    :password => "washington",
-   #    :password_confirmation => "washington",
-   #    :management_id => management_id,
-   #    :first_name => first_name,
-   #    :last_name => last_name,
-   #    :phone => phone,
-   #    :actcode_name => actcode_name,
-   #    )
+   open("db/newuserss.csv") do |user|
+    
+     user.read.each_line do |users|
+        password = Devise.friendly_token.first(password_length)
+      actcode_name,management_id,first_name,last_name,email,phone = users.chomp.split("|")
+      muser = User.create!(
+      :email => email,
+      :password => password, 
+      :password_confirmation => password,
+      :management_id => management_id,
+      :first_name => first_name,
+      :last_name => last_name,
+      :phone_number => phone,
+      :actcode_name => actcode_name,
+      )
+      #User.all.send_confirmation_instructions
+      #RegistrationMailer.welcome(user, password).deliver
    # unique3,prntkey23,prntkey13,actcode,acctcnfdat,actform,actnet,agtfulnam,bookedact,ccfee,cerloc,cerloc13,ceradd23,cercity3,cerinst,cerst3,cerzip3,cersttm3,chgcer,chgcoc,chgeset,esettime,chggrs,chghorn,chgothr,cocinst,confdate,consenddat,contractno,contrevnum,datecancl,datecer,djdanchg,djdancnum,djgiveaway,djgivechg,djtechchg,djtechyn,endtime3,hornnum,lightshow,location3,locadd13,locadd23,loccity3,locstate3,loczip3,phnloc3,noncomchg,pickupamnt,pickupexpl,player,playerspay,priceact,quesrecdat,questsent,refamnt,refpay,songreqst,starttm3,status3,tax,typeact3,typeevnt3,videog1,videog2,videog3,dateev,firstname,lastname,numofpages,orgname,name1,name2,phnhme3,phnwrk3,phncell3 = country.chomp.split("|")
    #  Contract.create!( 
    #  :unique3 => unique3,

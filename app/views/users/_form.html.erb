@@ -1,11 +1,22 @@
 <div class="form_default">
-<%= @user.build_actcode unless @user.actcode %>
+	<p class="alert"><%= alert %></p>
+<% @user.build_actcode unless @user.actcode %>
 <%= semantic_form_for(@user,:html => { :class => "form_default", :method => :put}) do |f| %>
 <%= f.inputs :email,:hint => 'Hey - no more than 255 characters can be input!!!', %>
 <%= f.inputs :first_name, :last_name, :phone_number %>
+<%= f.label :current_password %><br />
+ <%= f.input :current_password %>
+
+<%= f.label :password, "New password" %><br />
+<%= f.input :password %></p>
+
+<%= f.label :password_confirmation, "Confirm new password" %><br />
+<%= f.input :password_confirmation %>
 <% if can? :everything, @users %>
 <%= f.inputs :management %>
 <%= f.input :actcode_name %>
+
+
 <%#= f.semantic_fields_for :actcode do |profile| %>
     <%#= profile.inputs %>
   <%# end %>

@@ -1,5 +1,24 @@
-<p>Welcome <%= @resource.email %>!</p>
+Dear WTA Valued Vendor,
+<p> All of us at Washington Talent would like to thank you for your years of dedication to WTA and working hard for our mutual clients. WTA manages 100’s of events per week, and as a vendor, you’ve come to expect that Email from Jeff Schofield notifying you of your upcoming event 10 days prior to the event. Though efficient, the emails have grown to be very taxing on us all, which is why we are so excited to introduce you to www.ConfirmMyGig.com.</p>
+ <p>CMG is going to make all of our lives easier as well as giving you real-time updates of your event!  You have a login below where you can access all information for all of your future contracted events. For confirmation,  I n place of the emails with your event information, you will now get an email asking you to “CONFIRM YOUR GIG" by going to www.ConfirmMyGig.com. You will not only see information about one event, but be able to see information about all of your current events in list view or calendar view. Once you click the RED button to “CONFIRM YOUR GIG”, an email will be instantly sent to you with all the event info, financial info, money pick-up if needed, map to venue and more.  
+All future events will need to be confirmed with this system and your login. Since job information can change between the time a contract is sent and the time it is performed you will only be able to confirm 10 days before the event date. You will receive an E-Mail whoever you have events to confirm letting you know about them. You must log in to confirm these jobs and have the information E-Mailed to you.
+Occasionally clients make change to their events last minute… if that happens after you’ve already confirmed, a new email will automatically be generated for you to get the NEW info. Don't be surprised if you get an E-Mail asking you to confirm a job that you have confirmed already, this just means that a change has been made.  </p>
+<h2>To use CMG, click here: <%= link_to 'Click to Confirm Your Account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
 
-<p>You can confirm your account through the link below:</p>
+<h3>Your username: <%= @resource.actcode_name %>  and password is: <%= @resource.password %></h3>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>Once logged in, please change your password. If you have no upcoming event, you will have access to CMG, but there will be no events listed. 
+For the next 2-3 weeks we will be confirming with this new system as well as the old way with manual E-Mails to insure that nothing is being missed. This "double confirmation" system will mean that you will have to confirm each job in 2 different ways but this will be very temporary.  
+In the upper left hand corner of CMG you will see a Feedback Button. Please feel free to use it if you have any questions or suggestions.
+Thanks again for being a part of the WTA family and enjoy our NEW event confirmation system.</p>
+<p>Sincerely,<br>
+Strickland Bonner<br>
+President<br>
+Washington Talent Agency<br>
+14670 Rothgeb Drive, Rockville, MD 20850<br>
+Strick@WashingtonTalent.com<br>
+Phone- 301-762-1800 ext. 131 Fax- 301-251-1118<br>
+www.WashingtonTalent.com<br>
+Blog- http://THATGuyWTA.blogspot.com/<br>
+Twitter- http://twitter.com/THATGuyWTA<br>
+See what our customers have to say about us!</p>

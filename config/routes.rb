@@ -7,11 +7,12 @@ Wtasystem::Application.routes.draw do
   #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes
-devise_for :users, :controllers => {:sessions => 'devise/sessions'}, :skip => [:sessions] do
+devise_for :users, :controllers => {:sessions => 'devise/sessions'}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }, :skip => [:sessions] do
                  get 'signin' => 'devise/sessions#new', :as => :new_user_session
                  post 'signin' => 'devise/sessions#create', :as => :user_session
                  get 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
                   match "register" => "devise/registrations#new", :as => :new_user_registration
+                   get 'users', :to => 'users#show', :as => :user_root
                end
 resources :users
    root :to => "contracts#index"

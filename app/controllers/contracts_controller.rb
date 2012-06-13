@@ -3,10 +3,13 @@ class ContractsController < ApplicationController
   set_tab :home
   inherit_resources
   load_and_authorize_resource
-  before_filter :everypage
+  before_filter :everypage  
+  #before_filter :update_password
   helper_method :themanager, :themap
 
+
   def index 
+   
     case @but when "true"
       @contract = Contract.where(:act_code => params[:act_code])
       @actcode = Actcode.where(:actcode => params[:act_code]).first
@@ -22,7 +25,7 @@ class ContractsController < ApplicationController
       end
     else
       #@mana = Actcode.find_by_id(current_user.actcode_id)
-      @contract = Contract.mytoday.mystuff(@mana.actcode)
+      @contract = Contract.mytoday.mystuff(current_user.actcode_name)
       @actcode = current_user.actcode_name
       @getcompan = Actcode.getallbycompany(current_user)
       @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
@@ -90,7 +93,8 @@ class ContractsController < ApplicationController
     @user = current_user
     @contract = Contract.find(params[:id])
     @additional = Contract.additional(@contract)
-    ContractMailer.deliver(@user,@contract,@additional)
+    ContractMailer.event_info_email(@user,@contract,@additional).deliver
+    @contract.update_attributes(:confirmation => 1)
     #ContractMailer.delay.deliver(mail_hash)
     #@contract.update_attributes(:confirmation => 1)
     flash[:notice] = "Job Confirmed"
