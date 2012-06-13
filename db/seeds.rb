@@ -21,7 +21,7 @@ User.delete_all
 password_length = 6
 
 #ALTER SEQUENCE users_id_seq RESTART WITH 1
-   open("db/newuserss.csv") do |user|
+   open("db/WTAUSERS.csv") do |user|
     
      user.read.each_line do |users|
         password = Devise.friendly_token.first(password_length)
