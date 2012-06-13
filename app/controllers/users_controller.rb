@@ -7,7 +7,7 @@ class UsersController < ApplicationController
    rescue_from CanCan::AccessDenied do |exception|
      Rails.logger.error(exception, exception.backtrace)
      # :back isn't defined all the time...
-     redirect_to :back, :alert => exception.message
+     redirect_to root_url, :alert => exception.message
    end
     #before_filter :everypage
    #respond_to :html, :xml, :json
