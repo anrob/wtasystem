@@ -12,7 +12,7 @@ devise_for :users, :controllers => {:sessions => 'devise/sessions'}, :path_names
                  post 'signin' => 'devise/sessions#create', :as => :user_session
                  get 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
                   match "register" => "devise/registrations#new", :as => :new_user_registration
-                   get 'users', :to => 'users#show', :as => :user_root
+                   #get 'users', :to => 'users#show', :as => :user_root
                end
 resources :users
    root :to => "contracts#index"
