@@ -86,15 +86,17 @@ class ContractsController < ApplicationController
       # @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
       # @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
       # @recipients = @theusers.collect {|m| m.email}
-      #@contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      #@actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+      # @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      # @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
     
       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
       #@users = User.with_role("manager")
       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       @userss = @users.collect {|m| m.email}.uniq
-     
-      #@theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+     @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m|m.act_code})
+      @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+      
+      @u = @theusers.collect {|m| m.email}.uniq
       #@recipients = @theusers.collect {|m| m.email}
       #@recipients_number = @theusers.collect {|m| m.phone_number}
       #@usercollect = @users.collect {|m| m.email}

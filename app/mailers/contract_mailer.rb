@@ -2,7 +2,7 @@
 require 'postageapp/mailer'
 
 class ContractMailer < PostageApp::Mailer
-  default :from => "fresh@sofreshentertainment.com"
+  default :from => "support@confirmmygig.com"
   def event_info_email(user, contract, additional)
       @user = user
       @contract = contract
