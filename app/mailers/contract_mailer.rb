@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 require 'postageapp/mailer'
-
 class ContractMailer < PostageApp::Mailer
   default :from => "support@confirmmygig.com"
   def event_info_email(user, contract, additional)
@@ -14,6 +13,7 @@ class ContractMailer < PostageApp::Mailer
    
    def send_reminder(user) 
     # @user = user
+    default :from => "support@confirmmygig.com"
     postageapp_template 'eventinfo_template'
      mail(  :to => user, 
             :subject => "Please Confirm Jobs")
@@ -21,6 +21,7 @@ class ContractMailer < PostageApp::Mailer
    
    def send_user_reminder(user) 
     # @user = user
+    default :from => "support@confirmmygig.com"
     postageapp_template 'eventinfo_template'
      mail(  :to => user, 
             :subject => "Please Confirm Jobs")
