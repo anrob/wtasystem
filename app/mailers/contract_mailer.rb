@@ -17,7 +17,6 @@ class ContractMailer < PostageApp::Mailer
     postageapp_template 'eventinfo_template'
      mail(  :to => user, 
             :subject => "Please Confirm Jobs")
-            #:body => "You have unconfirmed Events"
    end
    
    def send_user_reminder(user) 

@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
-
+# source 'http://dresssed.com/gems/754fedbc13237cbd7a7f/'
+# gem 'dresssed-gimlet'	
 gem 'rails', '3.1.1'
 gem 'dalli'
 gem 'pg'

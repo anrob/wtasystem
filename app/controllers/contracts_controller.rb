@@ -73,19 +73,31 @@ class ContractsController < ApplicationController
     respond_with :contracts => @contracts
   end
   def alljobs
+    
 
-    @mana = Actcode.find_by_actcode(current_user.actcode_name)
+   @mana = Actcode.find_by_actcode(current_user.actcode_name)
    unless current_user.is? :manager
-      @contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all
+     @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      #@contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all
       #@contracts = Contract.contractstatsus.unconfirmedevent.innextten
     else
-
-      @noactcode = Contract.justimported
-      @contracts = Contract.contractstatsus.unconfirmedevent.innextten
-      @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
-      #@users = User.find_all_by_actcode_name(@actcodes.id) 
-      @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-      @recipients = @theusers.collect {|m| m.email}
+      # @noactcode = Contract.justimported
+      # @contracts = Contract.contractstatsus.unconfirmedevent.innextten
+      # @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
+      # @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+      # @recipients = @theusers.collect {|m| m.email}
+      #@contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      #@actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
+    
+      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      #@users = User.with_role("manager")
+      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+      @userss = @users.collect {|m| m.email}.uniq
+     
+      #@theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+      #@recipients = @theusers.collect {|m| m.email}
+      #@recipients_number = @theusers.collect {|m| m.phone_number}
+      #@usercollect = @users.collect {|m| m.email}
     end
   end
 
