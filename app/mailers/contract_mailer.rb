@@ -15,15 +15,16 @@ class ContractMailer < PostageApp::Mailer
     # @user = user
     default :from => "support@confirmmygig.com"
     postageapp_template 'eventinfo_template'
-     mail(  :to => user, 
+     mail(  :from => "support@confirmmygig.com",
+            :to => user, 
             :subject => "Please Confirm Jobs")
    end
    
    def send_user_reminder(user) 
     # @user = user
-    default :from => "support@confirmmygig.com"
     postageapp_template 'eventinfo_template'
-     mail(  :to => user, 
+     mail(  :from => "support@confirmmygig.com",
+            :to => user, 
             :subject => "Please Confirm Jobs")
             #:body => "You have unconfirmed Events"
    end
