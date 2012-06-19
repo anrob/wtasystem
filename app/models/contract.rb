@@ -34,32 +34,18 @@ class Contract < ActiveRecord::Base
   end
 
   def self.send_reminders
-      # @contract = Contract.unconfirmedevent.contractstatsus.tenday.all
-      #  @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-      #  @users = User.find_all_by_actcode_id(@actcodes) 
-      #  @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-      #  @recipients = @theusers.collect {|m| m.email}
-      #  @recipients_number = @theusers.collect {|m| m.phone_number}
-      #  @usercollect = @users.collect {|m| m.email}
-      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-      @userss = @users.collect {|m| m.email}.uniq
-     ContractMailer.send_reminder( @userss).deliver
-  end
-  
-  def self.send_user_reminders
-      # @contract = Contract.unconfirmedevent.contractstatsus.tenday.all
-      # @actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-      # @users = User.find_all_by_actcode_id(@actcodes) 
-      # @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-      # @recipients = @theusers.collect {|m| m.email}
-      # @recipients_number = @theusers.collect {|m| m.phone_number}
-      # @usercollect = @users.collect {|m| m.email}
       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
       @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m|m.act_code})
       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
       @u = @theusers.collect {|m| m.email}.uniq
       ContractMailer.send_user_reminder(@u).deliver
+  end
+  
+  def self.send_user_reminders
+      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+      @userss = @users.collect {|m| m.email}.uniq
+      ContractMailer.send_reminder(@userss).deliver
   end
   
   def event_info_email(user, contract, additional)
