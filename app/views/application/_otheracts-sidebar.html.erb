@@ -1,17 +1,6 @@
-<div class="one_halfd">
-<%#= @gp %>
-<%#= debug(@unconfirmed) %>
-<div class="widgetbox2">
-	<h3 class="open"><span>Management Company Acts</span></h3>
-	<div class="content marginbottom">
-	<ul class="leftmenu noleftpadding">
+<h3 class="open">
+	<span>Management Company Acts</span></h3>
 	<% @getallbycompnay.each do |getall| %>
-<li> <span class="count"><%#= @unconfirmed(@bob) %><%#= @unconfirmed %></span><%= link_to "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %> <%#= @contractcount(params[]) %> </li>
+		<!-- <span class="label label-important">6</span> --><%= activatable_li_tag_with_link "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %>
 	<% end %>
 
-	</ul>
-	<br class="clear">
-</div>
-</div>
-
-</div>

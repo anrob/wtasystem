@@ -39,7 +39,7 @@ module Wtasystem
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
+    config.assets.initialize_on_precompile = false
 
     # Enable the asset pipeline
     config.assets.enabled = true
@@ -49,12 +49,12 @@ module Wtasystem
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '2.7'
     
-    config.to_prepare do
-      Devise::SessionsController.layout "special_layout"
-      Devise::RegistrationsController.layout "special_layout"
-      Devise::ConfirmationsController.layout "special_layout"
-      Devise::UnlocksController.layout "special_layout"            
-      Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application" : "special_layout" }       
-    end
+    # config.to_prepare do
+    #   Devise::SessionsController.layout "special_layout"
+    #   Devise::RegistrationsController.layout "special_layout"
+    #   Devise::ConfirmationsController.layout "special_layout"
+    #   Devise::UnlocksController.layout "special_layout"            
+    #   Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application" : "special_layout" }       
+    # end
   end
 end

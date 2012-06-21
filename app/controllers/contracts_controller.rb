@@ -13,7 +13,6 @@ class ContractsController < ApplicationController
     case @but when "true"
       @contract = Contract.where(:act_code => params[:act_code])
       @actcode = Actcode.where(:actcode => params[:act_code]).first
-
       @mana = Actcode.find_by_actcode(current_user.actcode_name)
       unless current_user.is? :manager
        @contracts = Contract.mystuff(@user.actcode_name).contractstatsus.tenday.all  
@@ -24,25 +23,23 @@ class ContractsController < ApplicationController
         redirect_to root_url
       end
     else
-      #@mana = Actcode.find_by_id(current_user.actcode_id)
+
       @contract = Contract.mytoday.mystuff(current_user.actcode_name)
       @actcode = current_user.actcode_name
       @getcompan = Actcode.getallbycompany(current_user)
-      @gt = Actcode.find_all_by_management_id(current_user.management_id)#.collect {|m| m.actcode} 
+      @gt = Actcode.find_all_by_management_id(current_user.management_id)
       @cont = Contract.contractstatsus.tenday.find_by_act_code(@gt.map {|m| m.actcode})
-      # @unconfirmed = Contract.includes("actcodes").where(:act_code => params[:act_code]).count
       @gp = @gt.map {|m| m.actcode}
       @totalnum = @contract.threesixfive.sum(:contract_price)
     @mana = Actcode.find_by_actcode(current_user.actcode)
       unless current_user.is? :manager
-        @contracts = Contract.mystuff(@user.actcode).contractstatsus.tenday.all  
+      @contracts = Contract.mystuff(@user.actcode).contractstatsus.tenday.all  
       else
-        @contracts = Contract.where(:act_code => @manger.split(",")).tenday.contractstatsus.all
-        @totalcount = @contracts.count
-       # @unconfirmed = @contracts.count('act_code = ?')
+      @contracts = Contract.where(:act_code => @manger.split(",")).tenday.contractstatsus.all
+      @totalcount = @contracts.count
       end
     end 
-    respond_with :contracts => @contract.thisweek
+      respond_with :contracts => @contract.thisweek
   end
 
   def show
@@ -73,31 +70,15 @@ class ContractsController < ApplicationController
     respond_with :contracts => @contracts
   end
   def alljobs
-    
-
-   @mana = Actcode.find_by_actcode(current_user.actcode_name)
-   unless current_user.is? :manager
-     @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      #@contracts = Contract.mystuff(@user.actcode.actcode).contractstatsus.tenday.all
-      #@contracts = Contract.contractstatsus.unconfirmedevent.innextten
-    else
-      # @noactcode = Contract.justimported
-      # @contracts = Contract.contractstatsus.unconfirmedevent.innextten
-      # @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
-      # @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-      # @recipients = @theusers.collect {|m| m.email}
-      #@contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      #@actcodes = Actcode.find_all_by_actcode(@contract.map {|m| m.act_code})
-    
+      @mana = Actcode.find_by_actcode(current_user.actcode_name)
+      unless current_user.is? :manager
       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      #@users = User.with_role("manager")
+      @contractss = Contract.contractstatsus.tenday.all
+    else
+      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      @search = Contract.search(params[:search])
       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       @userss = @users.collect {|m| m.email}.uniq
-     
-      #@theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-      #@recipients = @theusers.collect {|m| m.email}
-      #@recipients_number = @theusers.collect {|m| m.phone_number}
-      #@usercollect = @users.collect {|m| m.email}
     end
   end
 

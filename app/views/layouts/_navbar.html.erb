@@ -1,0 +1,50 @@
+<%# Top navigation bar containing the main menu of your app. %>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <!-- Le logo -->
+      <a class="brand" href="<%= root_path %>"><%= app_name %></a>
+
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <ul class="nav">
+ <%= activatable_li_tag_with_link "Home", root_path %>
+<% if user_signed_in? %>
+ <%= activatable_li_tag_with_link "Calendar", calendar_path %>
+ <%= activatable_li_tag_with_link "My Team", users_path %>
+<% if current_user.is? :everything %>
+
+
+
+<ul class="nav nav-pills">
+  <li class="dropdown" id="menu1">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+      Admin Section
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= activatable_li_tag_with_link "Management Companies", managements_path if current_user.is? :everything %></li>
+      <li><%= activatable_li_tag_with_link "Actcode", actcodes_path if current_user.is? :everything  %></li>
+	 	<li><%= activatable_li_tag_with_link "All Unconfirmed Jobs", alljobs_path if current_user.is? :everything  %></li>
+      <li class="divider"></li>
+    </ul>
+  </li>
+</ul>
+<% end %>
+<% end %>
+        </ul> <!-- /.nav -->
+        
+        <%= yield :navbar %>
+      </div> <!-- /.nav-collapse -->
+
+    </div> <!-- /.container -->
+  </div> <!-- /.navbar-inner -->
+</div> <!-- /.navbar -->

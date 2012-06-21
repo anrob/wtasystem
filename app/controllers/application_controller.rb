@@ -2,7 +2,8 @@
 class ApplicationController < ActionController::Base
   add_breadcrumb "Home", :root_path
   before_filter :authenticate_user! 
-
+  has_scope :page, :default => 1
+  before_filter :everypage
    #load_and_authorize_resource
    protect_from_forgery
   #include Mobylette::RespondToMobileRequests
@@ -17,9 +18,9 @@ class ApplicationController < ActionController::Base
      render :file => "#{Rails.root}/public/404.html", :layout => true, :status => 404
     
    end
-   WillPaginate.per_page = 10
+  
   #protect_from_forgery
-  layout :special_layout
+ # layout :special_layout
  
  # before_filter :prepare_for_mobile
 
@@ -40,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def everypage
-
+    if user_signed_in? 
      @management = Management.find_by_id(current_user.management_id)
      @mana = Actcode.find_by_actcode(current_user.actcode_name)
      # @manger = User.getotheracts(current_user).map {|m| m.actcode}
@@ -55,6 +56,7 @@ class ApplicationController < ActionController::Base
      #      @test = @cp.mytoday.count
     # @cc = @contracts.sum(:contract_price) 
   # end
+end
 end
   protected
  

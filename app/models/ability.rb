@@ -10,6 +10,7 @@ class Ability
           can :manage, :all
           can :assign_roles, :all
           can :create,  :all
+          can :update, :all
         else
           can :manage, Contract, :act_code => user.actcode_name
           can :update, User, :id => user.id

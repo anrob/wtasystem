@@ -1,0 +1,98 @@
+/*
+ * Pick one style by placing the `=` sign in front the the style you want. Just one.
+ *= require dresssed/blue
+ * require dresssed/black
+ *  require dresssed/amber
+ *
+ * To fully customize your theme, run: `rails generate dresssed:customize`.
+ */
+
+/* Uncomment to change the logo in the left corner of the top navbar.
+.navbar .brand {
+  background-image: asset-url('logo.png');
+  width: 105px;
+  height: 24px;
+}
+*/
+
+.navbar .brand {
+  background-image: url('confirm.png');
+  width: 105px;
+  height: 24px;
+}
+.texture {
+	background: #E5E6DC url(texture3.png);
+}
+
+
+a.confirmed {
+	color: green;
+}
+
+a.unconfirmed {
+	color: #fd2217;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 9px;
+}
+
+#money dt span {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	color: #9b9396;
+}
+div#money {
+	background-color: #fff8d9;
+	border-bottom: 1px solid #f3d97e;
+	margin-bottom: 12px;
+	overflow: hidden;
+	padding: 11px;
+	padding: 20px;
+}
+
+#money dt {
+	float: left;
+	width: 33%;
+	text-align: center;
+
+}
+
+.theheader {
+	background: #FAFAF5;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-o-border-radius: 6px;
+	-ms-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	-ms-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	-o-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	margin-bottom: 8px;
+	padding: 20px;
+	width:94.5%;
+	margin-left:5px;
+}
+
+.white {
+	background-color: #fff;
+	padding:8px;
+
+	-moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -o-border-radius: 6px;
+            -ms-border-radius: 6px;
+            border-radius: 6px;
+            -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4);
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4);
+            -ms-box-shadow: 0 1px 1px rgba(0,0,0,.4);
+            -o-box-shadow: 0 1px 1px rgba(0,0,0,.4);
+            box-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+
+.margintop {
+	margin-top:8px;
+}

@@ -1,15 +1,5 @@
 /*
 *= require_self
-*= require "css/basecamp"
-*= require "css/style"
-*= require "css/colorbox"
-*= require "css/fullcalendar"
-*= require "css/weekly"
-*= require "css/jquery.ui"
-*= require "css/jquery.alerts"
-*= require "css/ie9"
-*= require "css/ie8"
-*= require "css/ie7"
-*= require "css/bootstrap"
-*= require "css/basecamp"
+*= require "dresssed"
+*= require "calendar"
 */

@@ -1,212 +1,138 @@
-<div id="quickdash">
+<div class="sheet sheet-condensed">
+<div class="sheet-inner texture">
 	<% if can? :see_money, @contracts %>
-<div id="money">
-		<dt><b class="themoney"><%= number_to_currency(@contract.contract_price) %></b><span>Contract price:</span>        </dt> 
-		<dt class="middle"><b class="themoney"><%= number_to_currency(@contract.act_net) %></b><span>Contract Net:</span> 			</dt> 
-		<dt><b class="themoney"><%= number_to_currency(@contract.pick_up_amount) %></b><span>Pickup Amount:</span> 		</dt>      
-	</div>
+		<div id="money">
+			<dt><b class="themoney"><%= number_to_currency(@contract.contract_price) %></b> - <span>Contract price:</span>        </dt> 
+			<dt class="middle"><b class="themoney"><%= number_to_currency(@contract.act_net) %></b> - <span>Contract Net:</span> 			</dt> 
+			<dt><b class="themoney"><%= number_to_currency(@contract.pick_up_amount) %></b> - <span>Pickup Amount:</span> 		</dt>      
+		</div>
 	<% end %>
-	<div class="dash one_half">
-			Dashboard
-	</div>
-	<div class="dash alignright one_half last">
-	 <%#= image_tag("images/printer.png") %>
-		<%#= button_to "Printable Version (PDF)", contract_path(@contract, format: "pdf"),  :class => 'button button_green',:method => :get %> <% if @contract.date_of_event < Date.today + 11.days %>
-		<% if @contract.confirmation == 0  %>
-		<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
-		<% else %>
-		  
-		<%= button_to 'Email Job Information', confirmjob_path(:id => @contract.id), :class => 'button button_blue' %>
-		<% end %>
-			<% end %>
-	</div>
+<%= makebutton %>
+<h2 class="theheader">Act Booked - <%= @contract.act_booked %></h2>
 
-		<br clear="all">
+<div class="well">
+
+<div class="row">
+	<div class="span5 white thumbnail">
+<h2><%= @contract.type_of_event %></h2>
+<h4>Operating as: <%= @contract.type_of_act %></h4>
+<h4><%= @contract.act_form %></h4>
+<h4>Agent : <%= @contract.agent %> </h4>
+<h4>Reception Location: <%= @contract.reception_location %></h4>
+<h5 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h5>
+<hr>
+<h4 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %>	</h4>
+<h4 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
+
+<h5 class="blue">Contract number: <%= @contract.contract_number %></h5>
+<h5 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h5>
+<% if can? :see_money, @contracts %>
+<h4 class="green">Contract price: <%= number_to_currency(@contract.contract_price) %></h4>
+<h4 class="green">Contract Net: <%= number_to_currency(@contract.act_net) %></h4>
 </div>
-
-<div class="invoicez">
-	<div class="invoice_inners">
-		<div class="tan">
-	<div class="one_half">	
-		<h2><%= @contract.act_booked %></h2>
-		<h2><%= @contract.type_of_event %></h2>
-		<h4>Operating as: <%= @contract.type_of_act %></h4>
-		<h4><%= @contract.act_form %></h4>
-		
-		<address><%= @contract.location_name %><br>
-	   	<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-	Phone:<%= @contract.location_phone %><br clear="all"></address>
-	<h4>Reception Location: <%= @contract.reception_location %></h4>
-	</div>
-	
-	<div class="one_half last">
-	<h5 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h5>
-	<h2 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %>	</h2>
-	<h2 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h2>
-	<h5>Agent : <%= @contract.agent %> </h4>
-	<h5 class="blue">Contract number: <%= @contract.contract_number %></h5>
-	<h5 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h5>
-		<% if can? :see_money, @contracts %>
-	<h4 class="green">Contract price: <%= number_to_currency(@contract.contract_price) %></h4>
-	<h4 class="green">Contract Net: <%= number_to_currency(@contract.act_net) %></h4>
-	<% end %>
-	
-	</div>
-</div>
-
-<% content_for :map do %>
+<div class="span3 white thumbnail">
 <% unless @contract.location_name.blank? %>	
-<div class="widgetbox">
+<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img><br>
 <h3> <span>Event Location</span></h3>
-	<div class="content mapsection">
-	<%= @contract.location_name %><br>
-				<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-				Phone: <%= @contract.location_phone %>	<br clear="all">	<br clear="all">
-				<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img>
-       
-	 	</div>
-	</div>
+<%= @contract.location_name %><br>
+<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+Phone: <%= @contract.location_phone %>	<br clear="all">	<br clear="all">
 
-	<% end %>
-	<% end %>
-	<hr>
-		<div class="widgetbox one_half">
-	<h3> <span>Client Section</span></h3>
-	<div class="content">
+<% end %>
+</div>
+</div>
+</div>
+<% end %>
 
+<div class="white thumbnail margintop">
+	
 
+<h3> <span>Client Section</span></h3>
 <dt>	Client Info:</dt> <%= @contract.first_name %> <%= @contract.last_name %><br>
 <dt>	Email Address:</dt> <%= @contract.email_address %><br>
 <dt>	Bride / Bat Mitzvah Name:</dt> <%= @contract.brides_names %><br>
 <dt>	Grooms / Bar Mitzvah Name: </dt> <%= @contract.grooms_name %><br>
-
 <dt>	Home Phone:</dt> <%= @contract.home_phone %><br>
 <dt>	Work Phone:</dt> <%= @contract.work_phone %><br>
 <dt> 	Cell Phone:</dt> <%= @contract.cell_phone %>
-	</div>
-	</div>
-		<div class="widgetbox one_half last">
-			<h3> <span>Extras Section</span></h3>
-			<div class="content">
+</div>
+<div class="white thumbnail margintop">
+<h3> <span>Extras Section</span></h3>
+
 <dt>Early setup Time:</dt> <%= @contract.early_setup_time %><br>
-
-	<dt>Giveaways:</dt> <%= @contract.giveaways %><br>
-
-
-
+<dt>Giveaways:</dt> <%= @contract.giveaways %><br>
 <dt>Type of Light Show :</dt> <%= @contract.type_of_light_show %><br>
-
-
 <dt> Number of Horns:</dt> <%= @contract.number_of_horns %><br>
- <dt>Number of Dancers:</dt> <%= @contract.number_of_dancers %><br>
-	<dt>Pick up Reason</dt> <%= @contract.explanation_opf_pickup_adjustment %>
-	<%= @contract.capital_music_player %>
-
-	<%= @contract.questionnaire_received_date %><br>
-
-
+<dt>Number of Dancers:</dt> <%= @contract.number_of_dancers %><br>
+<dt>Pick up Reason</dt> <%= @contract.explanation_opf_pickup_adjustment %>
+<%= @contract.capital_music_player %>
+<%= @contract.questionnaire_received_date %><br>
 <dt>	Referral Fee to :</dt> <%= @contract.referral_fee_to %><br>
 <dt>	Song Requests: </dt> <%= @contract.song_requests %><br>
-	<dt>  Cocktail Instrumentation: </dt> <%= @contract.cocktail_instrumentation %><br>
-	<dt>  Cocktail Time: </dt> <%= @contract.cocktail_time %><br>
-
-
-
+<dt>  Cocktail Instrumentation: </dt> <%= @contract.cocktail_instrumentation %><br>
+<dt>  Cocktail Time: </dt> <%= @contract.cocktail_time %><br>
 <dt>Company:</dt> <%= @contract.company %>
-
-
-	</div>
-	</div>
-	<br clear="all">
-	
-	<div class="widgetbox one_half">
-		<h3><span>Wedding Section</span></h3>
-			<div class="content">
-				<dt>Ceremony Date:</dt> <%= @contract.date_of_ceremony %><br>
-	<dt>Ceremony Location:</dt> <%= @contract.ceremonoy_location_name %><br>
-	<dt>Ceremony Address:</dt> <%= @contract.ceremonoy_address_line_1 %><br>
-	<dt>Ceremony Address line 2:</dt> <%= @contract.ceremony_address_line_2 %><br>
-	<dt>Ceremony City:</dt> <%= @contract.ceremony_location_city %><br>
-	<dt>Ceremony State:	</dt> <%= @contract.seremonly_location_state %><br>
-	<dt>Ceremony Zip:</dt> <%= @contract.ceremony_location_zip %><br>
-	<dt>Ceremony Start Time:</dt> <%= @contract.ceremony_start_time %><br>
-	<dt>Ceremony Instrumentation:</dt> <%= @contract.ceremony_instrumenttation %><br>
-		</div>
-	</div>	
-	<div class="widgetbox one_half last">
-		<h3><span>Video Section</span></h3>
-			<div class="content">
-		<dt>Videographer 1: </dt> <%= @contract.videographer_1 %><br>
-		<dt>Videographer 2:</dt> <%= @contract.videographer_2 %><br>
-		<dt>Videographer 3: </dt> <%= @contract.videgrapher_3 %>
-		</div>
-	</div>
-		<br clear="all">
+</div>
+<div class="white thumbnail margintop">
+<h3><span>Wedding Section</span></h3>
+<dt>Ceremony Date:</dt> <%= @contract.date_of_ceremony %><br>
+<dt>Ceremony Location:</dt> <%= @contract.ceremonoy_location_name %><br>
+<dt>Ceremony Address:</dt> <%= @contract.ceremonoy_address_line_1 %><br>
+<dt>Ceremony Address line 2:</dt> <%= @contract.ceremony_address_line_2 %><br>
+<dt>Ceremony City:</dt> <%= @contract.ceremony_location_city %><br>
+<dt>Ceremony State:	</dt> <%= @contract.seremonly_location_state %><br>
+<dt>Ceremony Zip:</dt> <%= @contract.ceremony_location_zip %><br>
+<dt>Ceremony Start Time:</dt> <%= @contract.ceremony_start_time %><br>
+<dt>Ceremony Instrumentation:</dt> <%= @contract.ceremony_instrumenttation %><br>
+</div>
+<div class="white thumbnail margintop">
+<h3><span>Video Section</span></h3>
+<dt>Videographer 1: </dt> <%= @contract.videographer_1 %><br>
+<dt>Videographer 2:</dt> <%= @contract.videographer_2 %><br>
+<dt>Videographer 3: </dt> <%= @contract.videgrapher_3 %>
 <hr class="show-line">
+</div>
+<div class="white thumbnail margintop">
+<h3><span>Contract Provisions</span></h3>
 
-	<div class="widgetbox one_half">
-		<h3><span>Contract Provisions</span></h3>
-						<div class="content lesspadding">
-							<% unless @contract.contract_provisions == "nil" %>
-								<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
-							<% end %>
-						</div>
-					</div>
-					<div class="widgetbox one_half last">
-					<h3><span>Act Notes</span></h3>
-						<div class="content lesspadding">
-							<% unless  @contract.act_notes == "nil" %>
-								<%= @contract.act_notes %>
-							<% end %>
-							
-					
-					</div>
-						</div>
-						<br clear="all">
-	
-					<div class="widgetbox">
-		<h3><span>Additional Services Provided</span></h3>
-		<div class="content lesspadding">
-	<ul>
-			<% @additional.each do |addi| %>
-					<% if current_user.is? :everything %>
-				<li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li>
-					<% else %>
-					<li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
-					<% end %>
-				<% end %></ul>
-			</div>
-			</div>
-	
-</div>
-</div>
-<br clear="all">
-<% content_for :money do %>
-<div class="widgetbox">
-	<h3> <span>Money Section</span></h3>
-<div class="content">
-	<% if can? :see_money, @contracts %>
-<li class="<%= @contract.isincluded %>">cocktails charge:  			<%= number_to_currency(@contract.cocktails_charge) %></li>
-<li class="<%= @contract.isincluded %>">ceremony charge:  			<%= number_to_currency(@contract.ceremony_charge) %></li>
-<li class="<%= @contract.isincluded %>">early setup charge: 		<%= number_to_currency(@contract.early_setup_charge) %></li>
-<li class="<%= @contract.isincluded %>">charge per horn:  			<%= @contract.number_of_horns %> @ <%= number_to_currency(@contract.charge_per_horn) %></li>
-<li class="<%= @contract.isincluded %>">other charges:    			<%= number_to_currency(@contract.other_charges) %></li>
-<li class="<%= @contract.isincluded %>">charge per dancer: 			<%= @contract.number_of_dancers %> @ <%= number_to_currency(@contract.charge_per_dancer)%></li>
-<li class="<%= @contract.isincluded %>">giveaways charge: 			<%= number_to_currency(@contract.giveaways_charge) rescue "0" %></li>
-<li class="<%= @contract.isincluded %>">dj tech_charge:    			<%= number_to_currency(@contract.dj_tech_charge) %></li>
-<li class="<%= @contract.isincluded %>">non-commissionable charges: <%= number_to_currency(@contract.non_commissionable_charges) %></li>
-<li class="<%= @contract.isincluded %>">capital music pay: 			<%= number_to_currency(@contract.capital_music_pay) %></li>
-<li class="<%= @contract.isincluded %>">base price_of act: 			<%= number_to_currency(@contract.base_price_of_act) %></li>
-<li class="<%= @contract.isincluded %>">referral fee amount: 		<%= number_to_currency(@contract.referral_fee_amount) %></li>
-<li class="<%= @contract.isincluded %>">tax amount: 				<%= number_to_currency(@contract.tax_amount) %></li>
-	<% end %>
-	</div>
-	</div>
+	<% unless @contract.contract_provisions == "nil" %>
+		<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
 	<% end %>
 
-	<br clear="all">
-	<% if @contract.date_of_event < Date.today + 10.days %>
-	<% if @contract.confirmation == 0  %>
-	<%= button_to 'CONFIRM THIS EVENT', confirmjob_path(:id => @contract.id), :class => 'button button_red' %>
+<h3><span>Act Notes</span></h3>
+
+	<% unless  @contract.act_notes == "nil" %>
+		<%= @contract.act_notes %>
 	<% end %>
-	<% end %>	
+
+<h3><span>Additional Services Provided</span></h3>
+<ul>
+<% @additional.each do |addi| %>
+<% if current_user.is? :everything %>
+<li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li>
+<% else %>
+<li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
+<% end %>
+<% end %></ul>
+</div>
+<div class="white thumbnail margintop">
+<h3> <span>Money Section</span></h3>
+<% if can? :see_money, @contracts %>
+<li class="<%= isincluded %>">cocktails charge:  			<%= number_to_currency(@contract.cocktails_charge) %></li>
+<li class="<%= isincluded %>">ceremony charge:  			<%= number_to_currency(@contract.ceremony_charge) %></li>
+<li class="<%= isincluded %>">early setup charge: 		<%= number_to_currency(@contract.early_setup_charge) %></li>
+<li class="<%= isincluded %>">charge per horn:  			<%= @contract.number_of_horns %> @ <%= number_to_currency(@contract.charge_per_horn) %></li>
+<li class="<%= isincluded %>">other charges:    			<%= number_to_currency(@contract.other_charges) %></li>
+<li class="<%= isincluded %>">charge per dancer: 			<%= @contract.number_of_dancers %> @ <%= number_to_currency(@contract.charge_per_dancer)%></li>
+<li class="<%= isincluded %>">giveaways charge: 			<%= number_to_currency(@contract.giveaways_charge) rescue "0" %></li>
+<li class="<%= isincluded %>">dj tech_charge:    			<%= number_to_currency(@contract.dj_tech_charge) %></li>
+<li class="<%= isincluded %>">non-commissionable charges: <%= number_to_currency(@contract.non_commissionable_charges) %></li>
+<li class="<%= isincluded %>">capital music pay: 			<%= number_to_currency(@contract.capital_music_pay) %></li>
+<li class="<%= isincluded %>">base price_of act: 			<%= number_to_currency(@contract.base_price_of_act) %></li>
+<li class="<%= isincluded %>">referral fee amount: 		<%= number_to_currency(@contract.referral_fee_amount) %></li>
+<li class="<%= isincluded %>">tax amount: 				<%= number_to_currency(@contract.tax_amount) %></li>
+
+<% end %>
+</div>
+</div></div>
+<%= makebutton %>

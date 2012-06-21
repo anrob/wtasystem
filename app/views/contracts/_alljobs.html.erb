@@ -1,12 +1,16 @@
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
 <table id="products" class="table">
   <thead>
     <tr>
-      <th>Act Booked</th>
-<th>contract Status</th>
-      <th>Date of Event</th>
-      <th>Location city</th>
-      <th>Start Time</th>
-	<th>End Time</th>
+      <th><%= link_to "Act Booked", :sort => "act_booked" %> </th>
+<th><%= link_to "Date Added", :sort => "created_at" %></th>
+	  <th><%= link_to "Contract Status", :sort => "contract_status" %></th>
+		
+      <th><%= link_to "Date of Event", :sort => "Date_of_event" %></th>
+      <th><%= link_to "Location city", :sort => "location_city" %></th>
+      <th><%= link_to "Start Time", :sort => "Start Time" %></th>
+	  <th><%= link_to "End Time", :sort => "End Time" %></th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +23,9 @@
 			<%= link_to  "#{m.act_booked}" ,  m, :class => "green" %>
 			<% end %>
 </td>
+<td><%= m.created_at.strftime("%m/%d/%Y")  %></td>
 <td><%= m.contract_status %></td>
+
 <td><%= m.date_of_event %></td>
 <td><%= m.location_city %></td>
 <td><%= m.event_start_time %></td>
@@ -38,6 +44,6 @@
   </tbody>
 </table>
 
-	
-	<%= @userss.inspect %>
+</div></div>
+	<%#= @userss.inspect %>
 	
