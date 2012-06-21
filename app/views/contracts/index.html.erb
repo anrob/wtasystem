@@ -1,26 +1,11 @@
-<% if current_user.is? :everythingg %>
 
-<div class="center">
-	<div class="inner">
-<ul class="widgetlist">
-                <li><a href=""><%= image_tag("images/icons/document.png") %><span>Add New Article</span></a></li>
-                <li><a href=""><%= image_tag("images/icons/createreport.png") %><span>Create Report</span></a></li>
-                <li><a href=""><%= image_tag("images/icons/mail.png") %><span>Compose Mail</span></a></li>
-                <li><a href=""><%= image_tag("images/icons/calendar.png") %><span>Manage Events</span></a></li>
-                <li><a href=""><%= image_tag("images/icons/media.png") %><span>Media Library</span></a></li>
- </ul>
+<!-- <h2 class="fronth"><%##= @actcode.description %></h2> -->
+<div class="page-header">
+<h1><%#= @actcode.description %> Contracts in the Next 10 Days</h1>
 </div>
-<br class="clear">
-</div>
-
-<% end %>
-<% if current_user.is? :manager %>
-<%= render 'otheracts-sidebar' %>
-<% end %>
-<h2 class="fronth"><%##= @actcode.description %></h2>
-
-<h3><span><%#= @actcode.description %> Contracts in the Next 10 Days</span></h3>
-<table id="products" class="table">
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+<table class="table">
 	<thead>
 	 <tr>
 					<th>Date of Event</th>
@@ -67,6 +52,9 @@
 <% end %>
 </tbody>
 </table>
+</div></div>
 <br>
-<h3><span>All Management Team contracts in the Next 10 Days</span></h3>
+<div class="page-header">
+<h1><span>All Management Team contracts in the Next 10 Days</span></h1>
+</div>
 <%= render 'alljobs' %>

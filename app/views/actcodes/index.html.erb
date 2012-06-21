@@ -1,9 +1,11 @@
 <%#= will_paginate @actcodes %>
 
-<%= render :partial => 'searchit' %>
+<%#= render :partial => 'searchit' %>
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
 
-<table cellpadding="0" cellspacing="0" class="sTable" width="100%">
-			<thead class="sTableHead">
+<table cellpadding="0" cellspacing="0" class="table" width="100%">
+			<thead>
   <tr>
     <th class="head0">Actcode</th>
 	<th class="head0">Act Code Id</th>
@@ -32,6 +34,9 @@
 </table>
 
 <br />
-
+</div>
+</div>
 <%= button_to 'New Actcode', new_actcode_path, :class => 'button button_blue',:method => :get %>
-<%= will_paginate @actcodes %>
+
+
+<%= paginate @actcodes %>

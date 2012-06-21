@@ -180,18 +180,7 @@ def self.mailchimp
     end
   end
   
-  def isincluded
-  
-   unless @contract.nil?
-      @isinclud = "normal"
-    else
-      @isinclud = "bold"
-    end
-    @isinclud
-
-  end
-  
-  def eventtime
+ def eventtime
      "#{event_start_time} - #{event_end_time}"
    end
    

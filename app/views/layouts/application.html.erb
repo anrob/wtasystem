@@ -1,137 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Dashboard | WTA Act Confirmation System</title>
-  <%= stylesheet_link_tag "application" %>
-	 <%= javascript_include_tag "application" %>
-<!--[if IE 9]>
-    <link rel="stylesheet" media="screen" href="css/ie9.css"/>
-<![endif]-->
+<% content_for :navbar, render("layouts/user_nav") %>
 
-<!--[if IE 8]>
-    <link rel="stylesheet" media="screen" href="css/ie8.css"/>
-<![endif]-->
+<%= render :layout => "layouts/base" do %>
+  <div class="page-header">
+    <div class="row">
+      <div class="span7">
+        <h2><%= @title %></h2>
+        <%= yield :description %>
+      </div>
+      <div class="span2">
+        <%= yield :actions %>
+      </div>
+		<div class="breadcrumbs">
+							 <%= render_breadcrumbs :class => "breadcrumbs" %>	
+		</div>
+    </div>
+  </div><!-- /.page-header -->
 
-<!--[if IE 7]>
-    <link rel="stylesheet" media="screen" href="css/ie7.css"/>
-<![endif]-->
-<script type="text/javascript">
-  var uvOptions = {};
-  (function() {
-    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/x27oO1HVMi2yDXRIXmEtHA.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-  })();
-</script>
+  <div class="row">
+    <div id="content" class="span9">
+      <%= yield %>            
+    </div> <!-- /#content -->
 
-</head>
-
-<body class="bodygrey">
-
-<div class="headerspace"></div>
-
-<div class="header">
-<!-- topheader -->
-
-
-    <!-- logo -->
-
-    <%= link_to image_tag("images/logo2.png") %>
-    <div class="tabmenu">
-    	<ul>
-	  	<%= render 'loginmenu' %>
-        	<!-- <li class="current"><a href="dashboard.html" class="dashboard"><span>Dashboard</span></a></li> -->
-        </ul>
-    </div><!-- tabmenu -->
-    
-    <div class="accountinfo">
-    
-<%= gravatar_image_tag current_user.email,:gravatar => { :size => 50 }, :alt => 'Avatar' %>
-        <div class="info">
-        	<h3><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
-            <small><%= "#{current_user.email}" %></small>
-            <p>
-            	<%= link_to "Account Settings", edit_user_path(current_user) %> <%= link_to "Logout", destroy_user_session_path %>
-
-            </p>
-        </div><!-- info -->
-    </div><!-- accountinfo -->
-</div><!-- header -->
-
-
-<div class="sidebar">
-	<div id="accordion">
-        <h3 class="open">Main Navigation</h3>
-        <div class="content" style="display: block;">
-        	<ul class="leftmenu">
- 	<%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
-            </ul>
-        </div>
-        <!-- <h3 class="open">Custom Text</h3>
-         <div class="content" style="display: block;"></div> -->
-	</div>
+    <div id="sidebar" class="span3">
+     <ul class="nav nav-tabs nav-stacked nav-caret-left">
+	<% if user_signed_in? %>
+		<%= render 'otheracts-sidebar' if current_user.is? :manager %>
+	<% end %>
 	
-</div><!-- leftmenu -->
-
-
-<div class="maincontent">
-	<div class="two_third maincontent_inner ">
-    	<div class="left">
-        
-        	<!-- <div class="notification msginfo">
-        	            	<a class="close"></a>
-        	            	There are 3 submitted items from users. <a href="">Click to approve</a>
-        	            </div> --><!-- notification info -->
-        
-      			<div class="breadcrumbs">
-					 <%= render_breadcrumbs :class => "breadcrumbs" %>	
-				</div>
-            
-            <div class="clear"></div>
-		
-            	
-            <div class="widgetbox">
-            	<h3><span><%#= :title %></span></h3>
-                <div class="content">
-                <%= yield %>
-                </div><!-- content -->
-            </div><!-- widgetbox2 -->
-            
-       
-        </div><!-- left -->            
-    </div><!-- two_third -->
-    
-    <div class="one_third last">
-    	<div class="right">
-
 	
-        <%= yield :map %>
-<% unless cannot? :see_money, @user %>
-<%= yield :money %>
+        <!-- <%#= activatable_li_tag_with_link "Sub menu", nil %>
+             <%#= activatable_li_tag_with_link "Another menu", "#" %>
+             <%#= activatable_li_tag_with_link "A last one", "#" %> -->
+      </ul>
+    </div> <!-- /#sidebar -->
+  </div> <!-- /.row -->
+
 <% end %>
-
-		
-
-                <!-- content -->
-            </div><!-- widgetbox -->
-            
-          
-   
-            
-    	</div><!--right-->
-    </div><!--one_third last-->
-    
-    <br clear="all" />
-    
-</div><!--maincontent-->
-<%= debug(params) if Rails.env.development? %>
-<br />
-<div class="footer footer_float">
-	<div class="footerinner">
-    	&copy; 2011. So Fresh Engine. All Rights Reserved.
-    </div><!-- footerinner -->
-</div><!-- footer -->
-
-</body>
-</html>

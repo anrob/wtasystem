@@ -1,14 +1,13 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => { :id => "loginform" }) do |f| %>
-<div class="loginbox">	
-	<div class="loginbox_inner">
-    	<div class="loginbox_content">
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => { :class => "well form-well" }) do |f| %>
+
 	<%= f.label :actcode %>
-		<%= f.text_field :actcode_name,  :class => "username" %><br /><br />
+		<%= f.text_field :actcode_name,  :class => "username" %>
+		 <span class="help-inline">Actcode must be in all CAPS!</span>
 		<%= f.label :password %>
 		<%= f.password_field :password,  :class => "password" %>
 	<br /><br />
-		<%= button_tag "Login", :class => "submit" %>		
-         </div><!--loginbox_content-->
-    <%= render :partial => "devise/shared/links" %></div><!--loginbox_inner-->
-</div><!--loginbox-->
+		<%= f.submit "  Login  ", :class => "btn-primary" %>		
+         <!--loginbox_content-->
+    <%= render :partial => "devise/shared/links" %><!--loginbox_inner-->
+<!--loginbox-->
 <% end %>
