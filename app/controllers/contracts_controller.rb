@@ -75,7 +75,7 @@ class ContractsController < ApplicationController
       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
       @contractss = Contract.contractstatsus.tenday.all
     else
-<<<<<<< HEAD
+
       # @noactcode = Contract.justimported
       # @contracts = Contract.contractstatsus.unconfirmedevent.innextten
       # @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m| m.act_code})
@@ -98,12 +98,12 @@ class ContractsController < ApplicationController
        @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
        @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
        @userss = @users.collect {|m| m.email}.uniq
-=======
+
       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
       @search = Contract.search(params[:search])
       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       @userss = @users.collect {|m| m.email}.uniq
->>>>>>> dressed
+
     end
   end
 
