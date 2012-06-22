@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th><%= link_to "Act Booked", :sort => "act_booked" %> </th>
-<th><%= link_to "Date Added", :sort => "created_at" %></th>
+<th><%= link_to "Client Name", :sort => "created_at" %></th>
 	  <th><%= link_to "Contract Status", :sort => "contract_status" %></th>
 		
       <th><%= link_to "Date of Event", :sort => "Date_of_event" %></th>
@@ -23,7 +23,7 @@
 			<%= link_to  "#{m.act_booked}" ,  m, :class => "green" %>
 			<% end %>
 </td>
-<td><%= m.created_at.strftime("%m/%d/%Y")  %></td>
+<td><%= link_to "#{m.first_name} #{m.last_name}", m %></td>
 <td><%= m.contract_status %></td>
 
 <td><%= m.date_of_event %></td>

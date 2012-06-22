@@ -61,7 +61,6 @@ GEM
     commonjs (0.2.0)
       therubyracer (~> 0.9.9)
     daemons (1.1.8)
-    dalli (1.1.5)
     delayed_job (3.0.1)
       activesupport (~> 3.0)
     devise (2.0.4)
@@ -229,7 +228,6 @@ DEPENDENCIES
   breadcrumbs_on_rails
   cancan
   coffee-rails (<= 3.2.2)
-  dalli
   delayed_job
   devise
   dresssed-gimlet

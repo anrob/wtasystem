@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"	
 gem 'rails', '3.1.1'
-gem 'dalli'
 gem 'pg'
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'postageapp'
