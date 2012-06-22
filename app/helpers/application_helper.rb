@@ -14,7 +14,7 @@ module ApplicationHelper
     if @contract.confirmation == 0
     button_to ' CONFIRM THIS EVENT ', confirmjob_path(:id => @contract.id), :class => 'btn-primary'
     else
-    button_to 'Email Job Information', confirmjob_path(:id => @contract.id), :class => 'button button_blue'
+    button_to 'Email Job Information', confirmjob_path(:id => @contract.id), :class => 'btn-success'
     end 
     end
   end

@@ -135,23 +135,7 @@ Type of Light Show : <%= @contract.type_of_light_show %><br>
 <% content_for :money do %>
 <div class="widgetbox">
 	<h3> <span>Money Section</span></h3>
-<div class="content">
 
-<li class="<%= @contract.isincluded %>">cocktails charge:  			<%= number_to_currency(@contract.cocktails_charge) %></li>
-<li class="<%= @contract.isincluded %>">ceremony charge:  			<%= number_to_currency(@contract.ceremony_charge) %></li>
-<li class="<%= @contract.isincluded %>">early setup charge: 		<%= number_to_currency(@contract.early_setup_charge) %></li>
-<li class="<%= @contract.isincluded %>">charge per horn:  			<%= @contract.number_of_horns %> @ <%= number_to_currency(@contract.charge_per_horn) %></li>
-<li class="<%= @contract.isincluded %>">other charges:    			<%= number_to_currency(@contract.other_charges) %></li>
-<li class="<%= @contract.isincluded %>">charge per dancer: 			<%= @contract.number_of_dancers %> @ <%= number_to_currency(@contract.charge_per_dancer)%></li>
-<li class="<%= @contract.isincluded %>">giveaways charge: 			<%= number_to_currency(@contract.giveaways_charge) rescue "0" %></li>
-<li class="<%= @contract.isincluded %>">dj tech_charge:    			<%= number_to_currency(@contract.dj_tech_charge) %></li>
-<li class="<%= @contract.isincluded %>">non-commissionable charges: <%= number_to_currency(@contract.non_commissionable_charges) %></li>
-<li class="<%= @contract.isincluded %>">capital music pay: 			<%= number_to_currency(@contract.capital_music_pay) %></li>
-<li class="<%= @contract.isincluded %>">base price_of act: 			<%= number_to_currency(@contract.base_price_of_act) %></li>
-<li class="<%= @contract.isincluded %>">referral fee amount: 		<%= number_to_currency(@contract.referral_fee_amount) %></li>
-<li class="<%= @contract.isincluded %>">tax amount: 				<%= number_to_currency(@contract.tax_amount) %></li>
-
-	</div>
 	</div>
 	<% end %>
 

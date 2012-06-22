@@ -15,6 +15,10 @@
 }
 */
 
+body {
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
 .navbar .brand {
   background-image: url('confirm.png');
   width: 105px;
@@ -72,8 +76,9 @@ div#money {
 	-o-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 	margin-bottom: 8px;
-	padding: 20px;
-	width:94.5%;
+	padding: 12px;
+	padding-left: 18px;
+	/*width:94.5%;*/
 	margin-left:5px;
 }
 
@@ -95,4 +100,17 @@ div#money {
 
 .margintop {
 	margin-top:8px;
+}
+
+dt {
+	color: #2155b1;
+	font-weight: bold;
+	font-size: 14px;
+	display: inline-block;
+}
+
+.sectionheaders {
+	color: #d64d23;
+	font-weight: bold;
+	
 }
