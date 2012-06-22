@@ -1,15 +1,12 @@
 class IncomingMailsController < ApplicationController    
-  require 'mail'
+  #require 'mail'
   skip_before_filter :verify_authenticity_token
 
   def create
-    message = Mail.new(params[:message])
-    Rails.logger.log message.subject #print the subject to the logs
-    Rails.logger.log message.body.decoded #print the decoded body to the logs
-    Rails.logger.log message.attachments.first.inspect #inspect the first attachment
-
-    # Do some other stuff with the mail message
-
-    render :text => 'success', :status => 200 # a status of 404 would reject the mail
+    message = ContractemailMailer.receiver(Mail.new(params[:message]))
+    if !message.new_record?
+            render :text => "Success", :status => 201, :content_type => Mime::TEXT.to_s
+        else
+          render :text => message.errors.full_messages.join(', '), :status => 422, :content_type => Mime::TEXT.to_s
   end
 end

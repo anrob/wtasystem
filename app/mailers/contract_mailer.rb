@@ -32,6 +32,8 @@ class ContractMailer < PostageApp::Mailer
       ContractMailer.event_info_email(user,contract,additional).deliver
       contract.update_attributes(:confirmation => 1)
     end
+    
+  
 end
 
 
