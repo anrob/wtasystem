@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   has_scope :page, :default => 1
   before_filter :everypage
    #load_and_authorize_resource
-   protect_from_forgery
+   #protect_from_forgery
   #include Mobylette::RespondToMobileRequests
    
   respond_to :html, :xml, :json
