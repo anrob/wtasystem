@@ -10,3 +10,4 @@ class IncomingMailsController < ApplicationController
           render :text => message.errors.full_messages.join(', '), :status => 422, :content_type => Mime::TEXT.to_s
   end
 end
+end
