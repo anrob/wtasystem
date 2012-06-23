@@ -21,5 +21,5 @@ resources :users
    match '/users/:id'  => "users#edit"
    match 'db/authorize', :controller => 'dropbox', :action => 'authorize'
    match 'db/upload', :controller => 'dropbox', :action => 'upload'
-   #match '/incoming', :to => "incoming_mails#create"
+   match '/incoming', :to => "incoming_mails#create"
 end
