@@ -5,7 +5,7 @@ class IncomingMailsController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def create
-    message = ContractemailMailer.receiver(Mail.new(params[:message]))
+    message = ContractemailMailer.receive(Mail.new(params[:message]))
     if !message.new_record?
             render :text => "Success", :status => 201, :content_type => Mime::TEXT.to_s
         else
