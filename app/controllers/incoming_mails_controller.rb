@@ -5,12 +5,14 @@ class IncomingMailsController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def create
-    message = self.receive(Mail.new(params[:message]))
-    if !message.new_record?
-            render :text => "Success", :status => 201, :content_type => Mime::TEXT.to_s
-        else
-          render :text => message.errors.full_messages.join(', '), :status => 422, :content_type => Mime::TEXT.to_s
-  end
+    message = Mail.new(params[:message])
+    # if !message.new_record?
+    #          render :text => "Success", :status => 201, :content_type => Mime::TEXT.to_s
+    #      else
+    #        render :text => message.errors.full_messages.join(', '), :status => 422, :content_type => Mime::TEXT.to_s
+    #      end
+   attachment = message.attachments.first
+   attachment.inspect
 end
 
 protected
