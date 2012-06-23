@@ -13,7 +13,8 @@ class IncomingMailsController < ApplicationController
     #        render :text => message.errors.full_messages.join(', '), :status => 422, :content_type => Mime::TEXT.to_s
     #      end
    attachment = message.attachments.first
-    CSV.parse(attachment, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date, encoding: "ISO8859-1"}) do |row|
+    csv = CSV.parse(CSV,attachment, :headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date, encoding: "ISO8859-1") 
+    csv.eash do |row|
                                      @contracts = Contract.find_or_create_by_unique3(row[0])
                                      @contracts.update_attributes( {
                                       :unique3 => row[0],
