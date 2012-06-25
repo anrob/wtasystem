@@ -19,7 +19,7 @@ class IncomingMailsController < ApplicationController
     #      end
    attachment = message.attachments.first
    #render :text => attachment
-   file = StringIO.new(attachment.decoded)
+   file = StringIO.new(attachment)
    file.class.class_eval { attr_accessor :content_type }
    file.content_type = attachment.mime_type
    csv = CSV.parse(file.content_type, :headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date, encoding: "ISO8859-1") 
