@@ -20,7 +20,7 @@ body {
 }
 
 .navbar .brand {
-  background-image: url('confirm.png');
+  background-image: none;
   width: 105px;
   height: 24px;
 }

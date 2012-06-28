@@ -12,7 +12,8 @@ common: &common
 
 development:
   <<: *common
-  database: wtadb
+  #database: wtadb
+  database: wtatest
   host: localhost
 
 # development:
