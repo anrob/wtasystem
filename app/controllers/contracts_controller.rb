@@ -47,7 +47,7 @@ class ContractsController < ApplicationController
     @additional = Contract.contractstatsus.additional(@contract)
   
     #item = Item.first
-    @history = @contract.record_history.all
+    #@history = @contract.record_history.all
    
     respond_with do |format|
       format.html

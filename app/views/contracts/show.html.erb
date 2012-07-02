@@ -18,31 +18,8 @@
 <%= render :partial => 'show/moneysection' %>
 
 <%#= @audit.each_key {|key| puts key } %>
-<div class="span8 white thumbnail margintop">
-<dt>Contract Changes</dt><br>
-<div class="sheet sheet-condensed">
-  <div class="sheet-inner">
-<table class="table">
-	<thead>
-	 <tr>
-		<th>Date of Change</th>
-		<th>Type of Change</th>
-		<th>Old</th>
-		<th>New Change</th>
-		</tr></thead>
-		<tbody>
-<% @history.each do |g| %>
-	<tr>
-<td><%= "#{g.created_at}" %> </td>
-<td><%= "#{g.attr_name}" %> </td>
-<td><%= "#{g.old_value}"%> </td>
-<td><%= "#{g.new_value}" %> </td>
-	</tr>
-<% end %>
-</tbody>
-</table>
-</div></div></div>
-	</div>
+
+</div>
 </div>
 </div>
 </div>

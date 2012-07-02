@@ -11,7 +11,7 @@ gem 'magic_encoding'
 gem 'kaminari'
 gem 'has_scope'
 gem 'json'
-gem 'record_history'
+#gem 'record_history'
 
 
 group :development do
