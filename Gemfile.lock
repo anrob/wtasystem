@@ -5,6 +5,16 @@ GIT
     table_builder (0.0.3)
 
 GIT
+  remote: https://github.com/coderanger/raven-ruby.git
+  revision: b9fc1f9e606e85ada1b64d38558659b9c0ea62f4
+  specs:
+    sentry-raven (0.2)
+      faraday (~> 0.8.0.rc2)
+      hashie
+      uuidtools
+      yajl-ruby
+
+GIT
   remote: https://github.com/moonshado/moonshado-sms.git
   revision: f4f306281b51c48d7f455e1d5ae7f98f0052b9ee
   specs:
@@ -76,6 +86,8 @@ GEM
     eventmachine (0.12.10)
     execjs (1.3.0)
       multi_json (~> 1.0)
+    faraday (0.8.1)
+      multipart-post (~> 1.1)
     formtastic (2.1.1)
       actionpack (~> 3.0)
     gibbon (0.3.5)
@@ -93,6 +105,7 @@ GEM
     googlestaticmap (1.1.0)
     gravatar_image_tag (1.0.0)
     has_scope (0.5.1)
+    hashie (1.2.0)
     hike (1.2.1)
     httparty (0.8.3)
       multi_json (~> 1.0)
@@ -130,6 +143,7 @@ GEM
     minitest (2.11.3)
     multi_json (1.3.6)
     multi_xml (0.4.4)
+    multipart-post (1.1.5)
     oauth (0.4.5)
     orm_adapter (0.0.6)
     pdf-reader (1.0.0)
@@ -204,8 +218,10 @@ GEM
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    uuidtools (2.1.2)
     warden (1.1.1)
       rack (>= 1.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -242,6 +258,7 @@ DEPENDENCIES
   rack (= 1.3.2)
   rails (= 3.1.1)
   sass-rails (<= 3.2.4)
+  sentry-raven!
   sqlite3
   switch_user
   table_builder (= 0.0.3)!

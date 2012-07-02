@@ -1,24 +1,19 @@
 class IncomingMailsController < ApplicationController    
   require 'mail'
   skip_before_filter :verify_authenticity_token
-  #before_filter :skipthelogin
   skip_before_filter :authenticate_user!
  
   class AttachmentFile < Tempfile
       attr_accessor :content_type
   end
   
-
   def create
    require 'base64'
    require 'csv'
-     # Message.delete_all
      @message = Mail.new(params[:message])
        attachment = @message.attachments.first
        atdecode = attachment.decoded
-       # CSV(atdecode) { |csv_in| (csv_in.each {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date, encoding: "ISO8859-1"}) { |row|
        CSV.parse(atdecode,{:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date}) do |row|
-       # CSV.foreach(atdecode, {:headers => true, :col_sep => "|", :force_quotes => true, :quote_char => "~", :converters => :date, encoding: "ISO8859-1"}) do |row|
                                        @contracts = Contract.find_or_create_by_unique3(row[0])
                                        @contracts.update_attributes( {
                                         :unique3 => row[0],
@@ -104,8 +99,6 @@ class IncomingMailsController < ApplicationController
                                         :contract_provisions => row[80].inspect,
                                         :reception_location => row[81]}) 
                                end
-      
      render :layout => false 
 end
-
 end
