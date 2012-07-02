@@ -16,6 +16,13 @@
 <%= render :partial => 'show/provision' %>
 <%= render :partial => 'show/weddingstuff' %>
 <%= render :partial => 'show/moneysection' %>
+
+<%#= @audit.each_key {|key| puts key } %>
+<dt>Contract Changes</dt><br>
+<%  @history.each do |g| %>
+<%= "#{g.created_at} - #{g.attr_name} - #{g.old_value} - #{g.new_value}" %> <br>
+
+<% end %>
 	</div>
 </div>
 </div>

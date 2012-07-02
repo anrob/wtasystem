@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
+  resources :messages
+
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails
 devise_for :users, :controllers => {:sessions => 'devise/sessions'}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }, :skip => [:sessions] do
                  get 'signin' => 'devise/sessions#new', :as => :new_user_session

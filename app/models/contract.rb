@@ -3,8 +3,8 @@ class Contract < ActiveRecord::Base
   belongs_to :user
   has_one :actcode
   #has_many :users, :class_name => "Contract", :foreign_key => "actcode", :primary_key => 'act_code'
-
   default_scope :order => 'date_of_event ASC'
+ has_record_history
 
   
   scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}

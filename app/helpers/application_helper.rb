@@ -29,5 +29,10 @@ module ApplicationHelper
     @isinclud
 
   end
+  
+  def log_action(message)
+        l = Contract.logs.new(:modification => message)
+        l.save
+    end
 
 end

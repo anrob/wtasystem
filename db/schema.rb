@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612051812) do
+ActiveRecord::Schema.define(:version => 20120702025834) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -218,18 +218,11 @@ ActiveRecord::Schema.define(:version => 20120612051812) do
   add_index "message_copies", ["sent_messageable_id", "recipient_id"], :name => "outbox_idx"
 
   create_table "messages", :force => true do |t|
-    t.integer  "received_messageable_id"
-    t.string   "received_messageable_type"
-    t.integer  "sender_id"
-    t.string   "subject"
+    t.string   "title"
     t.text     "body"
-    t.boolean  "opened",                    :default => false
-    t.boolean  "deleted",                   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "messages", ["received_messageable_id", "sender_id"], :name => "inbox_idx"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -251,6 +244,23 @@ ActiveRecord::Schema.define(:version => 20120612051812) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
+
+  create_table "record_histories", :force => true do |t|
+    t.string   "item_type",      :null => false
+    t.integer  "item_id",        :null => false
+    t.string   "attr_name"
+    t.text     "old_value_dump"
+    t.text     "new_value_dump"
+    t.string   "author_type"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.decimal  "transaction_id", :null => false
+  end
+
+  add_index "record_histories", ["author_type", "author_id"], :name => "index_record_histories_on_author_type_and_author_id"
+  add_index "record_histories", ["item_type", "item_id", "attr_name"], :name => "index_record_histories_on_item_type_and_item_id_and_attr_name"
+  add_index "record_histories", ["item_type", "item_id"], :name => "index_record_histories_on_item_type_and_item_id"
+  add_index "record_histories", ["transaction_id"], :name => "index_record_histories_on_transaction_id"
 
   create_table "specs", :force => true do |t|
     t.integer  "user_id"

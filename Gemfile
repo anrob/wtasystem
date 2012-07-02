@@ -10,6 +10,8 @@ gem 'dropbox-sdk'
 gem 'magic_encoding'
 gem 'kaminari'
 gem 'has_scope'
+gem 'json'
+gem 'record_history'
 
 
 group :development do

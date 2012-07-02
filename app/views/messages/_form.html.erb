@@ -1,25 +1,27 @@
-<%= form_for(@message) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
-
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+<%= form_for(@message, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="form-inputs">
+    <%= f.control_group :title do |f| %>
+      <%= f.label :title, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+  
+    <%= f.control_group :body do |f| %>
+      <%= f.label :body, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :body, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+  
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to "Cancel", messages_path, class: 'btn' %>
   </div>
 <% end %>
