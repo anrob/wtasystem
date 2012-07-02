@@ -12,7 +12,6 @@ class IncomingMailsController < ApplicationController
   def create
    require 'base64'
    require 'csv'
-   $KCODE = "U"
      # Message.delete_all
      @message = Mail.new(params[:message])
        attachment = @message.attachments.first
