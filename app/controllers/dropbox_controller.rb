@@ -7,10 +7,7 @@ require 'dropbox_sdk'
 # You must set these
 APP_KEY = "pzq83yj3n1jo7db"
 APP_SECRET = "69c5l03tj7h2eig"
-ACCESS_TYPE = :app_folder #The two valid values here are :app_folder and :dropbox
-                          #The default is :app_folder, but your application might be
-                          #set to have full :dropbox access.  Check your app at
-                          #https://www.dropbox.com/developers/apps
+ACCESS_TYPE = :app_folder 
 
 
 # Examples routes for config/routes.rb  (Rails 3)

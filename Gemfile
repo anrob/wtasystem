@@ -13,6 +13,7 @@ gem 'has_scope'
 gem 'json'
 #gem 'record_history'
 gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
+gem "rails_best_practices"
 
 
 group :development do

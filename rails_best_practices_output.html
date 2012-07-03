@@ -1,0 +1,5325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Output of rails_best_practices</title>
+    <style type="text/css">
+      body {
+        color: #333;
+        background: #eee;
+        padding: 0 20px;
+      }
+      h1 {
+        color: ##4E4E4E;
+      }
+      p {
+        margin: 5px 0;
+      }
+      table {
+        background: white;
+        border: 1px solid #666;
+        border-collapse: collapse;
+        margin: 10px 0;
+        font-size: 14px;
+      }
+      table th, table td {
+        padding: 4px;
+        border: 1px solid #D0D0D0;
+      }
+      table th {
+        background-color: #DFC;
+        color: #337022;
+      }
+      table td.filename {
+        color: #ED1556;
+      }
+      table tr:hover {
+        background-color: #FFFFC0;
+      }
+      ul {
+        clear: both;
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+      }
+      ul li {
+       list-style: none;
+       display: none;
+       float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>rails_best_practices output</h1>
+    <p>
+      Please go to
+      <a href='http://rails-bestpractices.com' target='_blank'>http://rails-bestpractices.com</a>
+      to see more useful Rails Best Practices.
+    </p>
+    <p>
+        Found 574 warnings.
+    </p>
+    <ul>
+        <li>
+            <input type="checkbox" id="AlwaysAddDbIndexReview" value="AlwaysAddDbIndexReview" />
+            <label for="AlwaysAddDbIndexReview">AlwaysAddDbIndexReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="HashSyntaxReview" value="HashSyntaxReview" />
+            <label for="HashSyntaxReview">HashSyntaxReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="IsolateSeedDataReview" value="IsolateSeedDataReview" />
+            <label for="IsolateSeedDataReview">IsolateSeedDataReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="LawOfDemeterReview" value="LawOfDemeterReview" />
+            <label for="LawOfDemeterReview">LawOfDemeterReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="MoveCodeIntoModelReview" value="MoveCodeIntoModelReview" />
+            <label for="MoveCodeIntoModelReview">MoveCodeIntoModelReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="MoveModelLogicIntoModelReview" value="MoveModelLogicIntoModelReview" />
+            <label for="MoveModelLogicIntoModelReview">MoveModelLogicIntoModelReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="RemoveEmptyHelpersReview" value="RemoveEmptyHelpersReview" />
+            <label for="RemoveEmptyHelpersReview">RemoveEmptyHelpersReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="RemoveUnusedMethodsInControllersReview" value="RemoveUnusedMethodsInControllersReview" />
+            <label for="RemoveUnusedMethodsInControllersReview">RemoveUnusedMethodsInControllersReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="RemoveUnusedMethodsInHelpersReview" value="RemoveUnusedMethodsInHelpersReview" />
+            <label for="RemoveUnusedMethodsInHelpersReview">RemoveUnusedMethodsInHelpersReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="RemoveUnusedMethodsInModelsReview" value="RemoveUnusedMethodsInModelsReview" />
+            <label for="RemoveUnusedMethodsInModelsReview">RemoveUnusedMethodsInModelsReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="ReplaceInstanceVariableWithLocalVariableReview" value="ReplaceInstanceVariableWithLocalVariableReview" />
+            <label for="ReplaceInstanceVariableWithLocalVariableReview">ReplaceInstanceVariableWithLocalVariableReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="SimplifyRenderInViewsReview" value="SimplifyRenderInViewsReview" />
+            <label for="SimplifyRenderInViewsReview">SimplifyRenderInViewsReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="UseMultipartAlternativeAsContentTypeOfEmailReview" value="UseMultipartAlternativeAsContentTypeOfEmailReview" />
+            <label for="UseMultipartAlternativeAsContentTypeOfEmailReview">UseMultipartAlternativeAsContentTypeOfEmailReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="UseQueryAttributeReview" value="UseQueryAttributeReview" />
+            <label for="UseQueryAttributeReview">UseQueryAttributeReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="UseSayWithTimeInMigrationsReview" value="UseSayWithTimeInMigrationsReview" />
+            <label for="UseSayWithTimeInMigrationsReview">UseSayWithTimeInMigrationsReview</label>
+        </li>
+        <li>
+            <input type="checkbox" id="LongLineCheck" value="LongLineCheck" />
+            <label for="LongLineCheck">LongLineCheck</label>
+        </li>
+        <li>
+            <input type="checkbox" id="RemoveTabCheck" value="RemoveTabCheck" />
+            <label for="RemoveTabCheck">RemoveTabCheck</label>
+        </li>
+        <li>
+            <input type="checkbox" id="RemoveTrailingWhitespaceCheck" value="RemoveTrailingWhitespaceCheck" />
+            <label for="RemoveTrailingWhitespaceCheck">RemoveTrailingWhitespaceCheck</label>
+        </li>
+    </ul>
+    <table>
+      <tr>
+        <th>Filename</th>
+        <th>Line Number</th>
+        <th>Warning Message</th>
+      </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (actcodes => [management_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (actcodes => [user_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (active_admin_comments => [resource_id, resource_type])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>78</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (confirmations => [contract_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>78</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (confirmations => [user_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>194</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (identities => [user_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>208</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (message_copies => [sent_messageable_id, sent_messageable_type])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>265</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (specs => [user_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>265</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (specs => [management_id])</a>
+          </td>
+        </tr>
+        <tr class="AlwaysAddDbIndexReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>275</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (users => [management_id])</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/ability.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/ability.rb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/ability.rb
+          </td>
+          <td class='line'>29</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/ability.rb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>22</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>23</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>24</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>24</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>26</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>32</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>55</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>74</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>77</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>173</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>173</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/log.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/management.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/notifier.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/helpers/application_helper.rb
+          </td>
+          <td class='line'>34</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>74</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>37</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>41</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>71</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>73</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>99</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>28</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>35</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>41</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>102</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/controllers/users_controller.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/pdfs/contract_pdf.rb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/pdfs/contract_pdf.rb
+          </td>
+          <td class='line'>23</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/environments/development.rb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/environments/development.rb
+          </td>
+          <td class='line'>42</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>54</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>71</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>24</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>26</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223083227_create_rails_admin_histories_table.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223083227_create_rails_admin_histories_table.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223083227_create_rails_admin_histories_table.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223125241_create_admin_notes.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223125241_create_admin_notes.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223125242_move_admin_notes_to_comments.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223125242_move_admin_notes_to_comments.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>45</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>47</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>48</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120702025833_create_record_histories.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120702025833_create_record_histories.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/migrate/20120702025834_alter_record_histories_add_transaction_id.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>26</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>27</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>36</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>37</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>39</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>47</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>48</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>49</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>57</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>58</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>60</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>61</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>62</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>66</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>75</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>76</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>78</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>86</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>172</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>178</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>179</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>180</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>192</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>194</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>201</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>208</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>218</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>220</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>227</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>235</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>241</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>246</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>248</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>249</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>250</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>257</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>260</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>261</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>262</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>263</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>265</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>275</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>276</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>277</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>281</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>290</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>302</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/actcodes/_searchit.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/actcodes/_searchit.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/actcodes/index.html.erb
+          </td>
+          <td class='line'>39</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/application/_otheracts-sidebar.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>35</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_contract.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_contract.html.erb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_otheracts.html.erb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_otheracts.html.erb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_weekly.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/_weekly.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/alljobs.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>35</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>36</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>37</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/index.html.erb
+          </td>
+          <td class='line'>38</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/index.html.erb
+          </td>
+          <td class='line'>42</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/otheracts.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/otheracts.html.erb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/confirmations/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/confirmations/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/confirmations/new.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/mailer/confirmation_instructions.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/mailer/reset_password_instructions.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/mailer/unlock_instructions.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/passwords/edit.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/passwords/edit.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/passwords/edit.html.erb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/passwords/new.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/passwords/new.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/passwords/new.html.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/registrations/edit.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/registrations/edit.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/registrations/new.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/registrations/new.html.erb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/sessions/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/sessions/new.html.erb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/unlocks/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/unlocks/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/devise/unlocks/new.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/dropbox/upload.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/dropbox/upload.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/kaminari/_first_page.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/kaminari/_last_page.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/kaminari/_next_page.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/kaminari/_page.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/kaminari/_prev_page.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/layouts/_base.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/layouts/_base.html.erb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/layouts/application.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/layouts/home.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/managements/_form.html.erb
+          </td>
+          <td class='line'>23</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/managements/index.html.erb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/managements/index.html.erb
+          </td>
+          <td class='line'>29</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/managements/new.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>45</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/confirmations/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/confirmations/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/confirmations/new.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/edit.htmlold.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/edit.htmlold.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/edit.htmlold.erb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/index.html.erb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/index.html.erb
+          </td>
+          <td class='line'>35</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/mailer/confirmation_instructions.html.erb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/mailer/reset_password_instructions.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/mailer/unlock_instructions.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/new.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/new.html.erb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/new.html.erb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/passwords/edit.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/passwords/edit.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/passwords/edit.html.erb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/passwords/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/passwords/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/sessions/new.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/sessions/new.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/sessions/new.mobile.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/sessions/new.mobile.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/sessions/new.mobile.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/sessions/new.mobile.erb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/unlocks/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/unlocks/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              app/views/users/unlocks/new.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/postageapp_tasks.rake
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/postageapp_tasks.rake
+          </td>
+          <td class='line'>64</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/postageapp_tasks.rake
+          </td>
+          <td class='line'>68</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/postageapp_tasks.rake
+          </td>
+          <td class='line'>74</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/scheduler.rake
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/scheduler.rake
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/scheduler.rake
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="HashSyntaxReview">
+          <td class='filename'>
+              lib/tasks/scheduler.rake
+          </td>
+          <td class='line'>22</td>
+          <td class='message'>
+            <a href='#' target='_blank'>change Hash Syntax to 1.9</a>
+          </td>
+        </tr>
+        <tr class="IsolateSeedDataReview">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>45</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/20-isolating-seed-data' target='_blank'>isolate seed data</a>
+          </td>
+        </tr>
+        <tr class="LawOfDemeterReview">
+          <td class='filename'>
+              app/views/actcodes/show.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/15-the-law-of-demeter' target='_blank'>law of demeter</a>
+          </td>
+        </tr>
+        <tr class="LawOfDemeterReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>26</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/15-the-law-of-demeter' target='_blank'>law of demeter</a>
+          </td>
+        </tr>
+        <tr class="LawOfDemeterReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/15-the-law-of-demeter' target='_blank'>law of demeter</a>
+          </td>
+        </tr>
+        <tr class="LawOfDemeterReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/15-the-law-of-demeter' target='_blank'>law of demeter</a>
+          </td>
+        </tr>
+        <tr class="LawOfDemeterReview">
+          <td class='filename'>
+              app/views/users/show.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/15-the-law-of-demeter' target='_blank'>law of demeter</a>
+          </td>
+        </tr>
+        <tr class="MoveCodeIntoModelReview">
+          <td class='filename'>
+              app/views/kaminari/_paginator.html.erb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/25-move-code-into-model' target='_blank'>move code into model (page use_count > 2)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (Contract use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (Actcode use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (current_user use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@contracts use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>75</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@contracts use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>75</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (Contract use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="MoveModelLogicIntoModelReview">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (dbsession use_count > 4)</a>
+          </td>
+        </tr>
+        <tr class="RemoveEmptyHelpersReview">
+          <td class='filename'>
+              app/helpers/incoming_mails_helper.rb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/72-remove-empty-helpers' target='_blank'>remove empty helpers</a>
+          </td>
+        </tr>
+        <tr class="RemoveEmptyHelpersReview">
+          <td class='filename'>
+              app/helpers/messages_helper.rb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/72-remove-empty-helpers' target='_blank'>remove empty helpers</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInControllersReview">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>38</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (ApplicationController#prepare_for_mobile)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInControllersReview">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>63</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (ApplicationController#special_layout)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInControllersReview">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>72</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (ApplicationController#update_password)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInControllersReview">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>104</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (ContractsController#themanager)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInHelpersReview">
+          <td class='filename'>
+              app/helpers/application_helper.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (ApplicationHelper#log_action)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Actcode#isassigned)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Actcode#getcontracts)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Contract#justimported)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Contract#sixtyday)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>22</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Contract#ninetyday)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>24</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Contract#confirmedevent)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>26</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Contract#innextten)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>28</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (Contract#getcount)</a>
+          </td>
+        </tr>
+        <tr class="RemoveUnusedMethodsInModelsReview">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>35</td>
+          <td class='message'>
+            <a href='#' target='_blank'>remove unused methods (User#get_user)</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/actcodes/_form.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/actcodes/_searchit.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/application/_chart.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/application/_otheracts-sidebar.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/application/_showmoney.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/application/_showmoney.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/application/_showmoney.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/application/_thechart.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_form.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_form.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_form.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_form.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_otheracts.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_otheracts.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_unconfirmed.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_weekly.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/contracts/_weekly.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/layouts/_base.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/managements/_form.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/managements/_form.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/managements/_form.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/managements/_form.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/messages/_form.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/shared/_menubar.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/shared/_menubar.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/shared/_menubar.html.erb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/shared/_menubar.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/show/_mainandmap.html.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/show/_moneysection.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/show/_provision.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>26</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>29</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>38</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_form.mobile.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+          <td class='filename'>
+              app/views/users/_searchit.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+          </td>
+        </tr>
+        <tr class="SimplifyRenderInViewsReview">
+          <td class='filename'>
+              app/views/contracts/alljobs.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+          </td>
+        </tr>
+        <tr class="SimplifyRenderInViewsReview">
+          <td class='filename'>
+              app/views/contracts/otheracts.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+          </td>
+        </tr>
+        <tr class="SimplifyRenderInViewsReview">
+          <td class='filename'>
+              app/views/contracts/otheracts.html.erb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+          </td>
+        </tr>
+        <tr class="UseMultipartAlternativeAsContentTypeOfEmailReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content_type-of-email' target='_blank'>use multipart/alternative as content_type of email</a>
+          </td>
+        </tr>
+        <tr class="UseMultipartAlternativeAsContentTypeOfEmailReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content_type-of-email' target='_blank'>use multipart/alternative as content_type of email</a>
+          </td>
+        </tr>
+        <tr class="UseMultipartAlternativeAsContentTypeOfEmailReview">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>22</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content_type-of-email' target='_blank'>use multipart/alternative as content_type of email</a>
+          </td>
+        </tr>
+        <tr class="UseQueryAttributeReview">
+          <td class='filename'>
+              app/views/contracts/show.mobile.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/56-use-query-attribute' target='_blank'>use query attribute (@contract.location_name?)</a>
+          </td>
+        </tr>
+        <tr class="UseQueryAttributeReview">
+          <td class='filename'>
+              app/views/show/_mainandmap.html.erb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/56-use-query-attribute' target='_blank'>use query attribute (contract.location_name?)</a>
+          </td>
+        </tr>
+        <tr class="UseSayWithTimeInMigrationsReview">
+          <td class='filename'>
+              db/migrate/20120702025834_alter_record_histories_add_transaction_id.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/46-use-say-and-say_with_time-in-migrations-to-make-a-useful-migration-log' target='_blank'>use say with time in migrations</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (90 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/admin_user.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (97 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (100 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (178 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>23</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>27</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>39</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (106 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>74</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (153 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>173</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (319 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/notifier.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (99 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (117 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (82 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (102 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (162 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (172 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/helpers/application_helper.rb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (99 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/helpers/application_helper.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (100 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>18</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>74</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (129 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (95 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (87 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>37</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (93 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>55</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>69</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (88 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>71</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (99 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>116</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (123 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (81 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (99 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>27</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>28</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>32</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (94 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>41</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>44</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (104 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>50</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (157 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/dropbox_controller.rb
+          </td>
+          <td class='line'>54</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (87 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (136 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (94 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>70</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>87</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/pdfs/contract_pdf.rb
+          </td>
+          <td class='line'>20</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (97 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/pdfs/contract_pdf.rb
+          </td>
+          <td class='line'>39</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (119 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              app/pdfs/contract_pdf.rb
+          </td>
+          <td class='line'>82</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>15</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (82 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>22</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>27</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>29</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (99 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (98 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>34</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (87 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>59</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (114 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/development.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/development.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (95 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>31</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (96 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>46</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (104 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>65</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (93 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/test.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/test.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/environments/test.rb
+          </td>
+          <td class='line'>34</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/backtrace_silencers.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (107 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/backtrace_silencers.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (112 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>23</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>28</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>30</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>31</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (88 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>32</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>42</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>64</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>68</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (150 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>72</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>73</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>114</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>123</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>146</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (87 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>147</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (85 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>148</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>149</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>157</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (82 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>158</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>162</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (82 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>172</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (82 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>173</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (87 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>194</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (81 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>198</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (82 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>203</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (81 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/raven.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (113 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/secret_token.rb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (175 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/session_store.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/initializers/wrap_parameters.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (96 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (292 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              config/routes.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (95 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (101 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (104 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (93 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (132 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (96 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (139 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (94 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120125012826_create_delayed_jobs.rb
+          </td>
+          <td class='line'>17</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (83 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120223083227_create_rails_admin_histories_table.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (110 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120223125242_move_admin_notes_to_comments.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120223125242_move_admin_notes_to_comments.rb
+          </td>
+          <td class='line'>14</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>33</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (94 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120223175215_devise_create_admin_users.rb
+          </td>
+          <td class='line'>45</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (115 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/migrate/20120702025834_alter_record_histories_add_transaction_id.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (81 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>36</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (134 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>37</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>57</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (130 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>58</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (122 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>61</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>62</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>75</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (92 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>76</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (122 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>192</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>218</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (92 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>246</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (136 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>260</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (124 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>261</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (143 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>262</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (116 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>263</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>276</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>277</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (89 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/schema.rb
+          </td>
+          <td class='line'>302</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (110 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (103 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (96 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>28</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (90 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>41</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (707 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>122</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (86 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              lib/tasks/authentication.rb
+          </td>
+          <td class='line'>23</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (94 characters)</a>
+          </td>
+        </tr>
+        <tr class="LongLineCheck">
+          <td class='filename'>
+              lib/tasks/authentication.rb
+          </td>
+          <td class='line'>37</td>
+          <td class='message'>
+            <a href='' target='_blank'>line is longer than 80 characters (84 characters)</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/actcodes/index.html.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/application/_otheracts-sidebar.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contract_mailer/event_info_email.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/_contract.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/_otheracts.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/_unconfirmed.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/index.html.erb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/index.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/contracts/show.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/devise/registrations/new.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/kaminari/_paginator.html.erb
+          </td>
+          <td class='line'>11</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/layouts/_base.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/layouts/_navbar.html.erb
+          </td>
+          <td class='line'>36</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/layouts/application.html.erb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/managements/index.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/shared/_cal.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/shared/_menubar.html.erb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/show/_clientextra.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/show/_mainandmap.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/show/_moneysection.html.erb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/show/_provision.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/show/_weddingstuff.html.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/users/index.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/users/new.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/users/passwords/new.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/users/sessions/new.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTabCheck">
+          <td class='filename'>
+              app/views/users/sessions/new.mobile.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/81-remove-tab' target='_blank'>remove tab, use spaces instead</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/ability.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/actcode.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/admin_user.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/contract.rb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/log.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/notifier.rb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/models/user.rb
+          </td>
+          <td class='line'>13</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/mailers/contract_mailer.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/mailers/contractemail_mailer.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/helpers/application_helper.rb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/controllers/application_controller.rb
+          </td>
+          <td class='line'>4</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/controllers/contracts_controller.rb
+          </td>
+          <td class='line'>6</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/controllers/incoming_mails_controller.rb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/pdfs/contract_pdf.rb
+          </td>
+          <td class='line'>16</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/workers/my_worker.rb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              config/application.rb
+          </td>
+          <td class='line'>58</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              config/environments/development.rb
+          </td>
+          <td class='line'>48</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              config/environments/production.rb
+          </td>
+          <td class='line'>57</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              config/initializers/devise.rb
+          </td>
+          <td class='line'>39</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              db/seeds.rb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              lib/tasks/authentication.rb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/actcodes/index.html.erb
+          </td>
+          <td class='line'>25</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/actcodes/show.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/contracts/_alljobs.html.erb
+          </td>
+          <td class='line'>21</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/contracts/_otheracts.html.erb
+          </td>
+          <td class='line'>12</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/contracts/calendar.html.erb
+          </td>
+          <td class='line'>9</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/contracts/index.html.erb
+          </td>
+          <td class='line'>27</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/contracts/show.html.erb
+          </td>
+          <td class='line'>5</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/layouts/_base.html.erb
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/layouts/_navbar.html.erb
+          </td>
+          <td class='line'>45</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/layouts/application.html.erb
+          </td>
+          <td class='line'>19</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/managements/index.html.erb
+          </td>
+          <td class='line'>8</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/messages/_form.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/messages/show.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/shared/_menubar.html.erb
+          </td>
+          <td class='line'>1</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/users/_form.html.erb
+          </td>
+          <td class='line'>36</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/users/index.html.erb
+          </td>
+          <td class='line'>10</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              app/views/users/mailer/confirmation_instructions.html.erb
+          </td>
+          <td class='line'>3</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              lib/tasks/postageapp_tasks.rake
+          </td>
+          <td class='line'>2</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+        <tr class="RemoveTrailingWhitespaceCheck">
+          <td class='filename'>
+              lib/tasks/scheduler.rake
+          </td>
+          <td class='line'>7</td>
+          <td class='message'>
+            <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+          </td>
+        </tr>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('ul li').show();
+        $('input[type=checkbox]').prop('checked', true).click(function() {
+          if ($(this).attr('checked')) {
+            $(this).prop('checked', true);
+            $('.'+$(this).val()).show();
+          } else {
+            $(this).prop('checked', false);
+            $('.'+$(this).val()).hide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

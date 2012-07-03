@@ -11,13 +11,11 @@
 <h2 class="theheader">Act Booked - <%= @contract.act_booked %></h2>
 <div class="theheader">
 <div class="row">
-<%= render :partial => 'show/mainandmap' %>
-<%= render :partial => 'show/clientextra' %>
-<%= render :partial => 'show/provision' %>
-<%= render :partial => 'show/weddingstuff' %>
-<%= render :partial => 'show/moneysection' %>
-
-<%#= @audit.each_key {|key| puts key } %>
+<%= render  "show/mainandmap", :contract => @contract %>
+<%= render  "show/clientextra", :contract => @contract %>
+<%= render  "show/provision", :contract => @contract %>
+<%= render  "show/weddingstuff", :contract => @contract %>
+<%= render  "show/moneysection", :contract => @contract %>
 
 </div>
 </div>
