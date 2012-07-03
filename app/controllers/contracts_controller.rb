@@ -97,8 +97,6 @@ class ContractsController < ApplicationController
     @additional = Contract.additional(@contract)
     ContractMailer.event_info_email(@user,@contract,@additional).deliver
     @contract.update_attributes(:confirmation => 1)
-    #ContractMailer.delay.deliver(mail_hash)
-    #@contract.update_attributes(:confirmation => 1)
     flash[:notice] = "Job Confirmed"
     redirect_to :back
   end
