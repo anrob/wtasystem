@@ -1,7 +1,7 @@
 <div class="form_default">
 	<p class="alert"><%= alert %></p>
-<% @user.build_actcode unless @user.actcode %>
-<%= semantic_form_for(@user,:html => { :class => "form_default", :method => :put}) do |f| %>
+<% user.build_actcode unless user.actcode %>
+<%= semantic_form_for(user,:html => { :class => "form_default", :method => :put}) do |f| %>
 <%= f.inputs :email,:hint => 'Hey - no more than 255 characters can be input!!!', %>
 <%= f.inputs :first_name, :last_name, :phone_number %>
 <%= f.label :current_password %><br />
@@ -22,12 +22,12 @@
   <%# end %>
 
 <% else %>
-<% unless @user.actcode_id.blank? %>
-<p><strong>Actcode : <%= @user.actcode.actcode %>
+<% unless user.actcode_id.blank? %>
+<p><strong>Actcode : <%= user.actcode.actcode %>
 	<% end %>
 	<br>
-	<% unless @user.management_id.blank?%>
-Management Company : <%= @user.management.name %></p>
+	<% unless user.management_id.blank?%>
+Management Company : <%= user.management.name %></p>
 <% end %>
 </strong>
 <% end %>
@@ -35,7 +35,7 @@ Management Company : <%= @user.management.name %></p>
 <% if current_user.is? :everything %>
 <h3><span>Privileges</span></h3> 
 <% for role in User::ROLES %>
-<%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
+<%= check_box_tag "user[roles][]", role, user.roles.include?(role) %>
    <%=h role.humanize %>
 <% end %>
 <%= hidden_field_tag "user[roles][]", "" %>

@@ -1,0 +1,12 @@
+--- 
+id: befed810-a8f6-012f-edb3-123138098a5d
+setup:
+  commands:
+  - bundle install --without production
+  - bundle exec rake db:migrate --trace
+test:
+  commands:
+  - bundle exec rake
+deploy: {}
+ruby_versions:
+- 1.9.2
