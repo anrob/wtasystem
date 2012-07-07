@@ -7,7 +7,7 @@
 			<dt><b class="themoney"><%= number_to_currency(@contract.pick_up_amount) %></b> - <span>Pickup Amount:</span> 		</dt>      
 		</div>
 	<% end %>
-<%= makebutton %>
+<%= makebutton(@contract) %>
 <h2 class="theheader">Act Booked - <%= @contract.act_booked %></h2>
 <div class="theheader">
 <div class="row">

@@ -44,10 +44,6 @@ class ContractsController < ApplicationController
   def show
     add_breadcrumb "Show Contract", contract_path
     @additional = Contract.contractstatsus.additional(@contract)
-  
-    #item = Item.first
-    #@history = @contract.record_history.all
-   
     respond_with do |format|
       format.html
       format.pdf do
