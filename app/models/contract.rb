@@ -84,6 +84,7 @@ class Contract < ActiveRecord::Base
  :party_planner ,
  :act_notes,
  :contract_provisions,
+ :confirmation,
  :reception_location 
 
   scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}

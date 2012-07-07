@@ -1,14 +1,7 @@
 <div class="sheet sheet-condensed">
 <div class="sheet-inner texture">
-	<% if can? :see_money, @contracts %>
-		<div id="money">
-			<dt><b class="themoney"><%= number_to_currency(@contract.contract_price) %></b> - <span>Contract price:</span>        </dt> 
-			<dt class="middle"><b class="themoney"><%= number_to_currency(@contract.act_net) %></b> - <span>Contract Net:</span> 			</dt> 
-			<dt><b class="themoney"><%= number_to_currency(@contract.pick_up_amount) %></b> - <span>Pickup Amount:</span> 		</dt>      
-		</div>
-	<% end %>
-<%= makebutton(@contract) %>
-<h2 class="theheader">Act Booked - <%= @contract.act_booked %></h2>
+	<%= render 'show/topmoney', :contract => @contract %>
+
 <div class="theheader">
 <div class="row">
 <%= render  "show/mainandmap", :contract => @contract %>
