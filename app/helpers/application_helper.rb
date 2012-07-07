@@ -10,7 +10,7 @@ module ApplicationHelper
   
   
   def makebutton
-  if @contract.date_of_event < Date.today + 10.days
+  if self.date_of_event < Date.today + 10.days
     if @contract.confirmation == 0
     button_to ' CONFIRM THIS EVENT ', confirmjob_path(:id => @contract.id), :class => 'btn-primary'
     else
