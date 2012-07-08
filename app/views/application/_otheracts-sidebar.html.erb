@@ -1,6 +1,6 @@
 <h3 class="open">
-	<span>Management Company Acts</span></h3>
-	<% @getallbycompnay.each do |getall| %>
-		<!-- <span class="label label-important">6</span> --><%= activatable_li_tag_with_link "#{getall.actcode} - #{getall.description}", contracts_path(:act_code => getall.actcode)  %>
-	<% end %>
+    <span>Management Company Acts</span></h3>
+    <% @getallbycompnay.each do |getall| %>
+        <!-- <span class="label label-important">6</span> --><%= activatable_li_tag_with_link "#{getall.actcode} - #{getall.description}", contracts_path(act_code: getall.actcode)  %>
+    <% end %>
 

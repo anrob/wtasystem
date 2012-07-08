@@ -13,24 +13,24 @@ class ContractPdf < Prawn::Document
    #     start_new_page
    #   end
   end
-  
+
   def contract_number
    font "Times-Roman"
    fill_color "336699"
-    text "Contract \##{@contract.contract_number}", :size => 10, :style => :bold, :align => :left
-    
+    text "Contract \##{@contract.contract_number}", size: 10, style: :bold, align: :left
+
     fill_color "336699"
-    text "#{@contract.act_booked}", size: 12, style: :bold, :color =>"#336699"
+    text "#{@contract.act_booked}", size: 12, style: :bold, color:"#336699"
     fill_color "000000"
     text "#{@contract.type_of_event}", size:12, style: :bold
     font "Helvetica"  # back to normal
-    # column_box([0, cursor], :columns => 2, :width => bounds.width) do
+    # column_box([0, cursor], columns: 2, width: bounds.width) do
     #      text((<<-END.gsub(/\s+/, ' ') + "\n\n") * 1)
     #       #{@contract.contract_provisions}
     #      END
     #    end
   end
-  
+
   def contract_address
       indent 300 do
         move_up 30
@@ -40,30 +40,30 @@ class ContractPdf < Prawn::Document
      text "#{@contract.location_phone}", size: 10, style: :normal
    end
   end
-  
+
   # def other
   #    text "Please scan the next 3 pages to see the page templates in action."
   #    move_down 10
   #    text "You also might want to look at the pdf used as a template: "
   #    url = "https://github.com/sandal/prawn/raw/master/data/pdfs/form.pdf"
   #    move_down 10
-  # 
-  #    formatted_text [{:text => url, :link => url}]
-  # 
+  #
+  #    formatted_text [{text: url, link: url}]
+  #
   #    #filename = "#{Prawn::DATADIR}/pdfs/form.pdf"
-  #    #start_new_page(:template => filename)
-  # 
-  #    #start_new_page(:template => filename, :template_page => 2)
-  # 
-  #    #start_new_page(:template => filename, :template_page => 2)
-  # 
+  #    #start_new_page(template: filename)
+  #
+  #    #start_new_page(template: filename, template_page: 2)
+  #
+  #    #start_new_page(template: filename, template_page: 2)
+  #
   #    fill_color "FF8888"
-  # 
-  #    text_box "John Doe", :at => [75, cursor-75]
-  #    text_box "john@doe.com", :at => [75, cursor-105]
-  #    text_box "John Doe inc", :at => [75, cursor-135]
-  #    text_box "You didn't think I'd tell, did you?", :at => [75, cursor-165]
-  # 
+  #
+  #    text_box "John Doe", at: [75, cursor-75]
+  #    text_box "john@doe.com", at: [75, cursor-105]
+  #    text_box "John Doe inc", at: [75, cursor-135]
+  #    text_box "You didn't think I'd tell, did you?", at: [75, cursor-165]
+  #
   #    fill_color "000000"
   #  end
   # def line_items
@@ -75,7 +75,7 @@ class ContractPdf < Prawn::Document
   #       self.header = true
   #     end
   #   end
-  # 
+  #
   #   def line_item_rows
   #     [["Product", "Qty", "Unit Price", "Full Price"]] +
   #     contract.each do |item|

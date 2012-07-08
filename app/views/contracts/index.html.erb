@@ -6,47 +6,47 @@
 <div class="sheet sheet-condensed">
   <div class="sheet-inner">
 <table class="table">
-	<thead>
-	 <tr>
-					<th>Date of Event</th>
-					<th>Contract #</th>
-				    <th>Client Name</th>
-				    <th>Hours of coverage</th>
+    <thead>
+     <tr>
+                    <th>Date of Event</th>
+                    <th>Contract #</th>
+                    <th>Client Name</th>
+                    <th>Hours of coverage</th>
 
 
-				    <th>Event Type</th>
-				    <th>Location</th>
+                    <th>Event Type</th>
+                    <th>Location</th>
 
-					<th> </th>
-				  </tr>
-				</thead>
+                    <th> </th>
+                  </tr>
+                </thead>
 <tbody>
-	<% @contract.contractstatsus.tenday.each do |contract| %>
-	<tr>
-		<td><% unless contract.confirmation == 1  %>
-			<%= link_to contract.date_of_event,  contract, :class => "red" %> 
-			<% else %>
-			<%= link_to contract.date_of_event,  contract, :class => "green" %>
-			<% end %>
-	</td>
-			<td><%= link_to contract.contract_number, contract %>
-		   <td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
-		   <td><%= link_to "#{contract.event_start_time} - #{contract.event_end_time}", contract %></td>
+    <% @contract.contractstatsus.tenday.each do |contract| %>
+    <tr>
+        <td><% unless contract.confirmation == 1  %>
+            <%= link_to contract.date_of_event,  contract, class: "red" %>
+            <% else %>
+            <%= link_to contract.date_of_event,  contract, class: "green" %>
+            <% end %>
+    </td>
+            <td><%= link_to contract.contract_number, contract %>
+           <td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
+           <td><%= link_to "#{contract.event_start_time} - #{contract.event_end_time}", contract %></td>
 
 
-		   <td><%= link_to contract.type_of_event, contract %></td>
-		   <td><%= link_to truncate(contract.location_name, :length => 40, :omission =>"..."), contract %></td>
+           <td><%= link_to contract.type_of_event, contract %></td>
+           <td><%= link_to truncate(contract.location_name, length: 40, omission: "..."), contract %></td>
 
-		   <td>
-			<% if contract.confirmation == 1  %>
-			<%= button_to 'Get Info', contract, :class => 'btn-success',:method => :get %>
-			<% else %>
-			<%= button_to 'CONFIRM', confirmjob_path(:id => contract.id), :class => 'btn-danger' %>
-			<% end %>
-			<%#= link_to 'Get Info', contract, :class => 'button blue' %>
+           <td>
+            <% if contract.confirmation == 1  %>
+            <%= button_to 'Get Info', contract, class: 'btn-success',method: :get %>
+            <% else %>
+            <%= button_to 'CONFIRM', confirmjob_path(id: contract.id), class: 'btn-danger' %>
+            <% end %>
+            <%#= link_to 'Get Info', contract, class: 'button blue' %>
 
-			</td>
-		
+            </td>
+
 <%#= render @contract.tenday %>
 </tr>
 <% end %>

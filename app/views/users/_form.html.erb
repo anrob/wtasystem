@@ -1,8 +1,8 @@
 <div class="form_default">
-	<p class="alert"><%= alert %></p>
+    <p class="alert"><%= alert %></p>
 <% user.build_actcode unless user.actcode %>
-<%= semantic_form_for(user,:html => { :class => "form_default", :method => :put}) do |f| %>
-<%= f.inputs :email,:hint => 'Hey - no more than 255 characters can be input!!!', %>
+<%= semantic_form_for(user,html: { class: "form_default", method: :put}) do |f| %>
+<%= f.inputs :email,hint: 'Hey - no more than 255 characters can be input!!!', %>
 <%= f.inputs :first_name, :last_name, :phone_number %>
 <%= f.label :current_password %><br />
  <%= f.input :current_password %>
@@ -24,16 +24,16 @@
 <% else %>
 <% unless user.actcode_id.blank? %>
 <p><strong>Actcode : <%= user.actcode.actcode %>
-	<% end %>
-	<br>
-	<% unless user.management_id.blank?%>
+    <% end %>
+    <br>
+    <% unless user.management_id.blank?%>
 Management Company : <%= user.management.name %></p>
 <% end %>
 </strong>
 <% end %>
 <p>
 <% if current_user.is? :everything %>
-<h3><span>Privileges</span></h3> 
+<h3><span>Privileges</span></h3>
 <% for role in User::ROLES %>
 <%= check_box_tag "user[roles][]", role, user.roles.include?(role) %>
    <%=h role.humanize %>
@@ -41,8 +41,8 @@ Management Company : <%= user.management.name %></p>
 <%= hidden_field_tag "user[roles][]", "" %>
 <% end %>
 <br></p>
-<%#= f.input :current_password, :label => "You Must Enter Your Password To Update", :required => true %><br>
-<%= f.commit_button :button_html => { :class => 'button button_green' } %>
+<%#= f.input :current_password, label: "You Must Enter Your Password To Update", required: true %><br>
+<%= f.commit_button button_html: { class: 'button button_green' } %>
 </p>
 <% end %>
 

@@ -1,40 +1,39 @@
-<%#= render :partial => 'searchit' %>
+<%#= render partial: 'searchit' %>
 <div class="sheet sheet-condensed">
   <div class="sheet-inner">
 <table cellpadding="0" cellspacing="0" class="table" width="100%">
-		<thead class="sTableHead">
+        <thead class="sTableHead">
   <tr>
     <th class="head0">Email Address</th>
     <th class="head0">Edit</th>
 
- <% if current_user.is? :everything? %>  
+ <% if current_user.is? :everything? %>
     <th class="head0">Delete</th>
 <% end %>
   </tr>
-	</thead>
+    </thead>
 <% @users.each do |u| %>
  <tr>
-	<td><%= link_to u.email, edit_user_path(u) %> </td>
-	<td><i class="icon-edit
-	          icon-white"><%= link_to 'Edit', edit_user_path(u) %></i></td>
+    <td><%= link_to u.email, edit_user_path(u) %> </td>
+    <td><i class="icon-edit
+              icon-white"><%= link_to 'Edit', edit_user_path(u) %></i></td>
 <% if current_user.is? :everything? %>
-	<td><%= link_to 'Destroy', u, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', u, confirm: 'Are you sure?', method: :delete %></td>
 <% end %>
 
-	</tr>
-	<% end %>
-	
-	</table>
+    </tr>
+    <% end %>
 
-	<br />
+    </table>
 
-	</div>
+    <br />
 
-	</div>
-	<% if current_user.is? :everything %>
-	<%= button_to 'New User', new_user_path, :class => 'button button_blue',:method => :get %>
-	<% end %>
-		<%= paginate @users %>
-	
+    </div>
 
-	
+    </div>
+    <% if current_user.is? :everything %>
+    <%= button_to 'New User', new_user_path, class: 'button button_blue',method: :get %>
+    <% end %>
+        <%= paginate @users %>
+
+

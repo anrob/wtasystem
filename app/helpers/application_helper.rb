@@ -7,12 +7,12 @@ module ApplicationHelper
   def days_in_month(year, month)
     (Date.new(year, 12, 31) << (12-month)).day
   end
-  
-  
 
-  
+
+
+
   def isincluded
-  
+
    unless @contract.nil?
       @isinclud = "normal"
     else
@@ -21,10 +21,7 @@ module ApplicationHelper
     @isinclud
 
   end
-  
-  def log_action(message)
-        l = Contract.logs.new(:modification => message)
-        l.save
-    end
+
+
 
 end

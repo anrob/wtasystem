@@ -1,46 +1,46 @@
 <div class="invoicez">
-	<div class="invoice_inners">
-		<div class="tan">
-	<div class="one_half">	
-		<h4>Act Name: <%= @contract.act_booked %></h4>
-		<h4>Type of Event: <%= @contract.type_of_event %></h4>
-		<h4>Operating as: <%= @contract.type_of_act %></h4>
-		<h4>Form of: <%= @contract.act_form %></h4>
-		<h4> <span>Event Location</span></h4>
-		<address><%= @contract.location_name %><br>
-	   	<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-	Phone:<%= @contract.location_phone %><br clear="all"></address>
-	</div>
-	<div class="one_half last">
-	<h4 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h4>
-	<h4 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %>	</h4>
-	<h4 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>	</h4>
-	<h4>Agent : <%= @contract.agent %> </h4>
-	<h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
-	<h4 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h4>
-	</div>
+    <div class="invoice_inners">
+        <div class="tan">
+    <div class="one_half">
+        <h4>Act Name: <%= @contract.act_booked %></h4>
+        <h4>Type of Event: <%= @contract.type_of_event %></h4>
+        <h4>Operating as: <%= @contract.type_of_act %></h4>
+        <h4>Form of: <%= @contract.act_form %></h4>
+        <h4> <span>Event Location</span></h4>
+        <address><%= @contract.location_name %><br>
+        <%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+    Phone:<%= @contract.location_phone %><br clear="all"></address>
+    </div>
+    <div class="one_half last">
+    <h4 class="<%= @contract.status %> padding15 textindent">Contract Status:<%= @contract.contract_status %></h4>
+    <h4 class="yesido"> <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %> </h4>
+    <h4 class="yesido"> <b>Event Time: </b><%= @contract.eventtime %>   </h4>
+    <h4>Agent : <%= @contract.agent %> </h4>
+    <h4 class="blue">Contract number: <%= @contract.contract_number %></h4>
+    <h4 class="green">Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %></h4>
+    </div>
 </div>
 <hr>
-		<div class="widgetbox one_half">
-	<h3> <span>Client Section</span></h3>
-	<div class="content">
-	Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
-	Company:	<%= @contract.company %><br>
-	Email Address: <%= @contract.email_address %><br>
-	Bride / Bat Mitzvah Name: <%= @contract.brides_names %><br>
-	Grooms / Bar Mitzvah Name: <%= @contract.grooms_name %><br>
+        <div class="widgetbox one_half">
+    <h3> <span>Client Section</span></h3>
+    <div class="content">
+    Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
+    Company:    <%= @contract.company %><br>
+    Email Address: <%= @contract.email_address %><br>
+    Bride / Bat Mitzvah Name: <%= @contract.brides_names %><br>
+    Grooms / Bar Mitzvah Name: <%= @contract.grooms_name %><br>
 
-	Home Phone: <%= @contract.home_phone %><br>
-	Work Phone: <%= @contract.work_phone %><br>
- 	Cell Phone: <%= @contract.cell_phone %>
-	</div>
-	</div>
-		<div class="widgetbox one_half last">
-			<h4> <span>Extras Section</span></h4>
-			<div class="content">
-				  Cocktail Instrumentation:  <%= @contract.cocktail_instrumentation %><br>
-				  Cocktail Time:  <%= @contract.cocktail_time %><br>
-<h3>Early setup Time:	<%= @contract.early_setup_time %></h3>
+    Home Phone: <%= @contract.home_phone %><br>
+    Work Phone: <%= @contract.work_phone %><br>
+    Cell Phone: <%= @contract.cell_phone %>
+    </div>
+    </div>
+        <div class="widgetbox one_half last">
+            <h4> <span>Extras Section</span></h4>
+            <div class="content">
+                  Cocktail Instrumentation:  <%= @contract.cocktail_instrumentation %><br>
+                  Cocktail Time:  <%= @contract.cocktail_time %><br>
+<h3>Early setup Time:   <%= @contract.early_setup_time %></h3>
 <br>Giveaways: <%= @contract.giveaways %><br>
 Type of Light Show : <%= @contract.type_of_light_show %><br>
 
@@ -48,95 +48,95 @@ Type of Light Show : <%= @contract.type_of_light_show %><br>
  Number of Horns: <%= @contract.number_of_horns %><br>
  Number of Dancers: <%= @contract.number_of_dancers %><br><br>
 <hr>
-	Pick up Reason<%= @contract.explanation_opf_pickup_adjustment %>
-	<%= @contract.capital_music_player %>
+    Pick up Reason<%= @contract.explanation_opf_pickup_adjustment %>
+    <%= @contract.capital_music_player %>
 
-	<%= @contract.questionnaire_received_date %><br>
-
-
-	Referral Fee to :<%= @contract.referral_fee_to %><br>
-	Song Requests: <%= @contract.song_requests %><br>
-	<br>
-	<hr>
-	<br>
-		Song Requests: <%= @contract.song_requests %><br>
+    <%= @contract.questionnaire_received_date %><br>
 
 
+    Referral Fee to :<%= @contract.referral_fee_to %><br>
+    Song Requests: <%= @contract.song_requests %><br>
+    <br>
+    <hr>
+    <br>
+        Song Requests: <%= @contract.song_requests %><br>
 
 
 
 
-	</div>
-	</div>
-	<br clear="all">
-	
-	<div class="widgetbox one_half">
-		<h3><span>Ceremony/Service Section</span></h3>
-			<div class="content">
-				Ceremony Date:	<%= @contract.date_of_ceremony %><br>
-	Ceremony Location:	<%= @contract.ceremonoy_location_name %><br>
-	Ceremony Address:	<%= @contract.ceremonoy_address_line_1 %><br>
-	<%= @contract.ceremony_address_line_2 %><br>
-	Ceremony City:	<%= @contract.ceremony_location_city %><br>
-	Ceremony State:	<%= @contract.seremonly_location_state %><br>
-	Ceremony Zip:	<%= @contract.ceremony_location_zip %><br>
-	Ceremony Start Time:	<%= @contract.ceremony_start_time %><br>
-	Ceremony Instrumentation:	<%= @contract.ceremony_instrumenttation %><br>
-		</div>
-	</div>	
-	<div class="widgetbox one_half last">
-		<h3><span>Video/Photography Section</span></h3>
-			<div class="content">
-		Videographer/Photographer 1: <%= @contract.videographer_1 %><br>
-		Videographer/Photographer 2: <%= @contract.videographer_2 %><br>
-		Videographer/Photographer 3: <%= @contract.videgrapher_3 %>
-		</div>
-	</div>
-		<br clear="all">
+
+
+    </div>
+    </div>
+    <br clear="all">
+
+    <div class="widgetbox one_half">
+        <h3><span>Ceremony/Service Section</span></h3>
+            <div class="content">
+                Ceremony Date:  <%= @contract.date_of_ceremony %><br>
+    Ceremony Location:  <%= @contract.ceremonoy_location_name %><br>
+    Ceremony Address:   <%= @contract.ceremonoy_address_line_1 %><br>
+    <%= @contract.ceremony_address_line_2 %><br>
+    Ceremony City:  <%= @contract.ceremony_location_city %><br>
+    Ceremony State: <%= @contract.seremonly_location_state %><br>
+    Ceremony Zip:   <%= @contract.ceremony_location_zip %><br>
+    Ceremony Start Time:    <%= @contract.ceremony_start_time %><br>
+    Ceremony Instrumentation:   <%= @contract.ceremony_instrumenttation %><br>
+        </div>
+    </div>
+    <div class="widgetbox one_half last">
+        <h3><span>Video/Photography Section</span></h3>
+            <div class="content">
+        Videographer/Photographer 1: <%= @contract.videographer_1 %><br>
+        Videographer/Photographer 2: <%= @contract.videographer_2 %><br>
+        Videographer/Photographer 3: <%= @contract.videgrapher_3 %>
+        </div>
+    </div>
+        <br clear="all">
 <hr class="show-line">
 
-	<div class="widgetbox one_half">
-		<h3><span>Contract Provisions</span></h3>
-						<div class="content lesspadding">
-							<% unless @contract.contract_provisions == "nil" %>
-								<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
-							<% end %>
-						</div>
-					</div>
-					<div class="widgetbox one_half last">
-					<h3><span>Act Notes</span></h3>
-						<div class="content lesspadding">
-							<% unless  @contract.act_notes == "nil" %>
-								<%= @contract.act_notes %>
-							<% end %>
-							
-					
-					</div>
-						</div>
-						<br clear="all">
-	
-					<div class="widgetbox">
-		<h3><span>All Services Provided</span></h3>
-		<div class="content lesspadding">
-	<ul>
-			<% @additional.each do |addi| %>
-				
-			
-				
-					<li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
-				
-			<% end %></ul>
-			</div>
-			</div>
-	
+    <div class="widgetbox one_half">
+        <h3><span>Contract Provisions</span></h3>
+                        <div class="content lesspadding">
+                            <% unless @contract.contract_provisions == "nil" %>
+                                <%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="widgetbox one_half last">
+                    <h3><span>Act Notes</span></h3>
+                        <div class="content lesspadding">
+                            <% unless  @contract.act_notes == "nil" %>
+                                <%= @contract.act_notes %>
+                            <% end %>
+
+
+                    </div>
+                        </div>
+                        <br clear="all">
+
+                    <div class="widgetbox">
+        <h3><span>All Services Provided</span></h3>
+        <div class="content lesspadding">
+    <ul>
+            <% @additional.each do |addi| %>
+
+
+
+                    <li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
+
+            <% end %></ul>
+            </div>
+            </div>
+
 </div>
 </div>
 <br clear="all">
 <% content_for :money do %>
 <div class="widgetbox">
-	<h3> <span>Money Section</span></h3>
+    <h3> <span>Money Section</span></h3>
 
-	</div>
-	<% end %>
+    </div>
+    <% end %>
 
-	<br clear="all">
+    <br clear="all">

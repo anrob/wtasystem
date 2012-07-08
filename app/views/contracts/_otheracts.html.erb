@@ -8,11 +8,11 @@
           <th>Act Name</th>
           <th>Act Code</th>
       </tr>
-  </thead>	
-<% @otheracts.each do |otheract| %>  
+  </thead>
+<% @otheracts.each do |otheract| %>
 <tr>
-          <td><%= link_to otheract.fullname, otheracts_path(:act_code => otheract.actcode) %> </td>
-          <td><%= link_to otheract.actcode, otheracts_path(:act_code => otheract.actcode) %></td>
+          <td><%= link_to otheract.fullname, otheracts_path(act_code: otheract.actcode) %> </td>
+          <td><%= link_to otheract.actcode, otheracts_path(act_code: otheract.actcode) %></td>
       </tr>
 
  <% end %>

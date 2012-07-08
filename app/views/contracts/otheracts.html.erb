@@ -9,12 +9,12 @@
 <article class="full-block clearfix">
 <div class="notification success"> <header><strong><h2>Events in the next 10 days</h2></strong></header></div>
 </header>
-<%= render :partial => 'sevenday', :collection => @contract.tenday  %>
+<%= render 'sevenday', collection: @contract.tenday  %>
 </article>
 <article class="full-block clearfix">
 <div class="notification success"> <header><strong><h2>Events in the next 30 days</h2></strong></header></div>
 </header>
-<%= render :partial => 'sevenday', :collection => @contract.thirtyday  %>
+<%= render 'sevenday', collection: @contract.thirtyday  %>
 </article>
 <%#= render 'thirtyday' %
 <%#= render 'otheracts' %>

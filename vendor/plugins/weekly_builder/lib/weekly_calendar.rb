@@ -8,7 +8,7 @@ module WeeklyCalendar
     start_date = Date.new(date.year, date.month, date.day)
     end_date = Date.new(date.year, date.month, date.day) + 6
     
-    safe_concat(tag("div", :class => "week"))
+    safe_concat(tag("div", class: "week"))
 
       yield WeeklyCalendar::Builder.new(objects || [], self, options, start_date, end_date)
 

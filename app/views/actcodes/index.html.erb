@@ -1,6 +1,6 @@
 <%#= will_paginate @actcodes %>
 
-<%#= render :partial => 'searchit' %>
+<%#= render partial: 'searchit' %>
 <div class="sheet sheet-condensed">
   <div class="sheet-inner">
 
@@ -8,9 +8,9 @@
 <thead>
   <tr>
     <th class="head0">Actcode</th>
-	<th class="head0">Act Code Id</th>
+    <th class="head0">Act Code Id</th>
     <th class="head0">Management Company</th>
- 	<th class="head0">Description</th>
+    <th class="head0">Description</th>
     <th class="head0"></th>
     <th class="head0"></th>
     <th class="head0"></th>
@@ -22,9 +22,9 @@
 <% unless actcode.id.blank?  %>
 <td><%= actcode.id %></td>
 <% end %>
-    <td><% unless actcode.management_id.blank? %> 
-	<%#= actcode.management.name %> 
-	<% end %></td>
+    <td><% unless actcode.management_id.blank? %>
+    <%#= actcode.management.name %>
+    <% end %></td>
 <td><%= actcode.description %></td>
     <td><%= link_to 'Show', actcode %></td>
     <td><%= link_to 'Edit', edit_actcode_path(actcode) %></td>
@@ -36,7 +36,7 @@
 <br />
 </div>
 </div>
-<%= button_to 'New Actcode', new_actcode_path, :class => 'button button_blue',:method => :get %>
+<%= button_to 'New Actcode', new_actcode_path, class: 'button button_blue',method: :get %>
 
 
 <%= paginate @actcodes %>

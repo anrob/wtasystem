@@ -3,25 +3,25 @@
 <table id="products" class="table">
   <thead>
     <tr>
-      <th><%= link_to "Act Booked", :sort => "act_booked" %> </th>
-<th><%= link_to "Client Name", :sort => "created_at" %></th>
-	  <th><%= link_to "Contract Status", :sort => "contract_status" %></th>
-		
-      <th><%= link_to "Date of Event", :sort => "Date_of_event" %></th>
-      <th><%= link_to "Location city", :sort => "location_city" %></th>
-      <th><%= link_to "Start Time", :sort => "Start Time" %></th>
-	  <th><%= link_to "End Time", :sort => "End Time" %></th>
+      <th><%= link_to "Act Booked", sort: "act_booked" %> </th>
+<th><%= link_to "Client Name", sort: "created_at" %></th>
+      <th><%= link_to "Contract Status", sort: "contract_status" %></th>
+
+      <th><%= link_to "Date of Event", sort: "Date_of_event" %></th>
+      <th><%= link_to "Location city", sort: "location_city" %></th>
+      <th><%= link_to "Start Time", sort: "Start Time" %></th>
+      <th><%= link_to "End Time", sort: "End Time" %></th>
     </tr>
   </thead>
   <tbody>
-	<% @contracts.each do |m| %>
-	<tr>
-  	<td>
-		<% unless m.confirmation == 1  %>
-			<%= link_to  "#{m.act_booked}" ,  m, :class => "red" %> 
-			<% else %>
-			<%= link_to  "#{m.act_booked}" ,  m, :class => "green" %>
-			<% end %>
+    <% @contracts.each do |m| %>
+    <tr>
+    <td>
+        <% unless m.confirmation == 1  %>
+            <%= link_to  "#{m.act_booked}" ,  m, class: "red" %>
+            <% else %>
+            <%= link_to  "#{m.act_booked}" ,  m, class: "green" %>
+            <% end %>
 </td>
 <td><%= link_to "#{m.first_name} #{m.last_name}", m %></td>
 <td><%= m.contract_status %></td>
@@ -31,18 +31,17 @@
 <td><%= m.event_start_time %></td>
 <td><%= m.event_end_time %></td>
 <td>
-	<% if m.confirmation == 1  %>
-	<%= button_to 'Get Info', m, :class => 'btn-success',:method => :get %>
-	<% else %>
-	<%= button_to 'CONFIRM', confirmjob_path(:id => m.id), :class => 'btn-danger' %>
-	<% end %>
-	<%#= link_to 'Get Info', contract, :class => 'button blue' %>
+    <% if m.confirmation == 1  %>
+    <%= button_to 'Get Info', m, class: 'btn-success',method: :get %>
+    <% else %>
+    <%= button_to 'CONFIRM', confirmjob_path(id: m.id), class: 'btn-danger' %>
+    <% end %>
+    <%#= link_to 'Get Info', contract, class: 'button blue' %>
 
-	</td>
+    </td>
   </tr>
 <% end %>
   </tbody>
 </table>
 </div></div>
 
-	

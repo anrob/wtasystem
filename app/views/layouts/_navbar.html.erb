@@ -30,8 +30,8 @@
     <ul class="dropdown-menu">
       <%= activatable_li_tag_with_link "Management Companies", managements_path if current_user.is? :everything %>
      <%= activatable_li_tag_with_link "Actcode", actcodes_path if current_user.is? :everything  %>
-	 <%= activatable_li_tag_with_link "All Unconfirmed Jobs", alljobs_path if current_user.is? :everything  %>
-	<%#= activatable_li_tag_with_link "All Jobs", alljobs_path(:number => :number) if current_user.is? :everything  %>
+     <%= activatable_li_tag_with_link "All Unconfirmed Jobs", alljobs_path if current_user.is? :everything  %>
+    <%#= activatable_li_tag_with_link "All Jobs", alljobs_path(number: :number) if current_user.is? :everything  %>
       <li class="divider"></li>
     </ul>
   </li>
@@ -39,7 +39,7 @@
 <% end %>
 <% end %>
         </ul> <!-- /.nav -->
-        
+
         <%= yield :navbar %>
       </div> <!-- /.nav-collapse -->
 

@@ -1,7 +1,7 @@
-	
+
 <div class="loginoption">
 <h2>Sign up</h2>
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
@@ -17,6 +17,6 @@
 <% end %>
 </div><!--loginbox_content-->
 <div class="loginoption">
-<%= render :partial => "devise/shared/links" %></div><!--loginbox_inner-->
+<%= render partial: "devise/shared/links" %></div><!--loginbox_inner-->
 </div><!--loginbox-->
-	
+

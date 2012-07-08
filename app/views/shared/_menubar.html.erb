@@ -1,4 +1,4 @@
-<% if user_signed_in? %> 
+<% if user_signed_in? %>
 <!-- <h2 class="bigger"><%#= @managements.name %></h2> -->
 <h2 class="maroon bigg">Welcome <%= current_user.fullname %></h2>
 <% unless @message.nil? %>
@@ -6,13 +6,13 @@
 <p><%= @message.body %></p>
 
 <div id="tabstrip">
-	<%= tabs_tag  do |tab| %>
-	<%= tab.contract 'Dashboard', contracts_path %>
+    <%= tabs_tag  do |tab| %>
+    <%= tab.contract 'Dashboard', contracts_path %>
 <% if can? :everything, @contract %>
-	<%= tab.user 'Users', users_path %>
-	<%= tab.message 'Messages', messages_path %>
+    <%= tab.user 'Users', users_path %>
+    <%= tab.message 'Messages', messages_path %>
 <% end %>
-	<%= tab.account   'Account', edit_user_path(current_user) %>
+    <%= tab.account   'Account', edit_user_path(current_user) %>
 <% end %>
 <% end %>
 <% end %>

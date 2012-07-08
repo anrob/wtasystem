@@ -1,18 +1,18 @@
 <% if can? :see_money, @contracts %><div class="span4 white thumbnail margintop">
 <h3 class="sectionheaders"> <span>Money Section</span></h3>
 
-<li class="<%= isincluded %>">cocktails charge:  			<%= number_to_currency(contract.cocktails_charge) %></li>
-<li class="<%= isincluded %>">ceremony charge:  			<%= number_to_currency(contract.ceremony_charge) %></li>
-<li class="<%= isincluded %>">early setup charge: 		<%= number_to_currency(contract.early_setup_charge) %></li>
-<li class="<%= isincluded %>">charge per horn:  			<%= contract.number_of_horns %> @ <%= number_to_currency(contract.charge_per_horn) %></li>
-<li class="<%= isincluded %>">other charges:    			<%= number_to_currency(contract.other_charges) %></li>
-<li class="<%= isincluded %>">charge per dancer: 			<%= contract.number_of_dancers %> @ <%= number_to_currency(contract.charge_per_dancer)%></li>
-<li class="<%= isincluded %>">giveaways charge: 			<%= number_to_currency(contract.giveaways_charge) rescue "0" %></li>
-<li class="<%= isincluded %>">dj tech_charge:    			<%= number_to_currency(contract.dj_tech_charge) %></li>
+<li class="<%= isincluded %>">cocktails charge:             <%= number_to_currency(contract.cocktails_charge) %></li>
+<li class="<%= isincluded %>">ceremony charge:              <%= number_to_currency(contract.ceremony_charge) %></li>
+<li class="<%= isincluded %>">early setup charge:       <%= number_to_currency(contract.early_setup_charge) %></li>
+<li class="<%= isincluded %>">charge per horn:              <%= contract.number_of_horns %> @ <%= number_to_currency(contract.charge_per_horn) %></li>
+<li class="<%= isincluded %>">other charges:                <%= number_to_currency(contract.other_charges) %></li>
+<li class="<%= isincluded %>">charge per dancer:            <%= contract.number_of_dancers %> @ <%= number_to_currency(contract.charge_per_dancer)%></li>
+<li class="<%= isincluded %>">giveaways charge:             <%= number_to_currency(contract.giveaways_charge) rescue "0" %></li>
+<li class="<%= isincluded %>">dj tech_charge:               <%= number_to_currency(contract.dj_tech_charge) %></li>
 <li class="<%= isincluded %>">non-commissionable charges: <%= number_to_currency(contract.non_commissionable_charges) %></li>
-<li class="<%= isincluded %>">capital music pay: 			<%= number_to_currency(contract.capital_music_pay) %></li>
-<li class="<%= isincluded %>">base price_of act: 			<%= number_to_currency(contract.base_price_of_act) %></li>
-<li class="<%= isincluded %>">referral fee amount: 		<%= number_to_currency(contract.referral_fee_amount) %></li>
-<li class="<%= isincluded %>">tax amount: 				<%= number_to_currency(contract.tax_amount) %></li>
+<li class="<%= isincluded %>">capital music pay:            <%= number_to_currency(contract.capital_music_pay) %></li>
+<li class="<%= isincluded %>">base price_of act:            <%= number_to_currency(contract.base_price_of_act) %></li>
+<li class="<%= isincluded %>">referral fee amount:      <%= number_to_currency(contract.referral_fee_amount) %></li>
+<li class="<%= isincluded %>">tax amount:               <%= number_to_currency(contract.tax_amount) %></li>
 </div>
 <% end %>

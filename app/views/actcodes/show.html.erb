@@ -7,8 +7,8 @@
 
 <p>
   <b>Management Company:</b>
-<% unless @actcode.management_id.blank? %> 
-  <%= @actcode.management.name %>
+<% unless @actcode.management_id.blank? %>
+  <%= @actcode.management_name %>
 <% end %>
 </p>
 <p>

@@ -2,7 +2,7 @@
 class Contract < ActiveRecord::Base
   belongs_to :user
   has_one :actcode
-  default_scope :order => 'date_of_event ASC'
+  default_scope order: 'date_of_event ASC'
   attr_accessible :unique3,
  :prntkey23,
  :prntkey13,
@@ -80,36 +80,33 @@ class Contract < ActiveRecord::Base
  :grooms_name,
  :home_phone,
  :work_phone,
- :cell_phone, 
+ :cell_phone,
  :party_planner ,
  :act_notes,
  :contract_provisions,
  :confirmation,
- :reception_location 
+ :reception_location
 
-  scope :contractstatsus, :conditions => {:contract_status => ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
-  
+  scope :contractstatsus, conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
+
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
-  scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)} 
+  scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
-  scope :thisweek, -> {where(:date_of_event => (my_date)..(my_date + 7.days))}
-  scope :justimported, where(:created_at => (my_date - 7.days)..(my_date))
-  scope :tenday, -> {where(:date_of_event => (my_date)..(my_date + 10.days))}
-  scope :thirtyday, where(:date_of_event => (my_date + 12.days)..(my_date + 30.days))
-  scope :sixtyday, where(:date_of_event => (my_date )..(my_date + 60.days))
-  scope :ninetyday, where(:date_of_event => (my_date)..(my_date + 90.days))
-  scope :threesixfive, where(:date_of_event => (my_date - 120.days)..(my_date + 5.years))
-  scope :confirmedevent, :conditions => {:confirmation => 1}
-  scope :unconfirmedevent, where(:confirmation => "0")
-  scope :innextten, where(:date_of_event => (my_date)..(my_date + 10.days))
+  scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
+  scope :tenday, -> {where(date_of_event: (my_date)..(my_date + 10.days))}
+  scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))
+
+  scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
+
+  scope :unconfirmedevent, where(confirmation: "0")
+
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
-  scope :getcount, lambda {|contra| 
-    unconfirmedevent.where("act_code = ?", contra)}
-  
- define_easy_dates do 
-    format_for [:event_start_time, :event_end_time], :format => "%I:%M%P"
-    format_for :date_of_event, :format => "%m/%d/%y"
+
+
+ define_easy_dates do
+    format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
+    format_for :date_of_event, format: "%m/%d/%y"
   end
 
   def self.send_user_reminders
@@ -119,35 +116,35 @@ class Contract < ActiveRecord::Base
       @u = @theusers.collect {|m| m.email}.uniq
       ContractMailer.send_user_reminder(@u).deliver
   end
-  
+
   def self.send_reminders
       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       @userss = @users.collect {|m| m.email}.uniq
       ContractMailer.send_reminder(@userss).deliver
   end
-  
+
   def event_info_email(user, contract, additional)
       @user = user
       @contract = contract
       @additional = additional
-     mail( :to => user.email, 
-           :subject => "Your Event info")
+     mail( to: user.email,
+           subject: "Your Event info")
   end
-      
-     
+
+
 def self.mailchimp
     gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")
     @contracts = Contract.contractstatsus
     @contracts.each do |us|
-    gb.list_subscribe(:id => "6a120e7f17", :email_address => us.email_address,  :double_optin => false, :update_existing => true, :merge_vars => {:FNAME => us.first_name, :LNAME => us.last_name, :MERGE3 => us.date_of_event, :MMERGE4 => us.contract_status,  :ACTBOOKED => us.act_booked, :EVENTTYPE => us.type_of_event} )
+    gb.list_subscribe(id: "6a120e7f17", email_address: us.email_address,  double_optin: false, update_existing: true, merge_vars: {FNAME: us.first_name, LNAME: us.last_name, MERGE3: us.date_of_event, MMERGE4:  us.contract_status,  ACTBOOKED:  us.act_booked, EVENTTYPE: us.type_of_event} )
     end
   end
-  
+
  def eventtime
      "#{event_start_time} - #{event_end_time}"
    end
-   
+
    def status
     if contract_status == "Contract Received"
       @status = "recieved"
@@ -155,10 +152,10 @@ def self.mailchimp
       @status = "booked"
      else contract_status == "Hold"
         @status = "hold"
-   end 
+   end
    @status
  end
- 
- 
+
+
 
 end

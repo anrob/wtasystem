@@ -1,11 +1,11 @@
 <h2>Change your password?</h2>
 
-<%= form_for(resource,:html => { :class => "well form-well", :method => :post}, :as => resource_name, :url => password_path(resource_name)) do |f| %>
+<%= form_for(resource,html: { class: "well form-well", method: :post}, as: resource_name, url: password_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <p><%= f.label :email, "Email Address" %>
-	
+
   <%= f.email_field :email %></p>
-   <p><%= f.submit " Change my password ", :class => "btn-primary" %></p>
+   <p><%= f.submit " Change my password ", class: "btn-primary" %></p>
 <% end %>
-<%#= render :partial => "devise/shared/links" %>
+<%#= render partial: "devise/shared/links" %>

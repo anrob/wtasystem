@@ -1,24 +1,24 @@
 <div class="sheet sheet-condensed">
   <div class="sheet-inner">
 <table cellpadding="0" cellspacing="0" class="table" width="100%">
-	<thead class="sTableHead">
+    <thead class="sTableHead">
   <tr> <th class="head0">Management ID</th>
     <th class="head0">Name</th>
     <th class="head0">Manageagement code</th>
-   
+
     <th class="head0"></th>
-	<th class="head0"></th>
     <th class="head0"></th>
-  </tr>
-	</thead>
+    <th class="head0"></th>
+  </tr> button
+    </thead>
 <% @managements.each do |management| %>
-  <tr>	<td><%= management.id %></td>
+  <tr>  <td><%= management.id %></td>
     <td><%= management.name %></td>
     <td><%= management.manageagement_code %></td>
 
     <td><%= link_to 'Show', management %></td>
     <td><%= link_to 'Edit', edit_management_path(management) %></td>
-    <td><%= link_to 'Destroy', management, :confirm => 'Are you sure?', :method => :delete %></td>
+  <td><%= link_to 'Destroy', management, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 
@@ -26,4 +26,4 @@
 
 <br />
 </div></div>
-<%= button_to 'New Management', new_management_path(@managemment), :class => 'button button_blue', :method => :get %>
+<%= button_to 'New Management', new_management_path(@managemment), class: 'button button_blue', method: :get %>

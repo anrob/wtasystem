@@ -7,14 +7,14 @@
       <span class="uneditable-input span6"><%= @message.title %></span>
     </div>
   </div>
-  
+
   <div class="control-group">
     <label class="control-label">Body</label>
     <div class="controls">
       <span class="uneditable-input span6"><%= @message.body %></span>
     </div>
   </div>
-  
+
   <div class="form-actions">
     <%= link_to icon_tag("pencil") + ' Edit', edit_message_path(@message), class: 'btn btn-primary' %>
     <%= link_to 'Back', messages_path, class: 'btn' %>

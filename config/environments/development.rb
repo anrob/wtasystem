@@ -27,7 +27,7 @@ Wtasystem::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.after_initialize do
      Moonshado::Sms.configure do |config|
        config.api_key = "http://c4dfedefb71374a5@heroku.moonshado.com" #ENV['MOONSHADOSMS_URL']
@@ -39,21 +39,21 @@ Wtasystem::Application.configure do
   ENV['SIMPLE_WORKER_ACCESS_KEY'] = '10064cd192a56c673542b7099b4b7101'
   ENV['SIMPLE_WORKER_SECRET_KEY'] = '5208965304a4130a2c9566545b9c29c4'
   ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'sofreshentertainment.com',
-    :user_name            => 'fresh@sofreshentertainment.com',
-    :password             => 'shaina',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               'sofreshentertainment.com',
+    user_name:            'fresh@sofreshentertainment.com',
+    password:             'shaina',
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
   # ActionMailer::Base.smtp_settings = {
-  #    :user_name => "app1427156@heroku.com",
-  #    :password => "shaina",
-  #    :domain => "yourdomain.com",
-  #    :address => "smtp.sendgrid.net",
-  #    :port => 587,
-  #    :authentication => :plain,
-  #    :enable_starttls_auto => true
+  #    user_name: "app1427156@heroku.com",
+  #    password: "shaina",
+  #    domain: "yourdomain.com",
+  #    address: "smtp.sendgrid.net",
+  #    port: 587,
+  #    authentication: :plain,
+  #    enable_starttls_auto: true
   #  }
 end
