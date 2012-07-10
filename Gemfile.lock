@@ -94,8 +94,6 @@ GEM
       mime (>= 0.1)
     gmail_xoauth (0.3.0)
       oauth (>= 0.3.6)
-    gmaps4rails (1.4.2)
-      json
     gravatar_image_tag (1.0.0)
     has_scope (0.5.1)
     hashie (1.2.0)
@@ -246,7 +244,6 @@ DEPENDENCIES
   formtastic
   gibbon
   gmail
-  gmaps4rails
   gravatar_image_tag
   has_scope
   inherited_resources

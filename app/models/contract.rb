@@ -2,7 +2,6 @@
 class Contract < ActiveRecord::Base
   belongs_to :user
   has_one :actcode
-  acts_as_gmappable
   #default_scope order: 'date_of_event ASC'
   attr_accessible :unique3,
  :prntkey23,
@@ -105,10 +104,6 @@ class Contract < ActiveRecord::Base
 
 
 
-  def gmaps4rails_address
-  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.location_address_line_1}, #{self.location_city}, #{self.location_state}, #{self.location_zip}"
-  end
 
  define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"

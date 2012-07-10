@@ -43,7 +43,6 @@ class ContractsController < ApplicationController
   def show
     add_breadcrumb "Show Contract", contract_path
     @additional = Contract.contractstatsus.additional(@contract)
-    @json = Contract.all.to_gmaps4rails
     respond_with do |format|
       format.html
       format.pdf do

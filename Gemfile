@@ -42,7 +42,6 @@ gem "breadcrumbs_on_rails"
 gem "thin"
 gem "tabs_on_rails"
 #gem 'googlestaticmap'
-gem 'gmaps4rails'
 gem 'jintastic'
 gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
