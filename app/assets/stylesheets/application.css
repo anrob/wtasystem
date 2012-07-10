@@ -2,4 +2,5 @@
 *= require_self
 *= require "dresssed"
 *= require "calendar"
+*= require "gmaps4rails"
 */

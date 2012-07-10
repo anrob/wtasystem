@@ -1,1 +1,1 @@
-<%= render 'alljobs', contract: @contracts %>
+<%= render 'alljobs', contract: @contracts.group_by(&:date_of_event) %>

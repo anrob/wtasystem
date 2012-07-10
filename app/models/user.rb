@@ -31,10 +31,6 @@ class User < ActiveRecord::Base
       roles.include?(role.to_s)
     end
 
-
-  # def get_user
-  #     @current_user = current_user
-  # end
   def fullname
      "#{first_name} #{last_name}"
    end

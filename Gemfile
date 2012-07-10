@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
-gem 'dresssed-gimlet', :require => "dresssed/gimlet"	
+gem 'dresssed-gimlet', :require => "dresssed/gimlet"
 gem 'rails', '3.1.1'
 gem 'pg'
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
@@ -12,7 +12,7 @@ gem 'kaminari'
 gem 'has_scope'
 gem 'json'
 #gem 'record_history'
-gem "sentry-raven", :git => "https://github.com/coderanger/raven-ruby.git"
+gem "sentry-raven"
 gem "rails_best_practices"
 
 
@@ -30,7 +30,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'devise' 
+gem 'devise'
 gem "cancan"
 gem 'formtastic'
 gem 'meta_search'
@@ -41,7 +41,8 @@ gem 'easy_dates'
 gem "breadcrumbs_on_rails"
 gem "thin"
 gem "tabs_on_rails"
-gem 'googlestaticmap'
+#gem 'googlestaticmap'
+gem 'gmaps4rails'
 gem 'jintastic'
 gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'

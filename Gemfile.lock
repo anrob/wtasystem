@@ -5,16 +5,6 @@ GIT
     table_builder (0.0.3)
 
 GIT
-  remote: https://github.com/coderanger/raven-ruby.git
-  revision: b9fc1f9e606e85ada1b64d38558659b9c0ea62f4
-  specs:
-    sentry-raven (0.2)
-      faraday (~> 0.8.0.rc2)
-      hashie
-      uuidtools
-      yajl-ruby
-
-GIT
   remote: https://github.com/moonshado/moonshado-sms.git
   revision: f4f306281b51c48d7f455e1d5ae7f98f0052b9ee
   specs:
@@ -104,7 +94,8 @@ GEM
       mime (>= 0.1)
     gmail_xoauth (0.3.0)
       oauth (>= 0.3.6)
-    googlestaticmap (1.1.0)
+    gmaps4rails (1.4.2)
+      json
     gravatar_image_tag (1.0.0)
     has_scope (0.5.1)
     hashie (1.2.0)
@@ -206,6 +197,11 @@ GEM
       railties (~> 3.1.0)
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
+    sentry-raven (0.1)
+      faraday (~> 0.8.0.rc2)
+      hashie
+      uuidtools
+      yajl-ruby
     sexp_processor (3.0.10)
     sprockets (2.0.4)
       hike (~> 1.2)
@@ -250,7 +246,7 @@ DEPENDENCIES
   formtastic
   gibbon
   gmail
-  googlestaticmap
+  gmaps4rails
   gravatar_image_tag
   has_scope
   inherited_resources
@@ -271,7 +267,7 @@ DEPENDENCIES
   rails (= 3.1.1)
   rails_best_practices
   sass-rails (<= 3.2.4)
-  sentry-raven!
+  sentry-raven
   sqlite3
   switch_user
   table_builder (= 0.0.3)!

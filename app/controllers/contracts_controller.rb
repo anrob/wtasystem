@@ -12,7 +12,6 @@ class ContractsController < ApplicationController
     case @but when "true"
       @contract = Contract.where(act_code: params[:act_code])
       @actcode = Actcode.where(actcode:  params[:act_code]).first
-      @mana = Actcode.find_by_actcode(current_user.actcode_name)
       unless current_user.is? :manager
        @contracts = Contract.mystuff(@user.actcode_name).contractstatsus.tenday.all
       else
@@ -44,6 +43,7 @@ class ContractsController < ApplicationController
   def show
     add_breadcrumb "Show Contract", contract_path
     @additional = Contract.contractstatsus.additional(@contract)
+    @json = Contract.all.to_gmaps4rails
     respond_with do |format|
       format.html
       format.pdf do
@@ -71,18 +71,18 @@ class ContractsController < ApplicationController
   def alljobs
       @mana = Actcode.find_by_actcode(current_user.actcode_name)
       unless current_user.is? :manager
-      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      @contractss = Contract.contractstatsus.tenday.all
+      #@contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      @contracts = Contract.order("act_booked desc").contractstatsus.tenday.all
     else
 
-       @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-       @userss = @users.collect {|m| m.email}.uniq
+       @contracts = Contract.order("act_booked desc").contractstatsus.tenday.all
+       # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+       #      @userss = @users.collect {|m| m.email}.uniq
 
-      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      @contracts = Contract.order("act_booked desc").contractstatsus.tenday.all
       @search = Contract.search(params[:search])
-      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-      @userss = @users.collect {|m| m.email}.uniq
+      # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+      #     @userss = @users.collect {|m| m.email}.uniq
 
     end
   end

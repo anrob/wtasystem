@@ -2,7 +2,8 @@
 class Contract < ActiveRecord::Base
   belongs_to :user
   has_one :actcode
-  default_scope order: 'date_of_event ASC'
+  acts_as_gmappable
+  #default_scope order: 'date_of_event ASC'
   attr_accessible :unique3,
  :prntkey23,
  :prntkey13,
@@ -85,7 +86,9 @@ class Contract < ActiveRecord::Base
  :act_notes,
  :contract_provisions,
  :confirmation,
- :reception_location
+ :reception_location,
+ :longitude,
+ :latitude
 
   scope :contractstatsus, conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
 
@@ -93,20 +96,23 @@ class Contract < ActiveRecord::Base
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
-  scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
+  scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
   scope :tenday, -> {where(date_of_event: (my_date)..(my_date + 10.days))}
   scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))
-
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
-
   scope :unconfirmedevent, where(confirmation: "0")
-
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
 
 
+
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.location_address_line_1}, #{self.location_city}, #{self.location_state}, #{self.location_zip}"
+  end
+
  define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
-    format_for :date_of_event, format: "%m/%d/%y"
+    format_for :date_of_event, format: "%e %b"
   end
 
   def self.send_user_reminders
