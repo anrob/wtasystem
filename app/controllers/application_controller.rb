@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
   rescue_from ActiveRecord::RecordNotFound do
-
      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
-
-   end
-
+  end
+ rescue_from Exception do
+ render layout: false, :status => 422
+ end
   private
 
 
