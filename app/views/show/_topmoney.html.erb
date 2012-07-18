@@ -1,7 +1,7 @@
-<% if can? :see_money, contract %>
+<% if can? :see_money, @contracts %>
     <div id="money">
         <dt><b class="themoney"><%= number_to_currency(contract.contract_price) %></b> - <span>Contract price:</span>        </dt>
-        <dt class="middle"><b class="themoney"><%= number_to_currency(contract.act_net) %></b> - <span>Contract Net:</span>             </dt>
+        <dt class="middle"><b class="themoney"><%= number_to_currency(contract.act_net)  %></b> - <span>Contract Net:</span>                                          </dt>
         <dt><b class="themoney"><%= number_to_currency(contract.pick_up_amount) %></b> - <span>Pickup Amount:</span>        </dt>
     </div>
 <% end %>

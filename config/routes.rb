@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
+  resources :quotes
+
   resources :messages
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails

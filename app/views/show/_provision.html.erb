@@ -7,7 +7,7 @@
                 <% unless  contract.act_notes == "nil" %>
                     <%= contract.act_notes %>
                 <% end %>
-            <h3 class="sectionheaders"><span>Additional Services Provided</span></h3>
+            <h3 class="sectionheaders"><span>All Services Provided</span></h3>
             <ul>
             <% @additional.each do |addi| %>
             <% if current_user.is? :everything %>

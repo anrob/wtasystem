@@ -20,12 +20,17 @@ class Ability
           can :see_money, :all
         end
 
+         if user.is? :no_money
+          can :see_no_money, :all
+         end
+
         if user.is? :chart
           can :see_chart, :all
         end
 
         if user.is? :manager
           can :see_others, :all
+          can :assign_roles, User
           can :manage, User, management_id: user.management_id
           can :manage, Contract, act_code: user.actcode_name
           can :manage, Contract

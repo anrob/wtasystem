@@ -9,11 +9,16 @@
     <h4 class="yesido"> <b>Date of event: </b><%= contract.date_of_event.to_formatted_s(:eventdate) %>  </h4>
     <h4 class="yesido"> <b>Event Time: </b><%= contract.eventtime %>    </h4>
     <h5 class="blue">Contract number: <%= contract.contract_number %></h5>
-    <h5 class="green">Pickup Amount: <%= number_to_currency(contract.pick_up_amount) %></h5>
-    <% if can? :see_money, @contracts %>
-    <h4 class="green">Contract price: <%= number_to_currency(contract.contract_price) %></h4>
-    <h4 class="green">Contract Net: <%= number_to_currency(contract.act_net) %></h4>
-    <% end %>
+    <h4 class="green">Pickup Amount: <%= number_to_currency(contract.pick_up_amount) %></h4>
+   <% if can? :see_money, @contracts %>
+  <h4 class="green">Contract price: <%= number_to_currency(contract.contract_price)  %></h4>
+   <% end %>
+   <% unless can? :see_no_money, @contracts %>
+ <h4 class="green">Contract Net: <%= number_to_currency(contract.act_net) %></h4>
+<% end %>
+
+
+
 </div>
 
 <div class="span3 white thumbnail">

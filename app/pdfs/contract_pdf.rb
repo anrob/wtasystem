@@ -2,27 +2,21 @@
 class ContractPdf < Prawn::Document
   def initialize(contract, view)
     super(top_margin: 30)
-    @contract = contract
+    @contracts = contract
     @view = view
     contract_number
     contract_address
-   # total_price
-   #other
-   # (1..10).each do |index|
-   #     text "Page #{index}"
-   #     start_new_page
-   #   end
   end
 
   def contract_number
    font "Times-Roman"
    fill_color "336699"
-    text "Contract \##{@contract.contract_number}", size: 10, style: :bold, align: :left
+    text "Contract \##{contract_number}", size: 10, style: :bold, align: :left
 
     fill_color "336699"
-    text "#{@contract.act_booked}", size: 12, style: :bold, color:"#336699"
+    text "#{act_booked}", size: 12, style: :bold, color:"#336699"
     fill_color "000000"
-    text "#{@contract.type_of_event}", size:12, style: :bold
+    text "#{@contracts.type_of_event}", size:12, style: :bold
     font "Helvetica"  # back to normal
     # column_box([0, cursor], columns: 2, width: bounds.width) do
     #      text((<<-END.gsub(/\s+/, ' ') + "\n\n") * 1)
@@ -34,10 +28,10 @@ class ContractPdf < Prawn::Document
   def contract_address
       indent 300 do
         move_up 30
-     text "#{@contract.location_name}", size: 10, style: :bold
-     text "#{@contract.location_address_line_1}", size: 10, style: :normal
-     text "#{@contract.location_city}, #{@contract.location_state} #{@contract.location_zip}", size: 10, style: :normal
-     text "#{@contract.location_phone}", size: 10, style: :normal
+     text "#{@contracts.location_name}", size: 10, style: :bold
+     text "#{@contracts.location_address_line_1}", size: 10, style: :normal
+     text "#{@contracts.location_city}, #{@contract.location_state} #{@contract.location_zip}", size: 10, style: :normal
+     text "#{@contracts.location_phone}", size: 10, style: :normal
    end
   end
 

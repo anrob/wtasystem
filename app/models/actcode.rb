@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Actcode < ActiveRecord::Base
   belongs_to :management
+  has_many :quotes
   has_many :users
   has_many :contracts, foreign_key: "act_code", primary_key: 'actcode'
   alias_attribute "name", "actcode"

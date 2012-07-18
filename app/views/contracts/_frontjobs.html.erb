@@ -14,10 +14,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @contracts.each do |m, week| %>
+    <% @contracts.each do |m| %>
     <tr>
     <td>
- <%= link_to  "#{m.act_booked}" ,  m, class: "green" %>
+        <% unless m.confirmation == 1  %>
+            <%= link_to  "#{m.act_booked}" ,  m, class: "red" %>
+            <% else %>
+            <%= link_to  "#{m.act_booked}" ,  m, class: "green" %>
+            <% end %>
 </td>
 <td><%= link_to "#{m.first_name} #{m.last_name}", m %></td>
 <td><%= m.contract_status %></td>
@@ -28,10 +32,12 @@
 <td><%= m.event_end_time %></td>
 <td>
     <% if m.confirmation == 1  %>
-<span class="label label-success">Confirmed</span>
+    <%= button_to 'Get Info', m, class: 'btn-success',method: :get %>
     <% else %>
-<span class="label label-important">Un-Confirmed</span>
+    <%= button_to 'CONFIRM', confirmjob_path(id: m.id), class: 'btn-danger' %>
     <% end %>
+    <%#= link_to 'Get Info', contract, class: 'button blue' %>
+
     </td>
   </tr>
 <% end %>

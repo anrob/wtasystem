@@ -1,0 +1,110 @@
+<% @title = "Listing quotes" %>
+
+<% content_for :description do %>
+  <p>Edit this template in <code>app/views/Quotes/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to new_quote_path, class: 'btn btn-primary btn-large pull-right' do %>
+    <%= icon_tag "plus" %> Add Quote
+  <% end %>
+<% end %>
+
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date of event</th>
+          <th>Event start time</th>
+          <th>Event end time</th>
+          <th>Act form</th>
+          <th>Agent</th>
+          <th>Actcode</th>
+          <th>Client</th>
+          <th>Credit card fee</th>
+          <th>Reception location</th>
+          <th>Cocktails charge</th>
+          <th>Early setup charge</th>
+          <th>Early setup time</th>
+          <th>Contract price</th>
+          <th>Charge per horn</th>
+          <th>Other charges</th>
+          <th>Cocktail instrumentation</th>
+          <th>Cocktail time</th>
+          <th>Confirmation date</th>
+          <th>Contract sent date</th>
+          <th>Date of ceremony</th>
+          <th>Charge per dancer</th>
+          <th>Number of dancers</th>
+          <th>Giveaways</th>
+          <th>Giveaways charge</th>
+          <th>Dj tech charge</th>
+          <th>Tech</th>
+          <th>Number of horns</th>
+          <th>Type of light show</th>
+          <th>Location</th>
+          <th>Base price of act</th>
+          <th>Contract status</th>
+          <th>Type of act</th>
+          <th>Type of event</th>
+          <th>Party planner</th>
+          <th>Act notes</th>
+          <th>Contract provisions</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @quotes.each do |quote| %>
+        <tr>
+          <td><%= quote.date_of_event %></td>
+          <td><%= quote.event_start_time %></td>
+          <td><%= quote.event_end_time %></td>
+          <td><%= quote.act_form %></td>
+          <td><%= quote.agent %></td>
+          <td><%= quote.actcode_id %></td>
+          <td><%= quote.client_id %></td>
+          <td><%= quote.credit_card_fee %></td>
+          <td><%= quote.reception_location %></td>
+          <td><%= quote.cocktails_charge %></td>
+          <td><%= quote.early_setup_charge %></td>
+          <td><%= quote.early_setup_time %></td>
+          <td><%= quote.contract_price %></td>
+          <td><%= quote.charge_per_horn %></td>
+          <td><%= quote.other_charges %></td>
+          <td><%= quote.cocktail_instrumentation %></td>
+          <td><%= quote.cocktail_time %></td>
+          <td><%= quote.confirmation_date %></td>
+          <td><%= quote.contract_sent_date %></td>
+          <td><%= quote.date_of_ceremony %></td>
+          <td><%= quote.charge_per_dancer %></td>
+          <td><%= quote.number_of_dancers %></td>
+          <td><%= quote.giveaways %></td>
+          <td><%= quote.giveaways_charge %></td>
+          <td><%= quote.dj_tech_charge %></td>
+          <td><%= quote.tech %></td>
+          <td><%= quote.number_of_horns %></td>
+          <td><%= quote.type_of_light_show %></td>
+          <td><%= quote.location_id %></td>
+          <td><%= quote.base_price_of_act %></td>
+          <td><%= quote.contract_status %></td>
+          <td><%= quote.type_of_act %></td>
+          <td><%= quote.type_of_event %></td>
+          <td><%= quote.party_planner %></td>
+          <td><%= quote.act_notes %></td>
+          <td><%= quote.contract_provisions %></td>
+          <td class="actions">
+            <%= link_to icon_tag("eye-open"), quote, rel: 'tooltip', title: 'Show' %>
+            <%= link_to icon_tag("pencil"), edit_quote_path(quote), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to icon_tag("trash"), quote, rel: 'tooltip', title: 'Delete',
+                        confirm: 'Are you sure?', method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.sheet-inner -->
+</div><!-- /.sheet -->
+
+<%# Remove the trailing if condition if you're using pagination. %>
+<%= paginate @quotes if @quotes.respond_to?(:current_page) %>

@@ -1,8 +1,9 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
+  require 'chronic'
   belongs_to :user
   has_one :actcode
-  #default_scope order: 'date_of_event ASC'
+  #default_scope order: 'date_of_event DESC'
   attr_accessible :unique3,
  :prntkey23,
  :prntkey13,
@@ -89,29 +90,27 @@ class Contract < ActiveRecord::Base
  :longitude,
  :latitude
 
-  scope :contractstatsus, conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
-
+  default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
+  Time.zone = "UTC"
+  Chronic.time_class = Time.zone
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user)}
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
-  scope :tenday, -> {where(date_of_event: (my_date)..(my_date + 10.days))}
-  scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))
+  scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now")))}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
-  scope :unconfirmedevent, where(confirmation: "0")
-  scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
+  #scope :unconfirmedevent, where(confirmation: "0")
+  #scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
+  #scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))
 
-
-
-
- define_easy_dates do
+  define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
-    format_for :date_of_event, format: "%e %b"
+    format_for [:date_of_event, :created_at], format: "%e %b"
   end
 
   def self.send_user_reminders
-      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      @contracts = Contract.unconfirmedevent.tenday.all
       @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m|m.act_code})
       @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
       @u = @theusers.collect {|m| m.email}.uniq
@@ -119,7 +118,7 @@ class Contract < ActiveRecord::Base
   end
 
   def self.send_reminders
-      @contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
+      @contracts = Contract.unconfirmedevent.tenday.all
       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       @userss = @users.collect {|m| m.email}.uniq
       ContractMailer.send_reminder(@userss).deliver
@@ -136,7 +135,7 @@ class Contract < ActiveRecord::Base
 
 def self.mailchimp
     gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")
-    @contracts = Contract.contractstatsus
+    @contracts = Contract.all
     @contracts.each do |us|
     gb.list_subscribe(id: "6a120e7f17", email_address: us.email_address,  double_optin: false, update_existing: true, merge_vars: {FNAME: us.first_name, LNAME: us.last_name, MERGE3: us.date_of_event, MMERGE4:  us.contract_status,  ACTBOOKED:  us.act_booked, EVENTTYPE: us.type_of_event} )
     end

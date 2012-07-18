@@ -3,8 +3,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require dresssed
-//= require gmaps4rails/gmaps4rails.base
-//= require gmaps4rails/gmaps4rails.googlemaps
+//= require jquery.dataTables
 //= require_tree .

@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
   end
- rescue_from Exception do
-  render layout: false, :status => 422
-  end
+ # rescue_from Exception do
+ #  render layout: false, :status => 422
+ #  end
   private
 
 
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
      @mana = Actcode.find_by_actcode(current_user.actcode_name)
      @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode}
      @but = @manger.include?(params[:act_code]).to_s
-     @user = current_user
+     #@user = current_user
      @pd = @user
 
      @otheracts = User.getotheracts(current_user).order("first_name")

@@ -21,7 +21,7 @@
                   </tr>
                 </thead>
 <tbody>
-    <% @contract.contractstatsus.tenday.each do |contract| %>
+    <% @contract.tenday.each do |contract| %>
     <tr>
         <td><% unless contract.confirmation == 1  %>
             <%= link_to contract.date_of_event,  contract, class: "red" %>
@@ -54,7 +54,11 @@
 </table>
 </div></div>
 <br>
+<% if current_user.is? :manager %>
 <div class="page-header">
 <h1><span>All Management Team contracts in the Next 10 Days</span></h1>
 </div>
-<%= render 'alljobs' %>
+<%= render 'frontjobs' %>
+<% end %>
+
+

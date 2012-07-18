@@ -5,17 +5,15 @@ class ContractsController < ApplicationController
   load_and_authorize_resource
   before_filter :everypage
   helper_method :themanager, :themap
-
-
   def index
 
     case @but when "true"
       @contract = Contract.where(act_code: params[:act_code])
       @actcode = Actcode.where(actcode:  params[:act_code]).first
       unless current_user.is? :manager
-       @contracts = Contract.mystuff(@user.actcode_name).contractstatsus.tenday.all
+       @contracts = Contract.mystuff(@user.actcode_name).tenday.all
       else
-        @contracts = Contract.where(act_code: @manger.split(",")).contractstatsus.tenday.all
+        @contracts = Contract.where(act_code: @manger.split(",")).tenday.all
       end
       if cannot? :see_others, @contract
         redirect_to root_url
@@ -26,23 +24,23 @@ class ContractsController < ApplicationController
       @actcode = current_user.actcode_name
       @getcompan = Actcode.getallbycompany(current_user)
       @gt = Actcode.find_all_by_management_id(current_user.management_id)
-      @cont = Contract.contractstatsus.tenday.find_by_act_code(@gt.map {|m| m.actcode})
+      @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
       @gp = @gt.map {|m| m.actcode}
       @totalnum = @contract.threesixfive.sum(:contract_price)
     @mana = Actcode.find_by_actcode(current_user.actcode)
       unless current_user.is? :manager
-      @contracts = Contract.mystuff(@user.actcode).contractstatsus.tenday.all
+      @contracts = Contract.mystuff(current_user.actcode).tenday.all
       else
-      @contracts = Contract.where(act_code: @manger.split(",")).tenday.contractstatsus.all
-      @totalcount = @contracts.count
+      @contracts = Contract.where(act_code: @manger.split(",")).tenday.all
+     # @totalcount = @contracts.count
       end
     end
-      respond_with contracts: @contract.thisweek
+      #respond_with contracts: @contract.thisweek
   end
 
   def show
     add_breadcrumb "Show Contract", contract_path
-    @additional = Contract.contractstatsus.additional(@contract)
+    @additional = Contract.additional(@contract)
     respond_with do |format|
       format.html
       format.pdf do
@@ -61,29 +59,17 @@ class ContractsController < ApplicationController
     @mana = Actcode.find_by_actcode(current_user.actcode)
     #case @but when "true"
     unless current_user.is? :manager
-      @contracts = Contract.contractstatsus.mystuff(@user.actcode_name).threesixfive.all
+      @contracts = Contract.mystuff(current_user.actcode_name).threesixfive.all
     else
-      @contracts = Contract.contractstatsus.where(act_code: @manger.split(",")).threesixfive.all
+      @contracts = Contract.where(act_code: @manger.split(",")).threesixfive.all
     end
     respond_with contracts: @contracts
   end
+
+
   def alljobs
-      @mana = Actcode.find_by_actcode(current_user.actcode_name)
-      unless current_user.is? :manager
-      #@contracts = Contract.unconfirmedevent.contractstatsus.tenday.all
-      @contracts = Contract.order("act_booked desc").contractstatsus.tenday.all
-    else
-
-       @contracts = Contract.order("act_booked desc").contractstatsus.tenday.all
-       # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-       #      @userss = @users.collect {|m| m.email}.uniq
-
-      @contracts = Contract.order("act_booked desc").contractstatsus.tenday.all
-      @search = Contract.search(params[:search])
-      # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-      #     @userss = @users.collect {|m| m.email}.uniq
-
-    end
+      @contracts = Contract.order(params[:sort]).tenday.all
+      @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
   end
 
   def confirmjob

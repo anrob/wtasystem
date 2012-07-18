@@ -1,0 +1,297 @@
+<%= simple_form_for(@quote, :wrapper => :bootstrap, html: { class: 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.control_group :date_of_event do |f| %>
+
+      <div class="controls">
+        <%= f.input :date_of_event, :as => :datepicker %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :event_start_time do |f| %>
+
+      <div class="controls">
+        <%= f.time_select :event_start_time, :ampm => true, :minute_step => 15, :default => {:hour => '19', :minute => '00'}, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :event_end_time do |f| %>
+      <div class="controls">
+        <%= f.time_select :event_end_time, :ampm => true, :minute_step => 15, :default => {:hour => '00', :minute => '00'}, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :act_form do |f| %>
+      <%= f.label :act_form, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :act_form, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :agent do |f| %>
+      <%= f.label :agent, class: 'control-label' %>
+      <div class="controls">
+        <%= f.input :agent, class: 'span5' %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :actcode_id do |f| %>
+      <%= f.label :actcode_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.association :actcode, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :client_id do |f| %>
+      <%= f.label :client_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :client_id, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :credit_card_fee do |f| %>
+      <%= f.label :credit_card_fee, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :credit_card_fee, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :reception_location do |f| %>
+      <%= f.label :reception_location, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :reception_location, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :cocktails_charge do |f| %>
+      <%= f.label :cocktails_charge, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :cocktails_charge, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :early_setup_charge do |f| %>
+      <%= f.label :early_setup_charge, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :early_setup_charge, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :early_setup_time do |f| %>
+      <%= f.label :early_setup_time, class: 'control-label' %>
+      <div class="controls">
+        <%= f.time_select :early_setup_time, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :contract_price do |f| %>
+      <%= f.label :contract_price, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :contract_price, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :charge_per_horn do |f| %>
+      <%= f.label :charge_per_horn, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :charge_per_horn, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :other_charges do |f| %>
+      <%= f.label :other_charges, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :other_charges, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :cocktail_instrumentation do |f| %>
+      <%= f.label :cocktail_instrumentation, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :cocktail_instrumentation, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :cocktail_time do |f| %>
+      <%= f.label :cocktail_time, class: 'control-label' %>
+      <div class="controls">
+        <%= f.time_select :cocktail_time, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :confirmation_date do |f| %>
+      <%= f.label :confirmation_date, class: 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :confirmation_date, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :contract_sent_date do |f| %>
+      <%= f.label :contract_sent_date, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :contract_sent_date, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :date_of_ceremony do |f| %>
+      <%= f.label :date_of_ceremony, class: 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :date_of_ceremony, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :charge_per_dancer do |f| %>
+      <%= f.label :charge_per_dancer, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :charge_per_dancer, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :number_of_dancers do |f| %>
+      <%= f.label :number_of_dancers, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :number_of_dancers, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :giveaways do |f| %>
+      <%= f.label :giveaways, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :giveaways, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :giveaways_charge do |f| %>
+      <%= f.label :giveaways_charge, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :giveaways_charge, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :dj_tech_charge do |f| %>
+      <%= f.label :dj_tech_charge, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :dj_tech_charge, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :tech do |f| %>
+      <%= f.label :tech, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :tech, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :number_of_horns do |f| %>
+      <%= f.label :number_of_horns, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :number_of_horns, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :type_of_light_show do |f| %>
+      <%= f.label :type_of_light_show, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :type_of_light_show, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :location_id do |f| %>
+      <%= f.label :location_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :location_id, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :base_price_of_act do |f| %>
+      <%= f.label :base_price_of_act, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :base_price_of_act, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :contract_status do |f| %>
+      <%= f.label :contract_status, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :contract_status, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :type_of_act do |f| %>
+      <%= f.label :type_of_act, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :type_of_act, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :type_of_event do |f| %>
+      <%= f.label :type_of_event, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :type_of_event, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :party_planner do |f| %>
+
+      <div class="controls">
+        <%= f.input :party_planner, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :act_notes do |f| %>
+      <%= f.label :act_notes, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :act_notes, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+    <%= f.control_group :contract_provisions do |f| %>
+      <%= f.label :contract_provisions, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :contract_provisions, class: 'span5' %>
+        <%= f.error_messages %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to "Cancel", quotes_path, class: 'btn' %>
+  </div>
+<% end %>

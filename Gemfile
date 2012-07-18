@@ -14,6 +14,8 @@ gem 'json'
 #gem 'record_history'
 gem "sentry-raven"
 gem "rails_best_practices"
+gem 'simple_form'
+gem 'chronic'
 
 
 group :development do
@@ -27,6 +29,8 @@ group :assets do
   gem 'sass-rails',   '<= 3.2.4'
   gem 'coffee-rails', '<= 3.2.2'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-datatables-rails'
+ gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'

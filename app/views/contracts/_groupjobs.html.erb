@@ -1,20 +1,22 @@
+<% @contractbymonth.sort.each do |week, events| %>
+ Week beginning <%= week %>
 <div class="sheet sheet-condensed">
   <div class="sheet-inner">
-<table id="products" class="table">
+<table id="products" class="table table-condensed table-striped">
   <thead>
     <tr>
       <th><%= link_to "Act Booked", sort: "act_booked" %> </th>
-<th><%= link_to "Client Name", sort: "created_at" %></th>
+      <th><%= link_to "Client Name", sort: "created_at" %></th>
       <th><%= link_to "Contract Status", sort: "contract_status" %></th>
-
       <th><%= link_to "Date of Event", sort: "Date_of_event" %></th>
-      <th><%= link_to "Location city", sort: "location_city" %></th>
-      <th><%= link_to "Start Time", sort: "Start Time" %></th>
-      <th><%= link_to "End Time", sort: "End Time" %></th>
+      <th>Location city</th>
+
+        <th><%= link_to "Confirmed", sort: "confirmation" %></th>
+<th>Created At</th>
     </tr>
   </thead>
   <tbody>
-    <% @contracts.each do |m, week| %>
+    <% events.each do |m| %>
     <tr>
     <td>
  <%= link_to  "#{m.act_booked}" ,  m, class: "green" %>
@@ -23,19 +25,21 @@
 <td><%= m.contract_status %></td>
 
 <td><%= m.formatted_date_of_event %></td>
-<td><%= m.location_city %></td>
-<td><%= m.event_start_time %></td>
-<td><%= m.event_end_time %></td>
-<td>
+
+<td><%= m.eventtime %></td>
+
+<td class="conf">
     <% if m.confirmation == 1  %>
 <span class="label label-success">Confirmed</span>
     <% else %>
 <span class="label label-important">Un-Confirmed</span>
     <% end %>
     </td>
+<td class="lightgray"><%= distance_of_time_in_words(Time.now, "#{m.created_at}") %> ago</td>
   </tr>
 <% end %>
   </tbody>
 </table>
 </div></div>
 
+<% end %>
