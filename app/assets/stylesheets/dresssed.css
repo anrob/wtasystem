@@ -132,3 +132,7 @@ dt {
 table.conf {
     width: 85px;
 }
+
+.button_to {
+    display:inline-block;
+}

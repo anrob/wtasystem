@@ -28,6 +28,13 @@ class ContractMailer < PostageApp::Mailer
             #body: "You have unconfirmed Events"
    end
 
+   def newactcodes(actcodes)
+     mail(  from: "support@confirmmygig.com",
+            to:"iamjustfresh@gmail.com,strick@washingtontalent.com",
+            subject: "New Actcodes Not in database",
+            body: actcodes)
+   end
+
    def deliver(user,contract,additional)
       ContractMailer.event_info_email(user,contract,additional).deliver
       contract.update_attributes(confirmation: 1)

@@ -21,3 +21,9 @@ task update_contracts: :environment do
      Contract.mailchimp
      puts "done"
    end
+
+   task actcodecheck: :environment do
+     puts "checking"
+     Contract.checkactcodes
+     puts "done"
+   end

@@ -132,6 +132,16 @@ class Contract < ActiveRecord::Base
            subject: "Your Event info")
   end
 
+  def self.checkactcodes
+        @allactcodes = Contract.all.collect { |obj| obj.act_code }.dups
+        @actcodes = Actcode.all.collect { |b| b.name}
+        @updates = @allactcodes - @actcodes
+        unless @updates.empty?
+        ContractMailer.newactcodes(@updates.inspect).deliver
+        end
+
+  end
+
 
 def self.mailchimp
     gb = Gibbon.new("5a302760393cea0667df7d02436e0090-us2")
