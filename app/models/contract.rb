@@ -100,6 +100,7 @@ class Contract < ActiveRecord::Base
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
   scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now")))}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
+  scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   #scope :unconfirmedevent, where(confirmation: "0")
   #scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   #scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))

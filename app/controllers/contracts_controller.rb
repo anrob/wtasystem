@@ -70,6 +70,12 @@ class ContractsController < ApplicationController
   def alljobs
       @contracts = Contract.order(params[:sort]).tenday.all
       @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
+      #@last = Contract.last(1).reverse.map {|m| m.created_at}.flatten!
+      #@cool =  Chronic.parse(@last, "24 hours ago")
+       @allactcodes = Contract.all.collect { |obj| obj.act_code }.dups
+        @actcodes = Actcode.all.collect { |b| b.name}
+        @updates = @allactcodes - @actcodes
+        @remove = Contract.remove
   end
 
   def confirmjob

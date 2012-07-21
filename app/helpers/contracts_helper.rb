@@ -1,5 +1,6 @@
 module ContractsHelper
 
+
   def makebutton(contract)
    if contract.date_of_event < Date.today + 10.days
      if contract.confirmation == 0
