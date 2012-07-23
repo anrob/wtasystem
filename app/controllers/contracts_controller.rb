@@ -89,6 +89,27 @@ class ContractsController < ApplicationController
   end
 
 
+  def exportevents
+    require 'icalendar'
+ # @event = Contract.mystuff(current_user.actcode_name).tenday.all
+ # @event
+  @calendar = Icalendar::Calendar.new
+  @event.each do |e|
+     event = Icalendar::Event.new
+     event.start = e.event_start_time.strftime("%Y%m%dT%H%M%S")
+  #   event.end = @event.dt_time.strftime("%Y%m%dT%H%M%S")
+  #   event.summary = @event.summary
+  #   event.description = @event.description
+  #   event.location = @event.location
+ @calendar.add event
+ end
+
+     @calendar.publish
+
+headers['Content-Type'] = "text/calendar; charset=UTF-8"
+render layout: false, :text => @calendar.to_ical
+
+end
 
   def themap
     "#{@contract.location_address_line_1}+#{@contract.location_city}+#{@contract.location_state}+#{@contract.location_zip}"

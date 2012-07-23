@@ -16,6 +16,7 @@ gem "sentry-raven"
 gem "rails_best_practices"
 gem 'simple_form'
 gem 'chronic'
+gem 'icalendar'
 
 
 group :development do
