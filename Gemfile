@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.6'
 gem 'pg'
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'postageapp'
@@ -27,7 +27,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '<= 3.2.4'
+  gem 'sass-rails',   '<= 3.2.5'
   gem 'coffee-rails', '<= 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-datatables-rails'
@@ -56,7 +56,7 @@ gem 'lazy_high_charts'
 gem 'gmail'
 gem 'prawn'
 
-gem 'rack', '1.3.2'
+gem 'rack', '1.4.1'
 
 group :test do
   # Pretty printed test output
