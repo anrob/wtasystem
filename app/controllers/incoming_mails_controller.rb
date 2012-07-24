@@ -118,14 +118,12 @@ end
 
   event.summary     = "Mercury MA-6"
      event.description = "First US Manned Spaceflight\n(NASA Code: Mercury 13/Friendship 7)"
-     event.dtstart     = Time.parse("2012-07-20T09:47:39-0500").getutc
-     event.dtend       = Time.parse("2012-07-20T14:43:02-0500").getutc
+     event.start     = Chronic.parse("tomorrow at 5:00 pm").strftime('%Y%m%dT%H%M%S')
+     event.end       = Chronic.parse("tomorrow at 6:09 pm").strftime('%Y%m%dT%H%M%S')
      event.location    = "Cape Canaveral"
-     event.add_attendee  "john.glenn@nasa.gov"
+     event.add_attendee = "iamjustfresh@gmail.com"
      event.url         = "http://nasa.gov"
  @calendar.add event
-
-
      @calendar.publish
 
 headers['Content-Type'] = "text/calendar; charset=UTF-8"
