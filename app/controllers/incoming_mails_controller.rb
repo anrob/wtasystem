@@ -121,7 +121,7 @@ end
      event.start     = Chronic.parse("tomorrow at 5:00 pm").strftime('%Y%m%dT%H%M%S')
      event.end       = Chronic.parse("tomorrow at 6:09 pm").strftime('%Y%m%dT%H%M%S')
      event.location    = "Cape Canaveral"
-     event.add_attendee = "iamjustfresh@gmail.com"
+     #event.add_attendee = "iamjustfresh@gmail.com"
      event.url         = "http://nasa.gov"
  @calendar.add event
      @calendar.publish
