@@ -15,7 +15,7 @@ devise_for :users, controllers: {sessions: 'devise/sessions'}, path_names: { sig
    match '/alljobs', to: "contracts#alljobs"
    match '/mailchimp', to: "contracts#mailchimp"
    match '/calendar', to: "contracts#calendar"
-   match '/exportcal', to: "contracts#exportevents"
+   match '/exportcal', to: "incoming_mails#exportevents"
    match '/gmail', to: "contracts#gmail"
    match '/users/:id' => "users#edit"
    match 'db/authorize', controller: 'dropbox', action: 'authorize'

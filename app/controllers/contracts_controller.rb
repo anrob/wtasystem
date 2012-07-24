@@ -89,35 +89,35 @@ class ContractsController < ApplicationController
   end
 
 
-  def exportevents
-    require 'icalendar'
- #@event = Contract.mystuff(current_user.actcode_name).tenday.all
- @event = Contract.find_by_id("45,031")
- # @event
-  @calendar = Icalendar::Calendar.new
-     event = Icalendar::Event.new
-    # event.start = @event.event_start_time.strftime("%Y%m%dT%H%M%S")
-  #   event.end = @event.dt_time.strftime("%Y%m%dT%H%M%S")
-  #   event.summary = @event.summary
-  #   event.description = @event.description
-  #   event.location = @event.location
-
-  event.summary     = "Mercury MA-6"
-     event.description = "First US Manned Spaceflight\n(NASA Code: Mercury 13/Friendship 7)"
-     event.dtstart     = Time.parse("2012-07-20T09:47:39-0500").getutc
-     event.dtend       = Time.parse("2012-07-20T14:43:02-0500").getutc
-     event.location    = "Cape Canaveral"
-     event.add_attendee  "john.glenn@nasa.gov"
-     event.url         = "http://nasa.gov"
- @calendar.add event
-
-
-     @calendar.publish
-
-headers['Content-Type'] = "text/calendar; charset=UTF-8"
-render layout: false, :text => @calendar.to_ical
-
-end
+#   def exportevents
+#     require 'icalendar'
+#  #@event = Contract.mystuff(current_user.actcode_name).tenday.all
+#  @event = Contract.find_by_id("45,031")
+#  # @event
+#   @calendar = Icalendar::Calendar.new
+#      event = Icalendar::Event.new
+#     # event.start = @event.event_start_time.strftime("%Y%m%dT%H%M%S")
+#   #   event.end = @event.dt_time.strftime("%Y%m%dT%H%M%S")
+#   #   event.summary = @event.summary
+#   #   event.description = @event.description
+#   #   event.location = @event.location
+#
+#   event.summary     = "Mercury MA-6"
+#      event.description = "First US Manned Spaceflight\n(NASA Code: Mercury 13/Friendship 7)"
+#      event.dtstart     = Time.parse("2012-07-20T09:47:39-0500").getutc
+#      event.dtend       = Time.parse("2012-07-20T14:43:02-0500").getutc
+#      event.location    = "Cape Canaveral"
+#      event.add_attendee  "john.glenn@nasa.gov"
+#      event.url         = "http://nasa.gov"
+#  @calendar.add event
+#
+#
+#      @calendar.publish
+#
+# headers['Content-Type'] = "text/calendar; charset=UTF-8"
+# render layout: false, :text => @calendar.to_ical
+#
+# end
 
   def themap
     "#{@contract.location_address_line_1}+#{@contract.location_city}+#{@contract.location_state}+#{@contract.location_zip}"
