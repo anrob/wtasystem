@@ -1,0 +1,90 @@
+Act Name: <%= @contract.act_booked %><br>
+Type of Event: <%= @contract.type_of_event %><br>
+Operating as: <%= @contract.type_of_act %><br>
+Form of: <%= @contract.act_form %><br>
+<hr>
+<span>Event Location</span>
+<%= @contract.location_name %><br><br>
+<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+Phone:<%= @contract.location_phone %><br>
+<hr>
+Contract Status:<%= @contract.contract_status %><br>
+<b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %><br>
+<b>Event Time: </b><%= @contract.eventtime %><br>
+<hr>
+Agent : <%= @contract.agent %><br>
+Contract number: <%= @contract.contract_number %><br>
+Net Amount: <%= number_to_currency(@contract.act_net) %><br>
+Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %>
+
+<hr>
+<span>Client Section</span>
+    Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
+    Company:    <%= @contract.company %><br>
+    Email Address: <%= @contract.email_address %><br>
+    Bride / Bat Mitzvah Name: <%= @contract.brides_names %><br>
+    Grooms / Bar Mitzvah Name: <%= @contract.grooms_name %><br>
+
+    Home Phone: <%= @contract.home_phone %><br>
+    Work Phone: <%= @contract.work_phone %><br>
+    Cell Phone: <%= @contract.cell_phone %>
+
+<span>Extras Section</span>
+                  Cocktail Instrumentation:  <%= @contract.cocktail_instrumentation %><br>
+                  Cocktail Time:  <%= @contract.cocktail_time %><br>
+Early setup Time:   <%= @contract.early_setup_time %><br>
+<br>Giveaways: <%= @contract.giveaways %><br>
+Type of Light Show : <%= @contract.type_of_light_show %><br>
+ Number of Horns: <%= @contract.number_of_horns %><br>
+ Number of Dancers: <%= @contract.number_of_dancers %><br><br>
+<hr>
+    Pick up Reason<%= @contract.explanation_opf_pickup_adjustment %><br>
+    <%= @contract.capital_music_player %><br>
+
+    <%= @contract.questionnaire_received_date %><br>
+
+
+    Referral Fee to :<%= @contract.referral_fee_to %><br>
+    Song Requests: <%= @contract.song_requests %><br>
+    <br>
+    <hr>
+    <br>
+        Song Requests: <%= @contract.song_requests %><br>
+
+     <span>Ceremony/Service Section</span>
+
+    Ceremony Date:  <%= @contract.date_of_ceremony %><br>
+    Ceremony Location:  <%= @contract.ceremonoy_location_name %><br>
+    Ceremony Address:   <%= @contract.ceremonoy_address_line_1 %><br>
+    <%= @contract.ceremony_address_line_2 %><br>
+    Ceremony City:  <%= @contract.ceremony_location_city %><br>
+    Ceremony State: <%= @contract.seremonly_location_state %><br>
+    Ceremony Zip:   <%= @contract.ceremony_location_zip %><br>
+    Ceremony Start Time:    <%= @contract.ceremony_start_time %><br>
+    Ceremony Instrumentation:   <%= @contract.ceremony_instrumenttation %><br>
+
+
+        <span>Video/Photography Section</span>
+
+        Videographer/Photographer 1: <%= @contract.videographer_1 %><br>
+        Videographer/Photographer 2: <%= @contract.videographer_2 %><br>
+        Videographer/Photographer 3: <%= @contract.videgrapher_3 %><br>
+<hr>
+
+        <span>Contract Provisions</span>
+ <% unless @contract.contract_provisions == "nil" %>
+                                <%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+                            <% end %>
+<hr>
+                    <span>Act Notes</span>
+                            <% unless  @contract.act_notes == "nil" %>
+                                <%= @contract.act_notes %>
+                            <% end %>
+        <span>All Services Provided</span>
+    <ul>
+            <% @additional.each do |addi| %>
+<li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
+
+            <% end %></ul>
+<% content_for :money do %>
+    <% end %>

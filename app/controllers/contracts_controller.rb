@@ -39,18 +39,18 @@ class ContractsController < ApplicationController
   end
 
   def show
-    add_breadcrumb "Show Contract", contract_path
+    #add_breadcrumb "Show Contract", contract_path
     @additional = Contract.additional(@contract)
-    respond_with do |format|
-      format.html
-      format.pdf do
-        pdf = ContractPdf.new(@contract, view_context)
-        send_data pdf.render, filename: "contract_#{@contract.contract_number}.pdf",
-
-        type: "application/pdf",
-        disposition: "inline"
-      end
-    end
+    # respond_with do |format|
+    #     format.html
+    #     format.pdf do
+    #       pdf = ContractPdf.new(@contract, view_context)
+    #       send_data pdf.render, filename: "contract_#{@contract.contract_number}.pdf",
+    #
+    #       type: "application/pdf",
+    #       disposition: "inline"
+    #     end
+    #end
 
   end
 
@@ -82,9 +82,39 @@ class ContractsController < ApplicationController
     @user = current_user
     @contract = Contract.find(params[:id])
     @additional = Contract.additional(@contract)
-    ContractMailer.event_info_email(@user,@contract,@additional).deliver
+    #ContractMailer.event_info_email(@user,@contract,@additional).deliver
     @contract.update_attributes(confirmation: 1)
     flash[:notice] = "Job Confirmed"
+    redirect_to :back
+  end
+
+  def emailjobwithnetonly
+    @user = current_user
+    @contract = Contract.find(params[:id])
+    @additional = Contract.additional(@contract)
+    ContractMailer.event_info_email_with_net_money(@user,@contract,@additional).deliver
+    #@contract.update_attributes(confirmation: 1)
+    flash[:notice] = "Info Mailed"
+    redirect_to :back
+  end
+
+  def emailjobwithallmoney
+    @user = current_user
+    @contract = Contract.find(params[:id])
+    @additional = Contract.additional(@contract)
+    ContractMailer.event_info_email_with_all_money(@user,@contract,@additional).deliver
+    #@contract.update_attributes(confirmation: 1)
+    flash[:notice] = "Info Mailed"
+    redirect_to :back
+  end
+
+  def emailjobnomoney
+    @user = current_user
+    @contract = Contract.find(params[:id])
+    @additional = Contract.additional(@contract)
+    ContractMailer.event_info_email_with_no_money(@user,@contract,@additional).deliver
+    #@contract.update_attributes(confirmation: 1)
+    flash[:notice] = "Info Mailed"
     redirect_to :back
   end
 

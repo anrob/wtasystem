@@ -10,6 +10,10 @@ devise_for :users, controllers: {sessions: 'devise/sessions'}, path_names: { sig
             end
    root to: "contracts#index"
    match '/confirmjob', to: "contracts#confirmjob"
+   match '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
+   match '/emailjobwithallmoney', to: "contracts#emailjobwithallmoney"
+   match '/emailjobnomoney', to: "contracts#emailjobnomoney"
+   match '/confirmjob', to: "contracts#confirmjob"
    match '/otheracts', to: "contracts#otheracts"
    match '/import', to: "contracts#import_contracts"
    match '/alljobs', to: "contracts#alljobs"

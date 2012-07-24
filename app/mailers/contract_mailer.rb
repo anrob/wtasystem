@@ -11,6 +11,33 @@ class ContractMailer < PostageApp::Mailer
            subject: "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
    end
 
+   def event_info_email_with_all_money(user, contract, additional)
+       @user = user
+       @contract = contract
+       @additional = additional
+       postageapp_template 'eventinfo_template'
+      mail( to: user.email,
+            subject: "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
+    end
+
+
+    def event_info_email_with_net_money(user, contract, additional)
+        @user = user
+        @contract = contract
+        @additional = additional
+        postageapp_template 'eventinfo_template'
+       mail( to: user.email,
+             subject: "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
+     end
+
+     def event_info_email_with_no_money(user, contract, additional)
+         @user = user
+         @contract = contract
+         @additional = additional
+         postageapp_template 'eventinfo_template'
+        mail( to: user.email,
+              subject: "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
+      end
    def send_reminder(user)
     # @user = user
     postageapp_template 'eventinfo_template'

@@ -4,7 +4,7 @@
     <h4><%= contract.act_form %></h4>
     <h4>Agent : <%= contract.agent %> </h4>
     <h4>Reception Location: <%= contract.reception_location %></h4>
-    <h5 class="<%= contract.status %> padding15 textindent">Contract Status:<%= contract.contract_status %></h5>
+    <h5 class="padding15 textindent">Contract Status: <%= contract.contract_status %></h5>
     <hr>
     <h4 class="yesido"> <b>Date of event: </b><%= contract.date_of_event.to_formatted_s(:eventdate) %>  </h4>
     <h4 class="yesido"> <b>Event Time: </b><%= contract.eventtime %>    </h4>
@@ -16,8 +16,6 @@
    <% unless can? :see_no_money, @contracts %>
  <h4 class="green">Contract Net: <%= number_to_currency(contract.act_net) %></h4>
 <% end %>
-
-
 
 </div>
 

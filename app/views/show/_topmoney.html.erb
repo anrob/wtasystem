@@ -6,7 +6,18 @@
     </div>
 <% end %>
 <div class="theheader">
-    <%= makebutton(contract) %>
+ <% if contract.date_of_event < Date.today + 11.days%>
+   <%   if contract.confirmation == 0 %>
+   <%=   button_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'btn-primary'%>
+    <%  else %>
+<% if can? :see_money, @contracts %>
+<%= button_to 'Email Job Information - All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn-warning' %>
+<%= button_to 'Email Job Information Net Only', emailjobwithnetonly_path(id: contract.id), class: 'btn-success' %>
+<% end %>
+<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
+  <%   end %>
+
+    <%  end %>
 </div>
 
 <h2 class="theheader">Act Booked - <%= contract.act_booked %></h2>
