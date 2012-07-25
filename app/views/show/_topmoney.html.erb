@@ -12,9 +12,10 @@
     <%  else %>
 <% if can? :see_money, @contracts %>
 <%= button_to 'Email Job Information - All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn-warning' %>
-<%= button_to 'Email Job Information Net Only', emailjobwithnetonly_path(id: contract.id), class: 'btn-success' %>
+
 <% end %>
-<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
+<%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-warning' %>
+<%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
   <%   end %>
 
     <%  end %>

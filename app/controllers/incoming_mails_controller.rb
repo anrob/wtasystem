@@ -105,26 +105,26 @@ end
 
  def exportevents
     require 'icalendar'
- #@event = Contract.mystuff(current_user.actcode_name).tenday.all
- @event = Contract.find_by_id("45,031")
- # @event
+ @event = Contract.mystuff(current_user.actcode_name).threesixfive.all
+  #@event = Contract.find_by_id("45,031")
   @calendar = Icalendar::Calendar.new
+   @event.each do |d|
      event = Icalendar::Event.new
+
     # event.start = @event.event_start_time.strftime("%Y%m%dT%H%M%S")
   #   event.end = @event.dt_time.strftime("%Y%m%dT%H%M%S")
   #   event.summary = @event.summary
   #   event.description = @event.description
   #   event.location = @event.location
-
-  event.summary     = "Mercury MA-6"
-     event.description = "First US Manned Spaceflight\n(NASA Code: Mercury 13/Friendship 7)"
-     event.start     = Chronic.parse("tomorrow at 5:00 pm").strftime('%Y%m%dT%H%M%S')
-     event.end       = Chronic.parse("tomorrow at 6:09 pm").strftime('%Y%m%dT%H%M%S')
-     event.location    = "Cape Canaveral"
-     #event.add_attendee = "iamjustfresh@gmail.com"
-     event.url         = "http://nasa.gov"
+     event.summary     = d.last_name
+     event.description = d.act_booked
+     event.start     = d.date_of_event.strftime("%Y%m%d")
+     event.end       = d.date_of_event.strftime("%Y%m%d")
+     event.location    = d.location_name
  @calendar.add event
+
      @calendar.publish
+       end
 
 headers['Content-Type'] = "text/calendar; charset=UTF-8"
 render layout: false, :text => @calendar.to_ical

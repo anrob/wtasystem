@@ -155,7 +155,11 @@ def self.mailchimp
  def eventtime
      "#{event_start_time} - #{event_end_time}"
    end
- #
+
+ #   def eventdatetime
+ #     "#{date_of_event}".strftime('%Y%m%d')+"{event_start_time}".strftime('T%H%M%S')}
+ #   end
+ # #
  #   def status
  #    if contract_status == "Contract Received"
  #      @status = "recieved"
