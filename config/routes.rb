@@ -1,13 +1,14 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
-resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:users,:messages
+resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
 devise_for :users, controllers: {sessions: 'devise/sessions'}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session
                  get 'signout' => 'devise/sessions#destroy', as: :destroy_user_session
                   match "register" => "devise/registrations#new", as: :new_user_registration
 
-            end
+               end
+resources :users
    root to: "contracts#index"
    match '/confirmjob', to: "contracts#confirmjob"
    match '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
@@ -21,7 +22,7 @@ devise_for :users, controllers: {sessions: 'devise/sessions'}, path_names: { sig
    match '/calendar', to: "contracts#calendar"
    match '/exportcal', to: "incoming_mails#exportevents"
    match '/gmail', to: "contracts#gmail"
-   match '/users/:id' => "users#edit"
+   #match '/users/:id' => "users#edit"
    match 'db/authorize', controller: 'dropbox', action: 'authorize'
    match 'db/upload', controller: 'dropbox', action: 'upload'
    match '/incoming', to: "incoming_mails#create"
