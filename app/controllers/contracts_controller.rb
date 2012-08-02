@@ -27,9 +27,9 @@ class ContractsController < ApplicationController
       @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
       @gp = @gt.map {|m| m.actcode}
       @totalnum = @contract.threesixfive.sum(:contract_price)
-    @mana = Actcode.find_by_actcode(current_user.actcode)
+    #@mana = Actcode.find_by_actcode(current_user.actcode)
       unless current_user.is? :manager
-      @contracts = Contract.mystuff(current_user.actcode).tenday.all
+      @contracts = Contract.mystuff(current_user.actcode_name).tenday.all
       else
       @contracts = Contract.where(act_code: @manger.split(",")).tenday.all
      # @totalcount = @contracts.count
@@ -56,7 +56,7 @@ class ContractsController < ApplicationController
 
   def calendar
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    @mana = Actcode.find_by_actcode(current_user.actcode)
+   # @mana = Actcode.find_by_actcode(current_user.actcode)
     #case @but when "true"
     unless current_user.is? :manager
       @contracts = Contract.mystuff(current_user.actcode_name).threesixfive.all

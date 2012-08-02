@@ -1,6 +1,6 @@
 
     <p class="alert"><%= alert %></p>
-<% user.build_actcode unless user.actcode.blank? %>
+<% #user.build_actcode unless user.actcode_name.blank? %>
 <%= simple_form_for(user,html: { class: "form_default", method: :put}) do |f| %>
 <%= f.input :email,hint: 'Hey - no more than 255 characters can be input!!!', %>
 <%= f.input :first_name %>
@@ -18,8 +18,8 @@
   <%# end %>
 
 <% else %>
-<% unless user.actcode_id.blank? %>
-<p><strong>Actcode : <%= user.actcode.actcode %>
+<% unless user.actcode_name.blank? %>
+<p><strong>Actcode : <%= user.actcode_name %>
     <% end %>
     <% unless user.management_id.blank?%>
 Management Company : <%= user.management.name %></p>

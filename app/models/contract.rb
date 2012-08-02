@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
   require 'chronic'
-  belongs_to :user
+  #belongs_to :user
   has_one :actcode
   #default_scope order: 'date_of_event DESC'
   attr_accessible :unique3,

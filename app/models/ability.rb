@@ -13,7 +13,9 @@ class Ability
           can :update, :all
         else
           can :manage, Contract, act_code: user.actcode_name
-          can :update, User, id: user.id
+          #can :manage, User, :manager_id => user.id
+        #cannot :manage, User, :self_managed => true
+        can :manage, User, :id => user.id
         end
 
         if user.is? :money

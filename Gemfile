@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'pg'
 gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
 gem 'postageapp'
@@ -10,7 +10,7 @@ gem 'dropbox-sdk'
 gem 'magic_encoding'
 gem 'kaminari'
 gem 'has_scope'
-gem 'json'
+#gem 'json'
 #gem 'record_history'
 gem "sentry-raven"
 gem "rails_best_practices"
@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
+gem 'sqlite3'
 
 
 group :development do
@@ -32,15 +33,15 @@ group :assets do
   gem 'coffee-rails', '<= 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-datatables-rails'
- gem 'jquery-ui-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'
 gem 'devise'
 gem "cancan"
-gem 'formtastic'
+#gem 'formtastic', '2.1.0'
 gem 'meta_search'
-gem "delayed_job"
+#gem "delayed_job"
 
 gem 'inherited_resources'
 gem 'easy_dates'
