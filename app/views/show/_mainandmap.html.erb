@@ -13,7 +13,7 @@
    <% if can? :see_money, @contracts %>
   <h4 class="green">Contract price: <%= number_to_currency(contract.contract_price)  %></h4>
    <% end %>
-   <% unless can? :see_no_money, @contracts %>
+   <% unless current_user.is? :no_money %>
  <h4 class="green">Contract Net: <%= number_to_currency(contract.act_net) %></h4>
 <% end %>
 

@@ -18,7 +18,7 @@ class Ability
         can :manage, User, :id => user.id
         end
 
-        if user.is? :money
+        if user.is? :gross
           can :see_money, :all
         end
 

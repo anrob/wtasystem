@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   scope :with_role, lambda { |role| {conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
-  ROLES = %w[everything money manager no_money]
+  ROLES = %w[everything gross manager no_money]
   attr_accessible :email, :password, :password_confirmation, :remember_me, :management_id, :manager, :roles, :first_name, :last_name, :phone_number, :actcode_name
 
    def roles=(roles)
