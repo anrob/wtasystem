@@ -1,6 +1,12 @@
 ActiveAdmin.register User do
-  menu :if => proc{ can?(:everything, User) }
-    controller.authorize_resource
+  controller.authorize_resource
+
+   menu :if => lambda { |tabs_renderer|
+     controller.current_ability.can?(:manage, config.resource)
+   }
+
+  # menu :unless => proc{ user.is?(:everything) }
+  #   controller.authorize_resource
     filter :email
 
     index do
