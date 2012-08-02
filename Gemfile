@@ -18,7 +18,7 @@ gem 'simple_form'
 gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
-gem 'sqlite3'
+#gem 'sqlite3'
 
 
 group :development do
