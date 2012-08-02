@@ -19,7 +19,7 @@ gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
 #gem 'sqlite3'
-
+gem 'sass-rails',   '<= 3.2.5'
 
 group :development do
 gem 'sqlite3'
