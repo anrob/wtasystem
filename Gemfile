@@ -3,7 +3,7 @@ source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
 gem 'rails', '3.2.7'
 gem 'pg'
-gem "moonshado-sms", :git => 'https://github.com/moonshado/moonshado-sms.git'
+#gem "moonshado-sms"
 gem 'postageapp'
 gem "switch_user"
 gem 'dropbox-sdk'
@@ -51,7 +51,7 @@ gem "tabs_on_rails"
 #gem 'googlestaticmap'
 gem 'jintastic'
 gem 'gibbon'
-gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
+#gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
 gem 'gravatar_image_tag'
 gem 'lazy_high_charts'
