@@ -144,7 +144,6 @@ class Contract < ActiveRecord::Base
   end
 
   def self.notconfirmed
-    @notconfirmed = "iamjustfresh@gmail.com"#User.notconfirmed.collect {|e| e.email}.uniq
     @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
     unless @notconfirmed.empty?
       ContractMailer.notconfirmed(@notconfirmed).deliver
