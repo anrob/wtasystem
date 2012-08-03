@@ -76,6 +76,8 @@ class ContractsController < ApplicationController
         @actcodes = Actcode.all.collect { |b| b.name}
         @updates = @allactcodes - @actcodes
         @remove = Contract.remove
+
+        @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
   end
 
   def confirmjob

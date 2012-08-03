@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jchunky/table_builder.git
+  revision: 861e57bc1c1cddcf877db950fb400226be15ea71
+  specs:
+    table_builder (0.0.3)
+
 GEM
   remote: http://rubygems.org/
   remote: http://dresssed.com/gems/f0ac74923e447c64069e/
@@ -273,6 +279,7 @@ DEPENDENCIES
   simple_form
   sqlite3
   switch_user
+  table_builder (= 0.0.3)!
   tabs_on_rails
   thin
   turn

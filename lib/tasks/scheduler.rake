@@ -27,3 +27,10 @@ task update_contracts: :environment do
      Contract.checkactcodes
      puts "done"
    end
+
+
+   task notconfirmed: :environment do
+      puts "checking"
+      Contract.notconfirmed
+      puts "done"
+    end

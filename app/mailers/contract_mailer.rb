@@ -62,6 +62,14 @@ class ContractMailer < PostageApp::Mailer
             body: actcodes)
    end
 
+   def notconfirmed(user)
+      mail(  from: "support@confirmmygig.com",
+             to:user,
+             subject: "Dear WTA Valued Vendor",
+             #body: actcodes
+             )
+    end
+
    def deliver(user,contract,additional)
       ContractMailer.event_info_email(user,contract,additional).deliver
       contract.update_attributes(confirmation: 1)
