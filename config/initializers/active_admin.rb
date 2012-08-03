@@ -55,8 +55,8 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_user!
-
+  #config.authentication_method = :authenticate_user!
+ # config.before_filter :http_basic_authenticate_with
 
   # == Current User
   #
