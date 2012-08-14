@@ -4,11 +4,11 @@ Wtasystem::Application.routes.draw do
   ActiveAdmin.routes(self)
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
-devise_for :users, controllers: {sessions: 'devise/sessions'}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
+devise_for :users, controllers: {sessions: 'devise/sessions'}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session
                  get 'signout' => 'devise/sessions#destroy', as: :destroy_user_session
-                  match "register" => "devise/registrations#new", as: :new_user_registration
+                  #match "register" => "devise/registrations#new", as: :new_user_registration
 
                end
 resources :users
@@ -29,4 +29,6 @@ resources :users
    match 'db/authorize', controller: 'dropbox', action: 'authorize'
    match 'db/upload', controller: 'dropbox', action: 'upload'
    match '/incoming', to: "incoming_mails#create"
+   #map.connect ':controller/:action/:id'
+   match '/report', to: "contracts#report"
 end

@@ -80,6 +80,16 @@ class ContractsController < ApplicationController
         @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
   end
 
+  def report
+     @contracts = Contract.unconfirmedevent.tenday.all
+     @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m|m.act_code})
+
+     @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
+     @u = @theusers.collect {|m| m.email}.uniq
+     @contract = Contract.mystuff("FROB").unconfirmedevent.tenday.all
+     ContractMailer.send_user_reminder(@u).deliver
+  end
+
   def confirmjob
     @user = current_user
     @contract = Contract.find(params[:id])
