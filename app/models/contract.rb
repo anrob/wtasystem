@@ -135,9 +135,9 @@ class Contract < ActiveRecord::Base
   end
 
   def self.checkactcodes
-        @allactcodes = Contract.all.collect { |obj| obj.act_code }.dups
-        @actcodes = Actcode.all.collect { |b| b.name}
-        @updates = @allactcodes - @actcodes
+           @allactcodes = Contract.all.collect { |obj| obj.act_code }
+             @actcodes = Actcode.all.collect { |b| b.name}
+             @updates = @allactcodes - @actcodes
         unless @updates.empty?
         ContractMailer.newactcodes(@updates.inspect).deliver
         end
