@@ -84,6 +84,9 @@ class ContractsController < ApplicationController
          @allactcodes = Contract.all.collect { |obj| obj.act_code }
           @actcodes = Actcode.all.collect { |b| b.name}
           @updates = @allactcodes - @actcodes
+          @dupactcodes = @actcodes.dups
+          @userlist = User.all.collect { |obj| obj.email }.dups
+
      # @contracts = Contract.unconfirmedevent.tenday.all
      #    @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m|m.act_code})
      #
