@@ -2,7 +2,7 @@
 class Contract < ActiveRecord::Base
   require 'chronic'
     tracked
-  validates_uniqueness_of :unique3, :on => :create, :message => "must be unique"
+  #validates_uniqueness_of :unique3, :on => :create, :message => "must be unique"
   #belongs_to :user
   has_one :actcode
   #default_scope order: 'date_of_event DESC'
