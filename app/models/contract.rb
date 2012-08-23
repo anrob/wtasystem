@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
   require 'chronic'
+    tracked
+  validates_uniqueness_of :unique3, :on => :create, :message => "must be unique"
   #belongs_to :user
   has_one :actcode
   #default_scope order: 'date_of_event DESC'
@@ -145,6 +147,7 @@ class Contract < ActiveRecord::Base
 
   def self.notconfirmed
     @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
+    #@notconfirmed = User.where("management_id = ?", 1).collect {|ob| ob.email}
     unless @notconfirmed.empty?
       ContractMailer.notconfirmed(@notconfirmed).deliver
     end

@@ -41,6 +41,7 @@ class ContractsController < ApplicationController
   def show
     #add_breadcrumb "Show Contract", contract_path
     @additional = Contract.additional(@contract)
+    #@activities = PublicActivity::Activity.all
     # respond_with do |format|
     #     format.html
     #     format.pdf do
@@ -103,7 +104,7 @@ class ContractsController < ApplicationController
     #ContractMailer.event_info_email(@user,@contract,@additional).deliver
     @contract.update_attributes(confirmation: 1)
     flash[:notice] = "Job Confirmed"
-    redirect_to :back
+    redirect_to contract_url(@contract)
   end
 
   def emailjobwithnetonly

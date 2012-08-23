@@ -1,0 +1,5 @@
+activity:
+  contract:
+    create: 'contract has been created'
+    update: 'Someone has edited the contract'
+    destroy: 'Some user removed an contract!'

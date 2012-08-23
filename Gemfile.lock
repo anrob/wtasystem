@@ -161,6 +161,14 @@ GEM
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
     progressbar (0.11.0)
+    public_activity (0.3.4)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      i18n (>= 0.5.0)
+      pusher
+    pusher (0.9.4)
+      multi_json (~> 1.0)
+      signature (~> 0.1.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -208,6 +216,7 @@ GEM
       uuidtools
       yajl-ruby
     sexp_processor (4.0.1)
+    signature (0.1.4)
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -271,6 +280,7 @@ DEPENDENCIES
   pg
   postageapp
   prawn
+  public_activity
   rack (= 1.4.1)
   rails (= 3.2.7)
   rails_best_practices
