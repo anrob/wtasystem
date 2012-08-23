@@ -20,7 +20,7 @@ gem 'icalendar'
 gem 'activeadmin'
 #gem 'sqlite3'
 gem 'sass-rails',   '<= 3.2.5'
-gem 'public_activity'
+
 
 group :development do
 gem 'sqlite3'

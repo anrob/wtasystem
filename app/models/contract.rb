@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
   require 'chronic'
-    tracked
+    #tracked
   #validates_uniqueness_of :unique3, :on => :create, :message => "must be unique"
   #belongs_to :user
   has_one :actcode
