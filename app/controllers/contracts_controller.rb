@@ -104,7 +104,7 @@ class ContractsController < ApplicationController
     #ContractMailer.event_info_email(@user,@contract,@additional).deliver
     @contract.update_attributes(confirmation: 1)
     flash[:notice] = "Job Confirmed"
-    redirect_to @contract
+    redirect_to :back
   end
 
   def emailjobwithnetonly
