@@ -1,4 +1,5 @@
-<%= semantic_form_for @actcode do |f| %>
-<%= f.inputs %>
-  <%= f.buttons %>
+<%= simple_form_for @actcode do |f| %>
+
+<%= f.input_field :actcode %>
+   <%= f.button :submit %>
 <% end %>

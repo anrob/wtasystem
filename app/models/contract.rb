@@ -105,6 +105,7 @@ class Contract < ActiveRecord::Base
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
 
+
   #scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   #scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))
 

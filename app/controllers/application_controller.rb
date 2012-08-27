@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
   end
- rescue_from Exception do
-  render layout: false, :status => 422
-  end
+ # rescue_from Exception do
+ #  render layout: false, :status => 422
+ #  end
 
 
  def current_ability
