@@ -1,5 +1,7 @@
 <div class="sheet sheet-condensed">
-<%= @contract.inspect %>
-<br><br><%= @time %>
+<%= @contract.count %><br><br>
+<% @contract.each do |wow| %>
+<%= wow %>
+<% end %>
 
-<%=  @contractdup %>
+</div>

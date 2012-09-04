@@ -22,6 +22,7 @@ gem 'activeadmin'
 gem 'sass-rails',   '<= 3.2.5'
 
 
+
 group :development do
 gem 'sqlite3'
 gem 'jquery_mobile_rails'
