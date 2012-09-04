@@ -14,7 +14,7 @@ class IncomingMailsController < ApplicationController
        attachment = @message.attachments.first
        atdecode = attachment.decoded
        CSV.parse(atdecode,{headers: true, col_sep:  "|", force_quotes:  true, quote_char: "~", converters: :date}) do |row|
-                                       @contracts = Contract.where(:unique3 => row[0]).first_or_create
+                                       @contracts = Contract.unscoped.where(:unique3 => row[0]).first_or_create
                                        @contracts.update_attributes( {
                                         unique3: row[0],
                                         prntkey23: row[1],
