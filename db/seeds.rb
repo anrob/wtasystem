@@ -18,7 +18,7 @@
 #    )
 #
 #User.delete_all
-Contract.delete_all
+Contract.unscoped.delete_all
 # password_length = 6
 #
 # #ALTER SEQUENCE users_id_seq RESTART WITH 1
