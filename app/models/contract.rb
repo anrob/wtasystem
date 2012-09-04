@@ -92,7 +92,7 @@ class Contract < ActiveRecord::Base
  :longitude,
  :latitude
 
- default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- no dep."]}
+ #default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- no dep."]}
   Time.zone = "UTC"
   Chronic.time_class = Time.zone
   my_date = Date.today
