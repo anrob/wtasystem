@@ -83,7 +83,10 @@ class ContractsController < ApplicationController
 
   def report
     #@contract = Contract.all
+
    @contract= Contract.all.collect { |ob| ob.unique3 }.dups
+
+   @notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
    #          # @allactcodes = Contract.all.collect { |obj| obj.act_code }
    #          #     @actcodes = Actcode.all.collect { |b| b.name}
    #          #     @updates = @allactcodes - @actcodes
