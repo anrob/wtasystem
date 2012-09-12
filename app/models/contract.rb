@@ -182,6 +182,27 @@ def self.mailchimp
  #   @status
  # end
 
+  def is_wedding?
+    type_of_event.start_with?("Wedding", " Wedding")
+  end
+  
+  def is_mitzvah?
+    type_of_event.start_with?("Bar", "Bat", "B'n")
+  end
 
+  after_save :booking_welcome_email
+
+  def booking_welcome_email
+    # check if status changed/set to booking
+    if contract_status_changed?
+      # TODO : Find out what criteria to use for determining when was contract booked
+      if contract_status.start_with?("Booked") # "Contract", 
+        # send Level 3 welcome email
+        if is_wedding? || is_mitzvah?
+          ContractMailer.welcome_to_family(self)
+        end
+      end
+    end
+  end
 
 end

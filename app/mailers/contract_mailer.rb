@@ -75,6 +75,19 @@ class ContractMailer < PostageApp::Mailer
       contract.update_attributes(confirmation: 1)
     end
 
+  def welcome_to_family(contract)
+    template_name = nil
+    if contract.is_wedding?
+      template_name = "welcome_wedding"
+    elsif contract.is_mitzvah?
+      template_name = "welcome_mitzvah"
+    end
+    if template_name.present?
+      mail( to: contract,
+            subject: "Welcome to the Washington Talent Family!",
+            template_name: template_name)
+    end
+  end
 
 end
 
