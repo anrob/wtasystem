@@ -38,4 +38,20 @@ class User < ActiveRecord::Base
   def fullname
      "#{first_name} #{last_name}"
    end
+
+   def attempt_set_password(params)
+     p = {}
+     p[:password] = params[:password]
+     p[:password_confirmation] = params[:password_confirmation]
+     update_attributes(p)
+   end
+   # new function to return whether a password has been set
+   def has_no_password?
+     self.encrypted_password.blank?
+   end
+
+   # new function to provide access to protected method unless_confirmed
+   def only_if_unconfirmed
+     unless_confirmed {yield}
+   end
 end
