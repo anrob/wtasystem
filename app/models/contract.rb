@@ -147,8 +147,9 @@ class Contract < ActiveRecord::Base
   end
 
   def self.notconfirmed
-    @notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
+    #@notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
     #@notconfirmed = User.where("management_id = ?", 1).collect {|ob| ob.email}
+     @notconfirmed = User.where('confirmation_token IS NOT NULL' ).collect {|e| e.email}
 
       ContractMailer.notconfirmed(@notconfirmed).deliver
 
