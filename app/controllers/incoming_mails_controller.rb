@@ -97,9 +97,14 @@ class IncomingMailsController < ApplicationController
                                         party_planner: row[78],
                                         act_notes: row[79].inspect,
                                         contract_provisions: row[80].inspect,
-                                        reception_location: row[81],
-                                        confirmation: 0})
-                               end
+                                        reception_location: row[81] })
+                                        if @contracts.changed?
+                                          update_attributes( {
+                                        confirmation: 0
+                                      })
+                                        end
+                             end
+
      render layout: false
 end
 
