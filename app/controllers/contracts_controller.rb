@@ -69,7 +69,8 @@ class ContractsController < ApplicationController
 
 
   def alljobs
-      @contracts = Contract.order(params[:sort]).tenday.all
+      @contractfour = Contract.order(params[:sort]).fourday.all
+      @contracts = Contract.order(params[:sort]).nextsix.all
       @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
       #@last = Contract.last(1).reverse.map {|m| m.created_at}.flatten!
       #@cool =  Chronic.parse(@last, "24 hours ago")

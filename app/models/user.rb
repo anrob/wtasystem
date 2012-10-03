@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   scope :with_role, lambda { |role| {conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
   scope :notconfirmed, where(confirmed_at: nil)
   ROLES = %w[everything gross manager no_money]
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :management_id, :manager, :roles, :first_name, :last_name, :phone_number, :actcode_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :management_id, :manager, :roles, :first_name, :last_name, :phone_number, :actcode_name, :encrypted_password
 
    def roles=(roles)
      self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
@@ -54,4 +54,6 @@ class User < ActiveRecord::Base
    def only_if_unconfirmed
      unless_confirmed {yield}
    end
+
+
 end

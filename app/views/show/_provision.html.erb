@@ -9,11 +9,14 @@
                 <% end %>
             <h3 class="sectionheaders"><span>All Services Provided</span></h3>
             <ul>
+            <% unless @additional.blank? %>
             <% @additional.each do |addi| %>
+
             <% if current_user.is? :everything %>
             <li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li>
             <% else %>
             <li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
+            <% end %>
             <% end %>
             <% end %>
             </ul>

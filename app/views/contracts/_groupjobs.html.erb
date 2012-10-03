@@ -1,3 +1,53 @@
+<h3>Number of jobs in the next 10 Days: <%= (@contractfour + @contracts).count %> </h3>
+
+
+<h4>Event in the Next 4 Days</h4>
+  <div class="sheet sheet-condensed">
+    <div class="sheet-inner">
+  <table id="products" class="table table-condensed table-striped">
+    <thead>
+      <tr>
+        <th><%= link_to "Act Booked", sort: "act_booked" %> </th>
+        <th><%= link_to "Client Name", sort: "created_at" %></th>
+        <th><%= link_to "Contract Status", sort: "contract_status" %></th>
+        <th><%= link_to "Date of Event", sort: "Date_of_event" %></th>
+        <th>Location city</th>
+
+          <th><%= link_to "Confirmed", sort: "confirmation" %></th>
+  <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @contractfour.each do |m| %>
+      <tr>
+      <td>
+       <%= link_to  truncate("#{m.act_booked}",:length => 25, :omission => '...') ,  m, class: "green" %>
+   <%#= link_to  "#{m.act_booked}" ,  m, class: "green" %>
+  </td>
+  <td><%= link_to "#{m.first_name} #{m.last_name}", m %></td>
+  <td><%= m.contract_status %></td>
+
+  <td><%= m.formatted_date_of_event %></td>
+
+  <td><%= m.eventtime %></td>
+
+  <td class="conf">
+      <% if m.confirmation == 1  %>
+  <span class="label label-success">Confirmed</span>
+      <% else %>
+  <span class="label label-important">Un-Confirmed</span>
+      <% end %>
+      </td>
+  <td class="lightgray"><%= distance_of_time_in_words(Time.now, "#{m.created_at}") %> ago</td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+  </div></div>
+
+
+
+
 <% @contractbymonth.sort.each do |week, events| %>
  Week beginning <%= week %>
 <div class="sheet sheet-condensed">
@@ -19,7 +69,8 @@
     <% events.each do |m| %>
     <tr>
     <td>
- <%= link_to  "#{m.act_booked}" ,  m, class: "green" %>
+     <%= link_to  truncate("#{m.act_booked}",:length => 25, :omission => '...') ,  m, class: "green" %>
+ <%#= link_to  "#{m.act_booked}" ,  m, class: "green" %>
 </td>
 <td><%= link_to "#{m.first_name} #{m.last_name}", m %></td>
 <td><%= m.contract_status %></td>
