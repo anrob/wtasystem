@@ -5,6 +5,7 @@ class ContractsController < ApplicationController
   load_and_authorize_resource
   before_filter :everypage
   helper_method :themanager, :themap
+
   def index
 
     case @but when "true"
@@ -193,5 +194,14 @@ class ContractsController < ApplicationController
     end
     @maillabels = gmail.labels.all
     gmail.logout
+  end
+
+
+  def didchange
+      if self.changed?
+        @contracts.update_attributes( {
+        confirmation: 0
+        })
+      end
   end
 end

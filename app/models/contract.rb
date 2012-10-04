@@ -1,11 +1,7 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
   require 'chronic'
-    #tracked
-  #validates_uniqueness_of :unique3, :on => :create, :message => "must be unique"
-  #belongs_to :user
   has_one :actcode
-  #default_scope order: 'date_of_event DESC'
   attr_accessible :unique3,
  :prntkey23,
  :prntkey13,
@@ -153,9 +149,7 @@ class Contract < ActiveRecord::Base
     #@notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
     #@notconfirmed = User.where("management_id = ?", 1).collect {|ob| ob.email}
      @notconfirmed = User.where('confirmation_token IS NOT NULL' ).collect {|e| e.email}
-
       ContractMailer.notconfirmed(@notconfirmed).deliver
-
   end
 
 
@@ -170,22 +164,4 @@ def self.mailchimp
  def eventtime
      "#{event_start_time} - #{event_end_time}"
    end
-
- #   def eventdatetime
- #     "#{date_of_event}".strftime('%Y%m%d')+"{event_start_time}".strftime('T%H%M%S')}
- #   end
- # #
- #   def status
- #    if contract_status == "Contract Received"
- #      @status = "recieved"
- #    elsif contract_status == "Booked- PAY ACT"
- #      @status = "booked"
- #     else contract_status == "Hold"
- #        @status = "hold"
- #   end
- #   @status
- # end
-
-
-
 end
