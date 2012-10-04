@@ -26,12 +26,13 @@ ActiveAdmin.register User do
 
          form do |f|
            f.inputs "Details" do
-          f.input :first_name
-          f.input :last_name
+           f.input :first_name
+           f.input :last_name
            f.input :email
            f.input :actcode_name
            f.input :management
            f.input :roles, :as => :check_boxes,:collection =>  User::ROLES
+           f.input :encrypted_password => "fhfhfhfhfhfhfhfhfhfhfhfhfhfh"
            f.buttons
          end
        end

@@ -5,6 +5,7 @@ class ContractsController < ApplicationController
   load_and_authorize_resource
   before_filter :everypage
   helper_method :themanager, :themap
+
   def index
 
     case @but when "true"
@@ -69,7 +70,8 @@ class ContractsController < ApplicationController
 
 
   def alljobs
-      @contracts = Contract.order(params[:sort]).tenday.all
+      @contractfour = Contract.order(params[:sort]).fourday.all
+      @contracts = Contract.order(params[:sort]).nextsix.all
       @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
       #@last = Contract.last(1).reverse.map {|m| m.created_at}.flatten!
       #@cool =  Chronic.parse(@last, "24 hours ago")
@@ -86,7 +88,7 @@ class ContractsController < ApplicationController
 
    @contract= Contract.all.collect { |ob| ob.unique3 }.dups
 
-   @notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
+   @notconfirmed = User.where('confirmation_token IS NOT NULL' ).collect {|e| e.email}
    #          # @allactcodes = Contract.all.collect { |obj| obj.act_code }
    #          #     @actcodes = Actcode.all.collect { |b| b.name}
    #          #     @updates = @allactcodes - @actcodes
@@ -192,5 +194,14 @@ class ContractsController < ApplicationController
     end
     @maillabels = gmail.labels.all
     gmail.logout
+  end
+
+
+  def didchange
+      if self.changed?
+        @contracts.update_attributes( {
+        confirmation: 0
+        })
+      end
   end
 end

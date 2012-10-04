@@ -1,11 +1,7 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
   require 'chronic'
-    #tracked
-  #validates_uniqueness_of :unique3, :on => :create, :message => "must be unique"
-  #belongs_to :user
   has_one :actcode
-  #default_scope order: 'date_of_event DESC'
   attr_accessible :unique3,
  :prntkey23,
  :prntkey13,
@@ -100,6 +96,8 @@ class Contract < ActiveRecord::Base
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
+  scope :fourday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("4 days from now")))}
+  scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now")))}
   scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now")))}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
@@ -139,19 +137,19 @@ class Contract < ActiveRecord::Base
 
   def self.checkactcodes
            @allactcodes = Contract.all.collect { |obj| obj.act_code }
-             @actcodes = Actcode.all.collect { |b| b.name}
+             @actcodes = User.all.collect { |b| b.actcode_name}
              @updates = @allactcodes - @actcodes
+
         unless @updates.empty?
-        ContractMailer.newactcodes(@updates.inspect).deliver
+        ContractMailer.newactcodes(@updates.uniq.inspect).deliver
         end
   end
 
   def self.notconfirmed
-    @notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
+    #@notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
     #@notconfirmed = User.where("management_id = ?", 1).collect {|ob| ob.email}
-
+     @notconfirmed = User.where('confirmation_token IS NOT NULL' ).collect {|e| e.email}
       ContractMailer.notconfirmed(@notconfirmed).deliver
-
   end
 
 
