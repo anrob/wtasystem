@@ -205,4 +205,18 @@ def self.mailchimp
     end
   end
 
+  # following is the logic and scopes for sending emails at specific intervals
+  scope :booked_2_weeks_ago,           where(:create_at => 2.weeks.ago)
+  scope :booked_1_month_ago,           where(:create_at => 2.month.ago)
+  scope :happening_1_year_from_now,    where(:date_of_event => 1.year.from_now)
+  scope :happening_10_months_from_now, where(:date_of_event => 10.months.from_now)
+  scope :happening_9_months_from_now,  where(:date_of_event => 9.months.from_now)
+  scope :happening_8_months_from_now,  where(:date_of_event => 8.months.from_now)
+  scope :happening_6_months_from_now,  where(:date_of_event => 6.months.from_now)
+  scope :happening_5_months_from_now,  where(:date_of_event => 5.months.from_now)
+  scope :happening_4_months_from_now,  where(:date_of_event => 4.months.from_now)
+  scope :happening_3_months_from_now,  where(:date_of_event => 3.months.from_now)
+  scope :happening_2_months_from_now,  where(:date_of_event => 2.months.from_now)
+  scope :happening_1_months_from_now,  where(:date_of_event => 1.months.from_now)
+
 end
