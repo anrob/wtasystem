@@ -32,7 +32,7 @@ ActiveAdmin.register User do
            f.input :actcode_name
            f.input :management
            f.input :roles, :as => :check_boxes,:collection =>  User::ROLES
-           f.input :encrypted_password => "fhfhfhfhfhfhfhfhfhfhfhfhfhfh"
+           #f.input :encrypted_password => "fhfhfhfhfhfhfhfhfhfhfhfhfhfh"
            f.buttons
          end
        end

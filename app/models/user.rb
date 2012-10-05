@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   #belongs_to :actcode
   #has_many :contracts
   alias_attribute "name", "email"
+  validates_uniqueness_of :actcode_name, on: :create, message: "must be unique"
  # accepts_nested_attributes_for :actcode
   default_scope order: 'email ASC'
   devise :database_authenticatable,:recoverable, :rememberable, :trackable, :timeoutable, :registerable, :confirmable

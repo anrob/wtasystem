@@ -88,7 +88,12 @@ class ContractsController < ApplicationController
 
    @contract= Contract.all.collect { |ob| ob.unique3 }.dups
 
-   @notconfirmed = User.where('confirmation_token IS NOT NULL' ).collect {|e| e.email}
+   @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
+
+      @allactcodes = Contract.all.collect { |obj| obj.act_code }
+      @actcodes = User.all.collect { |b| b.actcode_name}
+      @updates = @allactcodes - @actcodes
+      @upd = @updates.uniq
    #          # @allactcodes = Contract.all.collect { |obj| obj.act_code }
    #          #     @actcodes = Actcode.all.collect { |b| b.name}
    #          #     @updates = @allactcodes - @actcodes

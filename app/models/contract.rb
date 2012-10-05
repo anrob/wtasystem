@@ -136,7 +136,7 @@ class Contract < ActiveRecord::Base
   end
 
   def self.checkactcodes
-           @allactcodes = Contract.all.collect { |obj| obj.act_code }
+            @allactcodes = Contract.all.collect { |obj| obj.act_code }
              @actcodes = User.all.collect { |b| b.actcode_name}
              @updates = @allactcodes - @actcodes
 

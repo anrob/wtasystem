@@ -1,5 +1,11 @@
 <div class="sheet sheet-condensed">
 <%= @contract.count %><br><br>
+
+<% @upd.each do |g| %>
+<%= g %>
+<% end %>
+<br>
+
 <% @contract.each do |wow| %>
 <%= wow %>
 <% end %>
