@@ -180,6 +180,9 @@ def self.mailchimp
  #   @status
  # end
 
+  scope :mitzvah, where("type_of_event LIKE ? OR type_of_event LIKE ? OR type_of_event LIKE ?", "Bar%", "Bat%", "B'n%")
+  scope :wedding, where("type_of_event LIKE ? OR type_of_event LIKE ?", "Wedding%", " Wedding%")
+
   def is_wedding?
     type_of_event.start_with?("Wedding", " Wedding")
   end
@@ -188,33 +191,154 @@ def self.mailchimp
     type_of_event.start_with?("Bar", "Bat", "B'n")
   end
 
-  after_save :booking_welcome_email
+  after_create :send_welcome_email
 
-  def booking_welcome_email
+  def send_welcome_email
     # check if status changed/set to booking
-    if contract_status_changed?
-      # TODO : Find out what criteria to use for determining when was contract booked
-      if contract_status.start_with?("Booked") # "Contract", 
-        # send Level 3 welcome email
-        if is_wedding? || is_mitzvah?
-          ContractMailer.welcome_to_family(self)
-        end
+    valid_contract_statuses = ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- no dep."]
+    if valid_contract_statuses.include?(self.contract_status)
+      # send Level 3 welcome email
+      if is_wedding? || is_mitzvah?
+        ContractMailer.welcome_to_family(self).deliver
       end
     end
   end
 
+  def welcome_to_family(contract)
+    template_name = nil
+    if contract.is_wedding?
+      template_name = "welcome_wedding"
+    elsif contract.is_mitzvah?
+      template_name = "welcome_mitzvah"
+    end
+    if template_name.present?
+      mail( to: contract,
+            subject: "Welcome to the Washington Talent Family!",
+            template_name: template_name)
+    end
+  end
+
   # following is the logic and scopes for sending emails at specific intervals
-  scope :booked_2_weeks_ago,           where(:create_at => 2.weeks.ago)
-  scope :booked_1_month_ago,           where(:create_at => 2.month.ago)
-  scope :happening_1_year_from_now,    where(:date_of_event => 1.year.from_now)
-  scope :happening_10_months_from_now, where(:date_of_event => 10.months.from_now)
-  scope :happening_9_months_from_now,  where(:date_of_event => 9.months.from_now)
-  scope :happening_8_months_from_now,  where(:date_of_event => 8.months.from_now)
-  scope :happening_6_months_from_now,  where(:date_of_event => 6.months.from_now)
-  scope :happening_5_months_from_now,  where(:date_of_event => 5.months.from_now)
-  scope :happening_4_months_from_now,  where(:date_of_event => 4.months.from_now)
-  scope :happening_3_months_from_now,  where(:date_of_event => 3.months.from_now)
-  scope :happening_2_months_from_now,  where(:date_of_event => 2.months.from_now)
-  scope :happening_1_months_from_now,  where(:date_of_event => 1.months.from_now)
+  scope :booked_2_weeks_ago,           where("date(created_at) = ?",    2.weeks.ago)
+  scope :booked_1_month_ago,           where("date(created_at) = ?",    2.month.ago)
+  scope :happening_1_year_from_now,    where("date(date_of_event) = ?", 1.year.from_now)
+  scope :happening_10_months_from_now, where("date(date_of_event) = ?", 10.months.from_now)
+  scope :happening_9_months_from_now,  where("date(date_of_event) = ?", 9.months.from_now)
+  scope :happening_8_months_from_now,  where("date(date_of_event) = ?", 8.months.from_now)
+  scope :happening_6_months_from_now,  where("date(date_of_event) = ?", 6.months.from_now)
+  scope :happening_5_months_from_now,  where("date(date_of_event) = ?", 5.months.from_now)
+  scope :happening_4_months_from_now,  where("date(date_of_event) = ?", 4.months.from_now)
+  scope :happening_3_months_from_now,  where("date(date_of_event) = ?", 3.months.from_now)
+  scope :happening_2_months_from_now,  where("date(date_of_event) = ?", 2.months.from_now)
+  scope :happening_1_month_from_now,  where("date(date_of_event) = ?", 1.months.from_now)
+
+  def self.send_mitzvah_emails
+
+    self.mitzvah.booked_2_weeks_ago.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
+    end
+
+    self.mitzvah.booked_1_month_ago.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_video).deliver
+    end
+
+    self.mitzvah.happening_1_year_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_5p_kickback).deliver
+    end
+
+    self.mitzvah.happening_10_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
+    end
+
+    self.mitzvah.happening_9_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
+    end
+
+    self.mitzvah.happening_8_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_photo_booth).deliver
+    end
+
+    self.mitzvah.happening_6_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
+    end
+
+    self.mitzvah.happening_5_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_custom_caps).deliver
+    end
+
+    self.mitzvah.happening_4_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver
+    end
+
+    self.mitzvah.happening_3_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver
+    end
+
+    self.mitzvah.happening_2_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_video).deliver
+    end
+
+    self.mitzvah.happening_1_month_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
+    end
+
+  end
+
+  def self.send_wedding_emails
+
+    self.wedding.booked_2_weeks_ago.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_photography).deliver
+    end
+
+    self.wedding.booked_1_month_ago.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_video).deliver
+    end
+
+    self.wedding.happening_1_year_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_5p_kickback).deliver
+      ContractMailer.level_3_mail(c, :wedding_ceremony_musicians).deliver
+    end
+
+    self.wedding.happening_10_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_lighting).deliver
+    end
+
+    self.wedding.happening_9_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_photography).deliver
+    end
+
+    self.wedding.happening_8_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_photo_booth).deliver
+    end
+
+    self.wedding.happening_6_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_lighting).deliver
+      ContractMailer.level_3_mail(c, :wedding_photography).deliver
+    end
+
+    self.wedding.happening_5_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_video).deliver
+    end
+
+    self.wedding.happening_4_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_photo_booth).deliver
+    end
+
+    self.wedding.happening_3_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_ceremony_musicians).deliver
+    end
+
+    self.wedding.happening_2_months_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_video).deliver
+    end
+
+    self.wedding.happening_1_month_from_now.each do |c|
+      ContractMailer.level_3_mail(c, :wedding_lighting).deliver
+    end
+
+  end
 
 end

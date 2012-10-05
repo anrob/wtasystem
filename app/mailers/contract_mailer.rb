@@ -83,10 +83,40 @@ class ContractMailer < PostageApp::Mailer
       template_name = "welcome_mitzvah"
     end
     if template_name.present?
-      mail( to: contract,
+      mail( to: contract.email_address,
             subject: "Welcome to the Washington Talent Family!",
             template_name: template_name)
     end
+  end
+
+  def level_3_mail(contract, mail_type)
+    mail_type_to_subject = {
+      :mitzvah_photography    => "Photography is more than the final product",
+      :mitzvah_video          => "Skipping on Video Services",
+      :mitzvah_green_screen   => "Washington Talent is much more than DJs and Bands",
+      :mitzvah_5p_kickback    => "Dear Angel, We want to offer you something just for
+being a part of the family!",
+      :mitzvah_lighting       => "Transform your room with Lighting",
+      :mitzvah_photo_booth    => "Washington Talent is much more than DJs and Bands",
+      :mitzvah_custom_caps    => "When you are going through your checklist of what you need for your
+upcoming Mitzvah do you have Cocktail Entertainment and Guest Giveaways listed
+as two items",
+      :mitzvah_imagine_me     => "IMAGINE ME",
+      :mitzvah_sprockit_the_robot => "Sprockit the Robot",
+      :mitzvah_rocking_recording_booth  => "Rockin’ Recording Booth",
+
+      :wedding_photography    => "Photography is more than the final product",
+      :wedding_video          => "Skipping on Video Services",
+      :wedding_5p_kickback    => "Dear Angel, We want to offer you something just for
+being a part of the family!",
+      :wedding_ceremony_musicians       => "Musicians are NOT made equally",
+      :wedding_lighting       => "Transform your room with Lighting",
+      :wedding_photo_booth    => "Add something different to your Modern Wedding"
+    }
+
+    mail( to: contract.email_address,
+          subject: mail_type_to_subject[mail_type] || "Hello from Washington Talent Agency",
+          template_name: mail_type)
   end
 
 end
