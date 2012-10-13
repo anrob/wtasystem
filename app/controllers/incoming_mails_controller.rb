@@ -17,7 +17,7 @@ class IncomingMailsController < ApplicationController
        atdecode = attachment.decoded
        CSV.parse(atdecode,{headers: true, col_sep:  "|", force_quotes:  true, quote_char: "~", converters: :date}) do |row|
                                        @contracts = Contract.unscoped.where(:unique3 => row[0]).first_or_create
-                                       @contracts.update_attributes( {
+                                       @contracts.attributes = {
                                         unique3: row[0],
                                         prntkey23: row[1],
                                         prntkey13: row[2],
@@ -99,9 +99,9 @@ class IncomingMailsController < ApplicationController
                                         party_planner: row[78],
                                         act_notes: row[79].inspect,
                                         contract_provisions: row[80].inspect,
-                                        reception_location: row[81],
-                                        confirmation: 0 })
-
+                                        reception_location: row[81]}
+                                         @contracts.confirmation = 0 if @contracts.changed?
+                                         @contracts.save
                              end
 
      render layout: false
