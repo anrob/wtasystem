@@ -27,5 +27,5 @@
     <%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
     Phone: <%= contract.location_phone %>
     <% end %><br><br>
-    <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=&daddr=#{themap}", class: 'btn-success')%>
+    <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=current&daddr=#{themap}", class: 'btn-success')%>
 </div>
