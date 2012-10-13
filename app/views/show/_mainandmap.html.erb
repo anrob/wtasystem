@@ -20,12 +20,12 @@
 </div>
 
 <div class="span3 white thumbnail">
-    <%#= gmaps4rails(@json) %>
 <% if contract.location_name? %>
     <img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img><br>
     <h3> <span>Event Location</span></h3>
     <%= contract.location_name %><br>
     <%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
     Phone: <%= contract.location_phone %>
-    <% end %>
+    <% end %><br><br>
+    <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=&daddr=#{themap}", class: 'btn-success')%>
 </div>
