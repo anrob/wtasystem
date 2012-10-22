@@ -220,7 +220,7 @@ def self.mailchimp
 
   # following is the logic and scopes for sending emails at specific intervals
   scope :booked_2_weeks_ago,           where("date(created_at) = ?",    2.weeks.ago)
-  scope :booked_1_month_ago,           where("date(created_at) = ?",    2.month.ago)
+  scope :booked_1_month_ago,           where("date(created_at) = ?",    1.month.ago)
   scope :happening_1_year_from_now,    where("date(date_of_event) = ?", 1.year.from_now)
   scope :happening_10_months_from_now, where("date(date_of_event) = ?", 10.months.from_now)
   scope :happening_9_months_from_now,  where("date(date_of_event) = ?", 9.months.from_now)
@@ -243,7 +243,7 @@ def self.mailchimp
     end
 
     self.mitzvah.happening_1_year_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver #done
       ContractMailer.level_3_mail(c, :mitzvah_5p_kickback).deliver
     end
 
@@ -265,19 +265,19 @@ def self.mailchimp
     end
 
     self.mitzvah.happening_5_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_custom_caps).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_custom_caps).deliver #done
     end
 
     self.mitzvah.happening_4_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver #done
     end
 
     self.mitzvah.happening_3_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver #done
     end
 
     self.mitzvah.happening_2_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver #done
       ContractMailer.level_3_mail(c, :mitzvah_video).deliver
     end
 
