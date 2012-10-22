@@ -97,7 +97,7 @@ class ContractMailer < PostageApp::Mailer
       :mitzvah_5p_kickback    => "Dear Angel, We want to offer you something just for being a part of the family!",
       :mitzvah_lighting       => "Transform your room with Lighting",
       :mitzvah_photo_booth    => "Washington Talent is much more than DJs and Bands",
-      :mitzvah_custom_caps    => "When you are going through your checklist of what you need for your upcoming Mitzvah do you have Cocktail Entertainment and Guest Giveaways listed as two items",
+      :mitzvah_airbrush       => "Washington Talent is much more than DJs and Bands",
       :mitzvah_imagine_me     => "IMAGINE ME",
       :mitzvah_sprockit_the_robot => "Sprockit the Robot",
       :mitzvah_rocking_recording_booth  => "Rockin’ Recording Booth",

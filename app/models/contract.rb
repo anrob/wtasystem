@@ -265,7 +265,7 @@ def self.mailchimp
     end
 
     self.mitzvah.happening_5_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_custom_caps).deliver #done
+      ContractMailer.level_3_mail(c, :mitzvah_airbrush).deliver #done
     end
 
     self.mitzvah.happening_4_months_from_now.each do |c|
