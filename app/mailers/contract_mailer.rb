@@ -76,6 +76,9 @@ class ContractMailer < PostageApp::Mailer
     end
 
   def welcome_to_family(contract)
+    puts "*******************************"
+    puts "Sending welcome to family email"
+    puts "*******************************"
     template_name = nil
     if contract.is_wedding?
       template_name = "welcome_wedding"
