@@ -1,4 +1,7 @@
+<% if contract.type_of_event == "Wedding Reception" %>
+
 <div class="span4 white thumbnail margintop">
+    <%= contract.type_of_event %>
 <h3 class="sectionheaders"><span>Wedding Section</span></h3>
 <dt>Ceremony Date:</dt> <%= contract.date_of_ceremony %><br>
 <dt>Ceremony Location:</dt> <%= contract.ceremonoy_location_name %><br>
@@ -17,3 +20,4 @@
 <dt>Videographer 3: </dt> <%= contract.videgrapher_3 %>
 <hr class="show-line">
 </div>
+<% end %>

@@ -1,13 +1,11 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),html: { class: "well form-well" }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => 'form-horizontal' }) do |f| %>
 
-    <%= f.label :actcode %>
-        <%= f.text_field :actcode_name,  class: "username" %>
-         <span class="help-inline">Actcode must be in all CAPS!</span>
-        <%= f.label :password %>
-        <%= f.password_field :password,  class: "password" %>
-    <br /><br />
-        <%= f.submit "  Login  ", class: "btn-primary" %>
-         <!--loginbox_content-->
-    <%= render partial: "devise/shared/links" %><!--loginbox_inner-->
-<!--loginbox-->
+     <%= f.input :actcode_name, :hint => "Must be in All Caps"%>
+        <%= f.input :password,  class: "password" %>
+        <%= f.submit "Login", class: "btn-primary" %>
+    <%= render partial: "devise/shared/links" %>
 <% end %>
+
+<h3> Staff member login here </h3>
+<%= link_to "Dancers Login", 'auth/facebook' %>
+

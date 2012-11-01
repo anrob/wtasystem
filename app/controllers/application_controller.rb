@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
+
   before_filter :authenticate_user!, :except => [:new, :create]
   has_scope :page, default: 1
   before_filter :everypage, :except => [:new, :create]
@@ -11,9 +12,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
   end
- rescue_from Exception do
-  render layout: false, :status => 422
-  end
+ # rescue_from Exception do
+ #  render layout: false, :status => 422
+ #  end
 
 
  def current_ability
@@ -42,4 +43,6 @@ end
 
 end
 end
+
+
 end

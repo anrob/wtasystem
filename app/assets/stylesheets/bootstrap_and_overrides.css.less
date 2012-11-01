@@ -1,0 +1,162 @@
+@import "twitter/bootstrap/bootstrap";
+body { padding-top: 45px; }
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot");
+@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-path("fontawesome-webfont.svg");
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+/*div.contentbox {
+    background-color: white;
+    margin-bottom: 20px;
+    border-right: 1px solid #c7c7c7;
+border-bottom: 1px solid #c7c7c7;
+/*padding:8px;*/
+/*
+}*/
+div.inner {
+    padding:8px;
+}
+
+.white {
+    background:#FFF;
+}
+
+#sidebar {
+    margin-left: 10px;
+}
+div.span4.smallmargin {
+    margin-left: 4px;
+}
+div.span5.smallmargin {
+    margin-left: 4px;
+}
+div.well {
+    padding: 7px;
+}
+
+h3.actbooked {
+    padding: 12px;
+    margin: -12px 0 10px -12px;
+    width: 100%;
+    background-color: #6ba5b9;
+    color: white;
+    border-bottom: 1px solid #4a7380;
+}
+
+#main div.container div.row div.thumbnail.white.span9 div.inner div.row div.span5.smallmargin dl.dl-horizontal dt {
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: #d64d23;
+}
+img.bigmap {
+    border-bottom: 1px solid #c5c5c5;
+margin-bottom:8px;
+}
+
+div.mymap,.clientbox {
+  margin-top: -9px;
+  margin-left: -12px;
+  margin-right: -12px;
+  border-bottom: 1 solid #000;
+}
+
+.clientbox {
+    background-color: rgba(246,253,202,0.54);
+    padding-top: 9px;
+    padding-left: 4px;
+}
+
+#main div.container div.row div.thumbnail.white.span9 div.inner div.clientbox div.row div.span5 dt h6 {
+    line-height: 11px;
+    font-size: 12px;
+    font-variant: normal;
+}
+#main div.container div.row div.thumbnail.white.span9 div.inner div.clientbox div.row div.span5 dt h6.typo {
+    font-size: 18px;
+    line-height: 23px;
+    color: #005392;
+}
+
+
+/*
+.contea {
+    background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid #c7c7c7;
+}
+*/
+/*.navbar-text {
+    padding:20px;
+}
+*/
+/*[class*="span"] {margin:0}*/
+
+/*dt {
+    color: #005392;
+    text-transform: capitalize;
+    direction: ltr;
+    font: medium "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}*/
+
+
+
+/*h2.theheader {
+    color: #005392;
+    font-size: x-large;
+    background-color: #f1f6f9;
+    padding: 4px 9px;
+
+ /*   width: 100%;*/
+
+/*    border-bottom: 1px solid #c3c8cc;
+    margin-bottom: 8px;
+
+}*/
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+    margin-top: 20px;
+}
+
+#sidebar div.white.thumbnail {
+    background-color: white;
+}
+
+div#money {
+   /* padding: 9px;*/
+}
+

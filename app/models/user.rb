@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
+
   belongs_to :management
   #belongs_to :actcode
   #has_many :contracts

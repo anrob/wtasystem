@@ -20,6 +20,10 @@ gem 'icalendar'
 gem 'activeadmin'
 #gem 'sqlite3'
 gem 'sass-rails',   '<= 3.2.5'
+gem 'omniauth-facebook'
+gem 'koala'
+gem 'rails_bootstrap_navbar'
+gem "twitter-bootstrap-rails"
 
 
 

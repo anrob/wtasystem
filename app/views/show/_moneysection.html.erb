@@ -1,18 +1,54 @@
-<% if can? :see_money, @contracts %><div class="span4 white thumbnail margintop">
-<h3 class="sectionheaders"> <span>Money Section</span></h3>
+<% content_for :showmoney do %>
+<% if can? :see_money, @contracts %>
 
-<li class="<%= isincluded %>">cocktails charge:             <%= number_to_currency(contract.cocktails_charge) %></li>
-<li class="<%= isincluded %>">ceremony charge:              <%= number_to_currency(contract.ceremony_charge) %></li>
-<li class="<%= isincluded %>">early setup charge:       <%= number_to_currency(contract.early_setup_charge) %></li>
-<li class="<%= isincluded %>">charge per horn:              <%= contract.number_of_horns %> @ <%= number_to_currency(contract.charge_per_horn) %></li>
-<li class="<%= isincluded %>">other charges:                <%= number_to_currency(contract.other_charges) %></li>
-<li class="<%= isincluded %>">charge per dancer:            <%= contract.number_of_dancers %> @ <%= number_to_currency(contract.charge_per_dancer)%></li>
-<li class="<%= isincluded %>">giveaways charge:             <%= number_to_currency(contract.giveaways_charge) rescue "0" %></li>
-<li class="<%= isincluded %>">dj tech_charge:               <%= number_to_currency(contract.dj_tech_charge) %></li>
-<li class="<%= isincluded %>">non-commissionable charges: <%= number_to_currency(contract.non_commissionable_charges) %></li>
-<li class="<%= isincluded %>">capital music pay:            <%= number_to_currency(contract.capital_music_pay) %></li>
-<li class="<%= isincluded %>">base price_of act:            <%= number_to_currency(contract.base_price_of_act) %></li>
-<li class="<%= isincluded %>">referral fee amount:      <%= number_to_currency(contract.referral_fee_amount) %></li>
-<li class="<%= isincluded %>">tax amount:               <%= number_to_currency(contract.tax_amount) %></li>
+<% end %>
+<% if contract.date_of_event < Date.today + 11.days %>
+   <%   if contract.confirmation == 0 %>
+   <%=   button_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'btn-large btn-danger'%>
+    <%  else %>
+    <% if current_user.is? :manager %>
+    <%= button_to 'Email Job Information - All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn-primary' %>
+    <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-primary' %>
+    <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-primary' %>
+  <% elsif current_user.is? :no_money %>
+<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
+<% else %>
+ <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-warning' %>
+  <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
+    <% end %>
+
+
+<% end %>
+<% end %>
+
+<% if can? :see_money, @contracts %>
+<div class="white thumbnail">
+<h4>Money Section</h4>
+
+<div id="money">
+     <dt><b class="themoney"><%= number_to_currency(contract.contract_price) %></b> - <span>Contract price:</span>        </dt>
+     <dt class="middle"><b class="themoney"><%= number_to_currency(contract.act_net)  %></b> - <span>Contract Net:</span> </dt>
+     <dt><b class="themoney"><%= number_to_currency(contract.pick_up_amount) %></b> - <span>Pickup Amount:</span>        </dt>
+ </div>
+
+<hr class="divider">
+<%= content_tag (:ul), :class => "unstyled" do %>
+ <%= content_tag(:li, "ceremony charge: #{number_to_currency(@contract.ceremony_charge)}") unless @contract.ceremony_charge == 0                                        %>
+ <%= content_tag(:li, "cocktails charge: #{number_to_currency(@contract.cocktails_charge)}") unless @contract.cocktails_charge == 0                                     %>
+ <%= content_tag(:li, "giveaways charge: #{number_to_currency(@contract.giveaways_charge)}") unless @contract.giveaways_charge == 0                                      %>
+ <%= content_tag(:li, "early setup charge:#{number_to_currency(@contract.early_setup_charge)}") unless @contract.early_setup_charge == 0                                %>
+ <%= content_tag(:li, "charge per horn:   #{@contract.number_of_horns} @ #{number_to_currency(@contract.charge_per_horn)}") unless @contract.charge_per_horn == 0         %>
+ <%= content_tag(:li, "other charges:     #{number_to_currency(@contract.other_charges)}") unless @contract.other_charges == 0                                          %>
+ <%= content_tag(:li, "charge per dancer: #{@contract.number_of_dancers} @ #{number_to_currency(@contract.charge_per_dancer)}") unless @contract.charge_per_dancer == 0   %>
+ <%= content_tag(:li, "dj tech_charge:    #{number_to_currency(@contract.dj_tech_charge)}") unless @contract.dj_tech_charge == 0                                        %>
+ <%= content_tag(:li, "non-commissionable charges:#{number_to_currency(@contract.non_commissionable_charges)}") unless @contract.non_commissionable_charges == 0        %>
+ <%= content_tag(:li, "capital music pay:  #{number_to_currency(@contract.capital_music_pay)}") unless @contract.capital_music_pay == 0                                 %>
+ <%= content_tag(:li, "base price_of act:  #{number_to_currency(@contract.base_price_of_act)}") unless @contract.base_price_of_act == 0                                 %>
+ <%= content_tag(:li, "referral fee amount:#{number_to_currency(@contract.referral_fee_amount)}") unless @contract.referral_fee_amount  == 0                            %>
+ <%= content_tag(:li, "tax amount:         #{number_to_currency(@contract.tax_amount)}") unless @contract.tax_amount == 0                                               %>
+   <% end %>
+<% end %>
 </div>
 <% end %>
+
+

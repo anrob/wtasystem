@@ -1,39 +1,36 @@
-<% content_for :navbar, render("layouts/user_nav") %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %></title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <%= render "layouts/navbar" %>
 
-<%= render layout: "layouts/base" do %>
-  <div class="page-header">
-    <div class="row">
-      <div class="span7">
-        <h2><%= @title %></h2>
-        <%= yield :description %>
-      </div>
-      <div class="span2">
-        <%= yield :actions %>
-      </div>
-
-    </div>
-  </div><!-- /.page-header -->
-
+      <%#= yield :header %>
+    </header>
+<div id="main">
+<div class="container">
   <div class="row">
-    <div id="content" class="span9">
+    <%= render "layouts/user_nav" %>
+    <div class="thumbnail white span9">
+    <div class="inner">
       <%= yield %>
+    </div>
     </div> <!-- /#content -->
 
     <div id="sidebar" class="span3">
-    <% if user_signed_in? %>
-    <%= switch_user_select if current_user.is? :everything %>
-    <% end %>
-     <ul class="nav nav-tabs nav-stacked nav-caret-left">
-    <% if user_signed_in? %>
-        <%= render 'otheracts-sidebar' if current_user.is? :manager %>
-    <% end %>
-
-
-        <!-- <%#= activatable_li_tag_with_link "Sub menu", nil %>
-             <%#= activatable_li_tag_with_link "Another menu", "#" %>
-             <%#= activatable_li_tag_with_link "A last one", "#" %> -->
-      </ul>
+    <%= yield :showmoney %>
+    <%= yield :frontpage %>
     </div> <!-- /#sidebar -->
-  </div> <!-- /.row -->
-
-<% end %>
+</div>
+ <%= render 'layouts/footer' %>
+</div>
+  </body>
+</html>

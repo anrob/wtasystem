@@ -1,9 +1,12 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'fbsignout', to: 'sessions#destroy', as: 'fbsignout'
 
   ActiveAdmin.routes(self)
 
-resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
+resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages, :staffs
 devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session

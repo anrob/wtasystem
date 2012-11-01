@@ -41,13 +41,10 @@
       <%= yield :header %>
       <hr />
     </header>
-
-    <%= yield :banner %>
-
-    <div id="main">
+<%= yield :banner %>
+    <div id="main" class="staffbody">
       <div class="container">
         <%= render "layouts/flashes" %>
-
         <%= yield %>
       </div> <!-- /.container -->
     </div> <!-- /#main -->

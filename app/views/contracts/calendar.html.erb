@@ -32,9 +32,9 @@
       <% end %>
 
     <div class="span12">
-    <%= link_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-    <%= link_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-    <%= link_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+    <%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+    <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+    <%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
     </div>
 </div>
 

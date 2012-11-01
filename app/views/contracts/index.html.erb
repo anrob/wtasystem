@@ -1,5 +1,4 @@
 
-<!-- <h2 class="fronth"><%##= @actcode.description %></h2> -->
 <div class="page-header">
 <h1><%#= @actcode.description %> Contracts in the Next 10 Days</h1>
 </div>
@@ -60,6 +59,18 @@
 <h1><span>All Management Team contracts in the Next 10 Days</span></h1>
 </div>
 <%= render 'frontjobs' %>
+<% end %>
+
+<% content_for :frontpage do  %>
+
+<% if user_signed_in? %>
+<%= switch_user_select if current_user.is? :everything %>
+<% end %>
+ <ul class="nav nav-tabs nav-stacked nav-caret-left">
+<% if user_signed_in? %>
+    <%= render 'otheracts-sidebar' if current_user.is? :manager %>
+<% end %>
+
 <% end %>
 
 
