@@ -191,36 +191,24 @@ def self.mailchimp
     type_of_event.start_with?("Bar", "Bat", "B'n")
   end
 
-  after_create :send_welcome_email
+  before_create :send_welcome_email
 
   def send_welcome_email
     # check if status changed/set to booking
     valid_contract_statuses = ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- no dep."]
     if valid_contract_statuses.include?(self.contract_status)
-      # send Level 3 welcome email
-      if is_wedding? || is_mitzvah?
-        ContractMailer.welcome_to_family(self).deliver
+      if !Contract.exists?(:email_address => self.email_address) # first time using washington talent
+        # send Level 3 welcome email
+        if is_wedding? || is_mitzvah?
+          ContractMailer.welcome_to_family(self).deliver
+        end
       end
-    end
-  end
-
-  def welcome_to_family(contract)
-    template_name = nil
-    if contract.is_wedding?
-      template_name = "welcome_wedding"
-    elsif contract.is_mitzvah?
-      template_name = "welcome_mitzvah"
-    end
-    if template_name.present?
-      mail( to: contract,
-            subject: "Welcome to the Washington Talent Family!",
-            template_name: template_name)
     end
   end
 
   # following is the logic and scopes for sending emails at specific intervals
   scope :booked_2_weeks_ago,           where("date(created_at) = ?",    2.weeks.ago)
-  scope :booked_1_month_ago,           where("date(created_at) = ?",    2.month.ago)
+  scope :booked_1_month_ago,           where("date(created_at) = ?",    1.month.ago)
   scope :happening_1_year_from_now,    where("date(date_of_event) = ?", 1.year.from_now)
   scope :happening_10_months_from_now, where("date(date_of_event) = ?", 10.months.from_now)
   scope :happening_9_months_from_now,  where("date(date_of_event) = ?", 9.months.from_now)
@@ -243,7 +231,7 @@ def self.mailchimp
     end
 
     self.mitzvah.happening_1_year_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver #done
       ContractMailer.level_3_mail(c, :mitzvah_5p_kickback).deliver
     end
 
@@ -265,19 +253,19 @@ def self.mailchimp
     end
 
     self.mitzvah.happening_5_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_custom_caps).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_airbrush).deliver #done
     end
 
     self.mitzvah.happening_4_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver #done
     end
 
     self.mitzvah.happening_3_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver #done
     end
 
     self.mitzvah.happening_2_months_from_now.each do |c|
-      ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver
+      ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver #done
       ContractMailer.level_3_mail(c, :mitzvah_video).deliver
     end
 

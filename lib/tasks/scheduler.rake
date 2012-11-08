@@ -34,3 +34,9 @@ task update_contracts: :environment do
       Contract.notconfirmed
       puts "done"
     end
+  
+  desc "Scheduler will call this task daily to send deals related to upcoming events"
+  task :level_3_emails => :environment do
+    Contract.send_mitzvah_emails
+    Contract.send_wedding_emails
+  end
