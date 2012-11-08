@@ -52,7 +52,7 @@ Wtasystem::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
   config.action_mailer.default_url_options = { host: 'secret-beach-6855.herokuapp.com' }
-  config.action_mailer.asset_host = 'secret-beach-6855.herokuapp.com'
+  config.action_mailer.asset_host = 'http://secret-beach-6855.herokuapp.com'
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   #
