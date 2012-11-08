@@ -191,30 +191,18 @@ def self.mailchimp
     type_of_event.start_with?("Bar", "Bat", "B'n")
   end
 
-  after_create :send_welcome_email
+  before_create :send_welcome_email
 
   def send_welcome_email
     # check if status changed/set to booking
     valid_contract_statuses = ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- no dep."]
     if valid_contract_statuses.include?(self.contract_status)
-      # send Level 3 welcome email
-      if is_wedding? || is_mitzvah?
-        ContractMailer.welcome_to_family(self).deliver
+      if !Contract.exists?(:email_address => self.email_address) # first time using washington talent
+        # send Level 3 welcome email
+        if is_wedding? || is_mitzvah?
+          ContractMailer.welcome_to_family(self).deliver
+        end
       end
-    end
-  end
-
-  def welcome_to_family(contract)
-    template_name = nil
-    if contract.is_wedding?
-      template_name = "welcome_wedding"
-    elsif contract.is_mitzvah?
-      template_name = "welcome_mitzvah"
-    end
-    if template_name.present?
-      mail( to: contract,
-            subject: "Welcome to the Washington Talent Family!",
-            template_name: template_name)
     end
   end
 
