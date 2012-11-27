@@ -19,6 +19,35 @@
 #
 #User.delete_all
 Contract.unscoped.delete_all
+email = "iamjustfresh@gmail.com"
+
+["Wedding", "Bar"].each do |e_type|
+
+  contract = Contract.create(:type_of_event => e_type,
+                  :date_of_event => 3.years.from_now,
+                  :contract_status => "Booked",
+                  :email_address => email)
+
+  contract.update_attribute(:created_at, 2.weeks.ago)
+
+
+  contract = Contract.create(:type_of_event => e_type,
+                  :date_of_event => 3.years.from_now,
+                  :contract_status => "Booked",
+                  :email_address => email)
+
+  contract.update_attribute(:created_at, 1.month.ago)
+
+  [1,2,3,4,5,6,8,9,10,12].each do |months|
+
+    contract = Contract.create(:type_of_event => e_type,
+                    :date_of_event => months.months.from_now,
+                    :contract_status => "Booked",
+                    :email_address => email)
+
+  end
+
+end
 # password_length = 6
 #
 # #ALTER SEQUENCE users_id_seq RESTART WITH 1
