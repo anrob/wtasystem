@@ -22,6 +22,8 @@ gem 'activeadmin'
 gem 'sass-rails',   '<= 3.2.5'
 
 
+  gem 'newrelic_rpm'
+
 
 group :development do
 gem 'sqlite3'
