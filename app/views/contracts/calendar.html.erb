@@ -3,11 +3,16 @@
 <%#= @contracts.inspect %>
 
 <div id="calendar">
-<h1 class="year"><%= link_to Date.today.year, {month: (Date.today).strftime("%Y-%m-%d")}%></h1>
+
+<h1 class="year"><%= link_to @date.year, {month: (Date.today).strftime("%Y-%m-%d")}%></h1>
 <h2 class="time"><%= Time.now.strftime("%I:%M %p") %></h2>
 <h3 class="month"><%=h @date.strftime("%B") %></h3>
 
-
+<div>
+<center>  <%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+  <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+  <%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></center>
+  </div>
     <%= calendar_for @contracts,{year: @date.year, month: @date.month} do |calendar| %>
     <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
     <%= calendar.day(day_method: :date_of_event) do |date, contracts| %>
@@ -31,10 +36,6 @@
         <% end %>
       <% end %>
 
-    <div class="span12">
-    <%= link_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-    <%= link_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-    <%= link_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-    </div>
+
 </div>
 
