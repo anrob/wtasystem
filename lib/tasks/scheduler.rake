@@ -28,7 +28,6 @@ task update_contracts: :environment do
      puts "done"
    end
 
-
    task notconfirmed: :environment do
       puts "checking"
       Contract.notconfirmed
