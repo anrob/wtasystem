@@ -82,6 +82,7 @@ class ContractMailer < PostageApp::Mailer
     elsif contract.is_mitzvah?
       template_name = "welcome_mitzvah"
     end
+    @contract = contract
     if template_name.present?
       mail( to: contract.email_address,
             subject: "Welcome to the Washington Talent Family!",
@@ -109,6 +110,8 @@ class ContractMailer < PostageApp::Mailer
       :wedding_lighting       => "Transform your room with Lighting",
       :wedding_photo_booth    => "Add something different to your Modern Wedding"
     }
+
+    @contract = contract
 
     mail( to: contract.email_address,
           subject: mail_type_to_subject[mail_type] || "Hello from Washington Talent Agency",
