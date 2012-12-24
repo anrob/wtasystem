@@ -8,9 +8,11 @@ ActiveAdmin.register User do
   # menu :unless => proc{ user.is?(:everything) }
   #   controller.authorize_resource
     filter :email
+    filter :actcode_name
 
     index do
       column :email
+      column :actcode_name
       column "Actions" do |post|
            link_to "View", admin_user_path(post)
          end

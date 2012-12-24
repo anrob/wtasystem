@@ -7,6 +7,7 @@ ActiveAdmin.register Contract do
  filter :act_booked
  filter :act_code
  filter :date_of_event
+ filter :agent
 
  index do
    column :date_of_event
@@ -15,6 +16,7 @@ ActiveAdmin.register Contract do
    column :type_of_event
    column :location_name
    column :act_booked
+   column :contract_price
 
  end
 end
