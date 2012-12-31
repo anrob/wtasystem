@@ -4,6 +4,7 @@ class ContractsController < ApplicationController
   inherit_resources
   load_and_authorize_resource
   before_filter :everypage
+  before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
 
   def index
@@ -117,9 +118,6 @@ class ContractsController < ApplicationController
   end
 
   def confirmjob
-    @user = current_user
-    @contract = Contract.find(params[:id])
-    @additional = Contract.additional(@contract)
     #ContractMailer.event_info_email(@user,@contract,@additional).deliver
     @contract.update_attributes(confirmation: 1)
     flash[:notice] = "Job Confirmed"
@@ -127,9 +125,6 @@ class ContractsController < ApplicationController
   end
 
   def emailjobwithnetonly
-    @user = current_user
-    @contract = Contract.find(params[:id])
-    @additional = Contract.additional(@contract)
     ContractMailer.event_info_email_with_net_money(@user,@contract,@additional).deliver
     #@contract.update_attributes(confirmation: 1)
     flash[:notice] = "Info Mailed"
@@ -137,9 +132,6 @@ class ContractsController < ApplicationController
   end
 
   def emailjobwithallmoney
-    @user = current_user
-    @contract = Contract.find(params[:id])
-    @additional = Contract.additional(@contract)
     ContractMailer.event_info_email_with_all_money(@user,@contract,@additional).deliver
     #@contract.update_attributes(confirmation: 1)
     flash[:notice] = "Info Mailed"
@@ -147,15 +139,19 @@ class ContractsController < ApplicationController
   end
 
   def emailjobnomoney
-    @user = current_user
-    @contract = Contract.find(params[:id])
-    @additional = Contract.additional(@contract)
     ContractMailer.event_info_email_with_no_money(@user,@contract,@additional).deliver
     #@contract.update_attributes(confirmation: 1)
     flash[:notice] = "Info Mailed"
     redirect_to :back
   end
 
+protected
+
+def find_contract
+  @user = current_user
+  @contract = Contract.find(params[:id])
+  @additional = Contract.additional(@contract)
+end
 
 #   def exportevents
 #     require 'icalendar'
