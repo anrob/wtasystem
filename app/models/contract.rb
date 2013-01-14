@@ -96,7 +96,7 @@ class Contract < ActiveRecord::Base
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
-  scope :fourday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("4 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
+  # scope :fourday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("4 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
   scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))

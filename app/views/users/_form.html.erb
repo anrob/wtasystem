@@ -18,10 +18,10 @@
   <%# end %>
 
 <% else %>
-<% unless user.actcode_name.blank? %>
+<% unless user.actcode_name? %>
 <p><strong>Actcode : <%= user.actcode_name %>
     <% end %>
-    <% unless user.management_id.blank?%>
+    <% unless user.management_id? %>
 Management Company : <%= user.management.name %></p>
 <% end %>
 </strong>

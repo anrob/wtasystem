@@ -8,7 +8,6 @@ class ContractsController < ApplicationController
   helper_method :themanager, :themap
 
   def index
-
     case @but when "true"
       @contract = Contract.where(act_code: params[:act_code])
       @actcode = Actcode.where(actcode:  params[:act_code]).first
@@ -76,7 +75,7 @@ class ContractsController < ApplicationController
       @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
       #@last = Contract.last(1).reverse.map {|m| m.created_at}.flatten!
       #@cool =  Chronic.parse(@last, "24 hours ago")
-       @allactcodes = Contract.all.collect { |obj| obj.act_code }.dups
+       @allactcodes = Contract.all.collect { |obj| obj.act_code }
         @actcodes = Actcode.all.collect { |b| b.name}
         @updates = @allactcodes - @actcodes
         @remove = Contract.remove
@@ -197,12 +196,4 @@ end
     gmail.logout
   end
 
-
-  def didchange
-      if self.changed?
-        @contracts.update_attributes( {
-        confirmation: 0
-        })
-      end
-  end
 end
