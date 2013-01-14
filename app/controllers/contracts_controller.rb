@@ -28,38 +28,21 @@ class ContractsController < ApplicationController
       @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
       @gp = @gt.map {|m| m.actcode}
       @totalnum = @contract.threesixfive.sum(:contract_price)
-    #@mana = Actcode.find_by_actcode(current_user.actcode)
       unless current_user.is? :manager
       @contracts = Contract.mystuff(current_user.actcode_name).tenday.all
       else
       @contracts = Contract.where(act_code: @manger.split(",")).tenday.all
-     # @totalcount = @contracts.count
+
       end
     end
-      #respond_with contracts: @contract.thisweek
   end
 
   def show
-    #add_breadcrumb "Show Contract", contract_path
     @additional = Contract.additional(@contract)
-    #@activities = PublicActivity::Activity.all
-    # respond_with do |format|
-    #     format.html
-    #     format.pdf do
-    #       pdf = ContractPdf.new(@contract, view_context)
-    #       send_data pdf.render, filename: "contract_#{@contract.contract_number}.pdf",
-    #
-    #       type: "application/pdf",
-    #       disposition: "inline"
-    #     end
-    #end
-
   end
 
   def calendar
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-   # @mana = Actcode.find_by_actcode(current_user.actcode)
-    #case @but when "true"
     unless current_user.is? :manager
       @contracts = Contract.mystuff(current_user.actcode_name).threesixfive.all
     else
@@ -73,8 +56,6 @@ class ContractsController < ApplicationController
       @contractfour = Contract.order(params[:sort]).tenday.all
       @contracts = Contract.order(params[:sort]).nextsix.all
       @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
-      #@last = Contract.last(1).reverse.map {|m| m.created_at}.flatten!
-      #@cool =  Chronic.parse(@last, "24 hours ago")
        @allactcodes = Contract.all.collect { |obj| obj.act_code }
         @actcodes = Actcode.all.collect { |b| b.name}
         @updates = @allactcodes - @actcodes
@@ -84,40 +65,15 @@ class ContractsController < ApplicationController
   end
 
   def report
-    #@contract = Contract.all
-
    @contract= Contract.all.collect { |ob| ob.unique3 }.dups
-
    @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
-
       @allactcodes = Contract.all.collect { |obj| obj.act_code }
       @actcodes = User.all.collect { |b| b.actcode_name}
       @updates = @allactcodes - @actcodes
       @upd = @updates.uniq
-   #          # @allactcodes = Contract.all.collect { |obj| obj.act_code }
-   #          #     @actcodes = Actcode.all.collect { |b| b.name}
-   #          #     @updates = @allactcodes - @actcodes
-   #          #     @dupactcodes = @actcodes.dups
-   #          #     @userlist = User.all.collect { |obj| obj.email }.dups
-   # @contract = Contract.last[:updated_at]
-   # @time = Time.now - @contract
-   # if @time > 86400
-   # @showit = "Old Data"
-   # else
-   #   @showit = "all good"
-#end
-
-     # @contracts = Contract.unconfirmedevent.tenday.all
-     #    @actcodes = Actcode.find_all_by_actcode(@contracts.map {|m|m.act_code})
-     #
-     #    @theusers = User.with_role("manager").find_all_by_management_id(@actcodes.map {|m| m.management_id})
-     #    @u = @theusers.collect {|m| m.email}.uniq
-     #    @contract = Contract.mystuff("FROB").unconfirmedevent.tenday.all
-     #    ContractMailer.send_user_reminder(@u).deliver
   end
 
   def confirmjob
-    #ContractMailer.event_info_email(@user,@contract,@additional).deliver
     @contract.update_attributes(confirmation: 1)
     flash[:notice] = "Job Confirmed"
     redirect_to @contract
@@ -125,21 +81,18 @@ class ContractsController < ApplicationController
 
   def emailjobwithnetonly
     ContractMailer.event_info_email_with_net_money(@user,@contract,@additional).deliver
-    #@contract.update_attributes(confirmation: 1)
     flash[:notice] = "Info Mailed"
     redirect_to :back
   end
 
   def emailjobwithallmoney
     ContractMailer.event_info_email_with_all_money(@user,@contract,@additional).deliver
-    #@contract.update_attributes(confirmation: 1)
     flash[:notice] = "Info Mailed"
     redirect_to :back
   end
 
   def emailjobnomoney
     ContractMailer.event_info_email_with_no_money(@user,@contract,@additional).deliver
-    #@contract.update_attributes(confirmation: 1)
     flash[:notice] = "Info Mailed"
     redirect_to :back
   end
@@ -152,42 +105,11 @@ def find_contract
   @additional = Contract.additional(@contract)
 end
 
-#   def exportevents
-#     require 'icalendar'
-#  #@event = Contract.mystuff(current_user.actcode_name).tenday.all
-#  @event = Contract.find_by_id("45,031")
-#  # @event
-#   @calendar = Icalendar::Calendar.new
-#      event = Icalendar::Event.new
-#     # event.start = @event.event_start_time.strftime("%Y%m%dT%H%M%S")
-#   #   event.end = @event.dt_time.strftime("%Y%m%dT%H%M%S")
-#   #   event.summary = @event.summary
-#   #   event.description = @event.description
-#   #   event.location = @event.location
-#
-#   event.summary     = "Mercury MA-6"
-#      event.description = "First US Manned Spaceflight\n(NASA Code: Mercury 13/Friendship 7)"
-#      event.dtstart     = Time.parse("2012-07-20T09:47:39-0500").getutc
-#      event.dtend       = Time.parse("2012-07-20T14:43:02-0500").getutc
-#      event.location    = "Cape Canaveral"
-#      event.add_attendee  "john.glenn@nasa.gov"
-#      event.url         = "http://nasa.gov"
-#  @calendar.add event
-#
-#
-#      @calendar.publish
-#
-# headers['Content-Type'] = "text/calendar; charset=UTF-8"
-# render layout: false, :text => @calendar.to_ical
-#
-# end
-
   def themap
     "#{@contract.location_address_line_1}+#{@contract.location_city}+#{@contract.location_state}+#{@contract.location_zip}"
   end
 
   def gmail
-    #require 'gmail'
     gmail = Gmail.connect("fresh@sofreshentertainment.com","shaina")
     @mailcount = gmail.inbox.find(:unread) do |email|
       email.read!
