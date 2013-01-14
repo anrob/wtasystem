@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121004165803) do
+ActiveRecord::Schema.define(:version => 20130114212018) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(:version => 20121004165803) do
     t.text     "act_notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "acts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "actcode"
+    t.boolean  "premium"
+    t.text     "videocode"
+    t.text     "description"
   end
 
   create_table "admin_notes", :force => true do |t|
@@ -184,6 +194,14 @@ ActiveRecord::Schema.define(:version => 20121004165803) do
     t.string   "ceremonoy_address_line_1"
     t.string   "cocktail_time"
     t.string   "reception_location"
+    t.boolean  "emailremov"
+    t.boolean  "planner"
+    t.boolean  "unsuscrib"
+    t.string   "player4"
+    t.string   "player5"
+    t.string   "player6"
+    t.string   "player7"
+    t.string   "player8"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -329,6 +347,18 @@ ActiveRecord::Schema.define(:version => 20121004165803) do
     t.integer  "management_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "staffs", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "email"
+    t.string   "image"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|

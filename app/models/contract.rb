@@ -86,7 +86,15 @@ class Contract < ActiveRecord::Base
  :confirmation,
  :reception_location,
  :longitude,
- :latitude
+ :latitude,
+ :emailremov,
+ :planner,
+ :unsuscrib,
+ :player4,
+ :player5,
+ :player6,
+ :player7,
+ :player8
 
  default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
   Time.zone = "UTC"
@@ -96,16 +104,12 @@ class Contract < ActiveRecord::Base
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
-  # scope :fourday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("4 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
   scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
 
-
-  #scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
-  #scope :thirtyday, where(date_of_event: (my_date + 12.days)..(my_date + 30.days))
 
   define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
@@ -146,8 +150,6 @@ class Contract < ActiveRecord::Base
   end
 
   def self.notconfirmed
-    #@notconfirmed = User.where('email != ?' ,"dummyemail").collect {|e| e.email}
-    #@notconfirmed = User.where("management_id = ?", 1).collect {|ob| ob.email}
      @notconfirmed = User.where('confirmation_token IS NOT NULL' ).collect {|e| e.email}
       ContractMailer.notconfirmed(@notconfirmed).deliver
   end
@@ -168,21 +170,6 @@ def self.mailchimp
  def clientname
    "#{first_name} #{last_name}"
  end
-
- #   def eventdatetime
- #     "#{date_of_event}".strftime('%Y%m%d')+"{event_start_time}".strftime('T%H%M%S')}
- #   end
- # #
- #   def status
- #    if contract_status == "Contract Received"
- #      @status = "recieved"
- #    elsif contract_status == "Booked- PAY ACT"
- #      @status = "booked"
- #     else contract_status == "Hold"
- #        @status = "hold"
- #   end
- #   @status
- # end
 
   scope :mitzvah, where("type_of_event LIKE ? OR type_of_event LIKE ? OR type_of_event LIKE ?", "Bar%", "Bat%", "B'n%")
   scope :wedding, where("type_of_event LIKE ? OR type_of_event LIKE ?", "Wedding%", " Wedding%")
