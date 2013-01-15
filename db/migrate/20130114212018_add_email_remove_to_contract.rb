@@ -1,8 +1,6 @@
 class AddEmailRemoveToContract < ActiveRecord::Migration
   def change
-    add_column :contracts, :emailremov, :boolean
-    add_column :contracts, :planner, :boolean
-    add_column :contracts, :unsuscrib, :boolean
+    add_column :contracts, :unsubscrib, :boolean
     add_column :contracts, :player4, :string
     add_column :contracts, :player5, :string
     add_column :contracts, :player6, :string

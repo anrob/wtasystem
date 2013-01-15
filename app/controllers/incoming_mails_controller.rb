@@ -100,14 +100,12 @@ class IncomingMailsController < ApplicationController
                                         act_notes: row[79].inspect,
                                         contract_provisions: row[80].inspect,
                                         reception_location: row[81],
-                                        emailremov: row[82],
-                                        planner: row[83],
-                                        unsuscrib: row[84],
-                                        player4: row[85],
-                                        player5: row[86],
-                                        player6: row[87],
-                                        player7: row[88],
-                                        player8: row[89]}
+                                        unsubscrib: row[82],
+                                        player4: row[83],
+                                        player5: row[84],
+                                        player6: row[85],
+                                        player7: row[86],
+                                        player8: row[87]}
                                          @contracts.confirmation = 0 if @contracts.changed?
                                          @contracts.save
                              end

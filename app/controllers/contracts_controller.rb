@@ -65,12 +65,14 @@ class ContractsController < ApplicationController
   end
 
   def report
-   @contract= Contract.all.collect { |ob| ob.unique3 }.dups
+   #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
    @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
       @allactcodes = Contract.all.collect { |obj| obj.act_code }
       @actcodes = User.all.collect { |b| b.actcode_name}
       @updates = @allactcodes - @actcodes
       @upd = @updates.uniq
+      #@emails = Contract.where('email_address ~= ?','%comcast.net%')
+      @emails = Contract.emails.collect { |ob| ob.email_address}
   end
 
   def confirmjob

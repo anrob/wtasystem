@@ -87,9 +87,7 @@ class Contract < ActiveRecord::Base
  :reception_location,
  :longitude,
  :latitude,
- :emailremov,
- :planner,
- :unsuscrib,
+ :unsubscrib,
  :player4,
  :player5,
  :player6,
@@ -109,6 +107,8 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
+
+  scope :emails, -> {where("email_address LIKE ?","%@%")}
 
 
   define_easy_dates do
