@@ -1,5 +1,11 @@
 desc "This task is called by the Heroku cron add-on"
-task update_contracts: :environment do
+
+  task cleardb: :environment do
+    puts "Clearing DB"
+    Contract.unscoped.delete_all
+    puts "done"
+  end
+  task update_contracts: :environment do
     puts "Updating feed..."
     Contract.import_contracts
     puts "done."
@@ -33,7 +39,7 @@ task update_contracts: :environment do
       Contract.notconfirmed
       puts "done"
     end
-  
+
   desc "Scheduler will call this task daily to send deals related to upcoming events"
   task :level_3_emails => :environment do
     Contract.send_mitzvah_emails
