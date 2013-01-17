@@ -20,6 +20,7 @@ gem 'icalendar'
 gem 'activeadmin'
 #gem 'sqlite3'
 gem 'sass-rails',   '<= 3.2.5'
+gem 'trackman'
 
 
   gem 'newrelic_rpm'

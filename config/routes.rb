@@ -1,6 +1,14 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
 
+  match "Working/503-error", :to => "working#maintenance_error"
+
+  match "Working/503", :to => "working#maintenance"
+
+  match "Working/500", :to => "working#error"
+
+  match "Working/404", :to => "working#not_found"
+
   ActiveAdmin.routes(self)
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
