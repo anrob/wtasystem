@@ -53,10 +53,12 @@ Type of Light Show : <%= @contract.type_of_light_show %><br>
     Ceremony Zip:   <%= @contract.ceremony_location_zip %><br>
     Ceremony Start Time:    <%= @contract.ceremony_start_time %><br>
     Ceremony Instrumentation:   <%= @contract.ceremony_instrumenttation %><br>
-        Video/Photography Section<br>
-        Videographer/Photographer 1: <%= @contract.videographer_1 %><br>
-        Videographer/Photographer 2: <%= @contract.videographer_2 %><br>
-        Videographer/Photographer 3: <%= @contract.videgrapher_3 %><br>
+        Player Section<br>
+        <dt>Player 1: </dt> <%= contract.player4 %><br>
+        <dt>Player 2: </dt> <%= contract.player5 %><br>
+        <dt>Player 3: </dt> <%= contract.player6 %><br>
+        <dt>Player 4: </dt> <%= contract.player7 %><br>
+        <dt>Player 5: </dt> <%= contract.player8 %><br>
 <br>
         Contract Provisions<br>
  <% unless @contract.contract_provisions == "nil" %>
