@@ -21,6 +21,9 @@ gem 'activeadmin'
 #gem 'sqlite3'
 gem 'sass-rails',   '<= 3.2.5'
 gem 'trackman'
+gem 'jquery-rails'
+gem 'jquery_datepicker'
+gem "meta_search"
 
 
   gem 'newrelic_rpm'
@@ -29,6 +32,9 @@ gem 'trackman'
 group :development do
 gem 'sqlite3'
 gem 'jquery_mobile_rails'
+gem 'better_errors'
+gem "binding_of_caller"
+gem 'meta_request'
 end
 
 # Gems used only for assets and not required

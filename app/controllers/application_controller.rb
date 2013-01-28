@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
   end
- rescue_from Exception do
-  render layout: false, :status => 422
-  end
+ # rescue_from Exception do
+ #  render layout: false, :status => 422
+ #  end
 
   private
 
@@ -26,15 +26,18 @@ end
 
   def everypage
     if user_signed_in?
-     @management = Management.find_by_id(current_user.management_id)
-     @mana = Actcode.find_by_actcode(current_user.actcode_name)
+     #@management = Management.find_by_id(current_user.management_id)
+     @mana = Actcode.find_by_actcode(current_user.actcode_name, :include => :management)
+     if current_user.is? :manager
      @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode}
-     @but = @manger.include?(params[:act_code]).to_s
+    end
+     #@but = @manger.include?(params[:act_code]).to_s
      #@user = current_user
-     @pd = @user
+    # @pd = @user
 
-     @otheracts = User.getotheracts(current_user).order("first_name")
+#     @otheracts = User.getotheracts(current_user, :include => :management).order("first_name")
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode")
+     #@getallbycompnay = User.management
 
 end
 end

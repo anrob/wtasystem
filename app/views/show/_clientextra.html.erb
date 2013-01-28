@@ -2,8 +2,10 @@
 <h3 class="sectionheaders"><span>Client Section</span></h3>
 <dt>    Client Info:</dt> <%= contract.first_name %> <%= contract.last_name %><br>
 <dt>    Email Address:</dt> <%= contract.email_address %><br>
-<dt>    Bride / Bat Mitzvah Name:</dt> <%= contract.brides_names %><br>
+<dt>    Bride / Bat Mitzvah Name:</dt> <%= contract.brides_names %> - <%= @contract.brides_names.blank? %><br>
+
 <dt>    Grooms / Bar Mitzvah Name: </dt> <%= contract.grooms_name %><br>
+
 <dt>    Home Phone:</dt> <%= contract.home_phone %><br>
 <dt>    Work Phone:</dt> <%= contract.work_phone %><br>
 <dt>    Cell Phone:</dt> <%= contract.cell_phone %>

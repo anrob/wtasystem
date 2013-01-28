@@ -95,16 +95,19 @@ class Contract < ActiveRecord::Base
  :player8
 
  default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
+
+ #default_scope order:('confirmation ASC')
   Time.zone = "UTC"
   Chronic.time_class = Time.zone
   my_date = Date.today
-  scope :mystuff, lambda { |user| where("act_code = ?", user)}
+  scope :mystuff, lambda { |user| where("act_code = ?", user) }
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
-  scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
-  scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'date_of_event ASC')}
+  scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
+  scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
+  #scope :showothers, where(act_code: Actcode.getallbycompany.split(",").tenday.all)
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
 
@@ -113,7 +116,7 @@ class Contract < ActiveRecord::Base
 
   define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
-    format_for [:date_of_event, :created_at], format: "%e %b"
+    format_for [:date_of_event, :created_at], format: "%b %e, %y"
   end
 
   def self.send_user_reminders
@@ -164,7 +167,7 @@ def self.mailchimp
   end
 
  def eventtime
-     "#{event_start_time} - #{event_end_time}"
+     "#{event_start_time}-#{event_end_time}"
  end
 
  def clientname

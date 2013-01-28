@@ -9,6 +9,7 @@
 <h3 class="month"><%=h @date.strftime("%B") %></h3>
 
 <div>
+
 <center>  <%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
   <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
   <%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></center>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title><%= [@title, app_name].compact.join(" - ") %></title>
     <%= csrf_meta_tags %>
-
+<%= javascript_include_tag "application" %>
     <!-- Ensure devices display responsive pages properly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="kbqOXaJOiaECku8HYoQOR_oxR_AnEntlBsN_QdFZw0U" />
@@ -57,8 +57,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-    <%= yield :scripts %>
+    <%#= javascript_include_tag "application" %>
+    <%#= yield :scripts %>
     <%= yield :javascript %>
 
   </body>
