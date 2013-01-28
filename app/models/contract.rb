@@ -170,6 +170,13 @@ def self.mailchimp
      "#{event_start_time}-#{event_end_time}"
  end
 
+ def caltime
+   self.date_of_event.strftime("%Y%m%d")
+ end
+ def caltimes
+   self.event_start_time
+ end
+
  def clientname
    "#{first_name} #{last_name}"
  end

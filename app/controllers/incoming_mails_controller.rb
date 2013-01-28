@@ -131,7 +131,7 @@ end
   #   event.location = @event.location
      event.summary     = d.last_name
      event.description = d.act_booked
-     event.start     = d.date_of_event.strftime("%Y%m%d")
+     event.start     = "#{d.caltime}",d.caltimes
      event.end       = d.date_of_event.strftime("%Y%m%d")
      event.location    = d.location_name
  @calendar.add event
