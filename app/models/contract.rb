@@ -116,7 +116,7 @@ class Contract < ActiveRecord::Base
 
   define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
-    format_for [:date_of_event, :created_at], format: "%b %e, %y"
+    format_for [:date_of_event, :created_at], format: "%m/%d/%y"
   end
 
   def self.send_user_reminders
