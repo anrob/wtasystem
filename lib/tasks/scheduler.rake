@@ -42,6 +42,5 @@ desc "This task is called by the Heroku cron add-on"
 
   desc "Scheduler will call this task daily to send deals related to upcoming events"
   task :level_3_emails => :environment do
-    Contract.send_mitzvah_emails
-    Contract.send_wedding_emails
+    Contract.send_mitzvah_and_wedding_emails
   end
