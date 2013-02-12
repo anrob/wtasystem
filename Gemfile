@@ -19,19 +19,19 @@ gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
 #gem 'sqlite3'
-gem 'sass-rails',   '<= 3.2.6'
+#gem 'sass-rails',   '<= 3.2.6'
 gem 'trackman'
 gem 'jquery-rails'
 gem 'jquery_datepicker'
 gem "meta_search"
 
 
-  gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 
 group :development do
 gem 'sqlite3'
-gem 'jquery_mobile_rails'
+#gem 'jquery_mobile_rails'
 gem 'better_errors'
 gem "binding_of_caller"
 gem 'meta_request'
@@ -43,11 +43,11 @@ group :assets do
   gem 'sass-rails',   '<= 3.2.6'
   gem 'coffee-rails', '<= 3.2.2'
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-datatables-rails'
-  gem 'jquery-ui-rails'
+ # gem 'jquery-datatables-rails'
+  #gem 'jquery-ui-rails'
 end
 
-gem 'jquery-rails'
+#gem 'jquery-rails'
 gem 'devise'
 gem "cancan"
 #gem 'formtastic', '2.1.0'
