@@ -19,7 +19,7 @@
  <%= activatable_li_tag_with_link "Home", root_path %>
 <% if user_signed_in? %>
  <%= activatable_li_tag_with_link "Calendar", calendar_path %>
- <%= activatable_li_tag_with_link "My Team", users_path if current_user.is? :manager %>
+ <%#= activatable_li_tag_with_link "My Team", users_path if current_user.is? :manager %>
 <% if current_user.is? :everything %>
 <ul class="nav nav-pills">
   <li class="dropdown" id="menu1">
@@ -28,8 +28,8 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <%= activatable_li_tag_with_link "Management Companies", managements_path if current_user.is? :everything %>
-     <%= activatable_li_tag_with_link "Actcode", actcodes_path if current_user.is? :everything  %>
+      <%#= activatable_li_tag_with_link "Management Companies", managements_path if current_user.is? :everything %>
+     <%#= activatable_li_tag_with_link "Actcode", actcodes_path if current_user.is? :everything  %>
      <%= activatable_li_tag_with_link "All Jobs Next Ten days", alljobs_path if current_user.is? :everything  %>
     <%#= activatable_li_tag_with_link "All Jobs", alljobs_path(number: :number) if current_user.is? :everything  %>
       <li class="divider"></li>
