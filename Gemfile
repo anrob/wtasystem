@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'pg'
 #gem "moonshado-sms"
 gem 'postageapp'
@@ -69,7 +69,7 @@ gem 'lazy_high_charts'
 gem 'gmail'
 gem 'prawn'
 
-gem 'rack', '1.4.1'
+gem 'rack', '1.4.5'
 
 group :test do
   # Pretty printed test output
