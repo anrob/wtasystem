@@ -20,6 +20,7 @@
 <% if user_signed_in? %>
  <%= activatable_li_tag_with_link "Calendar", calendar_path %>
  <%= activatable_li_tag_with_link "All Jobs Next Ten days", alljobs_path if current_user.is? :everything  %>
+<%= activatable_li_tag_with_link "Compare Records", missingrecords_path if current_user.is? :everything  %>
  <%#= activatable_li_tag_with_link "My Team", users_path if current_user.is? :manager %>
 
 

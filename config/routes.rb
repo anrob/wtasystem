@@ -31,6 +31,7 @@ resources :users
    match '/otheracts', to: "contracts#otheracts"
    match '/import', to: "contracts#import_contracts"
    match '/alljobs', to: "contracts#alljobs"
+   match '/missingrecords', to: "contracts#missingrecords"
    match '/mailchimp', to: "contracts#mailchimp"
    match '/calendar', to: "contracts#calendar"
    match '/exportcal', to: "incoming_mails#exportevents"

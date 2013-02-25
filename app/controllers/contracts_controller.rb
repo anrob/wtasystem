@@ -69,6 +69,13 @@ class ContractsController < ApplicationController
         @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
   end
 
+  def missingrecords
+      @contractfour = Contract.order(:unique3).tenday.all
+      @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
+
+        @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
+  end
+
   def report
    #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
    @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
