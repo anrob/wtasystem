@@ -221,7 +221,7 @@ def self.mailchimp
   scope :happening_2_months_from_now,  where("date(date_of_event) = ?", 2.months.from_now)
   scope :happening_1_month_from_now,  where("date(date_of_event) = ?", 1.months.from_now)
 
-  scope :not_unsubscribed, where("unsubscrib != ?", true)
+  scope :not_unsubscribed, where("unsubscrib = ? OR unsubscrib is ?", false, nil)
 
   def no_past_photography_contract
     !Contract.
