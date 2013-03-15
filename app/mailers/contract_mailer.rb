@@ -114,6 +114,7 @@ class ContractMailer < PostageApp::Mailer
     @contract = contract
 
     mail( to: contract.email_address,
+          from: "suppoert@dctalentphtovideo.com",
           subject: mail_type_to_subject[mail_type] || "Hello from Washington Talent Agency",
           template_name: mail_type)
   end
