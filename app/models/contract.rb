@@ -398,7 +398,7 @@ def self.mailchimp
 
   # helper function. May be there is better place for this
   def self.add_if_not_exists?(ar, elem)
-    true if ar.include?(elem)
+    return true if ar.include?(elem)
     ar << elem
     false
   end
