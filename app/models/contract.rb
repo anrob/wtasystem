@@ -223,183 +223,184 @@ def self.mailchimp
 
   scope :not_unsubscribed, where("unsubscrib = ? OR unsubscrib is ?", false, nil)
 
-    def no_past_photography_contract
-      !Contract.
-      where(:prntkey23 => self.prntkey23).
-      where("id != ?", self.id).
-      where("act_code LIKE 'WA%'").
-      where("contract_status LIKE '%Contract%' OR contract_status LIKE '%Booked%'").exists?
+  def no_past_photography_contract
+    !Contract.
+    where(:prntkey23 => self.prntkey23).
+    where("id != ?", self.id).
+    where("act_code LIKE 'WA%'").
+    where("contract_status LIKE '%Contract%' OR contract_status LIKE '%Booked%'").exists?
+  end
+
+  def no_past_video_contract
+    !Contract.
+    where(:prntkey23 => self.prntkey23).
+    where("id != ?", self.id).
+    where("act_code LIKE 'WV%'").
+    where("contract_status LIKE '%Contract%' OR contract_status LIKE '%Booked%'").exists?
+  end
+
+  def self.send_mitzvah_and_wedding_emails
+
+    email_sent_to = []
+
+    self.mitzvah.booked_2_weeks_ago.not_unsubscribed.each do |c|
+      if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
+      end
     end
 
-    def no_past_video_contract
-      !Contract.
-      where(:prntkey23 => self.prntkey23).
-      where("id != ?", self.id).
-      where("act_code LIKE 'WV%'").
-      where("contract_status LIKE '%Contract%' OR contract_status LIKE '%Booked%'").exists?
+    self.mitzvah.booked_1_month_ago.not_unsubscribed.each do |c|
+      if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_video).deliver
+      end
     end
 
-    def self.send_mitzvah_and_wedding_emails
-
-      email_sent_to = []
-
-      self.mitzvah.booked_2_weeks_ago.not_unsubscribed.each do |c|
-        if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
-        end
+    self.mitzvah.happening_1_year_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver #done
+        ContractMailer.level_3_mail(c, :mitzvah_5p_kickback).deliver
       end
-
-      self.mitzvah.booked_1_month_ago.not_unsubscribed.each do |c|
-        if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_video).deliver
-        end
-      end
-
-      self.mitzvah.happening_1_year_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_green_screen).deliver #done
-          ContractMailer.level_3_mail(c, :mitzvah_5p_kickback).deliver
-        end
-      end
-
-      self.mitzvah.happening_10_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
-        end
-      end
-
-      self.mitzvah.happening_9_months_from_now.not_unsubscribed.each do |c|
-        if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
-        end
-      end
-
-      self.mitzvah.happening_8_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_photo_booth).deliver
-        end
-      end
-
-      self.mitzvah.happening_6_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
-          ContractMailer.level_3_mail(c, :mitzvah_photography).deliver if c.no_past_photography_contract
-        end
-      end
-
-      self.mitzvah.happening_5_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_airbrush).deliver #done
-        end
-      end
-
-      self.mitzvah.happening_4_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver #done
-        end
-      end
-
-      self.mitzvah.happening_3_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver #done
-        end
-      end
-
-      self.mitzvah.happening_2_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver #done
-          ContractMailer.level_3_mail(c, :mitzvah_video).deliver if c.no_past_video_contract
-        end
-      end
-
-      self.mitzvah.happening_1_month_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
-        end
-      end
-
-      self.wedding.booked_2_weeks_ago.not_unsubscribed.each do |c|
-        if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_photography).deliver
-        end
-      end
-
-      self.wedding.booked_1_month_ago.not_unsubscribed.each do |c|
-        if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_video).deliver
-        end
-      end
-
-      self.wedding.happening_1_year_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_5p_kickback).deliver
-          ContractMailer.level_3_mail(c, :wedding_ceremony_musicians).deliver
-        end
-      end
-
-      self.wedding.happening_10_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_lighting).deliver
-        end
-      end
-
-      self.wedding.happening_9_months_from_now.not_unsubscribed.each do |c|
-        if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_photography).deliver
-        end
-      end
-
-      self.wedding.happening_8_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_photo_booth).deliver
-        end
-      end
-
-      self.wedding.happening_6_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_lighting).deliver
-          ContractMailer.level_3_mail(c, :wedding_photography).deliver if c.no_past_photography_contract
-        end
-      end
-
-      self.wedding.happening_5_months_from_now.not_unsubscribed.each do |c|
-        if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_video).deliver
-        end
-      end
-
-      self.wedding.happening_4_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_photo_booth).deliver
-        end
-      end
-
-      self.wedding.happening_3_months_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_ceremony_musicians).deliver
-        end
-      end
-
-      self.wedding.happening_2_months_from_now.not_unsubscribed.each do |c|
-        if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_video).deliver
-        end
-      end
-
-      self.wedding.happening_1_month_from_now.not_unsubscribed.each do |c|
-        if !add_if_not_exists?(email_sent_to, c.email_address)
-          ContractMailer.level_3_mail(c, :wedding_lighting).deliver
-        end
-      end
-
     end
 
-    private
-
-    # helper function. May be there is better place for this
-    def self.add_if_not_exists?(ar, elem)
-      true if ar.include?(elem)
-      ar << elem
-      false
+    self.mitzvah.happening_10_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
+      end
     end
+
+    self.mitzvah.happening_9_months_from_now.not_unsubscribed.each do |c|
+      if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_photography).deliver
+      end
+    end
+
+    self.mitzvah.happening_8_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_photo_booth).deliver
+      end
+    end
+
+    self.mitzvah.happening_6_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
+        ContractMailer.level_3_mail(c, :mitzvah_photography).deliver if c.no_past_photography_contract
+      end
+    end
+
+    self.mitzvah.happening_5_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_airbrush).deliver #done
+      end
+    end
+
+    self.mitzvah.happening_4_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_imagine_me).deliver #done
+      end
+    end
+
+    self.mitzvah.happening_3_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_sprockit_the_robot).deliver #done
+      end
+    end
+
+    self.mitzvah.happening_2_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_rocking_recording_booth).deliver #done
+        ContractMailer.level_3_mail(c, :mitzvah_video).deliver if c.no_past_video_contract
+      end
+    end
+
+    self.mitzvah.happening_1_month_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :mitzvah_lighting).deliver
+      end
+    end
+
+    self.wedding.booked_2_weeks_ago.not_unsubscribed.each do |c|
+      if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_photography).deliver
+      end
+    end
+
+    self.wedding.booked_1_month_ago.not_unsubscribed.each do |c|
+      if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_video).deliver
+      end
+    end
+
+    self.wedding.happening_1_year_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_5p_kickback).deliver
+        ContractMailer.level_3_mail(c, :wedding_ceremony_musicians).deliver
+      end
+    end
+
+    self.wedding.happening_10_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_lighting).deliver
+      end
+    end
+
+    self.wedding.happening_9_months_from_now.not_unsubscribed.each do |c|
+      if c.no_past_photography_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_photography).deliver
+      end
+    end
+
+    self.wedding.happening_8_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_photo_booth).deliver
+      end
+    end
+
+    self.wedding.happening_6_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_lighting).deliver
+        ContractMailer.level_3_mail(c, :wedding_photography).deliver if c.no_past_photography_contract
+      end
+    end
+
+    self.wedding.happening_5_months_from_now.not_unsubscribed.each do |c|
+      if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_video).deliver
+      end
+    end
+
+    self.wedding.happening_4_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_photo_booth).deliver
+      end
+    end
+
+    self.wedding.happening_3_months_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_ceremony_musicians).deliver
+      end
+    end
+
+    self.wedding.happening_2_months_from_now.not_unsubscribed.each do |c|
+      if c.no_past_video_contract && !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_video).deliver
+      end
+    end
+
+    self.wedding.happening_1_month_from_now.not_unsubscribed.each do |c|
+      if !add_if_not_exists?(email_sent_to, c.email_address)
+        ContractMailer.level_3_mail(c, :wedding_lighting).deliver
+      end
+    end
+
+  end
+
+  private
+
+  # helper function. May be there is better place for this
+  def self.add_if_not_exists?(ar, elem)
+    return true if ar.include?(elem)
+    ar << elem
+    false
+  end
+
 end
