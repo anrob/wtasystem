@@ -57,7 +57,8 @@ gem 'meta_search'
 gem 'inherited_resources'
 gem 'easy_dates'
 gem "breadcrumbs_on_rails"
-gem "thin"
+#gem "thin"
+gem "unicorn"
 gem "tabs_on_rails"
 #gem 'googlestaticmap'
 gem 'jintastic'
