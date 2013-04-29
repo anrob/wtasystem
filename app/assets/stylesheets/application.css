@@ -1,6 +1,5 @@
 /*
 *= require_self
-*= require "dresssed"
-*= require "calendar"
 *= require "jquery.ui.all"
+*= require_tree
 */

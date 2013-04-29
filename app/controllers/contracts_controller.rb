@@ -6,7 +6,7 @@ class ContractsController < ApplicationController
   before_filter :everypage
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
-layout "home", :except => [:index]
+layout "home"
   # def index
   #   case @but when "true"
   #     @contract = Contract.where(act_code: params[:act_code])
@@ -79,13 +79,15 @@ layout "home", :except => [:index]
 
   def report
    #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
-   @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
-      @allactcodes = Contract.all.collect { |obj| obj.act_code }
-      @actcodes = User.all.collect { |b| b.actcode_name}
-      @updates = @allactcodes - @actcodes
-      @upd = @updates.uniq
+   # @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
+   #    @allactcodes = Contract.all.collect { |obj| obj.act_code }
+   #    @actcodes = User.all.collect { |b| b.actcode_name}
+   #    @updates = @allactcodes - @actcodes
+   #    @upd = @updates.uniq
       #@emails = Contract.where('email_address ~= ?','%comcast.net%')
       @emails = Contract.emails.collect { |ob| ob.email_address}
+      @prkey = Contract.all.collect { |ab| ab.prntkey23 }
+      @emaildups = @prkey.dups
   end
 
   def confirmjob

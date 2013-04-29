@@ -51,12 +51,12 @@ module Wtasystem
     # config.to_prepare do
     #          Devise::SessionsController.skip_before_filter :skipthelogin
     #        end
-    # config.to_prepare do
-    #   Devise::SessionsController.layout "special_layout"
-    #   Devise::RegistrationsController.layout "special_layout"
-    #   Devise::ConfirmationsController.layout "special_layout"
-    #   Devise::UnlocksController.layout "special_layout"
-    #   Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application" : "special_layout" }
-    # end
+     config.to_prepare do
+       Devise::SessionsController.layout "devise"
+         Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+         Devise::ConfirmationsController.layout "devise"
+         Devise::UnlocksController.layout "devise"
+         Devise::PasswordsController.layout "devise"
+     end
   end
 end

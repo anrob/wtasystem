@@ -93,7 +93,7 @@ class Contract < ActiveRecord::Base
  :player6,
  :player7,
  :player8
-
+self.include_root_in_json = true
  default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
 
  #default_scope order:('confirmation ASC')

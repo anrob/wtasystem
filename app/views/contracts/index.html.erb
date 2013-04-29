@@ -1,10 +1,18 @@
-<h1><span>All Jobs in the Next 10 Days</span></h1>
+
+<div class="pageheader">
+    <div class="pageicon"><span class="iconfa-table"></span></div>
+    <div class="pagetitle">
+    <h5>Tables</h5>
+    <h1>Table Static</h1>
+</div>
+</div>
+<h4 class="widgettitle">All Jobs in the Next 10 Days</h4>
 <%= render 'frontjobs', contract: @contracts  %>
 <br>
 <% if current_user.is? :manager %>
-<div class="page-header">
-<h1><span>All Management Team contracts in the Next 10 Days</span></h1>
-</div>
+
+<h4 class="widgettitle">All Management Team contracts in the Next 10 Days</h4>
+
 <%= render  'frontjobs', contract: Contract.where(act_code: @manger.split(",")).tenday.all  %>
 <% end %>
 

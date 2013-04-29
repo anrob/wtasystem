@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title><%= [@title, app_name].compact.join(" - ") %></title>
     <%= csrf_meta_tags %>
-<%= javascript_include_tag "application" %>
+
     <!-- Ensure devices display responsive pages properly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="kbqOXaJOiaECku8HYoQOR_oxR_AnEntlBsN_QdFZw0U" />
@@ -16,45 +16,235 @@
     <!-- Le styles -->
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= yield :styles %>
-
+<%= javascript_include_tag "application" %>
     <!-- Le fav and touch icons -->
     <%= favicon_link_tag %>
     <%# favicon_link_tag "apple-touch-icon.png", rel: "apple-touch-icon" %>
-    <script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-32904101-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
     <%= yield :head %>
   </head>
-  <body>
-    <header>
-      <%= render "layouts/navbar" %>
-      <%= yield :header %>
-      <hr />
-    </header>
+<body>
 
-    <%= yield :banner %>
+<div class="mainwrapper">
 
-    <div id="main">
-      <div class="container">
-        <%= render "layouts/flashes" %>
+    <div class="header">
+        <div class="logo">
+            <a href="dashboard.html"><%= image_tag('logo.png', alt:"") %></a>
+        </div>
+        <div class="headerinner">
+            <ul class="headmenu">
+                <li class="odd">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="count">4</span>
+                        <span class="head-icon head-message"></span>
+                        <span class="headmenu-label">Messages</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Messages</li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong> <small class="muted"> - 19 hours ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong> <small class="muted"> - 2 days ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jane</strong> <small class="muted"> - 3 days ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Tanya</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Lee</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li class="viewmore"><a href="messages.html">View More Messages</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                    <span class="count">10</span>
+                    <span class="head-icon head-users"></span>
+                    <span class="headmenu-label">New Users</span>
+                    </a>
+                    <ul class="dropdown-menu newusers">
+                        <li class="nav-header">New Users</li>
+                        <li>
+                            <a href="">
+                                <%= image_tag('photos/thumb1.png', alt:'', class:"userthumb") %>
+                                <strong>Draniem Daamul</strong>
+                                <small>April 20, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <%= image_tag('photos/thumb2.png', alt:'', class:"userthumb") %>
+                                <strong>Shamcey Sindilmaca</strong>
+                                <small>April 19, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <%= image_tag('photos/thumb3.png', alt:'', class:"userthumb") %>
+                                <strong>Nusja Paul Nawancali</strong>
+                                <small>April 19, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <%= image_tag('photos/thumb4.png', alt:'', class:"userthumb") %>
+                                <strong>Rose Cerona</strong>
+                                <small>April 18, 2013</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <%= image_tag('photos/thumb5.png', alt:'', class:"userthumb") %>
+                                <strong>John Doe</strong>
+                                <small>April 16, 2013</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="odd">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                    <span class="count">1</span>
+                    <span class="head-icon head-bar"></span>
+                    <span class="headmenu-label">Statistics</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Statistics</li>
+                        <li><a href=""><span class="icon-align-left"></span> New Reports from <strong>Products</strong> <small class="muted"> - 19 hours ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Users</strong> <small class="muted"> - 2 days ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> New Statistics from <strong>Comments</strong> <small class="muted"> - 3 days ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Popular in <strong>Products</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li><a href=""><span class="icon-align-left"></span> Most Viewed in <strong>Blog</strong> <small class="muted"> - 1 week ago</small></a></li>
+                        <li class="viewmore"><a href="charts.html">View More Statistics</a></li>
+                    </ul>
+                </li>
+                <li class="right">
+                    <div class="userloggedinfo">
+                        <%= image_tag('photos/thumb1.png', alt:"") %>
+                        <div class="userinfo">
+                            <h5>Juan Dela Cruz <small>- juan@themepixels.com</small></h5>
+                            <ul>
+                                <li><a href="editprofile.html">Edit Profile</a></li>
+                                <li><a href="">Account Settings</a></li>
+                                <li> <%= link_to 'Logout', destroy_user_session_path %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul><!--headmenu-->
+        </div>
+    </div>
 
-        <%= yield %>
-      </div> <!-- /.container -->
-    </div> <!-- /#main -->
+    <div class="leftpanel">
 
-    <%= render "layouts/footer" %>
+        <div class="leftmenu">
+            <ul class="nav nav-tabs nav-stacked">
+                <li class="nav-header">Navigation</li>
+                <li class="active"><a href="dashboard.html"><span class="iconfa-laptop"></span> Dashboard</a></li>
+                <li><a href="buttons.html"><span class="iconfa-hand-up"></span> Buttons &amp; Icons</a></li>
+                <li class="dropdown"><a href=""><span class="iconfa-pencil"></span> Forms</a>
+                    <ul>
+                        <li><a href="forms.html">Form Styles</a></li>
+                        <li><a href="wizards.html">Wizard Form</a></li>
+                        <li><a href="wysiwyg.html">WYSIWYG</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="iconfa-briefcase"></span> UI Elements &amp; Widgets</a>
+                    <ul>
+                        <li><a href="elements.html">Theme Components</a></li>
+                        <li><a href="bootstrap.html">Bootstrap Components</a></li>
+                        <li><a href="boxes.html">Headers &amp; Boxes</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="iconfa-th-list"></span> Tables</a>
+                    <ul>
+                        <li><a href="table-static.html">Static Table</a></li>
+                        <li><a href="table-dynamic.html">Dynamic Table</a></li>
+                    </ul>
+                </li>
 
-    <!-- Le javascript
+                <li><a href="media.html"><span class="iconfa-picture"></span> Media Manager</a></li>
+                <li><a href="typography.html"><span class="iconfa-font"></span> Typography</a></li>
+                <li><a href="charts.html"><span class="iconfa-signal"></span> Graph &amp; Charts</a></li>
+                <li><a href="messages.html"><span class="iconfa-envelope"></span> Messages</a></li>
+                <li><a href="calendar.html"><span class="iconfa-calendar"></span> Calendar</a></li>
+                <li class="dropdown"><a href=""><span class="iconfa-book"></span> Other Pages</a>
+                    <ul>
+                        <li><a href="404.html">404 Error Page</a></li>
+                        <li><a href="editprofile.html">Edit Profile</a></li>
+                        <li><a href="invoice.html">Invoice Page</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--leftmenu-->
+
+    </div><!-- leftpanel -->
+
+    <div class="rightpanel">
+
+        <ul class="breadcrumbs">
+            <li><a href="dashboard.html"><i class="iconfa-home"></i></a> <span class="separator"></span></li>
+            <li>Dashboard</li>
+            <li class="right">
+                    <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-tint"></i> Color Skins</a>
+                    <ul class="dropdown-menu pull-right skin-color">
+                        <li><a href="default">Default</a></li>
+                        <li><a href="navyblue">Navy Blue</a></li>
+                        <li><a href="palegreen">Pale Green</a></li>
+                        <li><a href="red">Red</a></li>
+                        <li><a href="green">Green</a></li>
+                        <li><a href="brown">Brown</a></li>
+                    </ul>
+            </li>
+        </ul>
+        <div class="maincontent">
+            <div class="maincontentinner">
+                        <ul class="shortcuts">
+                            <li class="events">
+                                <%= link_to calendar_path do %>
+                                <%= content_tag(:span, "", class: "shortcuts-icon iconsi-event") %>
+                                <%= content_tag(:span, "Calendar", class: "shortcuts-label") %>
+                                <% end %>
+                            </li>
+                            <li class="products">
+                                <a href="">
+                                    <span class="shortcuts-icon iconsi-cart"></span>
+                                    <span class="shortcuts-label">Products</span>
+                                </a>
+                            </li>
+                            <li class="archive">
+                                <a href="">
+                                    <span class="shortcuts-icon iconsi-archive"></span>
+                                    <span class="shortcuts-label">Archives</span>
+                                </a>
+                            </li>
+                            <li class="help">
+                                <a href="">
+                                    <span class="shortcuts-icon iconsi-help"></span>
+                                    <span class="shortcuts-label">Help</span>
+                                </a>
+                            </li>
+                            <li class="last images">
+                                <a href="">
+                                    <span class="shortcuts-icon iconsi-images"></span>
+                                    <span class="shortcuts-label">Images</span>
+                                </a>
+                            </li>
+                        </ul>
+<hr>
+     <%= yield %>
+
+                        <br />
+
+                <div class="footer">
+                    <div class="footer-left">
+                        <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
+                    </div>
+                </div><!--footer-->
+
+            </div><!--maincontentinner-->
+        </div><!--maincontent-->
+
+    </div><!--rightpanel-->
+
+</div><!--mainwrapper-->
+
+  <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
@@ -63,3 +253,5 @@
 
   </body>
 <% end %>
+</body>
+</html>

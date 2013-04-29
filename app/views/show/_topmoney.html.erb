@@ -1,28 +1,107 @@
-<% if can? :see_money, @contracts %>
-    <div id="money">
-        <dt><b class="themoney"><%= number_to_currency(contract.contract_price) %></b> - <span>Contract price:</span>        </dt>
-        <dt class="middle"><b class="themoney"><%= number_to_currency(contract.act_net)  %></b> - <span>Contract Net:</span> </dt>
-        <dt><b class="themoney"><%= number_to_currency(contract.pick_up_amount) %></b> - <span>Pickup Amount:</span>        </dt>
-    </div>
-<% end %>
-<div class="theheader">
- <% if contract.date_of_event < Date.today + 11.days %>
-   <%   if contract.confirmation == 0 %>
-   <%=   button_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'btn-primary'%>
-    <%  else %>
-    <% if current_user.is? :manager %>
-    <%= button_to 'Email Job Information - All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn-warning' %>
-    <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-warning' %>
-    <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
-  <% elsif current_user.is? :no_money %>
-<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
-<% else %>
- <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-warning' %>
-  <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
-    <% end %>
 
+<h3 class="actbooked">Act Booked - <%= contract.act_booked %></h3>
+ <% unless contract.location_name.blank? %>
+<div class="mymap">
+<img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=600x150&scale=2&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events" class="bigmap" ></img>
 </div>
+<% end %><div class="clientbox">
+    <div class="row">
+
+        <table class="table table-bordered table-invoice">
+    <%= content_tag_for(:tr, @contract) do  %>
+
+<%= content_tag(:td, "Event Type")%>
+<%= content_tag(:td, "Date of Event")%>
+<%= content_tag(:td, "Event Time")%>
+
+
+           <%= content_tag(:td,"#{contract.type_of_event}", :class => "typo") %>
+           <%= content_tag(:td,"Date of event:       #{contract.date_of_event.to_formatted_s(:eventdate)}") %>
+           <%= content_tag(:td,"Event Time:          #{contract.eventtime}") %>
+           <%= content_tag(:td,"Operating as:  #{contract.type_of_act}") %>
+           <%= content_tag(:td,"#{contract.act_form}") %>
+           <%= content_tag(:td,"Agent :  #{contract.agent}") %>
+           <%= content_tag(:td,"Reception Location:  #{contract.reception_location}") unless contract.reception_location.blank? %>
+           <%= content_tag(:td,"Contract Status:     #{contract.contract_status}") %>
+           <%= content_tag(:td,"Contract number:     #{contract.contract_number}") %>
+
 <% end %>
+    </table>
+
+        <div class="span4 smallmargin">
+    <div class="well">
+        <% if contract.location_name? %>
+        <address>
+        <strong>Event Location</strong><br>
+          <strong>  <%= contract.location_name.gsub('"', ' ') %></strong><br>
+            <%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
+            Phone: <%= contract.location_phone %>
+            <% end %><br><br>
+        <address>
+            <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=My Location&daddr=#{themap}", class: 'btn-large btn-success')%>
+        </div>
+ </div>
+    </div>
+
+
+
+<hr>
+
+<div class="span4">
+<h4 class="sectionheaders"><span>Client Section</span></h4>
+    Client Info: <%= contract.first_name %> <%= contract.last_name %><br>
+    Email Address: <%= contract.email_address %><br>
+    Bride / Bat Mitzvah Name: <%= contract.brides_names %><br>
+    Grooms / Bar Mitzvah Name:  <%= contract.grooms_name %><br>
+    Home Phone: <%= contract.home_phone %><br>
+    Work Phone: <%= contract.work_phone %><br>
+    Cell Phone: <%= contract.cell_phone %>
+</div>
+<div class="span5 smallmargin">
+<h4>Extras Section</h4>
+
+<%= content_tag (:dl), :class => "dl-horizontal" do %>
+<%= content_tag(:dt, "Early setup Time #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
+
+<%= content_tag(:dt, "Giveaways:                  #{contract.giveaways}") %>
+<%= content_tag(:dt, "Type of Light Show:         #{contract.type_of_light_show}") %>
+<%= content_tag(:dt, "Number of Horns:            #{contract.number_of_horns}") %>
+<%= content_tag(:dt, "Number of Dancers:          #{contract.number_of_dancers}") %>
+<%= content_tag(:dt, "Pick up Reason              #{contract.explanation_opf_pickup_adjustment}") %>
+<%= content_tag(:dt, "Cap Music:                  #{contract.capital_music_player}") %>
+<%= content_tag(:dt, "Questionnaire Received Date:#{contract.questionnaire_received_date}") %>
+<%= content_tag(:dt, "Referral Fee to :           #{contract.referral_fee_to}") %>
+<%= content_tag(:dt, "Song Requests:              #{contract.song_requests}") %>
+<%= content_tag(:dt, "Cocktail Instrumentation:   #{contract.cocktail_instrumentation}") %>
+<%= content_tag(:dt, "Cocktail Time:              #{contract.cocktail_time}") %>
+<%= content_tag(:dt, "Company:                    #{contract.company}") %>
 <% end %>
 
-<h2 class="theheader">Act Booked - <%= contract.act_booked %></h2>
+</dl>
+</div>
+
+
+<div class="span9">
+            <h3 class="sectionheaders"><span>Contract Provisions</span></h3>
+                <% unless contract.contract_provisions == "nil" %>
+                <%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %>
+                <% end %>
+            <h3 class="sectionheaders"><span>Act Notes</span></h3>
+                <% unless  contract.act_notes == "nil" %>
+                    <%= contract.act_notes %>
+                <% end %>
+            <h3 class="sectionheaders"><span>All Services Provided</span></h3>
+            <ul>
+            <% unless @additional.blank? %>
+            <% @additional.each do |addi| %>
+
+            <% if current_user.is? :everything %>
+            <li><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></li>
+            <% else %>
+            <li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
+            <% end %>
+            <% end %>
+            <% end %>
+            </ul>
+</div>
+</div>

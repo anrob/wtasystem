@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:new, :create]
   has_scope :page, default: 1
   before_filter :everypage, :except => [:new, :create]
+  before_filter :prepare_for_mobile
   respond_to :html, :xml, :json
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
@@ -15,14 +16,27 @@ class ApplicationController < ActionController::Base
  #  render layout: false, :status => 422
  #  end
 
+
   private
 
 def http_basic_authenticate_with
   http_basic_authenticate_with :name => "wtaadmin", :password => "washington"
 end
 
+  #helper_method :mobile_device?
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
   helper_method :mobile_device?
 
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+    request.format = :mobile if mobile_device?
+  end
 
   def everypage
     if user_signed_in?

@@ -1,5 +1,11 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
+   namespace :api , defaults: {format: 'json'} do
+     namespace :v1 do
+       resources :contracts
+     end
+   end
+
 
   match "Working/503-error", :to => "working#maintenance_error"
 
@@ -12,7 +18,9 @@ Wtasystem::Application.routes.draw do
   ActiveAdmin.routes(self)
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
-devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
+devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions]
+
+devise_scope :user do
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session
                  get 'signout' => 'devise/sessions#destroy', as: :destroy_user_session

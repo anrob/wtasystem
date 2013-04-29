@@ -1,32 +1,38 @@
 <%#= @manger.inspect %>
 <%#= @mana.actcode.inspect %>
 <%#= @contracts.inspect %>
-
-<div id="calendar">
+ <div class="maincontent">
+        <div class="maincontentinner">
+<div id="calendar" class="fc fc-ltr"></div>
 <h1 class="year"><%= link_to @date.year, {month: (Date.today).strftime("%Y-%m-%d")}%></h1>
 
 <h3 class="month"><%=h @date.strftime("%B") %></h3>
 <hr>
-<div>
 
-<center>
-<%= button_to " Previous  Year ", {month: (@date.beginning_of_year-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-<%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-  <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-  <%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
-<%= button_to " Next Year ", {month: (@date.end_of_year+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></center>
-  </div>
-    <%= calendar_for @contracts,{year: @date.year, month: @date.month} do |calendar| %>
+
+<table class="fc-header" style="width:100%">
+    <tbody>
+        <tr>
+            <td><%= button_to " Previous  Year ", {month: (@date.beginning_of_year-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></td>
+            <td><%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></td>
+            <td> <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %></td>
+            <td><%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></td>
+            <td><%= button_to " Next Year ", {month: (@date.end_of_year+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></td>
+            </tr>
+            </tbody>
+            </table>
+
+    <%= calendar_for @contracts,{year: @date.year, month: @date.month},:html => {:class => 'fc-content',style:"width:100%", cellspacing:"0"} do |calendar| %>
     <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
     <%= calendar.day(day_method: :date_of_event) do |date, contracts| %>
     <%= date.day %>
 
-    <table id="calendar" class="calendar">
+    <table>
 
         <% contracts.each do |contract| %>
 
-    <tr>
-              <td class="noborder">
+    <tr class="fc-week">
+              <td class="fc-day">
         <% unless contract.confirmation == 0  %>
         <%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code} ", contract, class: "confirmed" %>
         <% else %>
@@ -39,6 +45,7 @@
         <% end %>
       <% end %>
 
-
 </div>
+</div></div>
+
 
