@@ -57,6 +57,7 @@ module Wtasystem
     #   Devise::ConfirmationsController.layout "special_layout"
     #   Devise::UnlocksController.layout "special_layout"
     #   Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application" : "special_layout" }
+
     # end
   end
 end
