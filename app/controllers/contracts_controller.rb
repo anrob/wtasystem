@@ -6,7 +6,7 @@ class ContractsController < ApplicationController
   before_filter :everypage
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
-layout "home", :except => [:index]
+
   # def index
   #   case @but when "true"
   #     @contract = Contract.where(act_code: params[:act_code])
@@ -67,7 +67,6 @@ layout "home", :except => [:index]
         @remove = Contract.remove
 
         @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
-
   end
 
   def missingrecords
