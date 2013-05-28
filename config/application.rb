@@ -48,6 +48,7 @@ module Wtasystem
     config.active_record.whitelist_attributes = true
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '2.7'
+    PaperTrail.config.version_limit = 1
     # config.to_prepare do
     #          Devise::SessionsController.skip_before_filter :skipthelogin
     #        end

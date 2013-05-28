@@ -4,6 +4,14 @@ GIT
   specs:
     table_builder (0.0.3)
 
+GIT
+  remote: https://github.com/ruport/ruport.git
+  revision: 00022f8987a5277b4f4c769fb67fb214639ea8b1
+  branch: ruby19-compat
+  specs:
+    ruport (1.7.0)
+      pdf-writer (= 1.1.8)
+
 GEM
   remote: http://rubygems.org/
   remote: http://dresssed.com/gems/f0ac74923e447c64069e/
@@ -48,6 +56,8 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts_as_reportable (1.1.1)
+      ruport (>= 1.6.0)
     afm (0.2.0)
     ansi (1.4.3)
     arbre (1.0.1)
@@ -78,6 +88,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    color (1.4.1)
     colored (1.2)
     debug_inspector (0.0.2)
     devise (2.2.3)
@@ -162,12 +173,18 @@ GEM
     nokogiri (1.5.9)
     oauth (0.4.7)
     orm_adapter (0.4.0)
+    paper_trail (2.7.2)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     pdf-reader (1.3.2)
       Ascii85 (~> 1.0.0)
       afm (~> 0.2.0)
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    pdf-writer (1.1.8)
+      color (>= 1.4.0)
+      transaction-simple (~> 1.3)
     pg (0.15.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -249,6 +266,7 @@ GEM
       rack
       rest-client
       versionomy
+    transaction-simple (1.4.0.2)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -274,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  acts_as_reportable
   better_errors
   binding_of_caller
   breadcrumbs_on_rails
@@ -300,12 +319,14 @@ DEPENDENCIES
   meta_request
   meta_search
   minitest
+  paper_trail (~> 2)
   pg
   postageapp
   prawn
   rack (= 1.4.5)
   rails (= 3.2.12)
   rails_best_practices
+  ruport!
   sass-rails (<= 3.2.6)
   sentry-raven
   simple_form

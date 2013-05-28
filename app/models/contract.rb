@@ -1,5 +1,6 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
+  has_paper_trail :skip => [:confirmation]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,
@@ -102,6 +103,7 @@ class Contract < ActiveRecord::Base
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user) }
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
+  scope :version, lambda { |version| where("id = ?", version) }
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
@@ -109,7 +111,7 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
   #scope :showothers, where(act_code: Actcode.getallbycompany.split(",").tenday.all)
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
-  scope :unconfirmedevent, where(confirmation: "0")
+  scope :unconfirmedevent, where(confirmation: "1")
 
   scope :emails, -> {where("email_address LIKE ?","%@%")}
 

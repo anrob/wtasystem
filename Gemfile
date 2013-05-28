@@ -24,6 +24,9 @@ gem 'trackman'
 gem 'jquery-rails'
 gem 'jquery_datepicker'
 gem "meta_search"
+gem 'ruport', :git => 'https://github.com/ruport/ruport.git', :branch => 'ruby19-compat'
+gem 'acts_as_reportable'
+gem 'paper_trail', '~> 2'
 
 
 #gem 'newrelic_rpm'
