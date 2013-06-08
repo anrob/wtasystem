@@ -1,12 +1,15 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
+  resources :reports
+
+
    namespace :api , defaults: {format: 'json'} do
      namespace :v1 do
-       resources :contracts
+      resources :contracts
      end
    end
 
-
+  match '/reports/time' => "reports#time"
   match "Working/503-error", :to => "working#maintenance_error"
 
   match "Working/503", :to => "working#maintenance"
@@ -14,7 +17,7 @@ Wtasystem::Application.routes.draw do
   match "Working/500", :to => "working#error"
 
   match "Working/404", :to => "working#not_found"
-
+   root to: "contracts#index"
   ActiveAdmin.routes(self)
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
@@ -40,14 +43,13 @@ resources :users
    match '/import', to: "contracts#import_contracts"
    match '/alljobs', to: "contracts#alljobs"
    match '/missingrecords', to: "contracts#missingrecords"
-   match '/mailchimp', to: "contracts#mailchimp"
+  # match '/mailchimp', to: "contracts#mailchimp"
    match '/calendar', to: "contracts#calendar"
-   match '/exportcal', to: "incoming_mails#exportevents"
-   match '/gmail', to: "contracts#gmail"
-   #match '/users/:id' => "users#edit"
+   #match '/exportcal', to: "incoming_mails#exportevents"
+   #match '/gmail', to: "contracts#gmail"
    match 'db/authorize', controller: 'dropbox', action: 'authorize'
    match 'db/upload', controller: 'dropbox', action: 'upload'
    match '/incoming', to: "incoming_mails#create"
-   #map.connect ':controller/:action/:id'
    match '/report', to: "contracts#report"
+
 end

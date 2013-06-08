@@ -1,5 +1,9 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
+  # include PublicActivity::Model
+  #    tracked
+
+  has_paper_trail :skip => [:confirmation]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,
@@ -111,7 +115,7 @@ self.include_root_in_json = true
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
 
-  scope :emails, -> {where("email_address LIKE ?","%@%")}
+  scope :emails, -> {where("email_address LIKE ?","%@%") }
 
 
   define_easy_dates do

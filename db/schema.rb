@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114212018) do
+ActiveRecord::Schema.define(:version => 20130606203622) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -95,6 +95,12 @@ ActiveRecord::Schema.define(:version => 20130114212018) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "api_keys", :force => true do |t|
+    t.string   "access_token"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "confirmations", :force => true do |t|
     t.integer  "contract_id"
@@ -337,6 +343,12 @@ ActiveRecord::Schema.define(:version => 20130114212018) do
   add_index "record_histories", ["item_type", "item_id"], :name => "index_record_histories_on_item_type_and_item_id"
   add_index "record_histories", ["transaction_id"], :name => "index_record_histories_on_transaction_id"
 
+  create_table "reports", :force => true do |t|
+    t.string   "time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "specs", :force => true do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -385,5 +397,17 @@ ActiveRecord::Schema.define(:version => 20130114212018) do
     t.string   "confirmation_token"
     t.datetime "confirmation_sent_at"
   end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",      :null => false
+    t.integer  "item_id",        :null => false
+    t.string   "event",          :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
 end

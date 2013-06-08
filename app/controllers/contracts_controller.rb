@@ -6,35 +6,7 @@ class ContractsController < ApplicationController
   before_filter :everypage
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
-layout "home"
-  # def index
-  #   case @but when "true"
-  #     @contract = Contract.where(act_code: params[:act_code])
-  #     @actcode = Actcode.where(actcode:  params[:act_code]).first
-  #     unless current_user.is? :manager
-  #      @contracts = Contract.mystuff(@user.actcode_name).tenday.all
-  #     else
-  #       @contracts = Contract.where(act_code: @manger.split(",")).tenday.all
-  #     end
-  #     if cannot? :see_others, @contract
-  #       redirect_to root_url
-  #     end
-  #   else
-  #      @contract = Contract.mytoday.mystuff(current_user.actcode_name)
-  #      @actcode = current_user.actcode_name
-  #      @getcompan = Actcode.getallbycompany(current_user)
-  #      @gt = Actcode.find_all_by_management_id(current_user.management_id)
-  #      @cont = Contract.tenday.find_by_act_code(@gt.map {|m| m.actcode})
-  #      @gp = @gt.map {|m| m.actcode}
-  #      @totalnum = @contract.threesixfive.sum(:contract_price)
-  #      unless current_user.is? :manager
-  #      @contracts = Contract.mystuff(current_user.actcode_name).tenday.all
-  #      else
-  #      @contracts = Contract.where(act_code: @manger.split(",")).tenday.all
-  #
-  #     end
-  #   end
-  # end
+  layout "home"
 
   def index
     @contract = Contract.where(act_code: params[:act_code])
@@ -43,6 +15,7 @@ layout "home"
 
   def show
     @additional = Contract.additional(@contract)
+    @versions = Version.where(item_id: params[:id])
   end
 
   def calendar
@@ -85,9 +58,12 @@ layout "home"
    #    @updates = @allactcodes - @actcodes
    #    @upd = @updates.uniq
       #@emails = Contract.where('email_address ~= ?','%comcast.net%')
-      @emails = Contract.emails.collect { |ob| ob.email_address}
-      @prkey = Contract.all.collect { |ab| ab.prntkey23 }
-      @emaildups = @prkey.dups
+                  #  @emails = Contract.emails.collect { |ob| ob.email_address}
+                  #  @prkey = Contract.all.collect { |ab| ab.prntkey23 }
+                  # @emaildups = @prkey.dups
+                     @contracts = Contract.unconfirmedevent.tenday.all
+                      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+                      @userss = @users.collect {|m| m.email}.uniq
   end
 
   def confirmjob

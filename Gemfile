@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'pg'
 gem 'postageapp'
 gem "switch_user"
@@ -20,6 +20,10 @@ gem 'jquery-rails'
 #gem 'jquery_datepicker'
 gem "meta_search"
 gem 'fullcalendar-rails'
+#gem 'public_activity', 0.4
+gem 'ruport', :git => 'https://github.com/ruport/ruport.git', :branch => 'ruby19-compat'
+gem 'acts_as_reportable'
+gem 'paper_trail', '~> 2'
 
 group :development do
 gem 'sqlite3'
