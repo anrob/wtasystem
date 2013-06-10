@@ -10,7 +10,7 @@ module Api
         #respond_with  Contract.where("act_code = ?", 'FRSD')
         response.headers["Pragma"] = "no-cache"
         response.headers["Cache-Control"] = "no-cache"
-       respond_with  Contract.where("act_code = ?", params[:act_code])
+       respond_with  Contract.mytoday.where("act_code = ?", params[:act_code])
        #respond_with  Contract.all
       end
 
