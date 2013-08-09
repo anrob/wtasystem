@@ -11,7 +11,7 @@ gem 'magic_encoding'
 gem 'kaminari'
 gem 'has_scope'
 
-gem "sentry-raven"
+#gem "sentry-raven"
 gem "rails_best_practices"
 gem 'simple_form'
 gem 'chronic'
@@ -28,7 +28,7 @@ gem 'paper_trail', '~> 2'
 
 group :development do
 gem 'sqlite3'
-gem 'better_errors'
+#gem 'better_errors'
 gem "binding_of_caller"
 gem 'meta_request'
 end
