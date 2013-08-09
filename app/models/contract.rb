@@ -1,7 +1,6 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
-  has_paper_trail :on => [:update]
-  has_paper_trail :skip => [:confirmation_date,:accounting_confirmation_date,:credit_card_fee,:tax_amount]
+  has_paper_trail :skip => [:confirmation]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,
@@ -112,7 +111,7 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
   #scope :showothers, where(act_code: Actcode.getallbycompany.split(",").tenday.all)
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
-  scope :unconfirmedevent, where(confirmation: "0")
+  scope :unconfirmedevent, where(confirmation: "1")
 
   scope :emails, -> {where("email_address LIKE ?","%@%")}
 

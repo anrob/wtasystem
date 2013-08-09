@@ -34,8 +34,8 @@ resources :users
    match '/missingrecords', to: "contracts#missingrecords"
    match '/mailchimp', to: "contracts#mailchimp"
    match '/calendar', to: "contracts#calendar"
-   #match '/exportcal', to: "incoming_mails#exportevents"
-  # match '/gmail', to: "contracts#gmail"
+   match '/exportcal', to: "incoming_mails#exportevents"
+   match '/gmail', to: "contracts#gmail"
    #match '/users/:id' => "users#edit"
    match 'db/authorize', controller: 'dropbox', action: 'authorize'
    match 'db/upload', controller: 'dropbox', action: 'upload'
