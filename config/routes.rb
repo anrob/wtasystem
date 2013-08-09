@@ -8,17 +8,17 @@ Wtasystem::Application.routes.draw do
   match "Working/500", :to => "working#error"
 
   match "Working/404", :to => "working#not_found"
-<<<<<<< HEAD
-   root to: "contracts#index"
+
+  root to: "contracts#index"
   ActiveAdmin.routes(self)
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages,:users
-=======
+
   root to: "contracts#index"
   ActiveAdmin.routes(self)
 
 resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages, :users
->>>>>>> 867e464cc6a53cd88ad8f687c7e2383438653516
+
 devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session
@@ -27,12 +27,7 @@ devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "
                    match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
 
                end
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 867e464cc6a53cd88ad8f687c7e2383438653516
    match '/confirmjob', to: "contracts#confirmjob"
    match '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
    match '/emailjobwithallmoney', to: "contracts#emailjobwithallmoney"
