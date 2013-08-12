@@ -51,15 +51,21 @@ layout "home", :except => [:index]
         @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
   end
 
+  # def report
+  #  #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
+  #  @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
+  #     @allactcodes = Contract.all.collect { |obj| obj.act_code }
+  #     @actcodes = User.all.collect { |b| b.actcode_name}
+  #     @updates = @allactcodes - @actcodes
+  #     @upd = @updates.uniq
+  #     #@emails = Contract.where('email_address ~= ?','%comcast.net%')
+  #     @emails = Contract.emails.collect { |ob| ob.email_address}
+  # end
+
   def report
-   #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
-   @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
-      @allactcodes = Contract.all.collect { |obj| obj.act_code }
-      @actcodes = User.all.collect { |b| b.actcode_name}
-      @updates = @allactcodes - @actcodes
-      @upd = @updates.uniq
-      #@emails = Contract.where('email_address ~= ?','%comcast.net%')
-      @emails = Contract.emails.collect { |ob| ob.email_address}
+    @contracts = Contract.unconfirmedevent.tenday.all
+    @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+    @userss = @users.collect {|m| m.email}.uniq
   end
 
   def confirmjob

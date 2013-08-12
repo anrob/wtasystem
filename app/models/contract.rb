@@ -111,7 +111,7 @@ class Contract < ActiveRecord::Base
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
   #scope :showothers, where(act_code: Actcode.getallbycompany.split(",").tenday.all)
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
-  scope :unconfirmedevent, where(confirmation: "1")
+  scope :unconfirmedevent, where(confirmation: "0")
 
   scope :emails, -> {where("email_address LIKE ?","%@%")}
 
