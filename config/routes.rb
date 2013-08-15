@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
-
+  resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages,:users
   match "Working/503-error", :to => "working#maintenance_error"
 
   match "Working/503", :to => "working#maintenance"
@@ -11,14 +11,6 @@ Wtasystem::Application.routes.draw do
 
   root to: "contracts#index"
   ActiveAdmin.routes(self)
-
-resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages,:users
-
-  root to: "contracts#index"
-  ActiveAdmin.routes(self)
-
-resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages, :users
-
 devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session

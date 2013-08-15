@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
-  has_paper_trail :skip => [:confirmation]
+  has_paper_trail :skip => [:confirmation,:unsubscrib,:capital_music_pay,:date_of_event,:accounting_confirmation_date,:credit_card_fee,:confirmation_date,:contract_sent_date,:capital_music_pay,:questionnaire_received_date,:questionnaire_sent_date,:tax_amount]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,

@@ -76,7 +76,7 @@ GEM
     callsite (0.0.11)
     cancan (1.6.10)
     chronic (0.9.1)
-    code_analyzer (0.3.2)
+    code_analyzer (0.4.0)
       sexp_processor
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -122,7 +122,7 @@ GEM
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
-    i18n (0.6.4)
+    i18n (0.6.5)
     icalendar (1.4.1)
     inherited_resources (1.4.0)
       has_scope (~> 0.5.0)
@@ -160,10 +160,10 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime (0.1)
-    mime-types (1.23)
+    mime-types (1.24)
     mini_portile (0.5.1)
     minitest (5.0.6)
-    multi_json (1.7.8)
+    multi_json (1.7.9)
     multi_xml (0.5.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -207,10 +207,10 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
-    rails_best_practices (1.14.0)
+    rails_best_practices (1.14.1)
       activesupport
       awesome_print
-      code_analyzer
+      code_analyzer (>= 0.4.0)
       colored
       erubis
       i18n
@@ -232,7 +232,7 @@ GEM
       railties (~> 3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    ruby-progressbar (1.1.1)
+    ruby-progressbar (1.2.0)
     ruby-rc4 (0.1.5)
     sass (3.2.10)
     sass-rails (3.2.6)
