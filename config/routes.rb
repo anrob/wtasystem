@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
-  resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages,:users
+  resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
   match "Working/503-error", :to => "working#maintenance_error"
 
   match "Working/503", :to => "working#maintenance"
@@ -19,7 +19,7 @@ devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "
                    match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
 
                end
-
+resources :users
    match '/confirmjob', to: "contracts#confirmjob"
    match '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
    match '/emailjobwithallmoney', to: "contracts#emailjobwithallmoney"
