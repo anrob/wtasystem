@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 ruby '1.9.2'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'pg'
 
 gem 'postageapp'
