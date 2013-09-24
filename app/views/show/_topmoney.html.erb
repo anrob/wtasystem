@@ -13,17 +13,15 @@
 <%= content_tag(:td, "Event Type")%>
 <%= content_tag(:td, "Date of Event")%>
 <%= content_tag(:td, "Event Time")%>
-
-
-           <%= content_tag(:td,"#{contract.type_of_event}", :class => "typo") %>
-           <%= content_tag(:td,"Date of event:       #{contract.date_of_event.to_formatted_s(:eventdate)}") %>
-           <%= content_tag(:td,"Event Time:          #{contract.eventtime}") %>
-           <%= content_tag(:td,"Operating as:  #{contract.type_of_act}") %>
-           <%= content_tag(:td,"#{contract.act_form}") %>
-           <%= content_tag(:td,"Agent :  #{contract.agent}") %>
-           <%= content_tag(:td,"Reception Location:  #{contract.reception_location}") unless contract.reception_location.blank? %>
-           <%= content_tag(:td,"Contract Status:     #{contract.contract_status}") %>
-           <%= content_tag(:td,"Contract number:     #{contract.contract_number}") %>
+<%= content_tag(:td,"#{contract.type_of_event}", :class => "typo") %>
+<%= content_tag(:td,"Date of event:       #{contract.date_of_event.to_formatted_s(:eventdate)}") %>
+<%= content_tag(:td,"Event Time:          #{contract.eventtime}") %>
+<%= content_tag(:td,"Operating as:  #{contract.type_of_act}") %>
+<%= content_tag(:td,"#{contract.act_form}") %>
+<%= content_tag(:td,"Agent :  #{contract.agent}") %>
+<%= content_tag(:td,"Reception Location:  #{contract.reception_location}") unless contract.reception_location.blank? %>
+<%= content_tag(:td,"Contract Status:     #{contract.contract_status}") %>
+<%= content_tag(:td,"Contract number:     #{contract.contract_number}") %>
 
 <% end %>
     </table>

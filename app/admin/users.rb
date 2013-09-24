@@ -1,9 +1,9 @@
 ActiveAdmin.register User do
   controller.authorize_resource
 
-   menu :if => lambda { |tabs_renderer|
-     controller.current_ability.can?(:manage, config.resource)
-   }
+   # menu :if => lambda { |tabs_renderer|
+   #  # controller.current_ability.can?(:manage, config.resource)
+   # }
 
   # menu :unless => proc{ user.is?(:everything) }
   #   controller.authorize_resource

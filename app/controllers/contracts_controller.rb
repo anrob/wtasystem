@@ -61,6 +61,12 @@ class ContractsController < ApplicationController
                   #  @emails = Contract.emails.collect { |ob| ob.email_address}
                   #  @prkey = Contract.all.collect { |ab| ab.prntkey23 }
                   # @emaildups = @prkey.dups
+
+                  @contracts = Contract.unconfirmedevent.tenday.all
+                   @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+                   @userss = @users.collect {|m| m.email}.uniq
+                   #ContractMailer.send_reminder(@userss).deliver
+
                      @contracts = Contract.unconfirmedevent.tenday.all
                       @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
                       @userss = @users.collect {|m| m.email}.uniq
