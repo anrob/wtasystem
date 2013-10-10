@@ -65,11 +65,22 @@ GEM
     arel (3.0.2)
     atomic (1.1.14)
     awesome_print (1.1.0)
+<<<<<<< HEAD
     bcrypt-ruby (3.1.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blockenspiel (0.4.5)
     bourbon (3.1.8)
+=======
+    bcrypt-ruby (3.0.1)
+    better_errors (0.8.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
+    blockenspiel (0.4.5)
+    bourbon (3.1.5)
+>>>>>>> newlook
       sass (>= 3.2.0)
       thor
     breadcrumbs_on_rails (2.3.0)
@@ -85,8 +96,13 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
+<<<<<<< HEAD
     coffee-script-source (1.6.3)
     color (1.4.2)
+=======
+    coffee-script-source (1.6.2)
+    color (1.4.1)
+>>>>>>> newlook
     colored (1.2)
     debug_inspector (0.0.2)
     devise (3.1.0)
@@ -104,9 +120,16 @@ GEM
     erubis (2.7.0)
     execjs (2.0.1)
     fastercsv (1.5.5)
+    font-awesome-rails (3.2.1.3)
+      railties (>= 3.2, < 5.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+<<<<<<< HEAD
     gibbon (1.0.2)
+=======
+    fullcalendar-rails (1.5.4.0)
+    gibbon (0.4.6)
+>>>>>>> newlook
       httparty
       multi_json (>= 1.3.4)
     gmail (0.4.0)
@@ -115,16 +138,27 @@ GEM
       mime (>= 0.1)
     gmail_xoauth (0.4.1)
       oauth (>= 0.3.6)
+    gmaps4rails (1.5.6)
     gravatar_image_tag (1.1.3)
     has_scope (0.5.1)
     hash-deep-merge (0.1.1)
+<<<<<<< HEAD
     hashery (2.1.1)
     hike (1.2.3)
+=======
+    hashery (2.1.0)
+    hashie (2.0.4)
+    hike (1.2.2)
+>>>>>>> newlook
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     i18n (0.6.1)
+<<<<<<< HEAD
     icalendar (1.4.2)
+=======
+    icalendar (1.3.0)
+>>>>>>> newlook
     inherited_resources (1.4.0)
       has_scope (~> 0.5.0)
       responders (~> 0.9)
@@ -137,6 +171,7 @@ GEM
     jquery-ui-rails (4.0.4)
       jquery-rails
       railties (>= 3.1.0)
+<<<<<<< HEAD
     jquery_datepicker (0.4)
     json (1.8.0)
     kaminari (0.14.1)
@@ -148,6 +183,19 @@ GEM
       hash-deep-merge
     magic_encoding (0.0.2)
     mail (2.5.4)
+=======
+    json (1.7.7)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kgio (2.8.0)
+    lazy_high_charts (1.4.2)
+      bundler (>= 1.0)
+      hash-deep-merge
+    magic_encoding (0.0.2)
+    mail (2.5.3)
+      i18n (>= 0.4.0)
+>>>>>>> newlook
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     meta_request (0.2.8)
@@ -160,6 +208,7 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime (0.1)
+<<<<<<< HEAD
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (5.0.7)
@@ -170,6 +219,17 @@ GEM
     oauth (0.4.7)
     orm_adapter (0.4.0)
     paper_trail (2.7.2)
+=======
+    mime-types (1.23)
+    minitest (4.7.3)
+    multi_json (1.7.2)
+    multi_xml (0.5.3)
+    multipart-post (1.2.0)
+    nokogiri (1.5.9)
+    oauth (0.4.7)
+    orm_adapter (0.4.0)
+    paper_trail (2.7.1)
+>>>>>>> newlook
       activerecord (~> 3.0)
       railties (~> 3.0)
     pdf-reader (1.3.3)
@@ -181,7 +241,11 @@ GEM
     pdf-writer (1.1.8)
       color (>= 1.4.0)
       transaction-simple (~> 1.3)
+<<<<<<< HEAD
     pg (0.17.0)
+=======
+    pg (0.15.1)
+>>>>>>> newlook
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -207,7 +271,11 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+<<<<<<< HEAD
     rails_best_practices (1.14.3)
+=======
+    rails_best_practices (1.13.4)
+>>>>>>> newlook
       activesupport
       awesome_print
       code_analyzer (>= 0.4.2)
@@ -223,8 +291,13 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+<<<<<<< HEAD
     raindrops (0.12.0)
     rake (10.1.0)
+=======
+    raindrops (0.11.0)
+    rake (10.0.4)
+>>>>>>> newlook
     rdoc (3.12.2)
       json (~> 1.4)
     require_all (1.3.0)
@@ -234,12 +307,25 @@ GEM
       mime-types (>= 1.16)
     ruby-progressbar (1.2.0)
     ruby-rc4 (0.1.5)
+<<<<<<< HEAD
     sass (3.2.10)
+=======
+    sass (3.2.8)
+>>>>>>> newlook
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+<<<<<<< HEAD
     sexp_processor (4.3.0)
+=======
+    sentry-raven (0.4.6)
+      faraday (>= 0.7.6)
+      hashie
+      multi_json (~> 1.0)
+      uuidtools
+    sexp_processor (4.2.1)
+>>>>>>> newlook
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -252,9 +338,13 @@ GEM
     switch_user (0.9.3)
     tabs_on_rails (2.2.0)
     thor (0.18.1)
+<<<<<<< HEAD
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+=======
+    tilt (1.3.7)
+>>>>>>> newlook
     trackman (0.6.18)
       json
       nokogiri
@@ -262,13 +352,18 @@ GEM
       rest-client
       versionomy
     transaction-simple (1.4.0.2)
+<<<<<<< HEAD
     treetop (1.4.15)
+=======
+    treetop (1.4.12)
+>>>>>>> newlook
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
     turn (0.9.6)
       ansi
     tzinfo (0.3.37)
+<<<<<<< HEAD
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -276,6 +371,13 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+=======
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    uuidtools (2.1.4)
+>>>>>>> newlook
     versionomy (0.4.4)
       blockenspiel (>= 0.4.5)
     warden (1.2.3)
@@ -287,6 +389,10 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts_as_reportable
+<<<<<<< HEAD
+=======
+  better_errors
+>>>>>>> newlook
   binding_of_caller
   breadcrumbs_on_rails
   cancan
@@ -296,8 +402,11 @@ DEPENDENCIES
   dresssed-gimlet
   dropbox-sdk
   easy_dates
+  font-awesome-rails
+  fullcalendar-rails
   gibbon
   gmail
+  gmaps4rails
   gravatar_image_tag
   has_scope
   icalendar
@@ -305,7 +414,6 @@ DEPENDENCIES
   jintastic
   jquery-rails
   jquery-ui-rails
-  jquery_datepicker
   kaminari
   lazy_high_charts
   magic_encoding
@@ -328,5 +436,4 @@ DEPENDENCIES
   tabs_on_rails
   trackman
   turn
-  uglifier (>= 1.0.3)
   unicorn
