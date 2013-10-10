@@ -1,28 +1,108 @@
-<% if can? :see_money, @contracts %>
-    <div id="money">
-        <dt><b class="themoney"><%= number_to_currency(contract.contract_price) %></b> - <span>Contract price:</span>        </dt>
-        <dt class="middle"><b class="themoney"><%= number_to_currency(contract.act_net)  %></b> - <span>Contract Net:</span> </dt>
-        <dt><b class="themoney"><%= number_to_currency(contract.pick_up_amount) %></b> - <span>Pickup Amount:</span>        </dt>
-    </div>
+<div class="ui grid">
+    <div class="twelve wide stackable column">
+        <div class="ui raised segment">
+            <div class="ui top attached red label">
+            <%= contract.act_booked %>
+            </div>
+            <%= content_tag_for(:dt, contract) do  %>
+                <%= content_tag(:dt,"Date of Event:         #{contract.date_of_event}") unless contract.date_of_event.blank? %>
+                <%= content_tag(:dt,"Event Time:          #{contract.eventtime}")  unless contract.eventtime.blank? %>
+                <%= content_tag(:dt, "Early setup Time #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
+                <%= content_tag(:dt,"Event Type:         #{contract.type_of_event}") unless contract.type_of_event.blank? %>
+                <%= content_tag(:dt,"Reception Location:  #{contract.reception_location}") unless contract.reception_location.blank? %>
+                <%= content_tag(:dt,"Contract Status:     #{contract.contract_status}")  unless contract.contract_status.blank? %>
+                <%= content_tag(:dt,"Operating as:        #{contract.type_of_act}")  unless contract.type_of_act.blank? %>
+                <%= content_tag(:dt,"Form of:             #{contract.act_form}")  unless contract.act_form.blank? %>
 <% end %>
-<div class="theheader">
- <% if contract.date_of_event < Date.today + 11.days %>
-   <%   if contract.confirmation == 0 %>
-   <%=   button_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'btn-primary'%>
-    <%  else %>
-    <% if current_user.is? :manager %>
-    <%= button_to 'Email Job Information - All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn-warning' %>
-    <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-warning' %>
-    <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
-  <% elsif current_user.is? :no_money %>
-<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
-<% else %>
- <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn-warning' %>
-  <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'btn-success' %>
-    <% end %>
+<div class="ui small feed segment">
+                    <% if contract.location_name? %>
+                    <address>
+                    <strong>Event Location</strong><br>
+                     <strong>  <%= contract.location_name.gsub('"', ' ') %></strong><br>
+                      <%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
+                        Phone: <%= contract.location_phone %>
+                        <% end %><br><br>
+                    <address>
+                        <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=My Location&daddr=#{themap}", class: 'ui button success')%>
+</div> <!-- end of address -->
+        <div class="ui fluid form segment">
+            <div class="ui top attached black label">Agent Section
+            </div>
+<%= content_tag(:dt,"Contract number:     #{contract.contract_number}")  unless contract.contract_number.blank? %>
 
+<%= content_tag(:dt,"Agent :              #{contract.agent}")  unless contract.agent.blank? %>
+
+<%= content_tag(:dt,"Contract Price :              #{number_to_currency(contract.contract_price)}")  unless contract.contract_price.blank? %>
+
+<%= content_tag(:dt,"Pickup Amount:              #{number_to_currency(contract.pick_up_amount)}")  unless contract.pick_up_amount.blank? || 0 %>
+
+<%= content_tag(:dt,"Referral Fee Paid To:              #{number_to_currency(contract.referral_fee_to)}")  unless contract.referral_fee_to.blank? || 0 %>
+        </div>
+                  <div class="ui horizontal icon divider">
+                        <i class="circular heart icon"></i>
+                  </div>
+
+
+
+<div class="ui vertically divided stackable grid">
+        <div class="two column row">
+            <div class="column">
+                <div class="ui fluid form segment">
+                    <div class="ui top attached black label">Client Section
+                    </div><br>
+                    Client Info: <%= contract.first_name %> <%= contract.last_name %><br>
+                    Email Address: <%= contract.email_address %><br>
+                    Bride / Bat Mitzvah Name: <%= contract.brides_names %><br>
+                    Grooms / Bar Mitzvah Name:  <%= contract.grooms_name %><br>
+                    Home Phone: <%= contract.home_phone %><br>
+                    Work Phone: <%= contract.work_phone %><br>
+                    Cell Phone: <%= contract.cell_phone %>
+            </div></div>
+            <div class="column">
+                <div class="ui fluid form segment">
+                    <div class="ui top attached black label">Extras Section
+                    </div><br>
+                <%= content_tag (:div), :class => "dl-horizontal" do %>
+                <%= content_tag(:div, "Early setup Time #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
+                <%= content_tag(:div, "Giveaways: #{contract.giveaways}")  unless contract.giveaways.blank? %>
+                <%= content_tag(:div, "Type of Light Show:         #{contract.type_of_light_show}") unless contract.type_of_light_show.blank? %>
+                <%= content_tag(:div, "Number of Horns:            #{contract.number_of_horns}") unless contract.number_of_horns.blank? || 0 %>
+                <%= content_tag(:div, "Number of Dancers:          #{contract.number_of_dancers}") unless contract.number_of_dancers.blank? || 0 %>
+                <%= content_tag(:div, "Pick up Reason              #{contract.explanation_opf_pickup_adjustment}") unless contract.explanation_opf_pickup_adjustment.blank? %>
+                <%= content_tag(:div, "Cap Music:                  #{contract.capital_music_player}") unless contract.capital_music_player.blank? %>
+                <%= content_tag(:div, "Quest. Received: #{contract.questionnaire_received_date}") unless contract.questionnaire_received_date.blank? %>
+                <%= content_tag(:div, "Referral Fee to :           #{contract.referral_fee_to}") unless contract.referral_fee_to.blank? %>
+                <%= content_tag(:div, "Song Requests:              #{contract.song_requests}") unless contract.song_requests.blank? %>
+                <%= content_tag(:div, "Cocktail Instrumentation:   #{contract.cocktail_instrumentation}") unless contract.cocktail_instrumentation.blank? %>
+                <%= content_tag(:div, "Cocktail Time:              #{contract.cocktail_time}") unless contract.cocktail_time.blank? %>
+                <%= content_tag(:div, "Company:                    #{contract.company}") unless contract.company.blank? %>
+                <% end %>
+      </div></div>
+
+        </div> <!-- end two column row -->
+</div> <!-- end verit div stack grid-->
+ <%= render  "show/provision", contract: @contract %>
+ <%= render  "show/actnotes", contract: @contract %>
+<%= render  "show/addservices", contract: @contract %>
+    </div>
+</div>
+
+<% if can? :see_money, @contracts %>
+<div class="four wide stackable column">
+    <div class="ui raised segment">
+        <div class="ui top attached red label">Money
+        </div>
+            <%= render  "show/moneysection", contract: @contract %>
+    </div><%= render  "show/buttons", contract: @contract %>
 </div>
 <% end %>
-<% end %>
 
-<h2 class="theheader">Act Booked - <%= contract.act_booked %></h2>
+
+
+
+
+
+
+
+
+
