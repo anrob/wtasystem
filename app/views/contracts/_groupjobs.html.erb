@@ -1,5 +1,3 @@
-<%= @user.inspect %>
-
 <h3>Number of jobs in the next 10 Days: <%= (@contractfour).count %> </h3>
 
 
@@ -17,7 +15,6 @@
 
           <th><%= link_to "Confirmed", sort: "confirmation" %></th>
   <th>Created At</th>
-<th>Reminder</th>
       </tr>
     </thead>
     <tbody>
@@ -42,7 +39,6 @@
       <% end %>
       </td>
   <td><%= distance_of_time_in_words(Time.now, "#{m.created_at}") %> ago</td>
-<td><%= @user %></td>
     </tr>
   <% end %>
     </tbody>

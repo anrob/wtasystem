@@ -1,10 +1,6 @@
 /*
 *= require_self
+*= require "dresssed"
+*= require "calendar"
 *= require "jquery.ui.all"
-*= require "fullcalendar"
-*= require "navyblue"
-*= require "semantic.min"
-*= require "font-awesome"
-*= require_tree
-
 */

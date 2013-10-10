@@ -1,9 +1,4 @@
-<table class="table table-bordered table-invoice-full">
-    <thead>
-        <tr>
-            <th>Activites</th>
-</tr>
-</thead>
+<div class="span5 white thumbnail"><h2>Activites</h2>
     <h2><%= contract.type_of_event %></h2>
     <h4>Operating as: <%= contract.type_of_act %></h4>
     <h4><%= contract.act_form %></h4>
@@ -22,9 +17,9 @@
  <h4 class="green">Contract Net: <%= number_to_currency(contract.act_net) %></h4>
 <% end %>
 
-</table>
+</div>
 
-<div class="table table-bordered table-invoice">
+<div class="span3 white thumbnail">
 <% if contract.location_name? %>
     <img src="http://maps.google.com/maps/api/staticmap?center=<%= themap %>&zoom=15&size=275x275&maptype=roadmap&sensor=true&markers=<%= themap %>" alt="Static Map for Events"></img><br>
     <h3> <span>Event Location</span></h3>

@@ -3,8 +3,7 @@
 <table cellpadding="0" cellspacing="0" class="table" width="100%">
         <thead class="sTableHead">
   <tr>
-    <th class="head0">Name</th>
- <th class="head0">Phone number</th>
+    <th class="head0">Email Address</th>
     <th class="head0">Edit</th>
 
  <% if current_user.is? :everything? %>
@@ -14,8 +13,7 @@
     </thead>
 <% @users.each do |u| %>
  <tr>
-    <td><%= link_to u.fullname, edit_user_path(u) %> </td>
-<td><%= u.phone_number %></td>
+    <td><%= link_to u.actcode_name, edit_user_path(u) %> </td>
     <td><i class="icon-edit
               icon-white"><%= link_to 'Edit', edit_user_path(u) %></i></td>
 <% if current_user.is? :everything? %>
@@ -32,7 +30,7 @@
     </div>
 
     </div>
-    <% if current_user.is? :manager %>
+    <% if current_user.is? :everything %>
     <%= button_to 'New User', new_user_path, class: 'button button_blue',method: :get %>
     <% end %>
         <%= paginate @users %>
