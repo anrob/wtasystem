@@ -1,4 +1,6 @@
-<table class="ui sortable eight column table segment">
+<div class="sheet sheet-condensed">
+  <div class="sheet-inner">
+<table id="products" class="table">
   <thead>
     <tr>
         <th><%= link_to "Date of Event", sort: "date_of_event" %> </th>
@@ -9,7 +11,7 @@
         <th><%= link_to "Type of Event", sort: "type_of_event" %></th>
         <th><%= link_to "Location city", sort: "location_city" %></th>
         <th><%= link_to "Event Time", sort: "event_time" %></th>
-        <th></th>
+
     </tr>
   </thead>
   <tbody>
@@ -27,10 +29,10 @@
 
 <td>
     <% if contract.confirmation == 1  %>
-    <%= button_to 'Get Info', contract, class: 'positive ui button tiny',method: :get %>
+    <%= button_to 'Get Info', contract, class: 'btn-success',method: :get %>
     <% else %>
     <%#= button_to 'CONFIRM', m, class: 'btn-danger',method: :get %>
-    <%= button_to 'CONFIRM', confirmjob_path(id: contract.id), class: 'negative ui button tiny' %>
+    <%= button_to 'CONFIRM', confirmjob_path(id: contract.id), class: 'btn-danger' %>
     <% end %>
     <%#= link_to 'Get Info', contract, class: 'button blue' %>
 
@@ -52,4 +54,5 @@
 
   </tbody>
 </table>
+</div></div>
 

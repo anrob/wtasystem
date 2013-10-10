@@ -1,37 +1,32 @@
 <%#= @manger.inspect %>
 <%#= @mana.actcode.inspect %>
 <%#= @contracts.inspect %>
-<% title "Calendar" %>
- <div class="maincontent">
-        <div class="maincontentinner">
-<div id="calendar" class="fc fc-ltr">
+
+<div id="calendar">
 <h1 class="year"><%= link_to @date.year, {month: (Date.today).strftime("%Y-%m-%d")}%></h1>
 
 <h3 class="month"><%=h @date.strftime("%B") %></h3>
 <hr>
-<table class="noborder" style="width:100%">
-    <tbody class="noborder">
-        <tr class="noborder">
-            <td><%= button_to " Previous  Year ", {month: (@date.beginning_of_year-1).strftime("%Y-%m-%d")}, class: 'fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled' %></td>
-            <td><%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled' %></td>
-            <td> <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled' %></td>
-            <td><%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled' %></td>
-            <td><%= button_to " Next Year ", {month: (@date.end_of_year+1).strftime("%Y-%m-%d")}, class: 'fc-button fc-button-today fc-state-default fc-corner-left fc-corner-right fc-state-disabled' %></td>
-            </tr>
-            </tbody>
-            </table>
+<div>
 
+<center>
+<%= button_to " Previous  Year ", {month: (@date.beginning_of_year-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+<%= button_to " Previous Month ", {month: (@date.beginning_of_month-1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+  <%= button_to " Goto Today ", {month: (Date.today).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+  <%= button_to " Next Month ", {month: (@date.end_of_month+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %>
+<%= button_to " Next Year ", {month: (@date.end_of_year+1).strftime("%Y-%m-%d")}, class: 'btn-warning' %></center>
+  </div>
     <%= calendar_for @contracts,{year: @date.year, month: @date.month} do |calendar| %>
     <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
     <%= calendar.day(day_method: :date_of_event) do |date, contracts| %>
     <%= date.day %>
 
-    <table>
+    <table id="calendar" class="calendar">
 
         <% contracts.each do |contract| %>
 
-    <tr class="fc-week">
-              <td class="fc-day">
+    <tr>
+              <td class="noborder">
         <% unless contract.confirmation == 0  %>
         <%= link_to "#{contract.first_name} #{contract.last_name} - #{contract.act_code} ", contract, class: "confirmed" %>
         <% else %>
@@ -44,7 +39,6 @@
         <% end %>
       <% end %>
 
-</div>
-</div>
 
+</div>
 

@@ -2,7 +2,7 @@
 class User < ActiveRecord::Base
   belongs_to :management
   #belongs_to :actcode
-  has_many :contracts
+  #has_many :contracts
   alias_attribute "name", "email"
   validates_uniqueness_of :actcode_name, on: :create, message: "must be unique"
  # accepts_nested_attributes_for :actcode
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   scope :getotheracts, lambda { |user| where("management_id = ?", user.management_id)}
   scope :with_role, lambda { |role| {conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
   scope :notconfirmed, where(confirmed_at: nil)
-  ROLES = %w[everything gross manager no_money dancer]
+  ROLES = %w[everything gross manager no_money]
   attr_accessible :email, :password, :password_confirmation, :remember_me, :management_id, :manager, :roles, :first_name, :last_name, :phone_number, :actcode_name, :encrypted_password
 
    def roles=(roles)

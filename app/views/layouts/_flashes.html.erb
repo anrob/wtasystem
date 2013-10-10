@@ -1,18 +1,13 @@
 <% if alert %>
- <div class="inputwrapper login-alert">
-        <div class="alert alert-error">
-            <%#= icon_tag "remove" %>
-                <%= alert %>
-            </div>
-    </div>
-
+  <div class="alert alert-error">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= icon_tag "remove" %> <%= alert %>
+  </div>
 <% end %>
 
 <% if notice %>
-<div class="inputwrapper login-alert">
-       <div class="alert alert-error">
-
-    <%#= icon_tag "info-sign" %> <%= notice %>
-        </div>
-</div>
+  <div class="alert alert-warning">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= icon_tag "info-sign" %> <%= notice %>
+  </div>
 <% end %>

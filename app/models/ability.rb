@@ -26,10 +26,6 @@ class Ability
           can :see_no_money, :all
          end
 
-         if user.is? :dancer
-
-         end
-
         if user.is? :chart
           can :see_chart, :all
         end
@@ -42,7 +38,6 @@ class Ability
           can :manage, Contract
           cannot :destroy, User
         end
-
   end
 
 

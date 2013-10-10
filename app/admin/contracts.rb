@@ -1,9 +1,9 @@
 ActiveAdmin.register Contract do
   controller.authorize_resource
 
-    # menu :if => lambda { |tabs_renderer|
-    #   controller.current_ability.can?(:manage, config.resource)
-    # }
+    menu :if => lambda { |tabs_renderer|
+      controller.current_ability.can?(:manage, config.resource)
+    }
  filter :act_booked
  filter :act_code
  filter :date_of_event

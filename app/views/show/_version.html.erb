@@ -1,9 +1,0 @@
-<h1>Version Text</h1>
-<%#= @versions.last.changeset if @versions.last %>
-<% if @versions.last  %>
-<%= @versions.count %>
-<% @versions.last.changeset.each do |key, value| %>
-  <li><%= t "#{key}: #{value}" %></li>
-<% end %>
-<% end %>
-<hr>

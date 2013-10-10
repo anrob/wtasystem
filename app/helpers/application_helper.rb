@@ -8,9 +8,7 @@ module ApplicationHelper
     (Date.new(year, 12, 31) << (12-month)).day
   end
 
-  def title(page_title)
-    content_for(:title) { page_title }
-  end
+
 
 
   def isincluded
