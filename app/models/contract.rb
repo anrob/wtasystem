@@ -1,5 +1,6 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
+  has_paper_trail :skip => [:confirmation,:unsubscrib,:capital_music_pay,:date_of_event,:accounting_confirmation_date,:credit_card_fee,:confirmation_date,:contract_sent_date,:capital_music_pay,:questionnaire_received_date,:questionnaire_sent_date,:tax_amount]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,
@@ -102,6 +103,7 @@ class Contract < ActiveRecord::Base
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user) }
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
+  scope :version, lambda { |version| where("id = ?", version) }
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}

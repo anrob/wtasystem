@@ -1,0 +1,10 @@
+
+<% if @versions.last  %>
+<h1>Version Text</h1>
+<%#= @versions.count %>
+
+<% @versions.last.changeset.each do |key, value| %>
+<br><%= t "#{key}: Changed from : #{value[0]}" %><br><%= "Changed to : #{value[1]}" %>
+<% end %>
+<% end %>
+<hr>
