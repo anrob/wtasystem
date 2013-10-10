@@ -37,21 +37,8 @@
     <%#= link_to 'Get Info', contract, class: 'button blue' %>
 
     </td>
-<td><%#= @version.count %>
-
-
-        <% unless contract.versions.empty? %>
-   <% if contract.versions.last.created_at > contract.updated_at %>
-     <% contract.versions.last.changeset.each do |key, value| %>
-    <%= "#{key}: Changed to : #{value[1]}" %>
-    <% end %>
-    <% end %>
-    <% end %>
-</td>
-<%# end %>
   </tr>
 <% end %>
-
   </tbody>
 </table>
 </div></div>

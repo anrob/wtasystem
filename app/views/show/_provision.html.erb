@@ -2,7 +2,6 @@
             <h3 class="sectionheaders"><span>Contract Provisions</span></h3>
                 <% unless contract.contract_provisions == "nil" %>
                 <%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %>
-<<<<<<< HEAD
                 <% end %>
             <h3 class="sectionheaders"><span>Act Notes</span></h3>
                 <% unless  contract.act_notes == "nil" %>
@@ -21,7 +20,4 @@
             <% end %>
             <% end %>
             </ul>
-=======
-               <% end %>
->>>>>>> newlook
 </div>

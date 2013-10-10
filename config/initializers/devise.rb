@@ -5,7 +5,6 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "support@confirmmygig.com"
-  config.secret_key = 'f5dc735839c28bdac35b0ad5ae09fd9a0bb5a81da74a69e1b9c029f841396059e1dbbc4650d3ecfb5f8294ff1a791901a4809e6a36f9972e3fa86df6b8198d8f'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -187,7 +186,7 @@ Devise.setup do |config|
   config.navigational_formats = [:"*/*", "*/*", :html, :mobile]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :get
+  #config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
