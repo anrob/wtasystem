@@ -1,5 +1,5 @@
 <div class="ui grid">
-    <div class="twelve wide column">
+    <div class="twelve wide stackable column">
         <div class="ui raised segment">
             <div class="ui top attached red label">
             <%= contract.act_booked %>
@@ -13,8 +13,8 @@
                 <%= content_tag(:dt,"Contract Status:     #{contract.contract_status}")  unless contract.contract_status.blank? %>
                 <%= content_tag(:dt,"Operating as:        #{contract.type_of_act}")  unless contract.type_of_act.blank? %>
                 <%= content_tag(:dt,"Form of:             #{contract.act_form}")  unless contract.act_form.blank? %>
-
-<div class="ui small   feed segment">
+<% end %>
+<div class="ui small feed segment">
                     <% if contract.location_name? %>
                     <address>
                     <strong>Event Location</strong><br>
@@ -24,23 +24,32 @@
                         <% end %><br><br>
                     <address>
                         <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=My Location&daddr=#{themap}", class: 'ui button success')%>
-</div>
-                <%= content_tag(:dt,"Contract number:     #{contract.contract_number}")  unless contract.contract_number.blank? %>
-                <%= content_tag(:dt,"Agent :              #{contract.agent}")  unless contract.agent.blank? %>
-                <%= content_tag(:dt,"Contract Price :              #{number_to_currency(contract.contract_price)}")  unless contract.contract_price.blank? %>
-                <%= content_tag(:dt,"Pickup Amount:              #{number_to_currency(contract.pick_up_amount)}")  unless contract.pick_up_amount.blank? || 0 %>
-                <%= content_tag(:dt,"Referral Fee Paid To:              #{number_to_currency(contract.referral_fee_to)}")  unless contract.referral_fee_to.blank? || 0 %>
+</div> <!-- end of address -->
+        <div class="ui fluid form segment">
+            <div class="ui top attached black label">Agent Section
+            </div>
+<%= content_tag(:dt,"Contract number:     #{contract.contract_number}")  unless contract.contract_number.blank? %>
+
+<%= content_tag(:dt,"Agent :              #{contract.agent}")  unless contract.agent.blank? %>
+
+<%= content_tag(:dt,"Contract Price :              #{number_to_currency(contract.contract_price)}")  unless contract.contract_price.blank? %>
+
+<%= content_tag(:dt,"Pickup Amount:              #{number_to_currency(contract.pick_up_amount)}")  unless contract.pick_up_amount.blank? || 0 %>
+
+<%= content_tag(:dt,"Referral Fee Paid To:              #{number_to_currency(contract.referral_fee_to)}")  unless contract.referral_fee_to.blank? || 0 %>
+        </div>
                   <div class="ui horizontal icon divider">
                         <i class="circular heart icon"></i>
-                    </div>
-<%#= gmaps4rails(contract.gmaps4rails_address) %>
+                  </div>
 
 
-<div class="ui vertically divided grid">
+
+<div class="ui vertically divided stackable grid">
         <div class="two column row">
             <div class="column">
-                <div class="ui vertical fluid menu">
-                <div class="header item">Client Section</div></div>
+                <div class="ui fluid form segment">
+                    <div class="ui top attached black label">Client Section
+                    </div><br>
                     Client Info: <%= contract.first_name %> <%= contract.last_name %><br>
                     Email Address: <%= contract.email_address %><br>
                     Bride / Bat Mitzvah Name: <%= contract.brides_names %><br>
@@ -48,11 +57,11 @@
                     Home Phone: <%= contract.home_phone %><br>
                     Work Phone: <%= contract.work_phone %><br>
                     Cell Phone: <%= contract.cell_phone %>
-            </div>
-
+            </div></div>
             <div class="column">
-                  <div class="ui vertical fluid menu">
-                                <div class="header item">Extras Section</div></div>
+                <div class="ui fluid form segment">
+                    <div class="ui top attached black label">Extras Section
+                    </div><br>
                 <%= content_tag (:div), :class => "dl-horizontal" do %>
                 <%= content_tag(:div, "Early setup Time #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
                 <%= content_tag(:div, "Giveaways: #{contract.giveaways}")  unless contract.giveaways.blank? %>
@@ -68,49 +77,32 @@
                 <%= content_tag(:div, "Cocktail Time:              #{contract.cocktail_time}") unless contract.cocktail_time.blank? %>
                 <%= content_tag(:div, "Company:                    #{contract.company}") unless contract.company.blank? %>
                 <% end %>
-            </div>
+      </div></div>
 
-            </div></div>
+        </div> <!-- end two column row -->
+</div> <!-- end verit div stack grid-->
+ <%= render  "show/provision", contract: @contract %>
+ <%= render  "show/actnotes", contract: @contract %>
+<%= render  "show/addservices", contract: @contract %>
     </div>
-  </div>
+</div>
+
 <% if can? :see_money, @contracts %>
-<div class="four wide column">
-<div class="ui raised segment">
-    <div class="ui top attached red label">Money</div>
-<%= render  "show/moneysection", contract: @contract %>
-</div></div>
+<div class="four wide stackable column">
+    <div class="ui raised segment">
+        <div class="ui top attached red label">Money
+        </div>
+            <%= render  "show/moneysection", contract: @contract %>
+    </div><%= render  "show/buttons", contract: @contract %>
 </div>
 <% end %>
-<% end %>
 
-<hr>
 
-<div class="ui small piled feed segment">
-            <h3><span>Contract Provisions</span></h3>
-                <% unless contract.contract_provisions == "nil" %>
-                <%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %>
-                <% end %>
-</div>
-<div class="ui piled segment">
-            <h3 class="sectionheaders"><span>Act Notes</span></h3>
-                <% unless  contract.act_notes == "nil" %>
-                    <%= contract.act_notes %>
-                <% end %></div>
-<div class="ui piled segment">
-    <div class="ui celled list">
-            <h3 class="sectionheaders"><span>All Services Provided</span></h3>
 
-            <% unless @additional.blank? %>
-            <% @additional.each do |addi| %>
 
-            <% if current_user.is? :everything %>
-            <div class="item"><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></div>
-            <% else %>
-            <div class="item"><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></div>
-            <% end %>
-            <% end %>
-            <% end %>
-          </div>
-</div>
+
+
+
+
 
 
