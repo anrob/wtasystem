@@ -50,6 +50,7 @@ end
     # @pd = @user
 
 #     @otheracts = User.getotheracts(current_user, :include => :management).order("first_name")
+      @contractfour = Contract.order(params[:sort]).tenday.all
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode")
      #@getallbycompnay = User.management
 

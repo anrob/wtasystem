@@ -1,3 +1,52 @@
 <div class="sheet sheet-condensed">
+    <div class="sheet sheet-condensed">
+      <div class="sheet-inner">
+    <%= @jackreport.count %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+            <th><%= link_to "Date of Event", sort: "date_of_event" %> </th>
+            <th><%= link_to "Act Booked", sort: "act_booked" %> </th>
+            <th><%= link_to "Client Name", sort: "created_at" %></th>
+            <th><%= link_to "Contract Status", sort: "contract_status" %></th>
+
+            <th><%= link_to "Type of Event", sort: "type_of_event" %></th>
+            <th><%= link_to "Location city", sort: "location_city" %></th>
+            <th><%= link_to "Event Time", sort: "event_time" %></th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @jackreport.each do |contract| %>
+        <tr>
+
+    <td><%= link_to "#{contract.formatted_date_of_event}", contract %></td>
+    <td><%= contract.act_booked %></td>
+    <td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
+    <td><%= contract.contract_status %></td>
+
+    <td><%= contract.type_of_event %></td>
+    <td><%= contract.location_city %></td>
+    <td><%= contract.eventtime %></td>
+
+    <td>
+        <% if contract.confirmation == 1  %>
+        <%= button_to 'Get Info', contract, class: 'btn btn-success btn-medium',method: :get %>
+        <% else %>
+        <%#= button_to 'CONFIRM', m, class: 'btn-danger',method: :get %>
+        <%= button_to 'CONFIRM', confirmjob_path(id: contract.id), class: 'btn btn-danger btn-small' %>
+        <% end %>
+        <%#= link_to 'Get Info', contract, class: 'button blue' %>
+
+        </td>
+        <td><%#= @py.inspect %>
+
+    </td>
+      </tr>
+    <% end %>
+      </tbody>
+    </table>
+    </div></div>
+
 
 </div>

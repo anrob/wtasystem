@@ -123,6 +123,7 @@ h1,h2,h3,h4,h5 { font-weight: normal; line-height: normal; }
 .head-message { background-image: url(icons/message.png); }
 .head-users { background-image: url(icons/users.png); }
 .head-bar { background-image: url(icons/bar.png); }
+.head-event { background-image: url(icons/icon-event.png); }
 
 .viewmore a { font-size: 11px; text-transform: uppercase; font-size: 11px !important; }
 
@@ -198,7 +199,7 @@ h1,h2,h3,h4,h5 { font-weight: normal; line-height: normal; }
     width: 44px; font-size: 42px; padding: 10px; color: #0866c6; border: 3px solid #0866c6; display: inline-block;
     -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; float: left; text-align: center;
 }
-.pagetitle { margin-left: 90px; padding-top: 5px; }
+.pagetitle { margin-left: 0px; padding-top: 5px; }
 .pagetitle h1 { font-size: 32px; margin-left: -2px; color: #0866c6; }
 .pagetitle h5 { text-transform: uppercase; font-size: 11px; color: #999; }
 

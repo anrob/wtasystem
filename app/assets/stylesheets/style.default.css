@@ -1407,10 +1407,10 @@ table td.center, table th.center { text-align: center; }
 
 .no-rgba .fc-event { background: #333; }
 
-th a:link, th a:visited {
+/*th a:link, th a:visited {
     color: white;
 }
-
+*/
 
 
 /*** MEDIA QUERIES ***/

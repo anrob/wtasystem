@@ -1,7 +1,7 @@
 
 <div class="loginpanel">
     <div class="loginpanelinner">
-       
+<%= link_to image_tag('logo.png', alt:""), root_path %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name),html: { id: "login" }) do |f| %>
 <%= render "layouts/flashes" %>
     <%= f.label :actcode %>
@@ -14,7 +14,7 @@
         <%= f.password_field :password,  placeholder: "Enter any password" %>
 </div>
 <div class="inputwrapper animate3 bounceIn">
-        <%= f.submit "  Login  " %>
+        <%= f.submit "  Login  ",{ class: "btn btn-primary" }%>
 </div>
          <!--loginbox_content-->
     <%= render partial: "devise/shared/links" %><!--loginbox_inner-->

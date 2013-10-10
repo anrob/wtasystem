@@ -24,6 +24,8 @@ gem 'fullcalendar-rails'
 gem 'ruport', :git => 'https://github.com/ruport/ruport.git', :branch => 'ruby19-compat'
 gem 'acts_as_reportable'
 gem 'paper_trail', '~> 2'
+gem 'gmaps4rails'
+gem "font-awesome-rails"
 
 group :development do
 gem 'sqlite3'
