@@ -14,26 +14,27 @@
     </div>
   </div><!-- /.page-header -->
 
-  <div class="row">
-    <div id="content" class="span9">
+
+    <div class="maincontent">
+    <div class="maincontentinner">
       <%= yield %>
     </div> <!-- /#content -->
 
-    <div id="sidebar" class="span3">
-    <% if user_signed_in? %>
-    <%= switch_user_select if current_user.is? :everything %>
-    <% end %>
+ <!--   <div id="sidebar" class="span3">
+    <%# if user_signed_in? %>
+    <%#= switch_user_select if current_user.is? :everything %>
+    <%# end %>
      <ul class="nav nav-tabs nav-stacked nav-caret-left">
-    <% if user_signed_in? %>
-        <%= render 'otheracts-sidebar' if current_user.is? :manager %>
-    <% end %>
+    <%# if user_signed_in? %>
+        <%#= render 'otheracts-sidebar' if current_user.is? :manager %>
+    <%# end %>
 
 
         <!-- <%#= activatable_li_tag_with_link "Sub menu", nil %>
              <%#= activatable_li_tag_with_link "Another menu", "#" %>
              <%#= activatable_li_tag_with_link "A last one", "#" %> -->
-      </ul>
+    <!-->  </ul>
     </div> <!-- /#sidebar -->
-  </div> <!-- /.row -->
-
+ <!-- /.row -->
+</div>
 <% end %>

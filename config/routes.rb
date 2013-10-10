@@ -1,6 +1,19 @@
 # -*- encoding : utf-8 -*-
 Wtasystem::Application.routes.draw do
+<<<<<<< HEAD
   resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
+=======
+  resources :reports
+
+
+   namespace :api , defaults: {format: 'json'} do
+     namespace :v1 do
+      resources :contracts
+     end
+   end
+
+  match '/reports/time' => "reports#time"
+>>>>>>> newlook
   match "Working/503-error", :to => "working#maintenance_error"
 
   match "Working/503", :to => "working#maintenance"
@@ -8,10 +21,20 @@ Wtasystem::Application.routes.draw do
   match "Working/500", :to => "working#error"
 
   match "Working/404", :to => "working#not_found"
+<<<<<<< HEAD
 
   root to: "contracts#index"
   ActiveAdmin.routes(self)
 devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions] do
+=======
+   root to: "contracts#index"
+  ActiveAdmin.routes(self)
+
+resources :actnotes, :managements, :contracts, :messages, :actcodes, :incoming_mails,:quotes,:messages
+devise_for :users, controllers: {sessions: 'devise/sessions',:confirmations => "confirmations"}, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', sign_up: 'cmon_let_me_in' },skip: [:sessions]
+
+devise_scope :user do
+>>>>>>> newlook
                  get 'signin'  => 'devise/sessions#new', as: :new_user_session
                  post 'signin' => 'devise/sessions#create', as: :user_session
                  get 'signout' => 'devise/sessions#destroy', as: :destroy_user_session
@@ -29,15 +52,13 @@ resources :users
    match '/import', to: "contracts#import_contracts"
    match '/alljobs', to: "contracts#alljobs"
    match '/missingrecords', to: "contracts#missingrecords"
-   match '/mailchimp', to: "contracts#mailchimp"
+  # match '/mailchimp', to: "contracts#mailchimp"
    match '/calendar', to: "contracts#calendar"
-   match '/exportcal', to: "incoming_mails#exportevents"
-   match '/gmail', to: "contracts#gmail"
-   #match '/users/:id' => "users#edit"
+   #match '/exportcal', to: "incoming_mails#exportevents"
+   #match '/gmail', to: "contracts#gmail"
    match 'db/authorize', controller: 'dropbox', action: 'authorize'
    match 'db/upload', controller: 'dropbox', action: 'upload'
    match '/incoming', to: "incoming_mails#create"
-   #map.connect ':controller/:action/:id'
    match '/report', to: "contracts#report"
 
 end
