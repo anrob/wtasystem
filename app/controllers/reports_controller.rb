@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
       @emaillistd = @emaillist.map { |p| p.gsub(/,.*/, "")}
       #@emaillist = @emaillists.map { |e| e.gsub(/;.*/, ';') }
 
-            @contracts = Contract.unconfirmedevent.tenday.all
+            @contracts = Contract.unconfirmedevent.thisweek
               @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
               @userss = @users.collect {|m| m.email}.uniq
 

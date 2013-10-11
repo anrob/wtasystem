@@ -36,7 +36,7 @@ class ContractsController < ApplicationController
 
   def alljobs
     if current_user.is? :everything
-      @contractfour = Contract.order(params[:sort]).tenday.all
+      @contractfour = Contract.order(params[:sort] || :unique3).tenday.all
       #@contracts = Contract.where(act_code: params[:act_code])
       #@contracts = Contract.order(params[:sort]).nextsix.all
       #@contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}

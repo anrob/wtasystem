@@ -1,21 +1,27 @@
+<% if contract.date_of_event < Date.today + 11.days %>
 <div class="ui raised segment">
        <div class="ui top attached red label">Email Job Info
        </div>
- <% if contract.date_of_event < Date.today + 11.days %>
+
    <%   if contract.confirmation == 0 %>
-   <%=   button_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'ui red button'%><br />
+   <%=   link_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'ui red button'%>
     <%  else %>
     <% if current_user.is? :manager %>
-    <%= button_to 'Email Job Info - All Money', emailjobwithallmoney_path(id: contract.id), class: 'small  ui green tiny button' %><br />
-    <%= button_to 'Email Job Info With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'small  ui purple tiny button' %><br />
-    <%= button_to 'Email Job Info Without Money', emailjobnomoney_path(id: contract.id), class: 'small  ui orange tiny button' %><br />
+<div class="ui relaxed divided list">
+<div class="item">
+     <i class="map marker icon"></i>
+<div class="content">
+    <%= link_to 'Email Job Info - All Money', emailjobwithallmoney_path(id: contract.id), class: '' %>
+</div></div>
+    <%= link_to 'Email Job Info With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'item' %>
+    <%= link_to 'Email Job Info Without Money', emailjobnomoney_path(id: contract.id), class: 'item' %>
   <% elsif current_user.is? :no_money %>
-<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'small ui green tiny button' %><br />
+<%= link_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'item' %>
 <% else %>
- <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'small ui green tiny button' %><br />
-  <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'small ui orange tiny button' %>
+ <%= link_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'item' %>
+  <%= link_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'item' %>
     <% end %>
-
+</div></div>
 
 <% end %>
 <% end %>

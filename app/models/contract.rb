@@ -98,7 +98,7 @@ acts_as_gmappable
  :player7,
  :player8
 self.include_root_in_json = true
- default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money OTW","Contract Rec'd- Waiting for Dep.","Send Contract ","Hold- Money Rec'd","Hold- no dep."]}
+ default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money OTW","Contract Rec'd- Waiting for Dep.","Send Contract "]}
 
  #default_scope order:('confirmation ASC')
   Time.zone = "UTC"
@@ -107,7 +107,7 @@ self.include_root_in_json = true
   scope :mystuff, lambda { |user| where("act_code = ?", user) }
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
-  scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
+  scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
   scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
   scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
