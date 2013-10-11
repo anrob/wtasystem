@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:new, :create]
   has_scope :page, default: 1
   before_filter :everypage, :except => [:new, :create]
-  before_filter :prepare_for_mobile
+ # before_filter :prepare_for_mobile
   respond_to :html, :xml, :json
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
