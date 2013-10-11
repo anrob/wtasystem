@@ -1,48 +1,47 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
-ruby '1.9.2'
 gem 'dresssed-gimlet', :require => "dresssed/gimlet"
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'pg'
-
 gem 'postageapp'
 gem "switch_user"
 gem 'dropbox-sdk'
 gem 'magic_encoding'
 gem 'kaminari'
 gem 'has_scope'
-
-#gem "sentry-raven"
+gem "sentry-raven"
 gem "rails_best_practices"
 gem 'simple_form'
 gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
-
 gem 'trackman'
 gem 'jquery-rails'
-gem 'jquery_datepicker'
+#gem 'jquery_datepicker'
 gem "meta_search"
+gem 'fullcalendar-rails'
+#gem 'public_activity', 0.4
 gem 'ruport', :git => 'https://github.com/ruport/ruport.git', :branch => 'ruby19-compat'
 gem 'acts_as_reportable'
 gem 'paper_trail', '~> 2'
+gem 'gmaps4rails'
+gem "font-awesome-rails"
 
 group :development do
 gem 'sqlite3'
-#gem 'better_errors'
+#gem 'jquery_mobile_rails'
+gem 'better_errors'
 gem "binding_of_caller"
 gem 'meta_request'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '<= 3.2.6'
   gem 'coffee-rails', '<= 3.2.2'
-  gem 'uglifier', '>= 1.0.3'
   gem 'jquery-ui-rails'
+  #gem 'jquery-ui'
+  gem 'jquery-rails'
 end
-
 
 gem 'devise'
 gem "cancan"

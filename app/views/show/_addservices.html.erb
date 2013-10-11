@@ -1,0 +1,18 @@
+<div class="ui piled segment">
+    <div class="ui top attached black label">All Services Provided
+    </div><br>
+    <div class="ui celled list">
+            <h3 class="sectionheaders"><span>All Services Provided</span></h3>
+
+            <% unless @additional.blank? %>
+            <% @additional.each do |addi| %>
+
+            <% if current_user.is? :everything %>
+            <div class="item"><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></div>
+            <% else %>
+            <div class="item"><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></div>
+            <% end %>
+            <% end %>
+            <% end %>
+          </div>
+</div>

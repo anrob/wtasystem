@@ -1,6 +1,9 @@
 # encoding: utf-8
 class Contract < ActiveRecord::Base
-  has_paper_trail :skip => [:confirmation,:unsubscrib,:capital_music_pay,:date_of_event,:accounting_confirmation_date,:credit_card_fee,:confirmation_date,:contract_sent_date,:capital_music_pay,:questionnaire_received_date,:questionnaire_sent_date,:tax_amount]
+  # include PublicActivity::Model
+  #    tracked
+acts_as_gmappable
+  has_paper_trail :skip => [:confirmation]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,
@@ -94,8 +97,8 @@ class Contract < ActiveRecord::Base
  :player6,
  :player7,
  :player8
-
- default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay"]}
+self.include_root_in_json = true
+ default_scope  conditions: { contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money OTW","Contract Rec'd- Waiting for Dep.","Send Contract ","Hold- Money Rec'd","Hold- no dep."]}
 
  #default_scope order:('confirmation ASC')
   Time.zone = "UTC"
@@ -103,7 +106,6 @@ class Contract < ActiveRecord::Base
   my_date = Date.today
   scope :mystuff, lambda { |user| where("act_code = ?", user) }
   scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
-  scope :version, lambda { |version| where("id = ?", version) }
   scope :mytoday, -> {where("date_of_event >= ?", my_date)}
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days),:order => 'act_booked DESC')}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
@@ -112,9 +114,16 @@ class Contract < ActiveRecord::Base
   #scope :showothers, where(act_code: Actcode.getallbycompany.split(",").tenday.all)
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
+  scope :jack, conditions: { contract_status: "Contract Received"}
+  scope :wed, conditions: { type_of_event: "Wedding"}
+  scope :theact, conditions: {type_of_act: ["MC/DJ", "Band"]}
 
-  scope :emails, -> {where("email_address LIKE ?","%@%")}
+  scope :emails, -> {where("email_address LIKE ?","%@%") }
 
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.location_address_line_1}, #{self.location_city}, #{self.location_state}, #{self.location_zip}"
+  end
 
   define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"

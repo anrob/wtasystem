@@ -29,7 +29,7 @@ module Wtasystem
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
      config.time_zone = 'Eastern Time (US & Canada)'
-
+     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/reports)
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
@@ -48,17 +48,15 @@ module Wtasystem
     config.active_record.whitelist_attributes = true
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '2.7'
-    PaperTrail.config.version_limit = 1
     # config.to_prepare do
     #          Devise::SessionsController.skip_before_filter :skipthelogin
     #        end
-    # config.to_prepare do
-    #   Devise::SessionsController.layout "special_layout"
-    #   Devise::RegistrationsController.layout "special_layout"
-    #   Devise::ConfirmationsController.layout "special_layout"
-    #   Devise::UnlocksController.layout "special_layout"
-    #   Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application" : "special_layout" }
-
-    # end
+     config.to_prepare do
+       Devise::SessionsController.layout "devise"
+         Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+         Devise::ConfirmationsController.layout "devise"
+         Devise::UnlocksController.layout "devise"
+         Devise::PasswordsController.layout "devise"
+     end
   end
 end

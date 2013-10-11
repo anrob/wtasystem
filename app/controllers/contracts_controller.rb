@@ -6,17 +6,19 @@ class ContractsController < ApplicationController
   before_filter :everypage
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
-layout "home", :except => [:index]
-
+  layout "home"
 
   def index
     @contract = Contract.where(act_code: params[:act_code])
-    @contracts = Contract.mystuff(current_user.actcode_name).tenday.all
+    #@contract = @contractstart.order(params[:sort])
+    @contracts = Contract.mystuff(current_user.actcode_name).order(params[:sort] || :date_of_event).tenday.all
+    #@contracts = @contractend.order(params[:sort])
+
   end
 
   def show
     @additional = Contract.additional(@contract)
-     @versions = Version.where(item_id: params[:id])
+    @versions = Version.where(item_id: params[:id])
   end
 
   def calendar
@@ -26,46 +28,65 @@ layout "home", :except => [:index]
       @contracts = Contract.mystuff(@current_user.actcode_name).threesixfive.all
     else
       @contracts = Contract.where(act_code: @manger.split(",")).threesixfive.all
+
     end
     respond_with contracts: @contracts
   end
 
 
   def alljobs
+    if current_user.is? :everything
       @contractfour = Contract.order(params[:sort]).tenday.all
-      @contracts = Contract.order(params[:sort]).nextsix.all
-      @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
-       @allactcodes = Contract.all.collect { |obj| obj.act_code }
-        @actcodes = Actcode.all.collect { |b| b.name}
-        @updates = @allactcodes - @actcodes
-        @remove = Contract.remove
-
-        @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
+      #@contracts = Contract.where(act_code: params[:act_code])
+      #@contracts = Contract.order(params[:sort]).nextsix.all
+      #@contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
+      #@allactcodes = Contract.all.collect { |obj| obj.act_code }
+      #@actcodes = Actcode.all.collect { |b| b.name}
+      #@updates = @allactcodes - @actcodes
+      #@remove = Contract.remove
+      #@notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
+      @findit = @contractfour.find(params[:id])
+     #@user = User.find_by_actcode_name(:act_code)
+    # @user = User.where(actcode_name: @contractfour.id).map {|d|d.email}
+     #@user = User.where(actcode_name:)
+    else
+      redirect_to root_path
+    end
 
   end
 
   def missingrecords
-      @contractfour = Contract.order(:unique3).tenday.all
+      @contractfour = Contract.order(params[:sort] || :unique3).tenday.all
       @contractbymonth = @contracts.group_by { |t| t.date_of_event.beginning_of_week}
-
-        @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
+      @notconfirmed = User.notconfirmed.collect {|e| e.email}.uniq
   end
 
-  # def report
-  #  #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
-  #  @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
-  #     @allactcodes = Contract.all.collect { |obj| obj.act_code }
-  #     @actcodes = User.all.collect { |b| b.actcode_name}
-  #     @updates = @allactcodes - @actcodes
-  #     @upd = @updates.uniq
-  #     #@emails = Contract.where('email_address ~= ?','%comcast.net%')
-  #     @emails = Contract.emails.collect { |ob| ob.email_address}
-  # end
-
   def report
-    @contracts = Contract.unconfirmedevent.tenday.all
-    @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-    @userss = @users.collect {|m| m.email}.uniq
+   #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
+   # @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
+   #    @allactcodes = Contract.all.collect { |obj| obj.act_code }
+   #    @actcodes = User.all.collect { |b| b.actcode_name}
+   #    @updates = @allactcodes - @actcodes
+   #    @upd = @updates.uniq
+      #@emails = Contract.where('email_address ~= ?','%comcast.net%')
+                  #  @emails = Contract.emails.collect { |ob| ob.email_address}
+                  #  @prkey = Contract.all.collect { |ab| ab.prntkey23 }
+                  # @emaildups = @prkey.dups
+
+                  @contracts = Contract.unconfirmedevent.tenday.all
+                   @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+                   @userss = @users.collect {|m| m.email}.uniq
+                   #ContractMailer.send_reminder(@userss).deliver
+
+                     @contracts = Contract.unconfirmedevent.tenday.all
+                      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+                      @userss = @users.collect {|m| m.email}.uniq
+
+                     @jackreport = Contract.order(params[:sort]).wedding.jack.theact.threesixfive.all
+                     # @additional = Contract.additional(@jackreport)
+                      #@prkey = @jackreport.all.collect { |ab| ab.prntkey23 }
+                      @pkey = Contract.find_all_by_prntkey23(@jackreport.map {|p|p.prntkey23})
+                      @py = @pkey.collect {|g| g.prntkey23}
   end
 
   def confirmjob
