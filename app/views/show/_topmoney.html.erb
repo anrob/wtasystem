@@ -1,7 +1,9 @@
 <div class="ui grid">
     <div class="twelve wide stackable column">
+
         <div class="ui raised segment">
             <div class="ui top attached red label">
+    <div class="ui ribbon label"><%= contract.type_of_event %></div>
             <%= contract.act_booked %>
             </div>
             <%= content_tag_for(:dt, contract) do  %>
@@ -45,6 +47,7 @@
 
 
 <div class="ui vertically divided stackable grid">
+
         <div class="two column row">
             <div class="column">
                 <div class="ui fluid form segment">
@@ -79,8 +82,17 @@
                 <% end %>
       </div></div>
 
+
         </div> <!-- end two column row -->
+
 </div> <!-- end verit div stack grid-->
+<br>
+<div class="ui vertically divided stackable grid">
+        <div class="two column row">
+<div class="column"> <%= render  "show/weddingstuff", contract: @contract %></div>
+<div class="column"><%= render  "show/players", contract: @contract %></div>
+</div>
+</div>
  <%= render  "show/provision", contract: @contract %>
  <%= render  "show/actnotes", contract: @contract %>
 <%= render  "show/addservices", contract: @contract %>

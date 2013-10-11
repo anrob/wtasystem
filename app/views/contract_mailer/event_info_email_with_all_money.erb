@@ -57,8 +57,25 @@ Phone:<%= @contract.location_phone %><br>
     Ceremony Instrumentation: <%= @contract.ceremony_instrumenttation %><br>
     Player Section<br>
 </p>
+Cool
+<%= content_tag (:div), :class => "dl-horizontal" do %>
+<%= content_tag(:div, "Early setup Time #{@contract.early_setup_time}") unless @contract.early_setup_time.blank? %>
+<%= content_tag(:div, "Giveaways: #{@contract.giveaways}")  unless @contract.giveaways.blank? %>
+<%= content_tag(:div, "Type of Light Show:         #{@contract.type_of_light_show}") unless @contract.type_of_light_show.blank? %>
+<%= content_tag(:div, "Number of Horns:            #{@contract.number_of_horns}") unless @contract.number_of_horns.blank? || 0 %>
+<%= content_tag(:div, "Number of Dancers:          #{@contract.number_of_dancers}") unless @contract.number_of_dancers.blank? || 0 %>
+<%= content_tag(:div, "Pick up Reason              #{@contract.explanation_opf_pickup_adjustment}") unless @contract.explanation_opf_pickup_adjustment.blank? %>
+<%= content_tag(:div, "Cap Music:                  #{@contract.capital_music_player}") unless @contract.capital_music_player.blank? %>
+<%= content_tag(:div, "Quest. Received: #{@contract.questionnaire_received_date}") unless @contract.questionnaire_received_date.blank? %>
+<%= content_tag(:div, "Referral Fee to :           #{@contract.referral_fee_to}") unless @contract.referral_fee_to.blank? %>
+<%= content_tag(:div, "Song Requests:              #{@contract.song_requests}") unless @contract.song_requests.blank? %>
+<%= content_tag(:div, "Cocktail Instrumentation:   #{@contract.cocktail_instrumentation}") unless @contract.cocktail_instrumentation.blank? %>
+<%= content_tag(:div, "Cocktail Time:              #{@contract.cocktail_time}") unless @contract.cocktail_time.blank? %>
+<%= content_tag(:div, "Company:                    #{@contract.company}") unless @contract.company.blank? %>
+<% end %>
+
 <dl>
-    <dt>Player 1: </dt> <%= @contract.videographer_1 %><br>
+    <dt>Player 1: </dt> <%= @contract.videographer_1 unless self.blank? %><br>
     <dt>Player 2: </dt> <%= @contract.videographer_2 %><br>
     <dt>Player 3: </dt> <%= @contract.videgrapher_3 %><br>
     <dt>Player 4: </dt> <%= @contract.player4 %><br>
