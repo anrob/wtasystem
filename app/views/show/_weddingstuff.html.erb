@@ -1,4 +1,5 @@
-    <div class="ui fluid form segment">
+<% unless contract.ceremony_start_time.blank? && contract.ceremonoy_location_name.blank? %>
+  <div class="ui fluid form segment">
         <div class="ui top attached black label">Wedding Section
         </div><br>
 <%= content_tag(:div,"Ceremony Date:           #{contract.date_of_ceremony}")%>
@@ -12,3 +13,4 @@
 <%= content_tag(:div,"Ceremony Instrumentation:#{contract.ceremony_instrumenttation}") %>
 </div>
 
+<% end %>

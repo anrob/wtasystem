@@ -1,0 +1,10 @@
+
+                    <% if contract.location_name? %>
+                    <address>
+                    <strong>Event Location</strong><br>
+                     <strong>  <%= contract.location_name.gsub('"', ' ') %></strong><br>
+                      <%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
+                        Phone: <%= contract.location_phone %>
+                        <% end %><br><br>
+                    <address>
+                        <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=My Location&daddr=#{themap}", class: 'ui button green success')%>

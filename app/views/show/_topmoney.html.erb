@@ -1,48 +1,24 @@
 <div class="ui grid">
     <div class="twelve wide stackable column">
+        <div class="ui segment">
+            <div class="ui top attached red label"> <%= contract.act_booked %></div>
+                <div class="ui ribbon black label"><%= contract.type_of_event %></div>
+<br><br>
+<div class="ui vertically divided stackable grid">
+<div class="two column row">
+<div class="column">
+<div class="ui fluid form segment">
+<%= render 'show/contractinfo',contract: @contract %>
+</div></div>
+<div class="column">
+<div class="ui fluid form segment">
+<%= render  'show/address',contract: @contract %>
+</div></div>
+</div><!-- end of two column row-->
+</div><!-- end vertically divided stackable-->
+<%= render 'show/agent', contract: @contract %>
 
-        <div class="ui raised segment">
-            <div class="ui top attached red label">
-    <div class="ui ribbon black label"><%= contract.type_of_event %></div>
-            <%= contract.act_booked %>
-            </div>
-            <%= content_tag_for(:dt, contract) do  %>
-                <%= content_tag(:dt,"Date of Event:         #{contract.date_of_event}") unless contract.date_of_event.blank? %>
-                <%= content_tag(:dt,"Event Time:          #{contract.eventtime}")  unless contract.eventtime.blank? %>
-                <%= content_tag(:dt, "Early setup Time #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
-                <%= content_tag(:dt,"Event Type:         #{contract.type_of_event}") unless contract.type_of_event.blank? %>
-                <%= content_tag(:dt,"Reception Location:  #{contract.reception_location}") unless contract.reception_location.blank? %>
-                <%= content_tag(:dt,"Contract Status:     #{contract.contract_status}")  unless contract.contract_status.blank? %>
-                <%= content_tag(:dt,"Operating as:        #{contract.type_of_act}")  unless contract.type_of_act.blank? %>
-                <%= content_tag(:dt,"Form of:             #{contract.act_form}")  unless contract.act_form.blank? %>
-<% end %>
-<div class="ui small feed segment">
-                    <% if contract.location_name? %>
-                    <address>
-                    <strong>Event Location</strong><br>
-                     <strong>  <%= contract.location_name.gsub('"', ' ') %></strong><br>
-                      <%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
-                        Phone: <%= contract.location_phone %>
-                        <% end %><br><br>
-                    <address>
-                        <%= button_to("Get Directions", "http://maps.google.com/maps?saddr=My Location&daddr=#{themap}", class: 'ui button success')%>
-</div> <!-- end of address -->
-        <div class="ui fluid form segment">
-            <div class="ui top attached black label">Agent Section
-            </div>
-<%= content_tag(:dt,"Contract number:     #{contract.contract_number}")  unless contract.contract_number.blank? %>
-
-<%= content_tag(:dt,"Agent :              #{contract.agent}")  unless contract.agent.blank? %>
-
-
-
-<%= content_tag(:dt,"Pickup Amount:              #{number_to_currency(contract.pick_up_amount)}")  unless contract.pick_up_amount.blank? || 0 %>
-
-<%= content_tag(:dt,"Referral Fee Paid To:              #{number_to_currency(contract.referral_fee_to)}")  unless contract.referral_fee_to.blank? || 0 %>
-        </div>
-                  <div class="ui horizontal icon divider">
-                        <i class="circular heart icon"></i>
-                  </div>
+<hr>
 
 
 
@@ -100,15 +76,14 @@
     </div>
 </div>
 
-<% if can? :see_money, @contracts %>
+
 <div class="four wide stackable column">
-    <div class="ui raised segment">
-        <div class="ui top attached red label">Money
-        </div>
-            <%= render  "show/moneysection", contract: @contract %>
-    </div><%= render  "show/buttons", contract: @contract %>
-</div>
+<% if can? :see_money, @contracts %>
+<%= render  "show/moneysection", contract: @contract %>
 <% end %>
+<%= render  "show/buttons", contract: @contract %>
+</div>
+
 
 
 

@@ -1,8 +1,10 @@
+<% unless contract.contract_provisions == "nil" %>
 <div class="ui small piled feed segment stackable">
     <div class="ui top attached black label">Contract Provisions
     </div><br>
             <h3><span>Contract Provisions</span></h3>
-                <% unless contract.contract_provisions == "nil" %>
+
                 <%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %>
-               <% end %>
+
 </div>
+<% end %>

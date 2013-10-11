@@ -22,7 +22,7 @@
 <% unless user.actcode_name? %>
 <p><strong>Actcode : <%= user.actcode_name %>
     <% end %>
-    <% unless user.management_id? %>
+    <% unless user.management_id.blank? %>
 Management Company : <%= user.management.name %></p>
 <% end %>
 </strong>

@@ -1,3 +1,4 @@
+<% unless contract.videographer_1.blank? && contract.videographer_2.blank? %>
 <div class="ui fluid form segment">
        <div class="ui top attached black label">Players Section
        </div><br>
@@ -11,3 +12,4 @@
 <%= content_tag(:div,"Player 8:   #{contract.player8}") %>
 <hr class="show-line">
 </div>
+<% end %>
