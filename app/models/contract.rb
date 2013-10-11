@@ -2,7 +2,7 @@
 class Contract < ActiveRecord::Base
   # include PublicActivity::Model
   #    tracked
-acts_as_gmappable
+
   has_paper_trail :skip => [:confirmation]
   require 'chronic'
   has_one :actcode
