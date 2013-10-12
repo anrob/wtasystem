@@ -42,8 +42,8 @@ class ContractMailer < PostageApp::Mailer
     # @user = user
     postageapp_template 'eventinfo_template'
      mail(  from: "support@confirmmygig.com",
-          #  to: user,
-          to: "iamjustfresh@gmail.com",
+            to: user,
+          #to: "iamjustfresh@gmail.com",
             subject: "Please Confirm Jobs")
    end
 
