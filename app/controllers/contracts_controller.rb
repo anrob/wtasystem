@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
   set_tab :home
   inherit_resources
   load_and_authorize_resource
-  before_filter :everypage
+#before_filter :everypage
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
   layout "home"

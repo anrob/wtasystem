@@ -33,26 +33,19 @@ end
   end
   helper_method :mobile_device?
 
-  def prepare_for_mobile
-    session[:mobile_param] = params[:mobile] if params[:mobile]
-    request.format = :mobile if mobile_device?
-  end
+  # def prepare_for_mobile
+  #   session[:mobile_param] = params[:mobile] if params[:mobile]
+  #   request.format = :mobile if mobile_device?
+  # end
 
   def everypage
     if user_signed_in?
-     #@management = Management.find_by_id(current_user.management_id)
      @mana = Actcode.find_by_actcode(current_user.actcode_name, :include => :management)
      if current_user.is? :manager
      @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode}
     end
-     #@but = @manger.include?(params[:act_code]).to_s
-     #@user = current_user
-    # @pd = @user
-
-#     @otheracts = User.getotheracts(current_user, :include => :management).order("first_name")
       @contractfour = Contract.order(params[:sort]).tenday.all
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode")
-     #@getallbycompnay = User.management
 
 end
 end
