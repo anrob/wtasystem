@@ -5,16 +5,16 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name),html: { id: "login" }) do |f| %>
 <%= render "layouts/flashes" %>
     <%= f.label :actcode %>
-<div class="inputwrapper animate1 bounceIn">
+<div class="inputwrapper">
         <%= f.text_field :actcode_name,  placeholder: "Actcode must be in all CAPS!" %>
 </div>
 
         <%= f.label :password %>
-<div class="inputwrapper animate1 bounceIn">
+<div class="inputwrapper">
         <%= f.password_field :password,  placeholder: "Enter any password" %>
 </div>
-<div class="inputwrapper animate3 bounceIn">
-        <%= f.submit "  Login  ",{ class: "btn btn-primary" }%>
+<div class="inputwrapper">
+        <%= f.submit "  Login  ",{ class: "ui button red" }%>
 </div>
          <!--loginbox_content-->
 <div class="ui message">
