@@ -1,0 +1,9 @@
+<div class="ui fluid form segment">
+           <div class="ui top attached black label">Agent Section
+           </div>
+<%= content_tag(:dt,"Contract number:     #{contract.contract_number}")  unless contract.contract_number.blank? %>
+
+<%= content_tag(:dt,"Agent :              #{contract.agent}")  unless contract.agent.blank? %>
+<%= content_tag(:dt,"Pickup Amount:              #{number_to_currency(contract.pick_up_amount)}")  unless contract.pick_up_amount.blank? || 0 %>
+<%= content_tag(:dt,"Referral Fee Paid To:              #{number_to_currency(contract.referral_fee_to)}")  unless contract.referral_fee_to.blank? || 0 %>
+       </div>

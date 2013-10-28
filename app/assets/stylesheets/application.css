@@ -4,6 +4,7 @@
 *= require "fullcalendar"
 *= require "navyblue"
 *= require "semantic.min"
+*= require "jquery.mobile.flatui.min"
 *= require "font-awesome"
 *= require_tree
 

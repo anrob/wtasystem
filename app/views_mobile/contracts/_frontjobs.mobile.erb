@@ -1,4 +1,4 @@
-<table class="ui table segment">
+<table data-role="table" id="table-column-toggle" data-mode="reflow" class="ui-responsive table-stroke" data-theme="b">
   <thead>
     <tr>
         <th><%= link_to "Date of Event", sort: "date_of_event" %> </th>
@@ -18,7 +18,7 @@
 
 <td><%= link_to "#{contract.formatted_date_of_event}", contract %></td>
 <td><%= contract.act_booked %></td>
-<td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
+<td><%= link_to "#{contract.last_name}", contract %></td>
 <td><%= contract.contract_status %></td>
 
 <td><%= contract.type_of_event %></td>
@@ -27,10 +27,10 @@
 
 <td>
     <% if contract.confirmation == 1  %>
-    <%= button_to 'Get Info', contract, class: 'positive ui button tiny',method: :get %>
+    <%= button_to 'Get Info', contract, class: 'ui-btn-hidden', 'data-theme'=>"b",'data-icon'=>"flat-eye",'data-rel'=>"back", method: :get %>
     <% else %>
     <%#= button_to 'CONFIRM', m, class: 'btn-danger',method: :get %>
-    <%= button_to 'CONFIRM', confirmjob_path(id: contract.id), class: 'negative ui button tiny' %>
+    <%= button_to 'CONFIRM', confirmjob_path(id: contract.id), class: 'negative ui button tiny','data-theme'=>"d", 'data-icon'=>"flat-checkround" %>
     <% end %>
     <%#= link_to 'Get Info', contract, class: 'button blue' %>
 

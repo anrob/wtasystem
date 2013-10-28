@@ -1,0 +1,12 @@
+<%= title "DashBoard" %>
+<h3 data-theme="a" class="ui-li ui-li-divider ui-bar-a ui-first-child">All Jobs in the Next 10 Days</h3>
+<% if current_user.is? :dancer || :manager %>
+<%= render 'dancerjobs', contract: @contracts %>
+<% end %>
+
+<%= render 'frontjobs', contract: @contracts  %>
+<br>
+<% if current_user.is? :manager %>
+<h3 data-theme="b" class="ui-li ui-li-divider ui-bar-a ui-first-child">All Management Team contracts in the Next 10 Days</h3>
+<%= render  'frontjobs', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
+<% end %>

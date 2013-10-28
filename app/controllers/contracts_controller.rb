@@ -4,6 +4,8 @@ class ContractsController < ApplicationController
   inherit_resources
   load_and_authorize_resource
 #before_filter :everypage
+before_filter :prepare_for_mobile
+#before_filter :check_for_mobile
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
   layout "home"

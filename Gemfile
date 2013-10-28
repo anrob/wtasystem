@@ -26,6 +26,8 @@ gem 'acts_as_reportable'
 gem 'paper_trail', '~> 2'
 gem 'gmaps4rails'
 gem "font-awesome-rails"
+gem "jquerymobile-rails"
+gem 'mobile-fu'
 
 group :development do
 gem 'sqlite3'

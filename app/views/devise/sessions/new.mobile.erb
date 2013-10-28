@@ -1,18 +1,28 @@
-<div data-role="header">
-  <h1>Login</h1>
-</div>
-<div data-role="content">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),html: { class: "well form-well" }) do |f| %>
 
+<div class="loginpanel">
+    <div class="loginpanelinner">
+<%= link_to image_tag('logo.png', alt:""), root_path %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),html: { id: "login" }) do |f| %>
+<%= render "layouts/flashes" %>
     <%= f.label :actcode %>
-        <%= f.text_field :actcode_name,  class: "username" %>
-         <span class="help-inline">Actcode must be in all CAPS!</span>
+<div class="inputwrapper">
+        <%= f.text_field :actcode_name,  placeholder: "Actcode must be in all CAPS!" %>
+</div>
+
         <%= f.label :password %>
-        <%= f.password_field :password,  class: "password" %>
-    <br /><br />
-        <%= f.submit "  Login  ", class: "btn-primary" %>
+<div class="inputwrapper">
+        <%= f.password_field :password,  placeholder: "Enter any password" %>
+</div>
+<div class="inputwrapper">
+        <%= f.submit "  Login  ",{ class: "ui button red" }%>
+</div>
          <!--loginbox_content-->
+<div class="ui message">
     <%= render partial: "devise/shared/links" %><!--loginbox_inner-->
+</div>
 <!--loginbox-->
 <% end %>
+
+
+</div>
 </div>

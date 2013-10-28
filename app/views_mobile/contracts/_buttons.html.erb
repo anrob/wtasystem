@@ -1,0 +1,25 @@
+
+<div class="ui segment">
+
+<% if contract.date_of_event < Date.today + 11.days %>
+
+   <%   if contract.confirmation == 0 %>
+   <%=   button_to ' CONFIRM THIS EVENT ', confirmjob_path(id: contract.id), class: 'ui red button'%>
+    <%  else %>
+    <% if current_user.is? :manager %>
+
+    <%= button_to 'Email Job Info - All Money', emailjobwithallmoney_path(id: contract.id), class: 'button item' %>
+
+    <%= button_to 'Email Job Info With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'small item' %>
+    <%= button_to 'Email Job Info Without Money', emailjobnomoney_path(id: contract.id), class: 'item' %>
+  <% elsif current_user.is? :no_money %>
+<%= button_to 'Email Job Information', emailjobnomoney_path(id: contract.id), class: 'item' %>
+<% else %>
+ <%= button_to 'Email Job Information With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'item' %>
+  <%= button_to 'Email Job Information Without Money', emailjobnomoney_path(id: contract.id), class: 'item' %>
+    <% end %>
+
+
+<% end %>
+<% end %>
+</div>

@@ -1,0 +1,23 @@
+<div class="ui raised segment">
+     <div class="ui top attached red label">Money
+     </div>
+<div class="ui list">
+    <%= content_tag (:div), :class => "dl-horizontal" do %>
+<%= content_tag(:div,"Contract Price :              #{number_to_currency(contract.contract_price)}")  unless self.blank? || contract.contract_price == 0  %><br>
+<%= content_tag(:div,"Act Net:            #{number_to_currency(contract.act_net)}") unless  self.blank? || contract.act_net == 0 %>
+<%= content_tag(:div,"cocktails charge:            #{number_to_currency(contract.cocktails_charge)}") unless  self.blank? || contract.cocktails_charge == 0 %>
+<%= content_tag(:div,"ceremony charge:             #{number_to_currency(contract.ceremony_charge)}") unless self.blank? || contract.ceremony_charge == 0 %>
+<%= content_tag(:div,"early setup charge:          #{number_to_currency(contract.early_setup_charge)}") unless self.blank? || contract.early_setup_charge == 0 %>
+<%= content_tag(:div,"charge per horn:             #{contract.number_of_horns}"  " @"  "#{number_to_currency(contract.charge_per_horn)}") unless self.blank? || contract.number_of_horns == 0 %>
+<%= content_tag(:div,"other charges:               #{number_to_currency(contract.other_charges)}") unless self.blank? || contract.other_charges == 0 %>
+<%= content_tag(:div,"charge per dancer:           #{contract.number_of_dancers}"  " @"  "#{number_to_currency(contract.charge_per_dancer)}") unless self.blank? || contract.number_of_dancers == 0 %>
+<%= content_tag(:div,"giveaways charge:            #{number_to_currency(contract.giveaways_charge)}") unless self.blank? || contract.giveaways_charge == 0 %>
+<%= content_tag(:div,"dj tech_charge:              #{number_to_currency(contract.dj_tech_charge)}") unless self.blank? || contract.dj_tech_charge == 0 %>
+<%= content_tag(:div,"non-commission charges:  #{number_to_currency(contract.non_commissionable_charges)}") unless self.blank? || contract.non_commissionable_charges == 0 %>
+<%#= content_tag(:div,"capital music pay:           #{number_to_currency(contract.capital_music_pay)}") unless self.blank? || contract.capital_music_pay == 0 %>
+<%= content_tag(:div,"base price of act:           #{number_to_currency(contract.base_price_of_act)}") unless self.blank? || contract.base_price_of_act == 0  %>
+<%= content_tag(:div,"referral fee amount:         #{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
+<%= content_tag(:div,"tax amount:                  #{number_to_currency(contract.tax_amount)}") unless self.blank? || contract.tax_amount == 0 %>
+<% end %>
+</div>
+</div>
