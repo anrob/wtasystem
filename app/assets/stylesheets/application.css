@@ -9,3 +9,7 @@
 *= require_tree
 
 */
+
+.ui-link a {
+    color: #336699;
+}

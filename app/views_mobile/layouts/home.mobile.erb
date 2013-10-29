@@ -13,9 +13,13 @@
 <body>
 
 <div data-role="page" data-add-back-btn="true">
-
-    <div data-role="header">
-
+ <div data-role="panel" id="leftpanel1" data-theme="a">
+        <%= render 'navstuff'  %>
+    </div><!-- /panel -->
+    <div data-role="header" data-theme="b">
+<% if current_user.is? :manager %>
+<a href="#leftpanel1" data-role="button" data-inline="true" data-mini="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Settings</span></span></a>
+    <% end %>
 
         <h1>Confirm My Gig</h1>
     </div><!-- /header -->

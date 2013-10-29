@@ -8,7 +8,7 @@ before_filter :prepare_for_mobile
 #before_filter :check_for_mobile
   before_filter :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
   helper_method :themanager, :themap
-  layout "home"
+  #layout "home"
 
   def index
     @contract = Contract.where(act_code: params[:act_code])
@@ -28,8 +28,10 @@ before_filter :prepare_for_mobile
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     unless current_user.is? :manager
       @contracts = Contract.mystuff(@current_user.actcode_name).threesixfive.all
+     @event = @contracts.group_by(&:date_of_event)
     else
       @contracts = Contract.where(act_code: @manger.split(",")).threesixfive.all
+       @event = @contracts.group_by(&:date_of_event)
 
     end
     respond_with contracts: @contracts

@@ -1,0 +1,57 @@
+<%#= @contracts.todaysevents %>
+<%#= @event.inspect %>
+
+
+<table data-role="table" data-mode="reflow" class="ui-responsive table-stroke">
+<thead>
+<tr>
+    <th>Sun</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+  </tr>
+</thead>
+ <tbody>
+  <tr>
+    <% (begin_weekly_calendar..end_weekly_calendar(2)).each do |d| %>
+      <% if d.wday == 0 %></tr><tr><% end %>
+        <td>
+          <%= d.day %>
+           <% if @event[d.to_date] %>
+
+          <ul>
+            <% @event[d.to_date].each do |e| %>
+              <li><%= link_to"#{e.act_code} - #{e.last_name}", e %></li>
+            <% end %>
+          </ul>
+<% end %>
+        </td>
+      <% end %>
+  </tr>
+ </tbody>
+</table>
+
+<!-- <%#= calendar_for @contracts,{year: @date.year, month: @date.month} do |calendar| %>
+    <%#= calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat ') %>
+    <%#= calendar.day(day_method: :date_of_event) do |date, contracts| %>
+    <%#= date.day %>
+
+    <table>
+    <%# contracts.each do |contract| %>
+    <tr>
+              <td>
+        <%# unless contract.confirmation == 0  %>
+        <%#= link_to "#{contract.last_name} - #{contract.act_code}"%>
+        <%# else %>
+        <%#= link_to "#{contract.last_name} - #{contract.act_code}"%>
+                <%# end %>
+              </td>
+    </tr>
+            <%# end %>
+          </table>
+        <%# end %>
+      <%# end %>
+-->

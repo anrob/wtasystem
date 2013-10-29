@@ -4,7 +4,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require dresssed
+//= require mobiscroll
+//= require jquery.ui.datepicker
 //= require_self
 //= require_tree .
 
 
+$(document).ready(function() {
+  $('.datepicker').datepicker();
+});

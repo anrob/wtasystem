@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   has_scope :page, default: 1
   before_filter :everypage, :except => [:new, :create]
   before_filter :prepare_for_mobile
+  before_filter :force_tablet_html
   has_mobile_fu
 
 
@@ -33,6 +34,12 @@ class ApplicationController < ActionController::Base
      if is_mobile_device?
      prepend_view_path Rails.root + 'app' + 'views_mobile'
    end
+   end
+
+   def force_tablet_html
+
+     session[:tablet_view] = false
+
    end
   #
   #  def mobile_device?

@@ -66,7 +66,7 @@ a,a:hover,a:link,a:active,a:focus,
 .wizard .tabbedmenu li a.done,
 .tabbable > .nav-tabs > li.active > a,
 .btn-circle.btn-primary, .btn-circle.btn-primary:hover, .btn-circle.btn-primary:focus,
-.btn-circle.btn-primary:active, .btn-circle.btn-primary.active, 
+.btn-circle.btn-primary:active, .btn-circle.btn-primary.active,
 .btn-circle.btn-primary.disabled, .btn-circle.btn-primary[disabled],
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover,
@@ -97,7 +97,7 @@ a,a:hover,a:link,a:active,a:focus,
 .tabbable > .tab-content,
 .nav-tabs.nav-stacked > li > a:focus,
 .btn-circle.btn-primary, .btn-circle.btn-primary:hover, .btn-circle.btn-primary:focus,
-.btn-circle.btn-primary:active, .btn-circle.btn-primary.active, 
+.btn-circle.btn-primary:active, .btn-circle.btn-primary.active,
 .btn-circle.btn-primary.disabled, .btn-circle.btn-primary[disabled],
 .nav-tabs,
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus,
@@ -133,9 +133,9 @@ a,a:hover,a:link,a:active,a:focus,
 
 
 @media screen and (max-width: 480px) {
- 
+
  .userloggedinfo ul li a:hover { background-color: #3b6c8e; }
- 
+
   .userloggedinfo .userinfo,
   .wizard .hormenu li,
   .messageright { border-color: #3b6c8e; }
