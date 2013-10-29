@@ -5,4 +5,7 @@
     <li><%= link_to "Calendar", calendar_path %></li>
 <% end %>
 <li><%= link_to "All Jobs", alljobs_path %></li>
+ <li data-role="list-divider">Account settings</li>
+<li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
+<li><%= link_to("Logout", destroy_user_session_path, :method => :get) %></li>
 </ul>

@@ -4,7 +4,7 @@
     <title>Confirm My Gig</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<%= stylesheet_link_tag "jquery.mobile.flatui.min.css", media: "all" %>
+<%= stylesheet_link_tag "jquery.mobile.flatui.min","mobb", media: "all" %>
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <%#= stylesheet_link_tag    "jquery.mobile.flatui.min.css" %>
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div data-role="page" data-add-back-btn="true">
+<div data-role="page" data-add-back-btn="true" data-dom-cache="false">
  <div data-role="panel" id="leftpanel1" data-theme="a">
         <%= render 'navstuff'  %>
     </div><!-- /panel -->

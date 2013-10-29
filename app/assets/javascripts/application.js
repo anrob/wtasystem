@@ -6,6 +6,7 @@
 //= require dresssed
 //= require mobiscroll
 //= require jquery.ui.datepicker
+//= require jquery.turbolinks
 //= require_self
 //= require_tree .
 

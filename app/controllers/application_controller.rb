@@ -4,12 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :except => [:new, :create]
   has_scope :page, default: 1
   before_filter :everypage, :except => [:new, :create]
-  before_filter :prepare_for_mobile
+
   before_filter :force_tablet_html
   has_mobile_fu
-
-
-
+  before_filter :prepare_for_mobile
   respond_to :html, :xml, :json
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
@@ -18,9 +16,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
      render file: "#{Rails.root}/public/404.html", layout: true, status: 404
   end
- # rescue_from Exception do
- #  render layout: false, :status => 422
- #  end
+ rescue_from Exception do
+  render layout: false, :status => 422
+  end
 
 
 
