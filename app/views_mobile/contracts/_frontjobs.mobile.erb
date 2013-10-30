@@ -1,3 +1,12 @@
+<% if current_user.is? :manager %>
+
+<br /><ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search by Client Name or Act name...">
+ <% contract.each do |contract| %>
+<li><%= link_to "#{contract.last_name} - #{contract.act_booked}", contract %></li>
+<% end %>
+</ul>
+<br />
+<% end %>
 <table data-role="table" id="table-column-toggle" data-mode="reflow" class="ui-responsive table-stroke" data-theme="b">
   <thead>
     <tr>

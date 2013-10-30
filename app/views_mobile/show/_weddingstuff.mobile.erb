@@ -1,0 +1,16 @@
+<% unless contract.ceremony_start_time.blank? && contract.ceremonoy_location_name.blank? %>
+  <div class="ui fluid form segment">
+        <div class="ui top attached black label">Wedding Section
+        </div><br>
+<%= content_tag(:div,"Ceremony Date:           #{contract.date_of_ceremony}")%>
+<%= content_tag(:div,"Ceremony Location:       #{contract.ceremonoy_location_name}") %>
+<%= content_tag(:div,"Ceremony Address:        #{contract.ceremonoy_address_line_1}") %>
+<%= content_tag(:div,"Ceremony Address line 2: #{contract.ceremony_address_line_2}") %>
+<%= content_tag(:div,"Ceremony City:           #{contract.ceremony_location_city}") %>
+<%= content_tag(:div,"Ceremony State:          #{contract.seremonly_location_state}") %>
+<%= content_tag(:div,"Ceremony Zip:            #{contract.ceremony_location_zip}") %>
+<%= content_tag(:div,"Ceremony Start Time:     #{contract.ceremony_start_time}") %>
+<%= content_tag(:div,"Ceremony Instrumentation:#{contract.ceremony_instrumenttation}") %>
+</div>
+
+<% end %>
