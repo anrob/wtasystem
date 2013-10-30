@@ -1,7 +1,3 @@
-<%#= @contracts.todaysevents %>
-<%#= @event.inspect %>
-
-
 <table data-role="table" data-mode="reflow" class="ui-responsive table-stroke">
 <thead>
 <tr>
@@ -33,25 +29,3 @@
   </tr>
  </tbody>
 </table>
-
-<!-- <%#= calendar_for @contracts,{year: @date.year, month: @date.month} do |calendar| %>
-    <%#= calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat ') %>
-    <%#= calendar.day(day_method: :date_of_event) do |date, contracts| %>
-    <%#= date.day %>
-
-    <table>
-    <%# contracts.each do |contract| %>
-    <tr>
-              <td>
-        <%# unless contract.confirmation == 0  %>
-        <%#= link_to "#{contract.last_name} - #{contract.act_code}"%>
-        <%# else %>
-        <%#= link_to "#{contract.last_name} - #{contract.act_code}"%>
-                <%# end %>
-              </td>
-    </tr>
-            <%# end %>
-          </table>
-        <%# end %>
-      <%# end %>
--->

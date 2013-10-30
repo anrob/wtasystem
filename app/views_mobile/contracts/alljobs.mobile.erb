@@ -1,6 +1,10 @@
 <h3>Number of jobs in the next 10 Days: <%= (@contractfour).count %> </h3>
 
-
+<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search by Client Name or Act name...">
+    <% @contractfour.each do |p| %>
+<li><%= link_to "#{p.last_name} - #{p.act_booked}", p %>
+    <% end %>
+    </ul>
 <h4 class="header">Event in the Next 10 Days</h4>
   <div class="sheet sheet-condensed">
     <div class="sheet-inner">

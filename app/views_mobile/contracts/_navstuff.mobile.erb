@@ -2,7 +2,7 @@
     <li data-role="list-divider">Menu</li>
         <li><%= link_to "Home", root_path %></li>
    <% if current_user.is? :manager %>
-    <li><%= link_to "Calendar", calendar_path %></li>
+    <li><%= link_to "Calendar", calendar_path, 'data-ajax'=>"false" %></li>
 <% end %>
 <li><%= link_to "All Jobs", alljobs_path %></li>
 

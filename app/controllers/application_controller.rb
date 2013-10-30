@@ -6,9 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :everypage, :except => [:new, :create]
 
   before_filter :force_tablet_html
+
   has_mobile_fu
-  before_filter :prepare_for_mobile
-  respond_to :html, :xml, :json
+
+before_filter :prepare_for_mobile
+  #respond_to :html, :xml, :json
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
    redirect_to root_url
@@ -29,6 +31,7 @@ class ApplicationController < ActionController::Base
   #  end
   #
    def prepare_for_mobile
+     session[:mobile_override] = params[:mobile] if params[:mobile]
      if is_mobile_device?
      prepend_view_path Rails.root + 'app' + 'views_mobile'
    end
