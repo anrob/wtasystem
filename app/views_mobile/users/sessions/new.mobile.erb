@@ -1,5 +1,10 @@
+<div class="loginpanel">
+    <div class="loginpanelinner">
+    <%= link_to image_tag('logo.png', alt:""), root_path %><br>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
-  <%= f.input :actcode_name %>
-  <%= f.input :password %>
-  <%= f.button :submit %>
+  <%= f.input :actcode_name, label:'MUST be in All CAPS', placeholder: "ACTCODE" %>
+  <%= f.input :password, placeholder:"password", hint: false, error_html: { id: 'password_error'} %>
+  <%= f.button :submit, 'Login' %>
 <% end %>
+</div>
+</div>
