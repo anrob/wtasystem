@@ -3,7 +3,7 @@ class Contract < ActiveRecord::Base
   # include PublicActivity::Model
   #    tracked
 
-  has_paper_trail :skip => [:confirmation]
+  has_paper_trail :skip => [:confirmation, :prntkey23, :prntkey13, :tax_amount,:non_commissionable_charges,:base_price_of_act]
   require 'chronic'
   has_one :actcode
   attr_accessible :unique3,

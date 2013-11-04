@@ -80,6 +80,9 @@
  <%= render  "show/provision", contract: @contract %>
  <%= render  "show/actnotes", contract: @contract %>
 <%= render  "show/addservices", contract: @contract %>
+<% unless @versions.empty? %>
+<%= render  "show/version", contract: @contract %>
+<% end %>
     </div>
 </div>
 

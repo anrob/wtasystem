@@ -7,10 +7,11 @@ module Api
       respond_to :json
 
       def index
-        #respond_with  Contract.where("act_code = ?", 'FRSD')
+        respond_with  Contract.thisweek.where("act_code = ?", 'FRSH')
+        #respond_with  Contract.thisweeek.where("act_code = ?", params[:act_code])
         response.headers["Pragma"] = "no-cache"
         response.headers["Cache-Control"] = "no-cache"
-       respond_with  Contract.mytoday.where("act_code = ?", params[:act_code])
+       #
        #respond_with  Contract.all
       end
 

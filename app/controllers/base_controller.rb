@@ -6,4 +6,8 @@ class BaseController < ApplicationController
  before_filter :force_tablet_html
   has_mobile_fu
  skip_before_filter :everypage
+
+ def uppercase_fields
+   self.actcode_name.upcase!
+ end
  end

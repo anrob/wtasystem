@@ -1,8 +1,8 @@
 <div class="ui grid">
     <div class="twelve wide stackable column">
         <div class="ui segment">
-            <div class="ui top attached red label"> <%= contract.act_booked %></div>
-                <div class="ui ribbon black label"><%= contract.type_of_event %></div>
+            <div class="ui top attached red label"> <%#= contract.act_booked %></div>
+                <div class="ui ribbon black label"><%#= contract.type_of_event %></div>
 <br><br>
 <div class="ui vertically divided stackable grid">
 <div class="two column row">
@@ -73,6 +73,9 @@
  <%= render  "show/provision", contract: @contract %>
  <%= render  "show/actnotes", contract: @contract %>
 <%= render  "show/addservices", contract: @contract %>
+<% unless @versions.empty? %>
+<%= render  "show/version", contract: @contract %>
+<% end %>
     </div>
 </div>
 

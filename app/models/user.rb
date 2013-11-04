@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
       roles.include?(role.to_s)
     end
 
+    def uppercase_fields
+      self.actcode_name.upcase!
+    end
+
     def accessible_roles
       @accessible_roles = Role.accessible_by(current_ability,:read)
     end
