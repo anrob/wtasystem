@@ -46,6 +46,7 @@
                 <%= content_tag(:div, "Early setup Time #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
                 <%= content_tag(:div, "Giveaways: #{contract.giveaways}")  unless contract.giveaways.blank? %>
                 <%= content_tag(:div, "Type of Light Show:         #{contract.type_of_light_show}") unless contract.type_of_light_show.blank? %>
+                <%= content_tag(:div, "Includes DJ Tech:           #{contract.tech}") unless contract.tech == "F" %>
                 <%= content_tag(:div, "Number of Horns:            #{contract.number_of_horns}") unless contract.number_of_horns.blank? || 0 %>
                 <%= content_tag(:div, "Number of Dancers:          #{contract.number_of_dancers}") unless contract.number_of_dancers.blank? || 0 %>
                 <%= content_tag(:div, "Pick up Reason              #{contract.explanation_opf_pickup_adjustment}") unless contract.explanation_opf_pickup_adjustment.blank? %>
