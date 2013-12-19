@@ -35,7 +35,7 @@ Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %>
 Early setup Time:   <%= @contract.early_setup_time %><br>
 <br>Giveaways: <%= @contract.giveaways %><br>
 Type of Light Show : <%= @contract.type_of_light_show %><br>
- <%= content_tag(:div, "Includes DJ Tech:           #{contract.tech}") unless contract.tech == "F" %>
+ <%= @content_tag(:div, "Includes DJ Tech:           #{@contract.tech}") unless @contract.tech == "F" %>
  Number of Horns: <%= @contract.number_of_horns %><br>
  Number of Dancers: <%= @contract.number_of_dancers %><br><br>
 <hr>
