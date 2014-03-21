@@ -111,7 +111,7 @@ self.include_root_in_json = true
   scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
   scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
   scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
-  scope :threesixfive, where(date_of_event:  (my_date - 120.days)..(my_date + 5.years))
+  scope :threesixfive, where(date_of_event:  (my_date - 15.days)..(my_date + 5.years))
   #scope :showothers, where(act_code: Actcode.getallbycompany.split(",").tenday.all)
   scope :remove, conditions: { contract_status: ["Cancelled", "Released"]}
   scope :unconfirmedevent, where(confirmation: "0")
@@ -129,6 +129,14 @@ self.include_root_in_json = true
   define_easy_dates do
     format_for [:event_start_time, :event_end_time], format: "%I:%M%P"
     format_for [:date_of_event, :created_at], format: "%m/%d/%y"
+  end
+
+  def self.depupe
+    grouped = all.group_by{|model| [model.unique3]}
+    grouped.values.each do |duplicates|
+      first_one = duplicates.shift
+      duplicates.each{|double|double.destroy}
+    end
   end
 
   def self.send_user_reminders

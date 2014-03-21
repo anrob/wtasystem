@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606203622) do
+ActiveRecord::Schema.define(:version => 20140321183828) do
 
   create_table "actcodes", :force => true do |t|
     t.string   "actcode"
@@ -207,6 +207,8 @@ ActiveRecord::Schema.define(:version => 20130606203622) do
     t.string   "player7"
     t.string   "player8"
   end
+
+  add_index "contracts", ["unique3"], :name => "index_contracts_on_unique3", :unique => true
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

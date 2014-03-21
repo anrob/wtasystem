@@ -66,7 +66,12 @@ before_filter :prepare_for_mobile
   end
 
   def report
-   #@contract= Contract.all.collect { |ob| ob.unique3 }.dups
+
+    #@contract = Contract.order(params[:sort] || :unique3).threesixfive.all
+  @contract = Contract.unscoped.depupe
+ # @contract = @contracts
+
+
    # @notconfirmed = User.where(:sign_in_count => 0 ).collect {|e| e.email}
    #    @allactcodes = Contract.all.collect { |obj| obj.act_code }
    #    @actcodes = User.all.collect { |b| b.actcode_name}
@@ -77,20 +82,20 @@ before_filter :prepare_for_mobile
                   #  @prkey = Contract.all.collect { |ab| ab.prntkey23 }
                   # @emaildups = @prkey.dups
 
-                  @contracts = Contract.unconfirmedevent.tenday.all
-                   @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-                   @userss = @users.collect {|m| m.email}.uniq
-                   #ContractMailer.send_reminder(@userss).deliver
-
-                     @contracts = Contract.unconfirmedevent.tenday.all
-                      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
-                      @userss = @users.collect {|m| m.email}.uniq
-
-                     @jackreport = Contract.order(params[:sort]).wedding.jack.theact.threesixfive.all
-                     # @additional = Contract.additional(@jackreport)
-                      #@prkey = @jackreport.all.collect { |ab| ab.prntkey23 }
-                      @pkey = Contract.find_all_by_prntkey23(@jackreport.map {|p|p.prntkey23})
-                      @py = @pkey.collect {|g| g.prntkey23}
+                  # @contracts = Contract.unconfirmedevent.tenday.all
+                  #                 @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+                  #                 @userss = @users.collect {|m| m.email}.uniq
+                  #                 #ContractMailer.send_reminder(@userss).deliver
+                  #
+                  #                   @contracts = Contract.unconfirmedevent.tenday.all
+                  #                    @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+                  #                    @userss = @users.collect {|m| m.email}.uniq
+                  #
+                  #                   @jackreport = Contract.order(params[:sort]).wedding.jack.theact.threesixfive.all
+                  #                   # @additional = Contract.additional(@jackreport)
+                  #                    #@prkey = @jackreport.all.collect { |ab| ab.prntkey23 }
+                  #                    @pkey = Contract.find_all_by_prntkey23(@jackreport.map {|p|p.prntkey23})
+                  #                    @py = @pkey.collect {|g| g.prntkey23}
   end
 
   def confirmjob

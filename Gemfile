@@ -51,7 +51,6 @@ end
 
 gem 'devise'
 gem "cancan"
-gem 'meta_search'
 gem 'inherited_resources'
 gem 'easy_dates'
 gem "breadcrumbs_on_rails"
