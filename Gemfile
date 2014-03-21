@@ -16,7 +16,7 @@ gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
 gem 'trackman'
-gem 'jquery-rails'
+#gem 'jquery-rails'
 #gem 'jquery_datepicker'
 gem "meta_search"
 gem 'fullcalendar-rails'
