@@ -5,7 +5,7 @@
 <div class="ui input">
 <% #user.build_actcode unless user.actcode_name.blank? %>
 <%= simple_form_for(user,html: {  method: :put}) do |f| %>
-<%= f.input :email,hint: 'Hey - no more than 255 characters can be input!!!', %>
+<%= f.input :email,hint: 'Hey - no more than 255 characters can be input!!!' %>
 <%= f.input :first_name %>
 <%= f.input :last_name %>
 <%= f.input :phone_number %>

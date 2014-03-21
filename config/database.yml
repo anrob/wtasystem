@@ -5,10 +5,11 @@
 #   gem 'sqlite3'
 common: &common
   adapter: postgresql
-  username: postgres
-  password: shaina # from psql setup, see Postgresql
-  encoding: utf8
-  
+  #username: postgres
+ # username: anrob
+  #password: shaina # from psql setup, see Postgresql
+  #encoding: utf8
+
 
 development:
   <<: *common
