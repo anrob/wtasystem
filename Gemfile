@@ -16,11 +16,8 @@ gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
 gem 'trackman'
-#gem 'jquery-rails'
-#gem 'jquery_datepicker'
 gem "meta_search"
 gem 'fullcalendar-rails'
-#gem 'public_activity', 0.4
 gem 'ruport', :git => 'https://github.com/ruport/ruport.git', :branch => 'ruby19-compat'
 gem 'acts_as_reportable'
 gem 'paper_trail', '~> 2'
@@ -34,7 +31,6 @@ gem 'rails_12factor', group: :production
 
 group :development do
 gem 'sqlite3'
-#gem 'jquery_mobile_rails'
 gem 'better_errors'
 gem "binding_of_caller"
 gem 'meta_request'
@@ -45,7 +41,6 @@ group :assets do
   gem 'sass-rails',   '<= 3.2.6'
   gem 'coffee-rails', '<= 3.2.2'
   gem 'jquery-ui-rails'
-  #gem 'jquery-ui'
   gem 'jquery-rails'
 end
 
