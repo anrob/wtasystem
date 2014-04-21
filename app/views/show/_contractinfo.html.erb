@@ -7,4 +7,6 @@
              <%= content_tag(:dt,"Contract Status:     #{contract.contract_status}")  unless contract.contract_status.blank? %>
              <%= content_tag(:dt,"Operating as:        #{contract.type_of_act}")  unless contract.type_of_act.blank? %>
              <%= content_tag(:dt,"Form of:             #{contract.act_form}")  unless contract.act_form.blank? %>
+                <%= content_tag(:dt,"Contract Price:            #{number_to_currency(contract.contract_price)}") unless  self.blank? || contract.contract_price == 0 %>
+
 <% end %>
