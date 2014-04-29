@@ -3,7 +3,7 @@
 <% if @versions.last  %>
 <%#= @versions.count %>
 <% @versions.last.changeset.each do |key, value| %>
-  <li><%=  "#{key}: #{value}" %></li>
+  <li><%=  "#{key.humanize} to #{value[1]}" %></li>
 <% end %>
 <% end %>
 <hr>
