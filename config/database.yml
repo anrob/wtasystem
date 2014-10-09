@@ -6,7 +6,7 @@
 common: &common
   adapter: postgresql
   #username: postgres
- # username: anrob
+  #username: Fresh
   #password: shaina # from psql setup, see Postgresql
   #encoding: utf8
 
@@ -14,7 +14,7 @@ common: &common
 development:
   <<: *common
   #database: wtadb
-  database: wtadb
+  database: wtav1
   host: localhost
 
 # development:
