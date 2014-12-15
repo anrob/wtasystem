@@ -57,7 +57,7 @@ gem 'gibbon'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 gem 'gravatar_image_tag'
 gem 'lazy_high_charts'
-gem 'gmail'
+#gem 'gmail'
 #gem 'prawn'
 gem 'rack', '1.4.5'
 
