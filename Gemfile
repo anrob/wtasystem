@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
-gem 'dresssed-gimlet', :require => "dresssed/gimlet"
+gem 'dresssed-gimlet', '1.4.1', :require => "dresssed/gimlet"
 gem 'rails', '3.2.13'
 gem 'pg'
 gem 'postageapp'
@@ -12,6 +12,7 @@ gem 'has_scope'
 gem "sentry-raven"
 gem "rails_best_practices"
 gem 'simple_form'
+
 gem 'chronic'
 gem 'icalendar'
 gem 'activeadmin'
@@ -26,7 +27,6 @@ gem "font-awesome-rails"
 gem "jquerymobile-rails"
 gem 'mobile-fu'
 gem 'mobiscroll-rails'
-gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 

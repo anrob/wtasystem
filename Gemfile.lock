@@ -187,7 +187,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    netrc (0.10.0)
+    netrc (0.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
@@ -320,7 +320,7 @@ DEPENDENCIES
   chronic
   coffee-rails (<= 3.2.2)
   devise
-  dresssed-gimlet
+  dresssed-gimlet (= 1.4.1)
   dropbox-sdk
   easy_dates
   font-awesome-rails
