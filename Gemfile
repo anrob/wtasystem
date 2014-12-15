@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'postageapp'
 gem "switch_user"
-gem 'dropbox-sdk'
+#gem 'dropbox-sdk'
 gem 'magic_encoding'
 gem 'kaminari'
 gem 'has_scope'

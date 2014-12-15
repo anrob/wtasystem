@@ -102,8 +102,6 @@ GEM
     dresssed-gimlet (1.4.1)
       jquery-rails
       rails (>= 3.1)
-    dropbox-sdk (1.6.4)
-      json
     easy_dates (0.1.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -321,7 +319,6 @@ DEPENDENCIES
   coffee-rails (<= 3.2.2)
   devise
   dresssed-gimlet (= 1.4.1)
-  dropbox-sdk
   easy_dates
   font-awesome-rails
   fullcalendar-rails

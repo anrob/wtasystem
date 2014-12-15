@@ -47,8 +47,8 @@ resources :users
    match '/calendar', to: "contracts#calendar"
    #match '/exportcal', to: "incoming_mails#exportevents"
    #match '/gmail', to: "contracts#gmail"
-   match 'db/authorize', controller: 'dropbox', action: 'authorize'
-   match 'db/upload', controller: 'dropbox', action: 'upload'
+   #match 'db/authorize', controller: 'dropbox', action: 'authorize'
+   #match 'db/upload', controller: 'dropbox', action: 'upload'
    match '/incoming', to: "incoming_mails#create"
    match '/report', to: "contracts#report"
 
