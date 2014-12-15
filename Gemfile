@@ -26,6 +26,7 @@ gem "font-awesome-rails"
 gem "jquerymobile-rails"
 gem 'mobile-fu'
 gem 'mobiscroll-rails'
+gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 

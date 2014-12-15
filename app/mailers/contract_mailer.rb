@@ -58,7 +58,7 @@ class ContractMailer < PostageApp::Mailer
 
    def newactcodes(actcodes)
      mail(  from: "support@confirmmygig.com",
-            to:"iamjustfresh@gmail.com,strick@washingtontalent.com",
+            to:"iamjustfresh@gmail.com,jeff@washingtontalent.com",
             subject: "New Actcodes Not in database",
             body: actcodes)
    end
@@ -121,5 +121,3 @@ class ContractMailer < PostageApp::Mailer
   end
 
 end
-
-

@@ -1,12 +1,17 @@
 <%= content_tag_for(:dt, contract) do  %>
-             <%= content_tag(:dt,"Date of Event:         #{contract.date_of_event}") unless contract.date_of_event.blank? %>
-             <%= content_tag(:dt,"Event Time:          #{contract.eventtime}")  unless contract.eventtime.blank? %>
-             <%= content_tag(:dt, "Early setup Time  #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
-             <%= content_tag(:dt,"Event Type:         #{contract.type_of_event}") unless contract.type_of_event.blank? %>
-             <%= content_tag(:dt,"Reception Location:  #{contract.reception_location}") unless contract.reception_location.blank? %>
-             <%= content_tag(:dt,"Contract Status:     #{contract.contract_status}")  unless contract.contract_status.blank? %>
-             <%= content_tag(:dt,"Operating as:        #{contract.type_of_act}")  unless contract.type_of_act.blank? %>
-             <%= content_tag(:dt,"Form of:             #{contract.act_form}")  unless contract.act_form.blank? %>
-                <%= content_tag(:dt,"Contract Price:            #{number_to_currency(contract.contract_price)}") unless  self.blank? || contract.contract_price == 0 %>
+             <%= content_tag(:dt,"Date of Event:                 #{contract.date_of_event}") unless contract.date_of_event.blank? %>
+             <%= content_tag(:dt,"Event Time:                    #{contract.eventtime}")  unless contract.eventtime.blank? %>
+             <%= content_tag(:dt, "Early setup Time              #{contract.early_setup_time}") unless contract.early_setup_time.blank? %>
+             <%= content_tag(:dt,"Event Type:                    #{contract.type_of_event}") unless contract.type_of_event.blank? %>
+             <%= content_tag(:dt,"Reception Location:            #{contract.reception_location}") unless contract.reception_location.blank? %>
+             <%= content_tag(:dt,"Contract Status:               #{contract.contract_status}")  unless contract.contract_status.blank? %>
+             <%= content_tag(:dt,"Operating as:                  #{contract.type_of_act}")  unless contract.type_of_act.blank? %>
+             <%= content_tag(:dt,"Form of:                       #{contract.act_form}")  unless contract.act_form.blank? %>
+             <% if can? :see_money, @contracts %>
+             <%= content_tag(:dt,"Contract Price:                #{number_to_currency(contract.contract_price)}") unless  self.blank? || contract.contract_price == 0 %>
+             <% elsif %>
+             <%= content_tag(:dt,"Contract Price:                #{number_to_currency(contract.act_net)}") unless  self.blank? || contract.act_net == 0 %>
+
+             <% end %>
 
 <% end %>

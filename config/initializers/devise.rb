@@ -5,6 +5,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "support@confirmmygig.com"
+  config.secret_key = 'd1af5e168552fc6a9a83ed9e23f810772d2e375f27fcfdd1fb1bdf7cdcfeec1a95c68e7232bb34ea664c835a25f6b07f08e179dfe8f097f7952c8d3a8638306a'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
