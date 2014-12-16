@@ -45,6 +45,7 @@ end
 
 group :assets do
   gem 'sass-rails',   '<= 3.2.6'
+  gem "sass", "~> 3.2.13"
   gem 'coffee-rails', '<= 3.2.2'
   #gem "jquery-rails", "< 3.1.2"
   gem 'jquery-ui-rails', '~> 4.2.1'

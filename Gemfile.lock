@@ -66,8 +66,8 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blockenspiel (0.4.5)
-    bourbon (4.0.2)
-      sass (~> 3.3)
+    bourbon (3.2.3)
+      sass (~> 3.2)
       thor
     breadcrumbs_on_rails (2.3.0)
     builder (3.0.4)
@@ -230,7 +230,7 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     ruby-progressbar (1.7.0)
-    sass (3.4.9)
+    sass (3.2.19)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -321,6 +321,7 @@ DEPENDENCIES
   rails_12factor
   rails_best_practices
   ruport!
+  sass (~> 3.2.13)
   sass-rails (<= 3.2.6)
   sentry-raven
   simple_form
