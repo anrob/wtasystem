@@ -3,7 +3,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery.ui
 //= require dresssed
 //= require mobiscroll
 //= require jquery.ui.datepicker
