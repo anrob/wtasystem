@@ -1,3 +1,4 @@
+ruby "1.9.3"
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
 
