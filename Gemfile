@@ -6,7 +6,7 @@ ruby "1.9.3"
 
 gem 'dresssed-gimlet', '1.4.1', :require => "dresssed/gimlet"
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.16'
 gem 'pg'
 gem 'postageapp'
 gem "switch_user"
@@ -46,8 +46,10 @@ end
 group :assets do
   gem 'sass-rails',   '<= 3.2.6'
   gem 'coffee-rails', '<= 3.2.2'
-  gem 'jquery-ui-rails'
-  gem 'jquery-rails'
+  #gem "jquery-rails", "< 3.1.2"
+  gem 'jquery-ui-rails', '~> 4.2.1'
+  #gem 'jquery-ui-rails'
+  #gem 'jquery-rails'
 end
 
 gem 'devise'
