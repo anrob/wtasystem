@@ -63,10 +63,6 @@ GEM
     arel (3.0.3)
     awesome_print (1.2.0)
     bcrypt (3.1.9)
-    better_errors (2.0.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blockenspiel (0.4.5)
@@ -80,7 +76,6 @@ GEM
     chronic (0.10.2)
     code_analyzer (0.4.5)
       sexp_processor
-    coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -292,7 +287,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts_as_reportable
-  better_errors
   binding_of_caller
   breadcrumbs_on_rails
   cancan
