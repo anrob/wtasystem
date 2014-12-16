@@ -1,6 +1,8 @@
-ruby "1.9.3"
+
 source 'http://rubygems.org'
 source 'http://dresssed.com/gems/f0ac74923e447c64069e/'
+
+ruby "1.9.3"
 
 gem 'dresssed-gimlet', '1.4.1', :require => "dresssed/gimlet"
 
